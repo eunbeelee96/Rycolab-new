@@ -1,13 +1,18 @@
 ---
-title: Recent & Upcoming Talks
-cms_exclude: true
-#url: talk
+title: Events
+type: landing
 
-# View
-view: card
+design:
+  spacing: '6rem'
 
-# Optional cover image (relative to `assets/media/` folder).
-image:
-  caption: ''
-  filename: ''
+sections:
+  - block: collection
+    id: talks
+    content:
+      title: Recent & Upcoming Talks
+      filters:
+        folders:
+          - events
+    design:
+      view: card
 ---

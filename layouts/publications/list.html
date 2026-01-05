@@ -1,0 +1,783 @@
+{{ define "main" }}
+<section class="publications-page" style="padding:2rem 3rem;">
+  
+  <!-- Filter buttons -->
+  <div class="publications-filters">
+    <div class="dropdown-container">
+      <button class="filter-btn" id="year-btn">YEAR</button>
+      <div class="dropdown-menu" id="year-dropdown">
+        <div class="dropdown-item" data-year="all">ALL</div>
+        <div class="dropdown-item" data-year="2026">2026</div>
+        <div class="dropdown-item" data-year="2025">2025</div>
+        <div class="dropdown-item" data-year="2024">2024</div>
+        <div class="dropdown-item" data-year="2023">2023</div>
+        <div class="dropdown-item" data-year="2022">2022</div>
+        <div class="dropdown-item" data-year="2013-2021">2013-2021</div>
+      </div>
+    </div>
+    <div class="dropdown-container">
+      <button class="filter-btn" id="publication-btn">PUBLICATION</button>
+      <div class="dropdown-menu" id="publication-dropdown">
+        <div class="dropdown-item" data-pubtype="all">ALL</div>
+        <div class="dropdown-item" data-pubtype="0">UNCATEGORIZED</div>
+        <div class="dropdown-item" data-pubtype="1">CONFERENCE</div>
+        <div class="dropdown-item" data-pubtype="2">JOURNAL</div>
+        <div class="dropdown-item" data-pubtype="3">PREPRINT</div>
+        <div class="dropdown-item" data-pubtype="4">REPORT</div>
+        <div class="dropdown-item" data-pubtype="5">BOOK</div>
+        <div class="dropdown-item" data-pubtype="6">BOOK SECTION</div>
+        <div class="dropdown-item" data-pubtype="7">THESIS</div>
+        <div class="dropdown-item" data-pubtype="8">PATENT</div>
+      </div>
+    </div>
+    <button class="filter-btn">AUTHORS</button>
+    <button class="filter-btn">TOPIC</button>
+    
+    <!-- Search bar -->
+    <div class="search-container">
+      <input type="text" id="publications-search" placeholder="SEARCH" class="publications-search-input">
+      <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10" cy="10" r="6"></circle>
+        <line x1="19" y1="19" x2="14.5" y2="14.5"></line>
+      </svg>
+      <button class="clear-search" id="clear-search-pub" style="display:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <button class="sort-btn" id="sort-toggle"><span class="sort-underline">NEWEST</span></button>
+  </div>
+
+  <style>
+    .publications-page { height: auto !important; }
+    
+    /* Filter buttons */
+    .publications-filters { 
+      display: flex; 
+      gap: 2rem; 
+      margin-bottom: 4rem; 
+      align-items: center; 
+    }
+    .filter-btn { 
+      padding: 0.5rem 2.2rem; 
+      background: transparent; 
+      border: 1px solid #000; 
+      border-radius: 25px; 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 1rem; 
+      font-weight: 400; 
+      cursor: pointer; 
+      position: relative;
+    }
+    .filter-btn.selected { color: #72d71b; }
+    .filter-btn::after { content: ""; display: inline-block; width: 10px; height: 10px; margin-left: 0.8rem; vertical-align: 3px; border-right: 1.5px solid #000; border-bottom: 1.5px solid #000; transform: rotate(45deg); transition: transform 0.3s ease; }
+    .filter-btn.open::after { vertical-align: -3px; transform: rotate(225deg); }
+    
+    /* Dropdown menu */
+    .dropdown-container { position: relative; }
+    .dropdown-menu { 
+      display: none;
+      position: absolute; 
+      top: calc(100% + 0.5rem); 
+      left: 0; 
+      background: #fff; 
+      border: 1px solid #000; 
+      border-radius: 20px; 
+      padding: 1rem; 
+      width: 100%;
+      z-index: 100;
+    }
+    .dropdown-menu.show { display: block; }
+    .dropdown-item { 
+      padding: 0.75rem 1rem; 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.9rem; 
+      cursor: pointer;
+      transition: background 0.2s ease;
+      text-align: center;
+    }
+    .dropdown-item:hover { background: #CEEDB2; }
+    
+    /* Search bar */
+    .search-container { 
+      position: relative;
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+    .publications-search-input { 
+      width: 280px; 
+      padding: 0.5rem 2.5rem 0.5rem 1rem; 
+      border: 1px solid #000; 
+      border-radius: 25px; 
+      font-family: "Roboto", sans-serif; 
+      font-size: 0.9rem; 
+      outline: none;
+    }
+    .publications-search-input::placeholder { 
+      color: #999; 
+      font-family: "Roboto Mono", monospace; 
+    }
+    .search-icon { 
+      position: absolute; 
+      right: 1rem; 
+      top: 50%; 
+      transform: translateY(-50%); 
+      pointer-events: none;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+    .search-container:has(.publications-search-input:not(:placeholder-shown)) .search-icon {
+      display: none;
+    }
+    .clear-search {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+    .clear-search:hover {
+      opacity: 1;
+    }
+    
+    .sort-btn { 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.9rem; 
+      background: transparent; 
+      border: none; 
+      cursor: pointer; 
+    }
+    .sort-underline { text-decoration: underline; }
+    .sort-btn:hover .sort-underline { color: #999999; }
+    
+    /* Publications list */
+    .publications-list { 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .publication-item { 
+      padding: 1.5rem 1rem;
+      border-top: 1px solid #eee;
+      opacity: 0;
+      animation: fadeInUp 0.4s ease forwards;
+      transition: all 0.3s ease;
+    }
+    .publication-item:first-child {
+      border-top: none;
+    }
+    .publication-item:hover {
+      background: #f5f5f5;
+      transform: translateX(5px);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .pub-title { 
+      font-family: "Roboto", sans-serif; 
+      font-size: 1.2rem; 
+      margin-bottom: 0.3rem; 
+    }
+
+    .pub-meta { 
+      font-family: "Roboto", sans-serif; 
+      font-size: 0.9rem; 
+      color: #666; 
+      margin-bottom: 0.3rem; 
+    }
+    .pub-meta .pub-type { 
+      color: #72d71b; 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.9rem;
+    }
+    .pub-links { 
+      display: flex; 
+      gap: 1rem; 
+      margin-top: 0.5rem; 
+    }
+    .pub-link { 
+      padding: 0.3rem 1rem; 
+      border: 1px solid #72d71b; 
+      border-radius: 15px; 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.8rem; 
+      color: #72d71b; 
+      text-decoration: none; 
+      background: transparent; 
+      cursor: pointer;
+    }
+    .pub-link:hover { background: #CEEDB2; }
+    
+    /* Load More Button */
+    .load-more-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+      padding: 2rem 0;
+    }
+    .load-more-btn {
+      padding: 0.8rem 3rem;
+      background: transparent;
+      border: 1px solid #000;
+      border-radius: 25px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .load-more-btn:hover {
+      background: #f5f5f5;
+    }
+    .load-more-btn.hidden {
+      display: none;
+    }
+  </style>
+
+  <div class="publications-list">
+    {{ $publications := where site.RegularPages "Section" "publications" }}
+    {{ $sorted := $publications.ByDate.Reverse }}
+
+    {{ range $sorted }}
+      {{ $pubType := index .Params.publication_types 0 }}
+      <div class="publication-item" data-year="{{ .Date.Format "2006" }}" data-pubtype="{{ $pubType }}">
+        <h3 class="pub-title"><a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit;">{{ .Title | markdownify }}</a></h3>
+        
+        <div class="pub-meta">
+          {{ with .Params.authors }}{{ delimit . ", " }}{{ end }}{{ with .Date }} | {{ .Format "2006" }}{{ end }} | <span class="pub-type">{{ if eq $pubType "0" }}UNCATEGORIZED{{ else if eq $pubType "1" }}CONFERENCE{{ else if eq $pubType "2" }}JOURNAL{{ else if eq $pubType "3" }}PREPRINT{{ else if eq $pubType "4" }}REPORT{{ else if eq $pubType "5" }}BOOK{{ else if eq $pubType "6" }}BOOK SECTION{{ else if eq $pubType "7" }}THESIS{{ else if eq $pubType "8" }}PATENT{{ else }}PUBLICATION{{ end }}</span>
+        </div>
+        
+        <div class="pub-links">
+          {{ $cite := .Resources.GetMatch "cite.bib" }}
+          {{ with $cite }}
+          <button class="pub-link js-cite-modal" data-filename="{{ .RelPermalink }}">CITE</button>
+          {{ end }}
+          {{ range .Params.links }}
+            {{ if eq .name "URL" }}
+              <a href="{{ .url }}" class="pub-link" target="_blank">URL</a>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+
+  <!-- Load More Button -->
+  <div class="load-more-container">
+    <button class="load-more-btn" id="load-more-btn">LOAD MORE</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sortBtn = document.getElementById('sort-toggle');
+      const pubList = document.querySelector('.publications-list');
+      let isNewest = true;
+      
+      // Store original order at page load - deep clone to preserve original
+      const originalItemsClones = Array.from(document.querySelectorAll('.publication-item')).map(item => item.cloneNode(true));
+
+      // Load More functionality
+      const loadMoreBtn = document.getElementById('load-more-btn');
+      const itemsPerPage = 20;
+      let currentlyShown = itemsPerPage;
+
+      // Year dropdown toggle
+      const yearBtn = document.getElementById('year-btn');
+      const yearDropdown = document.getElementById('year-dropdown');
+      const yearItems = yearDropdown.querySelectorAll('.dropdown-item');
+      let allPubs = document.querySelectorAll('.publication-item');
+      let isInitialLoad = true;
+      
+      // Read URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      let activeYearFilter = 'all';
+      let activePubTypeFilter = 'all';
+      let searchQuery = '';
+      
+      // Apply pubtype filter from URL if present
+      const pubTypeFromUrl = urlParams.get('pubtype');
+      if (pubTypeFromUrl) {
+        activePubTypeFilter = pubTypeFromUrl;
+      }
+      
+      // Stagger animation for initial load
+      function applyStaggerAnimation() {
+        allPubs.forEach((pub, index) => {
+          pub.style.animationDelay = `${index * 0.03}s`;
+        });
+      }
+      
+      // Remove animation delays
+      function removeAnimationDelays() {
+        allPubs.forEach((pub) => {
+          pub.style.animationDelay = '0s';
+        });
+      }
+      
+      // Apply animation only on initial load
+      applyStaggerAnimation();
+      
+      // Publication type dropdown toggle
+      const publicationBtn = document.getElementById('publication-btn');
+      const publicationDropdown = document.getElementById('publication-dropdown');
+      const publicationItems = publicationDropdown.querySelectorAll('.dropdown-item');
+      
+      // Search functionality
+      const searchInput = document.getElementById('publications-search');
+      const clearBtn = document.getElementById('clear-search-pub');
+      
+      searchInput.addEventListener('input', function(e) {
+        if (isInitialLoad) isInitialLoad = false;
+        removeAnimationDelays();
+        searchQuery = e.target.value.toLowerCase();
+        clearBtn.style.display = searchQuery ? 'flex' : 'none';
+        currentlyShown = itemsPerPage;
+        applyFilters();
+      });
+      
+      clearBtn.addEventListener('click', function() {
+        if (isInitialLoad) isInitialLoad = false;
+        removeAnimationDelays();
+        searchInput.value = '';
+        searchQuery = '';
+        clearBtn.style.display = 'none';
+        currentlyShown = itemsPerPage;
+        applyFilters();
+        searchInput.focus();
+      });
+      
+      yearBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        yearDropdown.classList.toggle('show');
+        yearBtn.classList.toggle('open');
+        // Close other dropdowns
+        publicationDropdown.classList.remove('show');
+        publicationBtn.classList.remove('open');
+      });
+      
+      publicationBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        publicationDropdown.classList.toggle('show');
+        publicationBtn.classList.toggle('open');
+        // Close other dropdowns
+        yearDropdown.classList.remove('show');
+        yearBtn.classList.remove('open');
+      });
+      
+      // Function to apply all filters
+      function applyFilters() {
+        let visibleCount = 0;
+        
+        // Re-select all pubs from current DOM to ensure we have latest state
+        const currentPubs = document.querySelectorAll('.publication-item');
+        
+        currentPubs.forEach((pub, index) => {
+          const pubYear = parseInt(pub.dataset.year);
+          const pubType = pub.dataset.pubtype;
+          const pubText = pub.textContent.toLowerCase();
+          
+          let showByYear = false;
+          let showByType = false;
+          let showBySearch = false;
+          
+          // Year filter
+          if (activeYearFilter === 'all') {
+            showByYear = true;
+          } else if (activeYearFilter === '2013-2021') {
+            showByYear = pubYear >= 2013 && pubYear <= 2021;
+          } else {
+            showByYear = pubYear === parseInt(activeYearFilter);
+          }
+          
+          // Publication type filter
+          if (activePubTypeFilter === 'all') {
+            showByType = true;
+          } else {
+            showByType = pubType === activePubTypeFilter;
+          }
+          
+          // Search filter
+          if (searchQuery === '') {
+            showBySearch = true;
+          } else {
+            showBySearch = pubText.includes(searchQuery);
+          }
+          
+          // Show/hide based on filters
+          const shouldShowByFilter = showByYear && showByType && showBySearch;
+          
+          if (shouldShowByFilter) {
+            // Show if within current page limit
+            if (visibleCount < currentlyShown) {
+              pub.style.display = 'block';
+            } else {
+              pub.style.display = 'none';
+            }
+            visibleCount++;
+          } else {
+            pub.style.display = 'none';
+          }
+        });
+        
+        // Update load more button visibility
+        updateLoadMoreButton(visibleCount);
+      }
+      
+      function updateLoadMoreButton(totalVisible) {
+        if (totalVisible <= currentlyShown) {
+          loadMoreBtn.classList.add('hidden');
+        } else {
+          loadMoreBtn.classList.remove('hidden');
+        }
+      }
+      
+      // Initial setup - hide items beyond first page
+      function initializePagination() {
+        let count = 0;
+        allPubs.forEach(pub => {
+          if (count < itemsPerPage) {
+            pub.style.display = 'block';
+          } else {
+            pub.style.display = 'none';
+          }
+          count++;
+        });
+        updateLoadMoreButton(allPubs.length);
+      }
+      
+      initializePagination();
+      
+      // Apply filter from URL parameter if present
+      if (pubTypeFromUrl) {
+        // Find and update the publication type button text
+        publicationItems.forEach(item => {
+          if (item.dataset.pubtype === pubTypeFromUrl) {
+            const typeText = item.textContent.trim();
+            publicationBtn.innerHTML = `${typeText}`;
+            item.classList.add('selected');
+          }
+        });
+        publicationBtn.classList.add('selected');
+        currentlyShown = itemsPerPage;
+        applyFilters();
+      }
+      loadMoreBtn.addEventListener('click', function() {
+        if (isInitialLoad) isInitialLoad = false;
+        removeAnimationDelays();
+        currentlyShown += itemsPerPage;
+        applyFilters();
+      });
+      
+      // Year filter
+      yearItems.forEach(item => {
+        item.addEventListener('click', function() {
+          if (isInitialLoad) isInitialLoad = false;
+          removeAnimationDelays();
+          const selectedYear = this.dataset.year;
+          const yearText = this.textContent.trim();
+          activeYearFilter = selectedYear;
+          
+          // Update button text and color
+          if (selectedYear === 'all') {
+            yearBtn.innerHTML = `YEAR`;
+            yearBtn.classList.remove('selected');
+            
+            // Reset to NEWEST order when ALL is selected
+            if (!isNewest) {
+              isNewest = true;
+              const underlineSpan = sortBtn.querySelector('.sort-underline');
+              underlineSpan.textContent = 'NEWEST';
+              
+              // Restore original order (NEWEST)
+              const sortedItems = originalItemsClones.map(item => item.cloneNode(true));
+              sortedItems.sort((a, b) => {
+                const yearA = parseInt(a.dataset.year);
+                const yearB = parseInt(b.dataset.year);
+                return yearB - yearA; // NEWEST first
+              });
+              
+              while (pubList.firstChild) {
+                pubList.removeChild(pubList.firstChild);
+              }
+              sortedItems.forEach(item => {
+                pubList.appendChild(item);
+              });
+              
+              attachCiteModalListeners();
+            }
+          } else {
+            yearBtn.innerHTML = `${yearText}`;
+            yearBtn.classList.add('selected');
+          }
+          
+          currentlyShown = itemsPerPage;
+          applyFilters();
+          
+          yearDropdown.classList.remove('show');
+          yearBtn.classList.remove('open');
+        });
+      });
+      
+      // Publication type filter
+      publicationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          if (isInitialLoad) isInitialLoad = false;
+          removeAnimationDelays();
+          const selectedType = this.dataset.pubtype;
+          const typeText = this.textContent.trim();
+          activePubTypeFilter = selectedType;
+          
+          // Update button text and color
+          if (selectedType === 'all') {
+            publicationBtn.innerHTML = `PUBLICATION TYPE`;
+            publicationBtn.classList.remove('selected');
+          } else {
+            publicationBtn.innerHTML = `${typeText}`;
+            publicationBtn.classList.add('selected');
+          }
+          
+          currentlyShown = itemsPerPage;
+          applyFilters();
+          
+          publicationDropdown.classList.remove('show');
+          publicationBtn.classList.remove('open');
+        });
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown-container')) {
+          yearDropdown.classList.remove('show');
+          yearBtn.classList.remove('open');
+          publicationDropdown.classList.remove('show');
+          publicationBtn.classList.remove('open');
+        }
+      });
+
+      // Sort toggle
+      sortBtn.addEventListener('click', function() {
+        if (isInitialLoad) isInitialLoad = false;
+        removeAnimationDelays();
+        isNewest = !isNewest;
+        const underlineSpan = this.querySelector('.sort-underline');
+        underlineSpan.textContent = isNewest ? 'NEWEST' : 'OLDEST';
+        
+        // Create fresh clones and sort them
+        const itemsToSort = originalItemsClones.map(item => item.cloneNode(true));
+        itemsToSort.sort((a, b) => {
+          const yearA = parseInt(a.dataset.year);
+          const yearB = parseInt(b.dataset.year);
+          // NEWEST: yearB - yearA (latest first)
+          // OLDEST: yearA - yearB (earliest first)
+          if (isNewest) {
+            return yearB - yearA;
+          } else {
+            return yearA - yearB;
+          }
+        });
+        
+        // Clear pubList completely
+        while (pubList.firstChild) {
+          pubList.removeChild(pubList.firstChild);
+        }
+        
+        // Add all sorted items back to DOM
+        itemsToSort.forEach(item => {
+          pubList.appendChild(item);
+        });
+        
+        // Re-attach cite modal event listeners to newly cloned items
+        attachCiteModalListeners();
+        
+        // Reset pagination and apply filters to maintain current filter state
+        currentlyShown = itemsPerPage;
+        applyFilters();
+      });
+
+      // Citation modal handling
+      const modal = document.getElementById('cite-modal');
+      const modalClose = document.querySelector('.modal-close');
+      const modalCiteContent = document.getElementById('cite-content');
+      const modalCopyBtn = document.querySelector('.js-copy-cite');
+      const modalDownloadBtn = document.querySelector('.js-download-cite');
+      
+      function attachCiteModalListeners() {
+        const citeButtons = document.querySelectorAll('.js-cite-modal');
+        citeButtons.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const citeFile = this.dataset.filename;
+            
+            // Fetch citation content
+            fetch(citeFile)
+              .then(response => response.text())
+              .then(data => {
+                modalCiteContent.textContent = data;
+                modal.style.display = 'block';
+                
+                // Set download link
+                modalDownloadBtn.href = citeFile;
+                
+                // Copy functionality
+                modalCopyBtn.onclick = function() {
+                  navigator.clipboard.writeText(data);
+                };
+              })
+              .catch(error => {
+                console.error('Error loading citation:', error);
+              });
+          });
+        });
+      }
+      
+      // Initial attachment
+      attachCiteModalListeners();
+      
+      // Close modal
+      modalClose.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+      
+      window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- Citation Modal -->
+  <div id="cite-modal" class="cite-modal">
+    <div class="modal-content-cite">
+      <div class="modal-header-cite">
+        <h3>CITE</h3>
+        <span class="modal-close">&times;</span>
+      </div>
+      <div class="modal-body-cite">
+        <pre><code id="cite-content"></code></pre>
+      </div>
+      <div class="modal-footer-cite">
+        <button class="pub-link js-copy-cite">COPY</button>
+        <a class="pub-link js-download-cite" download>DOWNLOAD</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .cite-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content-cite {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 0;
+      border: 1px solid #000;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 600px;
+    }
+    
+    .modal-header-cite {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header-cite h3 {
+      margin: 0;
+      font-family: "Roboto Mono", monospace;
+      font-size: 1.2rem;
+    }
+    
+    .modal-close {
+      font-size: 2rem;
+      font-weight: 300;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .modal-close:hover {
+      color: #000;
+    }
+    
+    .modal-body-cite {
+      padding: 2rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .modal-body-cite pre {
+      margin: 0;
+      background: #f5f5f5;
+      padding: 1rem;
+      border-radius: 10px;
+      font-family: "Roboto", sans-serif; 
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    
+    .modal-body-cite code {
+      font-family: "Roboto", sans-serif;
+    }
+    
+    .copy-button {
+      display: none !important;
+    }
+    
+    .modal-footer-cite {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+  </style>
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Render KaTeX
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+</section>
+{{ end }}

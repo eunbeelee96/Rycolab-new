@@ -1,0 +1,489 @@
+<style>
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+/* Body font: Roboto */
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-y: scroll;
+}
+
+/* Menu bar: Roboto Mono Regular */
+.navbar, .navbar-nav, .nav-link, .navbar-brand {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Headings: Roboto Mono */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400 !important;
+}
+
+/* Section title styling */
+.section-title {
+  font-family: "Roboto Mono", monospace !important;
+  font-weight: 400 !important;
+}
+
+/* Menu alignment: 메뉴를 오른쪽으로 */
+.navbar-nav {
+  margin-left: 800px !important;
+  gap: 30px !important;
+}
+
+/* Logo position: 로고를 오른쪽으로 이동 */
+.navbar-brand {
+  padding-left: 20px !important;
+}
+
+/* Remove navbar shadow/line */
+#site-header.header {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  padding-block: 1rem !important;
+}
+
+/* Rounded rectangle background for navbar only (exclude search) */
+.navbar-nav {
+  background-color: #CEEDB2 !important;
+  border-radius: 50px !important;
+  padding: 0 !important;
+  display: inline-block !important;
+  height: auto !important;
+}
+
+/* nav-item을 inline-block으로 */
+.navbar-nav .nav-item {
+  display: inline-block !important;
+  margin-right: 30px !important;
+}
+
+.navbar-nav .nav-item:last-child {
+  margin-right: 0 !important;
+}
+
+/* 모든 nav-link의 기본 padding */
+.navbar-nav .nav-link {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* 첫 번째 링크만 왼쪽 여백 추가 */
+.navbar-nav .nav-item:first-child .nav-link {
+  padding-left: 2rem !important;
+}
+
+/* 마지막 링크만 오른쪽 여백 추가 */
+.navbar-nav .nav-item:last-child .nav-link {
+  padding-right: 2rem !important;
+}
+
+/* Active 상태일 때 oval 배경만 추가 */
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item .nav-link.active {
+  background-color: #91ed40 !important;
+  border-radius: 30px !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  padding-left: 2rem !important;  
+  padding-right: 2rem !important;
+}
+
+/* 호버 시 글씨 색 변경 */
+.navbar-nav .nav-link:hover {
+  color: #72d71b !important;
+}
+
+/* Keep navbar flex layout */
+.navbar {
+  gap: 1rem !important;
+}
+
+/* Search icon position */
+button[data-search-toggle] {
+  margin-right: 30px !important;
+  background-color: #CEEDB2 !important;
+  border-radius: 50% !important;
+  padding: 0.5rem !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Homepage text: Roboto Regular (not Mono) */
+.prose p, .prose li, .prose span {
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* Remove max-width constraint from markdown sections */
+.prose {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.section-paragraph {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Force full width for markdown block content - except inline elements */
+.prose > div:not([style*="display: block"]) {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Remove width constraints from section containers */
+.section {
+  max-width: none !important;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: always !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* UPDATES section should not be constrained */
+.section:last-of-type {
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+/* Ensure section content takes full space */
+.section > * {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.container {
+  max-width: 100% !important;
+}
+
+.container-fluid {
+  max-width: 100% !important;
+}
+
+/* Homepage markdown section full width */
+.home .markdown {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Remove max-w-prose from flex container */
+.flex.flex-col.items-center.max-w-prose {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Target the specific flex container in markdown sections */
+.hbb-section-blox-markdown .flex.flex-col.items-center {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Universal removal of max-w-prose */
+.max-w-prose {
+  max-width: none !important;
+}
+
+/* Remove border from main sections */
+section {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Remove border from sticky page header */
+.page-header.sticky,
+div[class*="page-header"] {
+  border-bottom: none !important;
+}
+
+/* Homepage section styles */
+.hero-section {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+  align-items: flex-start;
+  padding: 3rem 0;
+}
+
+.hero-image {
+  width: 80%;
+  height: auto;
+  margin-left: 80px;
+}
+
+.hero-content {
+  padding: 0rem 0;
+  margin-left: -8rem;
+  margin-right: 3rem;
+}
+
+.lab-intro {
+  font-size: 2rem;
+  line-height: 1.5;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  color: #222;
+}
+
+.research-topics-section {
+  margin-top: 2.5rem;
+}
+
+.research-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.research-topic {
+  display: inline-block;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000000;
+
+}
+
+
+/* UPDATES section styles */
+.updates-label {
+  background-color: #CEEDB2;
+  border-radius: 50px;
+  padding: 0.3rem 1rem;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: 1rem;
+  width: fit-content;
+  margin-bottom: 2rem;
+  margin-left: 80px;
+  margin-top: 0;
+}
+.updates-grid {
+  display: grid;
+  grid-template-areas:
+    "papers papers papers conferences conferences conferences"
+    "grants grants people people talks talks";
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: none;
+  padding: 0 80px 15rem 80px;
+}
+.update-card[data-type="papers"] {
+  grid-area: papers;
+}
+.update-card[data-type="conferences"] {
+  grid-area: conferences;
+}
+.update-card[data-type="grants"] {
+  grid-area: grants;
+}
+.update-card[data-type="people"] {
+  grid-area: people;
+}
+.update-card[data-type="talks"] {
+  grid-area: talks;
+}
+.update-card {
+  background: transparent;
+  border: 1px solid #CEEDB2;
+  border-radius: 20px;
+  padding: 1rem;
+  min-height: 180px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #72d71b;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.04);
+  opacity: 0;
+  transform: translateY(40px) scale(0.85);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.update-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.update-card[data-type="papers"].visible {
+  transition-delay: 0s;
+}
+.update-card[data-type="conferences"].visible {
+  transition-delay: 0.15s;
+}
+.update-card[data-type="grants"].visible {
+  transition-delay: 0.3s;
+}
+.update-card[data-type="people"].visible {
+  transition-delay: 0.45s;
+}
+.update-card[data-type="talks"].visible {
+  transition-delay: 0.6s;
+}
+@media (max-width: 900px) {
+  .updates-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    padding: 1.2rem 0 1.5rem 0;
+  }
+}
+@media (max-width: 600px) {
+  .updates-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0 1rem 0;
+  }
+  .update-card {
+    padding: 1.2rem 1rem 1rem 1rem;
+    min-height: 100px;
+    font-size: 1rem;
+  }
+}
+
+/* Footer styles */
+.site-footer {
+  padding: 0 80px 2rem 80px;
+  margin-bottom: 0;
+}
+
+.footer-content {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 0 0 0;
+}
+
+.footer-content p {
+  font-family: Roboto, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #000000;
+  text-decoration: none;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footer-content a {
+  font-family: Roboto, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #999;
+  text-decoration: none;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.footer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+/* Hide default page footer */
+footer.site-footer-default,
+.page-footer {
+  display: none !important;
+}
+
+</style>
+
+<script>
+// Highlight active menu item based on current page
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const menuLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  
+  menuLinks.forEach(link => {
+    const linkPath = new URL(link.href).pathname;
+    const linkText = link.textContent.trim();
+    
+    // Special handling for PEOPLE menu - also match /authors path
+    if (linkText === 'PEOPLE' && (currentPath.startsWith('/people') || currentPath.startsWith('/authors'))) {
+      link.classList.add('active');
+      link.parentElement.classList.add('active');
+    }
+    // Special handling for TEACHING menu - also match /courses path
+    else if (linkText === 'TEACHING' && (currentPath.startsWith('/teaching') || currentPath.startsWith('/courses'))) {
+      link.classList.add('active');
+      link.parentElement.classList.add('active');
+    }
+    // Default matching logic for other menus
+    else if (currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath))) {
+      link.classList.add('active');
+      link.parentElement.classList.add('active');
+    }
+  });
+});
+
+// Magnetic scroll snap for homepage
+document.addEventListener('DOMContentLoaded', function() {
+  // Only apply on homepage
+  if (window.location.pathname !== '/') return;
+  
+  const sections = document.querySelectorAll('section');
+  if (sections.length < 2) return;
+  
+  let isScrolling = false;
+  let hasSnapped = false;
+  
+  // Intersection Observer for update cards animation
+  const updateCards = document.querySelectorAll('.update-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  updateCards.forEach(card => {
+    observer.observe(card);
+  });
+  
+  window.addEventListener('wheel', function(e) {
+    if (isScrolling || hasSnapped) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // If scrolled down even a tiny bit from top, immediately snap to UPDATES
+    // More aggressive: larger threshold range and any deltaY movement
+    if (e.deltaY > 0 && scrollTop < window.innerHeight * 0.9) {
+      e.preventDefault();
+      isScrolling = true;
+      hasSnapped = true;
+      sections[1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => { isScrolling = false; }, 600);
+    }
+  }, { passive: false });
+  
+  // Reset snap when scrolling back up to top
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop < 50) {
+      hasSnapped = false;
+    }
+  });
+});
+</script>

@@ -1,0 +1,35 @@
+<script>
+// Add logo images to navbar brand with home link
+document.addEventListener('DOMContentLoaded', function() {
+  const navbar = document.querySelector('.navbar-brand');
+  if (navbar && navbar.innerHTML.trim() === '') {
+    // First logo (main)
+    const img1 = document.createElement('img');
+    img1.src = '/uploads/logo3.png';
+    img1.alt = 'Rycolab Logo';
+    img1.style.maxHeight = '50px';
+    img1.style.width = 'auto';
+    img1.style.cursor = 'pointer';
+    img1.addEventListener('click', function() {
+      window.location.href = '/';
+    });
+    
+    // Second logo (50% smaller)
+    const img2 = document.createElement('img');
+    img2.src = '/uploads/logo2.png';
+    img2.alt = 'Rycolab Logo 2';
+    img2.style.maxHeight = '30px';  // 50% of 50px
+    img2.style.width = 'auto';
+    img2.style.marginLeft = '0px';  // spacing between logos
+    img2.style.position = 'relative';
+    img2.style.top = '9px';  // 아래로 이동 (값을 높이면 더 아래로)
+    img2.style.cursor = 'pointer';
+    img2.addEventListener('click', function() {
+      window.location.href = '/';
+    });
+    
+    navbar.appendChild(img1);
+    navbar.appendChild(img2);
+  }
+});
+</script>

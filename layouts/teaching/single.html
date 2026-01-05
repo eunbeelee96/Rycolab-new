@@ -1,0 +1,174 @@
+{{ define "main" }}
+<section class="course-single-page" style="padding:2rem 3rem;">
+  
+  <div class="course-container">
+    <!-- Back button -->
+    <div class="back-button-container">
+      <a href="/teaching/" class="back-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="course-header">
+      <h1 class="course-title">{{ .Title }}</h1>
+      
+      {{ with .Params.semester }}
+      <div class="course-meta">{{ . }}</div>
+      {{ end }}
+      
+      {{ with .Params.instructors }}
+      <div class="course-instructors">
+        <h3>Instructors</h3>
+        <ul>
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+
+    <!-- Content -->
+    {{ with .Content }}
+    <div class="course-content">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+
+  <style>
+    .course-single-page { 
+      min-height: 100vh; 
+      padding: 2rem 3rem !important; 
+    }
+    
+    .course-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .back-button-container {
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid #000;
+      border-radius: 50%;
+      color: #000;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #CEEDB2;
+    }
+
+    .course-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .course-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      margin: 0 0 0.5rem 0;
+      color: #000;
+    }
+
+    .course-meta {
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .course-instructors {
+      margin-top: 1.5rem;
+    }
+
+    .course-instructors h3 {
+      font-family: "Roboto Mono", monospace;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: #000;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .course-instructors ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .course-instructors li {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.95rem;
+      color: #333;
+      padding: 0.25rem 0;
+    }
+
+    .course-content {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .course-content h2,
+    .course-content h3 {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #000;
+    }
+
+    .course-content h2 {
+      font-size: 1.4rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+
+    .course-content h3 {
+      font-size: 1.1rem;
+    }
+
+    .course-content p {
+      margin-bottom: 1rem;
+    }
+
+    .course-content ul,
+    .course-content ol {
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+    }
+
+    .course-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .course-content a {
+      color: #000;
+      border-bottom: 1px solid #CEEDB2;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .course-content a:hover {
+      border-bottom-color: #000;
+    }
+  </style>
+</section>
+{{ end }}

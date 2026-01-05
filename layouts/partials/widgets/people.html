@@ -1,0 +1,127 @@
+{{ $page := .page }}
+{{ $context := .context }}
+
+<aside class="widget-people">
+  <div class="people-container">
+    {{- if $page.Params.content -}}
+      {{- if $page.Params.content.user_groups -}}
+        {{- range $page.Params.content.user_groups -}}
+          {{- $group := . -}}
+          <div class="people-group">
+            <h3>{{ $group }}</h3>
+            <div class="people-list">
+              {{- $query := where (where $context.Site.Pages "Section" "authors") ".Params.user_groups" "intersect" (slice $group) -}}
+              {{- range $query -}}
+                <div class="author-card">
+                  <a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit;">
+                    <div class="author-card-horizontal">
+                      {{ $img := .Resources.GetMatch "avatar*" }}
+                      {{ if $img }}
+                        <img src="{{ $img.Permalink }}" alt="{{ .Title }}" class="author-avatar-small">
+                      {{ else }}
+                        <div class="author-avatar-small-placeholder"></div>
+                      {{ end }}
+                      <div class="author-info">
+                        <div class="author-name">{{ .Title }}</div>
+                        {{ with .Params.role }}
+                          <div class="author-role">{{ . }}</div>
+                        {{ end }}
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              {{- end -}}
+            </div>
+          </div>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  </div>
+</aside>
+
+<style>
+  .widget-people {
+    grid-column: 2;
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  .people-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .people-group h3 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  .people-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .author-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-card a {
+    display: block;
+  }
+
+  .author-card-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar-small {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .author-avatar-small-placeholder {
+    width: 80px;
+    height: 80px;
+    background: #d3d3d3;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 0.25rem;
+  }
+
+  .author-role {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  @media (max-width: 1024px) {
+    .widget-people {
+      grid-column: 1;
+      position: relative;
+      top: auto;
+    }
+  }
+</style>

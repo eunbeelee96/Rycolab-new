@@ -1,0 +1,490 @@
+{{ define "main" }}
+<section class="teaching-page" style="padding:2rem 3rem;">
+  
+  <!-- Filter buttons -->
+  <div class="teaching-filters">
+    <!-- Current/Past Toggle Buttons -->
+    <div class="toggle-buttons">
+      <button class="toggle-btn active" id="all-btn">ALL</button>
+      <button class="toggle-btn" id="current-btn">CURRENT</button>
+      <button class="toggle-btn" id="past-btn">PAST</button>
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-container">
+      <input type="text" id="teaching-search" placeholder="SEARCH" class="teaching-search-input">
+      <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10" cy="10" r="6"></circle>
+        <line x1="19" y1="19" x2="14.5" y2="14.5"></line>
+      </svg>
+      <button class="clear-search" id="clear-search-teach" style="display:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <button class="sort-btn" id="sort-toggle"><span class="sort-underline">NEWEST</span></button>
+  </div>
+
+  <!-- Courses List -->
+  <div class="courses-list">
+    {{ $courses := where site.Pages "Section" "courses" }}
+    {{ $coursePages := slice }}
+    
+    {{ range $courses }}
+      {{ if ne .Kind "section" }}
+        {{ $coursePages = $coursePages | append . }}
+      {{ end }}
+    {{ end }}
+    
+    {{ if $coursePages }}
+      {{ $sorted := sort $coursePages "Date" "desc" }}
+      {{ range $sorted }}
+        <div class="course-item">
+          <h3 class="course-item-title"><a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit;">{{ .Title }}</a></h3>
+          
+          <div class="course-item-meta">
+            {{ with .Params.semester }}{{ . }}{{ end }}
+            {{ if strings.Contains .Params.subtitle "catalog" }}
+            <button class="catalog">CATALOG</button>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    {{ else }}
+      <p class="no-courses">No courses found.</p>
+    {{ end }}
+  </div>
+
+  <style>
+    .teaching-page { 
+      height: auto !important; 
+      padding: 2rem 3rem !important;
+    }
+
+    /* Filter buttons */
+    .teaching-filters { 
+      display: flex; 
+      gap: 2rem; 
+      margin-bottom: 4rem; 
+      align-items: center; 
+    }
+
+    /* Toggle buttons for Current/Past */
+    .toggle-buttons {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .toggle-btn {
+      padding: 0.5rem 1.8rem;
+      background: transparent;
+      border: 1px solid #000;
+      border-radius: 25px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 1rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: #f5f5f5;
+    }
+
+    .toggle-btn.active {
+      background: #ceedb2;
+      color: #000000;
+      border-color: #000000;
+    }
+
+    .filter-btn { 
+      padding: 0.5rem 2.2rem; 
+      background: transparent; 
+      border: 1px solid #000; 
+      border-radius: 25px; 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.9rem; 
+      font-weight: 400; 
+      cursor: pointer;
+      position: relative;
+    }
+
+    .filter-btn.selected {
+      background: #2aa01a;
+      color: #fff;
+    }
+
+    .filter-btn.selected::after {
+      border-color: #fff;
+    }
+
+    .filter-btn::after { 
+      content: ""; 
+      display: inline-block; 
+      width: 10px; 
+      height: 10px; 
+      margin-left: 0.8rem; 
+      vertical-align: 3px; 
+      border-right: 1.5px solid #000; 
+      border-bottom: 1.5px solid #000; 
+      transform: rotate(45deg); 
+      transition: transform 0.3s ease; 
+    }
+
+    .filter-btn.open::after { 
+      vertical-align: -3px;
+      transform: rotate(225deg); 
+    }
+    
+    /* Dropdown menu */
+    .dropdown-container { 
+      position: relative; 
+    }
+
+    .dropdown-menu { 
+      display: none;
+      position: absolute; 
+      top: calc(100% + 0.5rem); 
+      left: 0; 
+      background: #fff; 
+      border: 1px solid #000; 
+      border-radius: 20px; 
+      padding: 1rem; 
+      width: 100%;
+      z-index: 100;
+    }
+
+    .dropdown-menu.show { 
+      display: block; 
+    }
+
+    .dropdown-item { 
+      padding: 0.75rem 1rem; 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.9rem; 
+      cursor: pointer;
+      transition: background 0.2s ease;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .dropdown-item:hover { 
+      background: #CEEDB2; 
+    }
+
+    /* Search bar */
+    .search-container { 
+      position: relative;
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+
+    .teaching-search-input { 
+      width: 280px; 
+      padding: 0.5rem 2.5rem 0.5rem 1rem; 
+      border: 1px solid #000; 
+      border-radius: 25px; 
+      font-family: "Roboto", sans-serif; 
+      font-size: 0.9rem; 
+      outline: none;
+    }
+
+    .teaching-search-input::placeholder { 
+      color: #999; 
+      font-family: "Roboto Mono", monospace; 
+    }
+
+    .search-icon { 
+      position: absolute; 
+      right: 1rem; 
+      top: 50%; 
+      transform: translateY(-50%); 
+      pointer-events: none;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+    .search-container:has(.teaching-search-input:not(:placeholder-shown)) .search-icon {
+      display: none;
+    }
+    .clear-search {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+    .clear-search:hover {
+      opacity: 1;
+    }
+
+    .sort-btn { 
+      font-family: "Roboto Mono", monospace; 
+      font-size: 0.9rem; 
+      background: transparent; 
+      border: none; 
+      cursor: pointer; 
+    }
+
+    .sort-underline { 
+      text-decoration: underline; 
+    }
+
+    .sort-btn:hover .sort-underline { 
+      color: #999999; 
+    }
+
+    /* Courses List */
+    .courses-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .course-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 2rem;
+    }
+
+    .course-item:last-child {
+      border-bottom: none;
+    }
+
+    .course-item-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+      color: #000;
+    }
+
+    .course-item-title a:hover {
+      color: #2aa01a;
+    }
+
+    .course-item-meta {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .catalog {
+      padding: 0.3rem 1rem;
+      border: 1px solid #2aa01a;
+      border-radius: 15px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.8rem;
+      color: #2aa01a;
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .catalog:hover {
+      background: #CEEDB2;
+    }
+
+    .no-courses {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      color: #999;
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+
+  <script>
+    // Current/Past toggle functionality
+    const allBtn = document.getElementById('all-btn');
+    const currentBtn = document.getElementById('current-btn');
+    const pastBtn = document.getElementById('past-btn');
+    let activeTimeFilter = 'all';
+
+    allBtn.addEventListener('click', function() {
+      allBtn.classList.add('active');
+      currentBtn.classList.remove('active');
+      pastBtn.classList.remove('active');
+      activeTimeFilter = 'all';
+      applyFilters();
+    });
+
+    currentBtn.addEventListener('click', function() {
+      allBtn.classList.remove('active');
+      currentBtn.classList.add('active');
+      pastBtn.classList.remove('active');
+      activeTimeFilter = 'current';
+      applyFilters();
+    });
+
+    pastBtn.addEventListener('click', function() {
+      allBtn.classList.remove('active');
+      currentBtn.classList.remove('active');
+      pastBtn.classList.add('active');
+      activeTimeFilter = 'past';
+      applyFilters();
+    });
+
+    // Dropdown toggle functionality
+    const dropdownBtns = document.querySelectorAll('.dropdown-container .filter-btn');
+    dropdownBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const container = this.closest('.dropdown-container');
+        const menu = container.querySelector('.dropdown-menu');
+        const isOpen = menu.classList.contains('show');
+        
+        // Close all other dropdowns
+        document.querySelectorAll('.dropdown-menu.show').forEach(m => {
+          if (m !== menu) {
+            m.classList.remove('show');
+            m.closest('.dropdown-container').querySelector('.filter-btn').classList.remove('open');
+          }
+        });
+        
+        // Toggle current dropdown
+        if (isOpen) {
+          menu.classList.remove('show');
+          this.classList.remove('open');
+        } else {
+          menu.classList.add('show');
+          this.classList.add('open');
+        }
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+        menu.classList.remove('show');
+        menu.closest('.dropdown-container').querySelector('.filter-btn').classList.remove('open');
+      });
+    });
+
+    // Filter functionality
+    function applyFilters() {
+      const courseItems = document.querySelectorAll('.course-item');
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth() + 1; // 1-12
+      
+      courseItems.forEach(item => {
+        const semester = item.querySelector('.course-item-meta').textContent;
+        
+        // Extract year from semester (e.g., "Fall 2024" -> "2024")
+        const yearMatch = semester.match(/\d{4}/);
+        const courseYear = yearMatch ? yearMatch[0] : '';
+        const semesterLower = semester.toLowerCase();
+        
+        // Determine if course is current or past
+        let isCurrent = false;
+        const year = parseInt(courseYear);
+        
+        if (year === currentYear) {
+          // Spring courses: Jan-June (months 1-6)
+          // Fall courses: Sept-Dec (months 9-12)
+          if (semesterLower.includes('spring') && currentMonth >= 1 && currentMonth <= 6) {
+            isCurrent = true;
+          } else if (semesterLower.includes('fall') && currentMonth >= 9 && currentMonth <= 12) {
+            isCurrent = true;
+          }
+        } else if (year === currentYear - 1 && semesterLower.includes('fall') && currentMonth <= 2) {
+          // Previous Fall still ongoing in Jan-Feb
+          isCurrent = true;
+        }
+        
+        // Apply filter
+        let showTime = activeTimeFilter === 'all' || 
+                       (activeTimeFilter === 'current' && isCurrent) || 
+                       (activeTimeFilter === 'past' && !isCurrent);
+        
+        if (showTime) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Search functionality
+    const searchInput = document.getElementById('teaching-search');
+    const clearBtn = document.getElementById('clear-search-teach');
+    
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function() {
+        const searchTerm = this.value.toLowerCase();
+        clearBtn.style.display = searchTerm ? 'flex' : 'none';
+        const courseItems = document.querySelectorAll('.course-item');
+        
+        courseItems.forEach(item => {
+          const title = item.querySelector('.course-item-title').textContent.toLowerCase();
+          const semester = item.querySelector('.semester')?.textContent.toLowerCase() || '';
+          
+          if (title.includes(searchTerm) || semester.includes(searchTerm)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+      
+      clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        const courseItems = document.querySelectorAll('.course-item');
+        courseItems.forEach(item => {
+          item.style.display = '';
+        });
+        searchInput.focus();
+      });
+    }
+
+    // Sort functionality
+    const sortBtn = document.getElementById('sort-toggle');
+    let isSortNewest = true;
+
+    if (sortBtn) {
+      sortBtn.addEventListener('click', function() {
+        const coursesList = document.querySelector('.courses-list');
+        const courseItems = Array.from(document.querySelectorAll('.course-item'));
+        
+        if (isSortNewest) {
+          // Sort oldest first
+          courseItems.reverse();
+          sortBtn.querySelector('.sort-underline').textContent = 'OLDEST';
+        } else {
+          // Sort newest first
+          courseItems.reverse();
+          sortBtn.querySelector('.sort-underline').textContent = 'NEWEST';
+        }
+        
+        coursesList.innerHTML = '';
+        courseItems.forEach(item => {
+          coursesList.appendChild(item);
+        });
+        
+        isSortNewest = !isSortNewest;
+      });
+    }
+
+    function filterCourses(type) {
+      // Filter functionality can be added here
+      console.log('Filter by:', type);
+    }
+  </script>
+</section>
+{{ end }}

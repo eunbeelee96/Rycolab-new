@@ -1,0 +1,21 @@
+{{- define "main" -}}
+{{ partial "widget_page.html" . }}
+
+<script>
+// 내부 링크는 같은 탭에서, 외부 링크는 새 탭에서 열기
+document.addEventListener('DOMContentLoaded', function() {
+  const links = document.querySelectorAll('a');
+  const currentDomain = window.location.hostname;
+  
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    
+    // 내부 링크 체크 (/, #로 시작하거나 같은 도메인)
+    if (href && (href.startsWith('/') || href.startsWith('#') || 
+        (link.hostname && link.hostname === currentDomain))) {
+      link.setAttribute('target', '_self');
+    }
+  });
+});
+</script>
+{{- end -}}

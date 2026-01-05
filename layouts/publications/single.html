@@ -1,0 +1,550 @@
+{{ define "main" }}
+<section class="publication-single-page" style="padding:2rem 3rem;">
+  
+  <div class="publication-container">
+    <!-- Back button -->
+    <div class="back-button-container">
+      <a href="/publications/" class="back-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="publication-content-wrapper">
+      <!-- Main Content -->
+      <div class="publication-main">
+        <h1 class="publication-title">{{ .Title }}</h1>
+        
+        <div class="publication-authors">
+          {{ with .Params.authors }}{{ delimit . ", " }}{{ end }}
+        </div>
+        
+        <div class="publication-meta-line">
+          <span>{{ with .Date }}{{ .Format "January 2006" }}{{ end }}</span>
+          {{ $pubType := index .Params.publication_types 0 }}
+          {{ if $pubType }}
+          <span class="separator">|</span>
+          <a href="/publications/?pubtype={{ $pubType }}" class="pub-type-link">{{ if eq $pubType "0" }}UNCATEGORIZED{{ else if eq $pubType "1" }}CONFERENCE{{ else if eq $pubType "2" }}JOURNAL{{ else if eq $pubType "3" }}PREPRINT{{ else if eq $pubType "4" }}REPORT{{ else if eq $pubType "5" }}BOOK{{ else if eq $pubType "6" }}BOOK SECTION{{ else if eq $pubType "7" }}THESIS{{ else if eq $pubType "8" }}PATENT{{ else }}PUBLICATION{{ end }}</a>
+          <span class="separator">|</span>
+          {{ end }}
+          <div class="publication-action-buttons">
+            {{ $cite := .Resources.GetMatch "cite.bib" }}
+            {{ with $cite }}
+            <button class="action-btn js-cite-modal" data-filename="{{ .RelPermalink }}">CITE</button>
+            {{ end }}
+            {{ range .Params.links }}
+              {{ if eq .name "URL" }}
+                <a href="{{ .url }}" class="action-btn" target="_blank">URL</a>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+
+        {{ with .Params.abstract }}
+        <div class="publication-abstract">
+          <h2>Abstract</h2>
+          <p>{{ . | markdownify }}</p>
+        </div>
+        {{ end }}
+
+        {{ with .Params.publication }}
+        <div class="publication-venue">
+          <h2>Publication</h2>
+          <p>{{ . | markdownify }}</p>
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="publication-sidebar">
+        <h3 class="sidebar-title">Authors</h3>
+        <div class="author-list">
+          {{ range .Params.authors }}
+            {{ $authorName := . }}
+            {{ $authorSlug := index $.Site.Data.author_mapping $authorName }}
+            {{ $authorPage := false }}
+            
+            {{/* If we have a mapping, get the author page */}}
+            {{ if $authorSlug }}
+              {{ $authorPage = $.Site.GetPage (printf "/authors/%s" $authorSlug) }}
+            {{ end }}
+            
+            {{ if $authorPage }}
+              <div class="author-card">
+                <a href="{{ $authorPage.RelPermalink }}" style="text-decoration:none;color:inherit;">
+                  <div class="author-card-horizontal">
+                    {{ $img := $authorPage.Resources.GetMatch "avatar*" }}
+                    {{ if $img }}
+                      <img src="{{ $img.Permalink }}" alt="{{ $authorName }}" class="author-avatar-small">
+                    {{ else }}
+                      <div class="author-avatar-small-placeholder"></div>
+                    {{ end }}
+                    <div class="author-info">
+                      <div class="author-name">{{ $authorName }}</div>
+                      {{ with $authorPage.Params.role }}
+                        <div class="author-role">{{ . }}</div>
+                      {{ end }}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{ else }}
+              <div class="author-card">
+                <div class="author-card-horizontal">
+                  <div class="author-avatar-small-placeholder"></div>
+                  <div class="author-info">
+                    <div class="author-name">{{ $authorName }}</div>
+                  </div>
+                </div>
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <style>
+    .publication-single-page { 
+      min-height: 100vh; 
+      padding: 2rem 3rem !important; 
+    }
+    
+    .publication-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .back-button-container {
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid #999999;
+      border-radius: 50%;
+      color: #000;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #CEEDB2;
+    }
+
+    .publication-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 4rem;
+      border-top: 1px solid #ddd;
+      padding-top: 2rem;
+    }
+
+    .publication-main {
+      min-width: 0;
+    }
+
+    .publication-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .publication-authors {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .publication-meta-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .publication-meta-line .separator {
+      color: inherit;
+    }
+
+    .pub-type-link {
+      color: #72d71b;
+      text-transform: uppercase;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .pub-type-link:hover {
+      color: #72d71b;
+      text-decoration: underline;
+    }
+
+    .publication-action-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .action-btn {
+      padding: 0.3rem 1rem;
+      background: transparent;
+      border: 1px solid #72d71b;
+      border-radius: 15px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.8rem;
+      color: #72d71b;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+      background: #CEEDB2;
+    }
+
+    .publication-abstract {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .publication-abstract h2 {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .publication-abstract p {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .publication-venue {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .publication-venue h2 {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .publication-venue p {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    /* Sidebar */
+    .publication-sidebar {
+      border-left: 1px solid #ddd;
+      padding-left: 3rem;
+    }
+
+    .sidebar-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      color: #000000;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .author-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .author-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-card a {
+      display: block;
+      padding: 0.8rem;
+      margin: -0.8rem;
+      transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
+    }
+    
+    .author-card a:hover {
+      background: #f5f5f5;
+      transform: translateX(5px);
+    }
+    
+    .author-card a:hover .author-name {
+      color: #000000;
+    }
+    
+    .author-card a:hover .author-avatar-small {
+      filter: none;
+      transform: scale(1.01);
+    }
+
+    .author-card-horizontal {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar-small {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .author-avatar-small-placeholder {
+      width: 80px;
+      height: 80px;
+      background: #d3d3d3;
+      flex-shrink: 0;
+    }
+
+    .author-avatar {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .author-avatar:hover {
+      filter: grayscale(0%);
+    }
+
+    .author-avatar-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #f0f0f0;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .author-name {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .author-role {
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.8rem;
+      color: #72d71b;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1024px) {
+      .publication-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .publication-sidebar {
+        border-left: none;
+        border-top: 1px solid #ddd;
+        padding-left: 0;
+        padding-top: 3rem;
+      }
+    }
+  </style>
+
+  <!-- Citation Modal -->
+  <div id="cite-modal" class="cite-modal">
+    <div class="modal-content-cite">
+      <div class="modal-header-cite">
+        <h3>CITE</h3>
+        <span class="modal-close">&times;</span>
+      </div>
+      <div class="modal-body-cite">
+        <pre><code id="cite-content"></code></pre>
+      </div>
+      <div class="modal-footer-cite">
+        <button class="pub-link js-copy-cite">COPY</button>
+        <a class="pub-link js-download-cite" download>DOWNLOAD</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .cite-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    .modal-content-cite {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 0;
+      border: 1px solid #000;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 600px;
+    }
+    
+    .modal-header-cite {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header-cite h3 {
+      margin: 0;
+      font-family: "Roboto Mono", monospace;
+      font-size: 1.2rem;
+    }
+    
+    .modal-close {
+      font-size: 2rem;
+      font-weight: 300;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .modal-close:hover {
+      color: #000;
+    }
+    
+    .modal-body-cite {
+      padding: 2rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .modal-body-cite pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    
+    .modal-body-cite code {
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .modal-footer-cite {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+    
+    .pub-link {
+      padding: 0.3rem 1.2rem;
+      border: 1px solid #72d71b;
+      border-radius: 25px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.85rem;
+      color: #72d71b;
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .pub-link:hover {
+      background: #CEEDB2;
+    }
+  </style>
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Render KaTeX
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+
+      // Citation modal handling
+      const citeButton = document.querySelector('.js-cite-modal');
+      const modal = document.getElementById('cite-modal');
+      const modalClose = document.querySelector('.modal-close');
+      const modalCiteContent = document.getElementById('cite-content');
+      const modalCopyBtn = document.querySelector('.js-copy-cite');
+      const modalDownloadBtn = document.querySelector('.js-download-cite');
+      
+      if (citeButton) {
+        citeButton.addEventListener('click', function() {
+          const citeFile = this.dataset.filename;
+          
+          // Fetch citation content
+          fetch(citeFile)
+            .then(response => response.text())
+            .then(data => {
+              modalCiteContent.textContent = data;
+              modal.style.display = 'block';
+              
+              // Set download link
+              modalDownloadBtn.href = citeFile;
+              
+              // Copy functionality
+              modalCopyBtn.onclick = function() {
+                navigator.clipboard.writeText(data);
+              };
+            })
+            .catch(error => {
+              console.error('Error loading citation:', error);
+            });
+        });
+      }
+      
+      // Close modal
+      if (modalClose) {
+        modalClose.addEventListener('click', function() {
+          modal.style.display = 'none';
+        });
+      }
+      
+      window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</section>
+{{ end }}

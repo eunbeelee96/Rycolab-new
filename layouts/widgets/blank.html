@@ -1,0 +1,63 @@
+{{ $page := .page }}
+
+<div class="widget-blank">
+  {{ with $page.Content }}
+  <div class="widget-content">
+    {{ . }}
+  </div>
+  {{ end }}
+</div>
+
+<style>
+  .widget-blank {
+    grid-column: 1;
+  }
+
+  .widget-content {
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .widget-content h2 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  .widget-content h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #000;
+  }
+
+  .widget-content p {
+    margin-bottom: 1rem;
+  }
+
+  .widget-content ul,
+  .widget-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .widget-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .widget-content strong {
+    font-weight: 600;
+  }
+
+  .widget-content em {
+    font-style: italic;
+  }
+</style>

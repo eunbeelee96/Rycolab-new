@@ -1,0 +1,275 @@
+{{ define "main" }}
+<section class="author-single-page" style="padding:2rem 3rem;">
+  
+  <div class="author-container">
+    <!-- Back button -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="author-content-wrapper">
+      <!-- Main Content -->
+      <div class="author-main">
+        <!-- Profile Section -->
+        <div class="profile-section">
+          {{ $img := .Resources.GetMatch "avatar*" }}
+          {{ if $img }}
+          <div class="profile-photo">
+            <img src="{{ $img.Permalink }}" alt="{{ .Title }}">
+          </div>
+          {{ end }}
+          
+          <div class="profile-info">
+            <h1 class="author-name">{{ .Title }}</h1>
+            {{ with .Params.role }}
+            <div class="author-role">{{ . }}</div>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- Bio Section -->
+        {{ with .Content }}
+        <div class="author-bio">
+          <h2>BIO</h2>
+          <div class="bio-content">{{ . }}</div>
+        </div>
+        {{ end }}
+
+        <!-- Interests Section -->
+        {{ with .Params.interests }}
+        <div class="author-interests">
+          <h2>RESEARCH INTERESTS</h2>
+          <ul class="interests-list">
+            {{ range . }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+
+        <!-- Publications Section -->
+        <div class="author-publications">
+          <h2>PUBLICATIONS</h2>
+          <div class="publications-list">
+            {{ $authorName := .Title }}
+            {{ $publications := where site.RegularPages "Section" "publications" }}
+            {{ $authorPubs := slice }}
+            
+            {{/* Filter publications that include this author */}}
+            {{ range $publications }}
+              {{ if in .Params.authors $authorName }}
+                {{ $authorPubs = $authorPubs | append . }}
+              {{ end }}
+            {{ end }}
+            
+            {{ if $authorPubs }}
+              {{ $sorted := sort $authorPubs "Date" "desc" }}
+              {{ range $sorted }}
+                {{ $pubType := index .Params.publication_types 0 }}
+                <div class="pub-item">
+                  <h3 class="pub-title"><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h3>
+                  <div class="pub-meta">
+                    {{ with .Params.authors }}{{ delimit . ", " }}{{ end }}{{ with .Date }} | {{ .Format "2006" }}{{ end }} | <span class="pub-type">{{ if eq $pubType "0" }}UNCATEGORIZED{{ else if eq $pubType "1" }}CONFERENCE{{ else if eq $pubType "2" }}JOURNAL{{ else if eq $pubType "3" }}PREPRINT{{ else if eq $pubType "4" }}REPORT{{ else if eq $pubType "5" }}BOOK{{ else if eq $pubType "6" }}BOOK SECTION{{ else if eq $pubType "7" }}THESIS{{ else if eq $pubType "8" }}PATENT{{ else }}PUBLICATION{{ end }}</span>
+                  </div>
+                </div>
+              {{ end }}
+            {{ else }}
+              <p class="no-publications">No publications found.</p>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .author-single-page { 
+      min-height: 100vh; 
+      padding: 2rem 3rem !important; 
+    }
+    
+    .author-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .back-button-container {
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid #000;
+      border-radius: 50%;
+      color: #ddd;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #CEEDB2;
+    }
+
+    .author-content-wrapper {
+      border-top: 1px solid #ddd;
+      padding-top: 2rem;
+    }
+
+    .author-main {
+      max-width: 900px;
+    }
+
+    .profile-section {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      align-items: flex-start;
+    }
+
+    .profile-photo img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      flex: 1;
+      padding-top: 1rem;
+    }
+
+    .author-name {
+      font-family: "Roboto", sans-serif;
+      font-size: 2.5 rem;
+      font-weight: 400;
+      margin: 0 0 1rem 0;
+    }
+
+    .author-role {
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      color: #2aa01a;
+      line-height: 1.4;
+    }
+
+    .author-bio,
+    .author-interests,
+    .author-publications {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .author-bio h2,
+    .author-interests h2,
+    .author-publications h2 {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-content {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .interests-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .interests-list li {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+      background: #f5f5f5;
+      border-radius: 20px;
+      color: #333;
+    }
+
+    .publications-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .pub-item {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin: 0 0 0.8rem 0;
+    }
+
+    .pub-title a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    .pub-title a:hover {
+      color: #2aa01a;
+    }
+
+    .pub-meta {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .pub-type {
+      color: #2aa01a;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.85rem;
+    }
+
+    .no-publications {
+      font-family: "Roboto", sans-serif;
+      color: #999;
+      font-style: italic;
+    }
+  </style>
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Render KaTeX
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+</section>
+{{ end }}

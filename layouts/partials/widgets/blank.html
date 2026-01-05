@@ -1,0 +1,212 @@
+{{ $page := .page }}
+
+<div class="widget-blank">
+  {{ with $page.Content }}
+  <div class="widget-content">
+    {{ . }}
+  </div>
+  {{ end }}
+</div>
+
+<style>
+  .widget-blank {
+    grid-column: 1;
+    margin-top: 0;
+    padding-right: 3rem;
+    border-right: 1px solid #eee;
+  }
+
+  .widget-content {
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .widget-content h2 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  .widget-content h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #000;
+  }
+
+  .widget-content p {
+    margin-bottom: 1rem;
+  }
+
+  .widget-content ul,
+  .widget-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .widget-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .widget-content strong {
+    font-weight: 600;
+  }
+
+  .widget-content em {
+    font-style: italic;
+  }
+
+  .widget-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .widget-content table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ddd;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    color: #333;
+    white-space: normal;
+  }
+
+  .widget-content table td {
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .widget-content table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .widget-content table td:nth-child(1) {
+    width: 5%;
+    font-weight: 500;
+  }
+
+  .widget-content table td:nth-child(2) {
+    width: 12%;
+  }
+
+  .widget-content table td:nth-child(3) {
+    width: 12%;
+  }
+
+  .widget-content table td:nth-child(4) {
+    width: 35%;
+  }
+
+  .widget-content table td:nth-child(5) {
+    width: 20%;
+  }
+
+  .widget-content table td:nth-child(6) {
+    width: 16%;
+  }
+
+  /* HTML table with class="table" */
+  .widget-content table.table th {
+    white-space: normal !important;
+  }
+
+  .widget-content table.table td {
+    white-space: normal !important;
+  }
+
+  .widget-content table.table button {
+    background: transparent;
+    color: inherit;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+  }
+
+  .widget-content table.table button:hover {
+    text-decoration: underline;
+  }
+
+  .widget-content table td:nth-child(1) {
+    width: 5%;
+    font-weight: 500;
+  }
+
+  .widget-content table td:nth-child(2) {
+    width: 12%;
+  }
+
+  .widget-content table td:nth-child(3) {
+    width: 12%;
+  }
+
+  .widget-content table td:nth-child(4) {
+    width: 35%;
+  }
+
+  .widget-content table td:nth-child(5) {
+    width: 20%;
+  }
+
+  .widget-content table td:nth-child(6) {
+    width: 16%;
+  }
+
+  /* HTML table.table specific column widths */
+  .widget-content table.table th:nth-child(1),
+  .widget-content table.table td:nth-child(1) {
+    width: 90px;
+    white-space: nowrap;
+  }
+
+  .widget-content table.table th:nth-child(2),
+  .widget-content table.table td:nth-child(2) {
+    width: 80px;
+    white-space: nowrap;
+  }
+
+  .widget-content table.table th:nth-child(3),
+  .widget-content table.table td:nth-child(3) {
+    width: 140px;
+  }
+
+  .widget-content table.table th:nth-child(4),
+  .widget-content table.table td:nth-child(4) {
+    width: auto;
+    min-width: 180px;
+  }
+
+  .widget-content table.table th:nth-child(5),
+  .widget-content table.table td:nth-child(5) {
+    width: 140px;
+  }
+
+  .widget-content table.table th:nth-child(6),
+  .widget-content table.table td:nth-child(6) {
+    width: 100px;
+  }
+
+  .widget-content table.table th:nth-child(7),
+  .widget-content table.table td:nth-child(7) {
+    width: 140px;
+  }
+
+  .widget-content table.table th:nth-child(8),
+  .widget-content table.table td:nth-child(8) {
+    width: 200px;
+    min-width: 200px;
+  }
+</style>

@@ -1,0 +1,63 @@
+{{ $page := .page }}
+{{ $context := .context }}
+
+<aside class="widget-people">
+  <div class="people-container">
+    {{ with $page.Content }}
+    <div class="people-content">
+      {{ . }}
+    </div>
+    {{ end }}
+  </div>
+</aside>
+
+<style>
+  .widget-people {
+    grid-column: 2;
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  .people-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .people-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .people-content h3 {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  /* Author/Person Cards */
+  .people-content .col-12 {
+    width: 100%;
+  }
+
+  .people-content img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1024px) {
+    .widget-people {
+      grid-column: 1;
+      position: relative;
+      top: auto;
+    }
+  }
+</style>

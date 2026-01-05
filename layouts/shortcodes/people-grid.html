@@ -1,0 +1,49 @@
+<div class="people-shortcode-grid">
+  <style>
+    .people-shortcode-grid img { filter:grayscale(100%); transition:filter 0.3s ease; }
+    .people-shortcode-grid img:hover { filter:grayscale(0%); }
+    .people-shortcode-grid h3 { font-family:Roboto, sans-serif; }
+    .people-shortcode-grid .pg-role { font-family:"Roboto Mono", monospace; text-transform:uppercase; font-size:0.9rem; }
+  </style>
+  {{ $authors := where site.RegularPages "Section" "authors" }}
+  {{ $sorted := sort $authors "Params.last_name" "asc" }}
+  {{ if not (len $sorted) }}
+    {{ $sorted = sort $authors "Title" "asc" }}
+  {{ end }}
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5rem;">
+  {{ range $sorted }}
+    {{ if .File }}
+    {{ $img := .Resources.GetMatch "avatar*" }}
+    {{/* compute a safe link for this author page */}}
+    {{ $link := "" }}
+    {{ if .File }}
+      {{ $dir := trim .File.Dir "/" }}
+      {{ $parts := split $dir "/" }}
+      {{ $username := index $parts (sub (len $parts) 1) }}
+      {{ with site.GetPage (printf "/authors/%s" $username) }}
+        {{ $link = .RelPermalink }}
+      {{ end }}
+    {{ end }}
+    {{ if $img }}
+    {{ $groups := cond (isset .Params "user_groups") (delimit .Params.user_groups ",") "" }}
+    {{ $interests := cond (isset .Params "interests") (delimit .Params.interests ",") "" }}
+      {{ if $link }}
+      <a href="{{ $link }}">
+      {{ else }}
+      <a href="{{ .RelPermalink }}">
+      {{ end }}
+        <div style="background:#f1f1f1;padding:0.8rem;min-height:100px;">
+          <h3 style="margin:0">{{ .Title }}</h3>
+          {{ with .Params.role }}<div class="pg-role" style="color:#2aa01a;margin-top:0.5rem">{{ . }}</div>{{ end }}
+        </div>
+        <div style="padding:0.8rem;background:#f1f1f1;font-size:0.9rem;color:#2aa01a;">{{ with index .Params.interests 0 }}{{ . }}{{ end }}</div>
+        <div style="overflow:hidden">
+          <img src="{{ $img.Permalink }}" alt="{{ .Title }}" style="width:100%;aspect-ratio:1;object-fit:contain;display:block">
+        </div>
+      </a>
+    {{ end }}
+    {{ end }}
+  {{ end }}
+  </div>
+</div>

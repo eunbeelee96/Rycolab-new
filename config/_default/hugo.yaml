@@ -35,6 +35,7 @@ disableAliases: true
 outputs:
   home: [HTML, RSS, headers, redirects, backlinks]
   section: [HTML, RSS]
+  page: [HTML]
 imaging:
   resampleFilter: lanczos
   quality: 90
@@ -42,11 +43,13 @@ imaging:
   hint: picture
 timeout: 600000
 taxonomies:
-  author: authors
   tag: tags
   publication_type: publication_types
 markup:
   _merge: deep
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     lineNos: false
 security:

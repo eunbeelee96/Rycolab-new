@@ -1,0 +1,503 @@
+{{ define "main" }}
+<section class="author-single-page" style="padding:2rem 3rem;">
+  
+  <div class="author-container">
+    <!-- Back button -->
+    <div class="back-button-container">
+      <a href="/people/" class="back-button">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="author-content-wrapper">
+      <!-- Main Content (Left Column) -->
+      <div class="author-main">
+        <!-- Profile Section -->
+        <div class="profile-section">
+          {{ $img := .Resources.GetMatch "avatar*" }}
+          {{ if $img }}
+          <div class="profile-photo">
+            <img src="{{ $img.Permalink }}" alt="{{ .Title }}">
+          </div>
+          {{ end }}
+          
+          <div class="profile-info">
+            <h1 class="author-name">{{ .Title }}</h1>
+            {{ with .Params.secondary }}
+            <div class="author-secondary-name">{{ . }}</div>
+            {{ end }}
+            {{ with .Params.role }}
+            <div class="author-role {{ if in $.Params.user_groups "Alumna" }}is-alumna{{ end }}">{{ . }}</div>
+            {{ end }}
+            
+            <!-- Organizations -->
+            {{ with .Params.organizations }}
+            <div class="author-affiliation {{ if in $.Params.user_groups "Alumna" }}is-alumna{{ end }}">
+              {{ range $index, $org := . }}
+                {{ if $index }}<br>{{ end }}
+                {{ if $org.url }}
+                  <a href="{{ $org.url }}" target="_blank" rel="noopener noreferrer">{{ $org.name }}</a>
+                {{ else }}
+                  {{ $org.name }}
+                {{ end }}
+              {{ end }}
+            </div>
+            {{ end }}
+            
+            <!-- Current Affiliation -->
+            {{ with .Params.current_affiliation }}
+            <div class="author-current-affiliation">
+              Currently at 
+              {{ range $index, $aff := . }}
+                {{ if $index }}<br>{{ end }}
+                {{ if $aff.url }}
+                  <a href="{{ $aff.url }}" target="_blank" rel="noopener noreferrer">{{ $aff.name }}</a>
+                {{ else }}
+                  {{ $aff.name }}
+                {{ end }}
+              {{ end }}
+            </div>
+            {{ end }}
+            
+            <!-- Social Links below role -->
+            {{ with .Params.social }}
+            <div class="author-social-links">
+              {{/* Define the desired order */}}
+              {{ $iconOrder := slice "envelope" "github" "linkedin" "google" "portrait" "twitter" "link" }}
+              {{ $socialItems := . }}
+              
+              {{/* Render links in the defined order */}}
+              {{ $first := true }}
+              {{ range $icon := $iconOrder }}
+                {{ range $social := $socialItems }}
+                  {{ if eq $social.icon $icon }}
+                    {{ if not $first }}<span class="link-divider">|</span>{{ end }}
+                    
+                    {{ $displayText := "" }}
+                    {{ if eq $icon "envelope" }}{{ $displayText = "EMAIL" }}{{ end }}
+                    {{ if eq $icon "github" }}{{ $displayText = "GITHUB" }}{{ end }}
+                    {{ if eq $icon "linkedin" }}{{ $displayText = "LINKEDIN" }}{{ end }}
+                    {{ if eq $icon "google" }}{{ $displayText = "GOOGLE SCHOLAR" }}{{ end }}
+                    {{ if eq $icon "portrait" }}{{ $displayText = "ACADEMIC HOMEPAGE" }}{{ end }}
+                    {{ if eq $icon "twitter" }}{{ $displayText = "TWITTER" }}{{ end }}
+                   
+                    
+                    <a href="{{ $social.link }}" target="_blank" rel="noopener noreferrer" class="social-link-text">{{ $displayText }}</a>
+                    {{ $first = false }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- Bio Section -->
+        {{ with .Content }}
+        <div class="author-bio">
+          <h2>BIO</h2>
+          <div class="bio-content">{{ . }}</div>
+        </div>
+        {{ end }}
+
+        <!-- Interests Section -->
+        {{ with .Params.interests }}
+        <div class="author-interests">
+          <h2>RESEARCH INTERESTS</h2>
+          <ul class="interests-list">
+            {{ range . }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Sidebar (Right Column) -->
+      <aside class="author-sidebar">
+        <h3 class="sidebar-title">PUBLICATIONS</h3>
+        <div class="publications-list">
+          {{ $authorName := .Title }}
+          {{ $publications := where site.RegularPages "Section" "publications" }}
+          {{ $authorPubs := slice }}
+          
+          {{/* Filter publications that include this author */}}
+          {{ range $publications }}
+            {{ if in .Params.authors $authorName }}
+              {{ $authorPubs = $authorPubs | append . }}
+            {{ end }}
+          {{ end }}
+          
+          {{ if $authorPubs }}
+            {{ $sorted := sort $authorPubs "Date" "desc" }}
+            
+            {{/* Show first 10 publications, hide rest */}}
+            {{ $displayLimit := 10 }}
+            
+            {{ range $idx, $pub := $sorted }}
+              {{ $pubType := index $pub.Params.publication_types 0 }}
+              
+              {{/* Wrap hidden publications in a div */}}
+              {{ if ge $idx $displayLimit }}
+                {{ if eq $idx $displayLimit }}<div class="hidden-pubs" id="hidden-pubs-{{ $authorName | urlize }}">{{ end }}
+              {{ end }}
+              
+              <div class="pub-item">
+                <h3 class="pub-title"><a href="{{ $pub.RelPermalink }}">{{ $pub.Title | markdownify }}</a></h3>
+                <div class="pub-meta">
+                  {{ with $pub.Params.authors }}{{ delimit . ", " }}{{ end }}{{ with $pub.Date }} | {{ .Format "2006" }}{{ end }}
+                </div>
+              </div>
+              
+              {{/* Close hidden pubs div at the end */}}
+              {{ if and (ge $idx $displayLimit) (eq $idx (sub (len $sorted) 1)) }}
+                </div>
+              {{ end }}
+            {{ end }}
+            
+            {{/* Show more button if there are more than 10 publications */}}
+            {{ if gt (len $sorted) $displayLimit }}
+              <button class="view-all-btn" onclick="document.getElementById('hidden-pubs-{{ $authorName | urlize }}').style.display='block'; this.style.display='none';">
+                VIEW ALL PUBLICATIONS
+              </button>
+            {{ end }}
+          {{ else }}
+            <p class="no-publications">No publications found.</p>
+          {{ end }}
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <style>
+    .author-single-page { 
+      min-height: 100vh; 
+      padding: 2rem 3rem !important; 
+    }
+    
+    .author-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .back-button-container {
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid #999;
+      border-radius: 50%;
+      color: #999;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #CEEDB2;
+    
+    }
+
+    .author-content-wrapper {
+      border-top: 1px solid #ddd;
+      padding-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .author-main {
+      max-width: 100%;
+    }
+
+    .author-sidebar {
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+
+    .sidebar-title {
+      font-family: "Roboto Mono", monospace;
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin: 0 0 1.5rem 0;
+      color: #000;
+    }
+
+    .profile-section {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: -1rem;
+      align-items: flex-start;
+    }
+
+    .profile-photo img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      flex: 1;
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+    }
+
+    .author-social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+      
+    }
+
+    .link-divider {
+      color: #999;
+      font-weight: 300;
+    }
+
+    .social-link-text {
+      color: #999;
+      text-decoration: none;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-link-text:hover {
+      color: #000000;
+    }
+
+    .author-name {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      margin: 0 0 0rem 0;
+    }
+
+    .author-secondary-name {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      color: #000000;
+      margin-top: -0.3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .author-role {
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      color: #72d71b;
+       margin-top: 0.3rem;
+    }
+
+    .author-role.is-alumna {
+      color: #999999;
+    }
+
+    .author-affiliation {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #000000;
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .author-affiliation a {
+      color: #000000;
+    }
+
+    .author-affiliation a:hover {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .author-affiliation.is-alumna a {
+      color: #999999;
+    }
+
+    .author-affiliation.is-alumna a:hover {
+      color: #000000;
+    }
+
+    .author-current-affiliation {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #000000;
+      margin-top: 0.1rem;
+      line-height: 1.4;
+    }
+
+    .author-current-affiliation a {
+      color: #000000;
+    }
+
+    .author-current-affiliation a:hover {
+      color: #000000;
+    }
+
+    .author-bio,
+    .author-interests,
+    .author-publications {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .author-bio h2,
+    .author-interests h2,
+    .author-publications h2 {
+      font-family: "Roboto Mono", monospace;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: #000;
+    }
+
+    .bio-content {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .bio-content p {
+      margin-bottom: 1rem;
+    }
+
+    .bio-content a {
+      color: #999999;
+    }
+
+    .bio-content a:hover {
+      text-decoration: underline;
+    }
+
+    .interests-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .interests-list li {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+      background: #f5f5f5;
+      border-radius: 20px;
+      color: #000000;
+    }
+
+    .publications-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hidden-pubs {
+      display: none;
+    }
+
+    .view-all-btn {
+      background: transparent;
+      border: 1px solid #000;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.9rem;
+      color: #000;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+      background: #f5f5f5;
+    }
+
+    .pub-item {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 0 0 0.3rem 0;
+    }
+
+    .pub-title a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    .pub-title a:hover {
+      color: #999999;
+    }
+
+    .pub-meta {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .no-publications {
+      font-family: "Roboto", sans-serif;
+      color: #999;
+      font-style: italic;
+    }
+
+  </style>
+
+  <!-- KaTeX for Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // PhD 표기 수정
+      const roleElement = document.querySelector('.author-role');
+      if (roleElement) {
+        let text = roleElement.textContent.trim();
+        if (text.toLowerCase().includes('phd')) {
+          roleElement.textContent = 'PhD STUDENT';
+        } else {
+          roleElement.textContent = text.toUpperCase();
+        }
+      }
+      
+      // Render KaTeX
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+</section>
+{{ end }}
