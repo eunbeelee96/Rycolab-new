@@ -1,4 +1,5 @@
-<section class="widget-page" style="padding: 2rem 2rem; border-top: none !important;">
+<section class="widget-page" style="padding:2rem 3rem;">
+  
   <div class="widget-page-container">
     <!-- Back button -->
     <div class="back-button-container">
@@ -9,40 +10,65 @@
       </button>
     </div>
 
-    <!-- Page Header -->
-    <div class="page-header">
-      <h1 class="page-title">{{ .Title }}</h1>
-      {{ with .Params.semester }}
-      <div class="page-meta">
-        <span class="semester">{{ . }}</span>
-        {{ with $.Params.subtitle }}
-        <div class="subtitle">{{ . | markdownify }}</div>
-        {{ end }}
-      </div>
-      {{ end }}
-    </div>
+    <div class="widget-content-wrapper">
+      <!-- Main Content -->
+      <div class="widget-main">
+        <h1 class="page-title">{{ .Title }}</h1>
+        
+        <div class="page-meta-line">
+          {{ with .Params.semester }}
+          <span>{{ . }}</span>
+          {{ end }}
+          
+          {{ with .Params.subtitle }}
+            {{ if findRE `\[.*?\]\(.*?\)` . }}
+              <span class="separator">|</span>
+              {{ $linkText := replaceRE `.*\[(.*?)\].*` "$1" . }}
+              {{ $linkURL := replaceRE `.*\((.*?)\).*` "$1" . }}
+              <a href="{{ $linkURL }}" class="catalog-btn" target="_blank">COURSE CATALOG</a>
+            {{ end }}
+          {{ end }}
+        </div>
 
-    <!-- Widgets -->
-    <div class="widgets-container">
-      {{ $headless_bundle := .Site.GetPage .File.Dir }}
-      {{ if $headless_bundle }}
-        {{ range $index, $st := where ( $headless_bundle.Resources.ByType "page" ) ".Params.active" "!=" false }}
-          {{ if ne $st.File.LogicalName "index.md" }}
-            {{ $widget := or $st.Params.widget "blank" }}
-            {{ $widget_path := printf "widgets/%s" $widget }}
-            {{ partial $widget_path (dict "context" . "page" $st) }}
+        <!-- Widgets Content -->
+        <div class="widget-content">
+          {{ $headless_bundle := .Site.GetPage .File.Dir }}
+          {{ if $headless_bundle }}
+            {{ range $index, $st := where ( $headless_bundle.Resources.ByType "page" ) ".Params.active" "!=" false }}
+              {{ if ne $st.File.LogicalName "index.md" }}
+                {{ if ne $st.File.LogicalName "people.md" }}
+                  {{ $widget := or $st.Params.widget "blank" }}
+                  {{ $widget_path := printf "widgets/%s" $widget }}
+                  {{ partial $widget_path (dict "context" . "page" $st) }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="widget-sidebar">
+        {{ $headless_bundle := .Site.GetPage .File.Dir }}
+        {{ if $headless_bundle }}
+          {{ range $index, $st := where ( $headless_bundle.Resources.ByType "page" ) ".Params.active" "!=" false }}
+            {{ if eq $st.File.LogicalName "people.md" }}
+              {{ $widget := or $st.Params.widget "blank" }}
+              {{ $widget_path := printf "widgets/%s" $widget }}
+              {{ partial $widget_path (dict "context" . "page" $st) }}
+            {{ end }}
           {{ end }}
         {{ end }}
-      {{ end }}
+      </aside>
     </div>
   </div>
 
   <style>
-    .widget-page {
-      min-height: 100vh;
-      padding: 2rem 3rem !important;
+    .widget-page { 
+      min-height: 100vh; 
+      padding: 2rem 3rem !important; 
     }
-
+    
     .widget-page-container {
       max-width: 1300px;
       margin: 0 auto;
@@ -59,9 +85,9 @@
       width: 40px;
       height: 40px;
       background: transparent;
-      border: 1px solid #000;
+      border: 1px solid #999999;
       border-radius: 50%;
-      color: #000;
+      color: #999999;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -71,48 +97,100 @@
       background: #CEEDB2;
     }
 
-    .page-header {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 1rem;
+    .widget-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 4rem;
+    }
+
+    .widget-main {
+      min-width: 0;
     }
 
     .page-title {
       font-family: "Roboto", sans-serif;
       font-size: 2rem;
       font-weight: 400;
-      margin: 0 0 1rem 0;
-      color: #000;
+      margin-bottom: 1rem;
+      line-height: 1.3;
     }
 
-    .page-meta {
+    .page-meta-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
       font-family: "Roboto", sans-serif;
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 1rem;
+      color: #000000;
+      margin-bottom: 0.3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
     }
 
-    .semester {
-      display: block;
-      margin-bottom: 0.5rem;
+    .page-meta-line .separator {
+      color: inherit;
     }
 
-    .subtitle {
-      font-size: 0.9rem;
-      color: #666;
+    .catalog-btn {
+      padding: 0.3rem 1rem;
+      background: transparent;
+      border: 1px solid #72d71b;
+      border-radius: 15px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.8rem;
+      color: #72d71b;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    /* Widgets container */
-    .widgets-container {
-      display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 3rem;
-      align-items: start;
+    .catalog-btn:hover {
+      background: #CEEDB2;
     }
 
-    @media (max-width: 768px) {
-      .widgets-container {
+    .widget-description {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .widget-description p {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .widget-content {
+      margin-top: 2rem;
+    }
+
+    /* Sidebar */
+    .widget-sidebar {
+      border-left: 1px solid #ddd;
+      padding-left: 3rem;
+    }
+
+    .sidebar-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      color: #000000;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    @media (max-width: 1024px) {
+      .widget-content-wrapper {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
+      }
+
+      .widget-sidebar {
+        border-left: none;
+        border-top: 1px solid #ddd;
+        padding-left: 0;
+        padding-top: 3rem;
       }
     }
   </style>

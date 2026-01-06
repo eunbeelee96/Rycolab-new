@@ -36,7 +36,7 @@
 
   <style>
     .people-page { height: auto !important; overflow: visible !important; }
-    .people-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:5rem; }
+    .people-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:5rem; }
     .people-grid > a {
       display: block;
       text-decoration: none;
@@ -63,9 +63,9 @@
     }
     .person-card { background:#fff; border:1px solid #f5f5f5; border-radius:0px; overflow:hidden; }
     .card-top { background:#f5f5f5; padding:0.8rem; height:5.5rem; display:flex; flex-direction:column; justify-content:flex-start; }
-    .card-top h3 { margin:0; font-size:0.9rem; font-family:Roboto, sans-serif; }
+    .card-top h3 { margin:0; font-size:1.2rem; font-family:Roboto, sans-serif; }
     .card-top .role { color:#72d71b; margin-top:0.3rem; font-size:0.9rem; font-family:"Roboto Mono", monospace; }
-    .interest-section { padding:0.8rem; background:#f5f5f5; font-size:0.9rem; color:#72d71b; min-height:2.5rem; }
+    .interest-section { padding:0.8rem; background:#f5f5f5; font-size:0.9rem; color:#72d71b; height:2.5rem; overflow:hidden; }
     
     /* Former members styling */
     a[data-groups*="Alumna"] .card-top .role,
@@ -77,20 +77,20 @@
     
     .card-photo img { 
       width: 100%; 
-      height: auto; 
+      height: 100%;
       display: block;
       filter: grayscale(100%); 
-      transition: filter 0.3s ease; 
+      transition: filter 0.3s ease;
+      object-fit: cover;
     }
+    .card-photo { aspect-ratio: 1 / 1; }
     .card-photo img:hover { filter: grayscale(0%); }
     
     /* Category filter buttons */
     .people-category-buttons { display: flex; gap: 2rem; margin-bottom: 4rem; justify-content: flex-start; align-items: center; }
     .dropdown-container { position: relative; }
     .people-category-btn { padding: 0.5rem 2.2rem; background: transparent; border: 1px solid #000; border-radius: 25px; font-family: "Roboto Mono", monospace; font-size: 1rem; font-weight: 400; cursor: pointer; transition: all 0.3s ease; position: relative; }
-    .people-category-btn:hover { background: #f5f5f5; border-color: #000; }
     .people-category-btn.active { background: transparent; border-color: #000; }
-    .people-category-btn.active:hover { background: #f5f5f5; border-color: #000; }
     .people-category-btn.selected { color: #72d71b; }
     .people-category-btn::after { content: ""; display: inline-block; width: 10px; height: 10px; margin-left: 0.8rem; vertical-align: 3px; border-right: 1.5px solid #000; border-bottom: 1.5px solid #000; transform: rotate(45deg); transition: transform 0.3s ease; }
     .people-category-btn.open::after { vertical-align: -2px; transform: rotate(225deg); }

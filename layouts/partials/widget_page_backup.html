@@ -1,0 +1,174 @@
+<section class="widget-page">
+  <div class="widget-page-container">
+    <!-- Back button -->
+    <div class="back-button-container">
+      <button class="back-button" onclick="history.back()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Page Header & Content Wrapper -->
+    <div class="widget-content-wrapper">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1 class="page-title">{{ .Title }}</h1>
+        {{ with .Params.semester }}
+        <div class="page-meta">
+          <span class="semester">{{ . }}</span>
+          {{ with $.Params.subtitle }}
+          <div class="subtitle">{{ . | markdownify }}</div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+
+      <!-- Course Description -->
+      {{ with .Params.summary }}
+      <div class="course-description">
+        <h2>COURSE DESCRIPTION</h2>
+        <p>{{ . }}</p>
+      </div>
+      {{ end }}
+
+      <!-- Widgets -->
+      {{ $headless_bundle := .Site.GetPage .File.Dir }}
+      {{ if $headless_bundle }}
+        {{ range $index, $st := where ( $headless_bundle.Resources.ByType "page" ) ".Params.active" "!=" false }}
+          {{ if ne $st.File.LogicalName "index.md" }}
+            {{ $widget := or $st.Params.widget "blank" }}
+            {{ $widget_path := printf "widgets/%s" $widget }}
+            {{ partial $widget_path (dict "context" . "page" $st) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  <style>
+    .widget-page {
+      min-height: 100vh;
+      padding: 2rem 3rem;
+    }
+
+    .widget-page-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .back-button-container {
+      margin-bottom: 2rem;
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid #999999;
+      border-radius: 50%;
+      color: #999999;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #CEEDB2;
+    }
+
+    .widget-content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 4rem;
+      border-top: 1px solid #ddd;
+      padding-top: 2rem;
+    }
+
+    .widget-main {
+      min-width: 0;
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-family: "Roboto", sans-serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: #000;
+    }
+
+    .page-meta {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .semester {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .course-description {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #ddd;
+    }
+
+    .course-description h2 {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .course-description p {
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .widgets-main {
+      margin-top: 2rem;
+    }
+
+    /* Sidebar */
+    .widget-sidebar {
+      border-left: 1px solid #ddd;
+      padding-left: 3rem;
+    }
+
+    .widgets-container {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .widget-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .widget-sidebar {
+        border-left: none;
+        border-top: 1px solid #ddd;
+        padding-left: 0;
+        padding-top: 3rem;
+      }
+    }
+  </style>
+</section>

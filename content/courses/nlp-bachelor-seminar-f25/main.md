@@ -24,7 +24,6 @@ For inquiries, please email **Francesco Re** at [francesco.re@inf.ethz.ch](mailt
 
 When you send an email, please **always include “Bachelor’s Seminar” in the subject line.**
 
----
 
 ### **Course Schedule**
 

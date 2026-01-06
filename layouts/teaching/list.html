@@ -5,7 +5,7 @@
   <div class="teaching-filters">
     <!-- Current/Past Toggle Buttons -->
     <div class="toggle-buttons">
-      <button class="toggle-btn active" id="all-btn">ALL</button>
+      <button class="toggle-btn" id="all-btn">ALL</button>
       <button class="toggle-btn" id="current-btn">CURRENT</button>
       <button class="toggle-btn" id="past-btn">PAST</button>
     </div>
@@ -42,16 +42,15 @@
     {{ if $coursePages }}
       {{ $sorted := sort $coursePages "Date" "desc" }}
       {{ range $sorted }}
-        <div class="course-item">
-          <h3 class="course-item-title"><a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit;">{{ .Title }}</a></h3>
-          
-          <div class="course-item-meta">
+        <a href="{{ .RelPermalink }}" class="course-item">
+          <h3 class="course-item-title">{{ .Title }}</h3>
+          <div class="course-item-badge">
             {{ with .Params.semester }}{{ . }}{{ end }}
-            {{ if strings.Contains .Params.subtitle "catalog" }}
-            <button class="catalog">CATALOG</button>
-            {{ end }}
           </div>
-        </div>
+          {{ with .Params.summary }}
+          <div class="course-item-summary">{{ . }}</div>
+          {{ end }}
+        </a>
       {{ end }}
     {{ else }}
       <p class="no-courses">No courses found.</p>
@@ -90,89 +89,10 @@
       transition: all 0.3s ease;
     }
 
-    .toggle-btn:hover {
-      background: #f5f5f5;
-    }
-
     .toggle-btn.active {
       background: #ceedb2;
       color: #000000;
       border-color: #000000;
-    }
-
-    .filter-btn { 
-      padding: 0.5rem 2.2rem; 
-      background: transparent; 
-      border: 1px solid #000; 
-      border-radius: 25px; 
-      font-family: "Roboto Mono", monospace; 
-      font-size: 0.9rem; 
-      font-weight: 400; 
-      cursor: pointer;
-      position: relative;
-    }
-
-    .filter-btn.selected {
-      background: #2aa01a;
-      color: #fff;
-    }
-
-    .filter-btn.selected::after {
-      border-color: #fff;
-    }
-
-    .filter-btn::after { 
-      content: ""; 
-      display: inline-block; 
-      width: 10px; 
-      height: 10px; 
-      margin-left: 0.8rem; 
-      vertical-align: 3px; 
-      border-right: 1.5px solid #000; 
-      border-bottom: 1.5px solid #000; 
-      transform: rotate(45deg); 
-      transition: transform 0.3s ease; 
-    }
-
-    .filter-btn.open::after { 
-      vertical-align: -3px;
-      transform: rotate(225deg); 
-    }
-    
-    /* Dropdown menu */
-    .dropdown-container { 
-      position: relative; 
-    }
-
-    .dropdown-menu { 
-      display: none;
-      position: absolute; 
-      top: calc(100% + 0.5rem); 
-      left: 0; 
-      background: #fff; 
-      border: 1px solid #000; 
-      border-radius: 20px; 
-      padding: 1rem; 
-      width: 100%;
-      z-index: 100;
-    }
-
-    .dropdown-menu.show { 
-      display: block; 
-    }
-
-    .dropdown-item { 
-      padding: 0.75rem 1rem; 
-      font-family: "Roboto Mono", monospace; 
-      font-size: 0.9rem; 
-      cursor: pointer;
-      transition: background 0.2s ease;
-      text-align: center;
-      line-height: 1.4;
-    }
-
-    .dropdown-item:hover { 
-      background: #CEEDB2; 
     }
 
     /* Search bar */
@@ -248,55 +168,83 @@
     .courses-list {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 0;
     }
 
     .course-item {
-      border-bottom: 1px solid #eee;
-      padding-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 0.8fr 150px 3fr;
+      column-gap: 2rem;
+      border-top: 1px solid #eee;
+      padding: 1.5rem 1rem;
+      transition: background 0.3s ease;
+      align-items: start;
+      opacity: 0;
+      animation: fadeInUp 0.4s ease forwards;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .course-item-summary {
+      margin-left: 2rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .course-item:first-child {
+      border-top: none;
+    }
+
+    .course-item:hover {
+      background: #f5f5f5;
     }
 
     .course-item:last-child {
       border-bottom: none;
     }
 
+    .course-item-badge {
+      padding: 0.4rem 1rem;
+      background: transparent;
+      border: 1px solid #000;
+      border-radius: 20px;
+      font-family: "Roboto Mono", monospace;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #000;
+      white-space: nowrap;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .course-item-badge.badge-highlight {
+      background: #CEEDB2;
+      border-color: #000;
+    }
+
     .course-item-title {
       font-family: "Roboto", sans-serif;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 400;
-      margin: 0 0 1rem 0;
+      margin: 0;
       color: #000;
     }
 
-    .course-item-title a:hover {
-      color: #2aa01a;
-    }
-
-    .course-item-meta {
+    .course-item-summary {
       font-family: "Roboto", sans-serif;
       font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 0.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .catalog {
-      padding: 0.3rem 1rem;
-      border: 1px solid #2aa01a;
-      border-radius: 15px;
-      font-family: "Roboto Mono", monospace;
-      font-size: 0.8rem;
-      color: #2aa01a;
-      background: transparent;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .catalog:hover {
-      background: #CEEDB2;
+      color: #333;
+      line-height: 1.5;
+      max-width: 900px;
     }
 
     .no-courses {
@@ -309,34 +257,74 @@
   </style>
 
   <script>
+    // Get all course items
+    const allCourses = document.querySelectorAll('.course-item');
+    
+    // Stagger animation for initial load
+    function applyStaggerAnimation() {
+      allCourses.forEach((course, index) => {
+        course.style.animationDelay = `${index * 0.03}s`;
+      });
+    }
+    
+    // Remove animation delays
+    function removeAnimationDelays() {
+      allCourses.forEach((course) => {
+        course.style.animationDelay = '0s';
+      });
+    }
+    
+    // Apply animation only on initial load
+    applyStaggerAnimation();
+
     // Current/Past toggle functionality
     const allBtn = document.getElementById('all-btn');
     const currentBtn = document.getElementById('current-btn');
     const pastBtn = document.getElementById('past-btn');
     let activeTimeFilter = 'all';
 
-    allBtn.addEventListener('click', function() {
-      allBtn.classList.add('active');
+    function resetFilters() {
+      allBtn.classList.remove('active');
       currentBtn.classList.remove('active');
       pastBtn.classList.remove('active');
       activeTimeFilter = 'all';
       applyFilters();
+    }
+
+    allBtn.addEventListener('click', function() {
+      if (allBtn.classList.contains('active')) {
+        resetFilters();
+      } else {
+        allBtn.classList.add('active');
+        currentBtn.classList.remove('active');
+        pastBtn.classList.remove('active');
+        activeTimeFilter = 'all';
+        applyFilters();
+      }
     });
 
     currentBtn.addEventListener('click', function() {
-      allBtn.classList.remove('active');
-      currentBtn.classList.add('active');
-      pastBtn.classList.remove('active');
-      activeTimeFilter = 'current';
-      applyFilters();
+      if (currentBtn.classList.contains('active')) {
+        resetFilters();
+      } else {
+        allBtn.classList.remove('active');
+        currentBtn.classList.add('active');
+        pastBtn.classList.remove('active');
+        activeTimeFilter = 'current';
+        applyFilters();
+      }
     });
 
     pastBtn.addEventListener('click', function() {
-      allBtn.classList.remove('active');
-      currentBtn.classList.remove('active');
-      pastBtn.classList.add('active');
-      activeTimeFilter = 'past';
-      applyFilters();
+      if (pastBtn.classList.contains('active')) {
+        resetFilters();
+      } else {
+        allBtn.classList.remove('active');
+        currentBtn.classList.remove('active');
+        pastBtn.classList.add('active');
+        activeTimeFilter = 'past';
+        applyFilters();
+      }
     });
 
     // Dropdown toggle functionality
@@ -383,7 +371,8 @@
       const currentMonth = now.getMonth() + 1; // 1-12
       
       courseItems.forEach(item => {
-        const semester = item.querySelector('.course-item-meta').textContent;
+        const badge = item.querySelector('.course-item-badge');
+        const semester = badge.textContent;
         
         // Extract year from semester (e.g., "Fall 2024" -> "2024")
         const yearMatch = semester.match(/\d{4}/);
@@ -405,6 +394,13 @@
         } else if (year === currentYear - 1 && semesterLower.includes('fall') && currentMonth <= 2) {
           // Previous Fall still ongoing in Jan-Feb
           isCurrent = true;
+        }
+        
+        // Apply badge highlight for current filter
+        if (activeTimeFilter === 'current' && isCurrent) {
+          badge.classList.add('badge-highlight');
+        } else {
+          badge.classList.remove('badge-highlight');
         }
         
         // Apply filter
@@ -432,9 +428,10 @@
         
         courseItems.forEach(item => {
           const title = item.querySelector('.course-item-title').textContent.toLowerCase();
-          const semester = item.querySelector('.semester')?.textContent.toLowerCase() || '';
+          const semester = item.querySelector('.course-item-badge')?.textContent.toLowerCase() || '';
+          const summary = item.querySelector('.course-item-summary')?.textContent.toLowerCase() || '';
           
-          if (title.includes(searchTerm) || semester.includes(searchTerm)) {
+          if (title.includes(searchTerm) || semester.includes(searchTerm) || summary.includes(searchTerm)) {
             item.style.display = '';
           } else {
             item.style.display = 'none';
