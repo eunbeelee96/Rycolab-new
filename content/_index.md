@@ -14,7 +14,7 @@ sections:
       subtitle: ''
       text: |-
         <div class="hero-section">
-          <img src="/uploads/team photo.png" alt="Team Photo" class="hero-image">
+          <img src="/uploads/teamphoto.png" alt="Team Photo" class="hero-image">
           <div class="hero-content">
             <p class="lab-intro">
             We are a collocation of collaborators working on a <br>diverse range of topics in computational linguistics, natural language processing and machine learning.
