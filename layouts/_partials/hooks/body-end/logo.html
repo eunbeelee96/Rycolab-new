@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('.navbar-brand');
   if (navbar && navbar.innerHTML.trim() === '') {
-    // Use absolute path for GitHub Pages
     const siteBasePath = '/Rycolab-new/';
     
     // First logo (main)
@@ -21,11 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const img2 = document.createElement('img');
     img2.src = siteBasePath + 'uploads/logo2.png';
     img2.alt = 'Rycolab Logo 2';
-    img2.style.maxHeight = '30px';  // 50% of 50px
+    img2.style.maxHeight = '30px';
     img2.style.width = 'auto';
-    img2.style.marginLeft = '0px';  // spacing between logos
+    img2.style.marginLeft = '0px';
     img2.style.position = 'relative';
-    img2.style.top = '9px';  // 아래로 이동 (값을 높이면 더 아래로)
+    img2.style.top = '9px';
     img2.style.cursor = 'pointer';
     img2.addEventListener('click', function() {
       window.location.href = siteBasePath;
@@ -33,14 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     navbar.appendChild(img1);
     navbar.appendChild(img2);
-    
-    // Fix all navbar links to use absolute paths
-    document.querySelectorAll('.navbar-nav a').forEach(link => {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('/') && !href.startsWith('/Rycolab-new/')) {
-        link.href = '/Rycolab-new' + href;
-      }
-    });
   }
 });
 </script>
