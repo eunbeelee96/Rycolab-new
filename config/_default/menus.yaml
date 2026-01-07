@@ -4,17 +4,20 @@
 
 main:
   - name: PEOPLE
-    url: /Rycolab-new/people
+    url: /people
     weight: 10
+    matchRegexp: ^/people|^/authors
   - name: PUBLICATIONS
-    url: /Rycolab-new/publications
+    url: /publications
     weight: 11
   - name: TEACHING
-    url: /Rycolab-new/teaching
+    url: /teaching
     weight: 12
+    matchRegexp: ^/teaching|^/courses
   - name: EVENTS
-    url: /Rycolab-new/events
+    url: /events
     weight: 13
+    matchRegexp: ^/events|^/talk
   - name: JOIN
-    url: /Rycolab-new/join
+    url: /join
     weight: 20
