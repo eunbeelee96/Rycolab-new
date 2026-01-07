@@ -109,8 +109,8 @@ button[data-search-toggle] {
   background-color: #CEEDB2 !important;
   border-radius: 50% !important;
   padding: 0.5rem !important;
-  width: 3.5rem !important;
-  height: 3.5rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -302,7 +302,7 @@ section {
 }
 .update-card {
   background: transparent;
-  border: 1px solid #CEEDB2;
+  border: 1.5px solid #CEEDB2;
   border-radius: 20px;
   padding: 1rem;
   min-height: 180px;
@@ -418,7 +418,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Magnetic scroll snap for homepage
 document.addEventListener('DOMContentLoaded', function() {
   // Only apply on homepage
-  if (window.location.pathname !== '/Rycolab-new/') return;
+  const pathname = window.location.pathname;
+  const isHomepage = pathname === '/' || pathname === '/Rycolab-new/' || pathname.endsWith('Rycolab-new');
+  if (!isHomepage) return;
   
   const sections = document.querySelectorAll('section');
   if (sections.length < 2) return;

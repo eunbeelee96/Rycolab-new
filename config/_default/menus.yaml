@@ -17,6 +17,7 @@ main:
   - name: EVENTS
     url: /events
     weight: 13
+    matchRegexp: ^/events|^/talk
   - name: JOIN
     url: /join
     weight: 20
