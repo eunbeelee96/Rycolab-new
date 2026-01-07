@@ -3,9 +3,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('.navbar-brand');
   if (navbar && navbar.innerHTML.trim() === '') {
-    // Get base URL from the page
-    const baseURL = document.querySelector('head base')?.href || window.location.origin + '/';
-    const siteBasePath = '{{ .Site.BaseURL }}';
+    // Use absolute path for GitHub Pages
+    const siteBasePath = '/Rycolab-new/';
     
     // First logo (main)
     const img1 = document.createElement('img');
@@ -34,6 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     navbar.appendChild(img1);
     navbar.appendChild(img2);
+    
+    // Fix all navbar links to use absolute paths
+    document.querySelectorAll('.navbar-nav a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('/') && !href.startsWith('/Rycolab-new/')) {
+        link.href = '/Rycolab-new' + href;
+      }
+    });
   }
 });
 </script>
