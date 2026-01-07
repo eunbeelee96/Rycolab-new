@@ -20,7 +20,7 @@ In recent years, NLP has become a part of our daily lives. Many of us use tools 
 
 **Location:** CAB G 52
 
-<a href=https://docs.google.com/document/d/1_A4HrXXspjX04Z_4QbGD74PfGpJeyZnztb9qMRXfS3o/edit?usp=sharing target="_blank"><b> **TODOs** </b></a>
+<a href=https://docs.google.com/document/d/1_A4HrXXspjX04Z_4QbGD74PfGpJeyZnztb9qMRXfS3o/edit?usp=sharing target="_blank"> **TODOs** </a>
 
 
 ## Course Structure and Schedule
@@ -66,9 +66,9 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-        <a href=https://arxiv.org/abs/2110.07574 target="_blank"><b> Jiang et al. (2021)</b></a>, 
-        <a href="https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/588588/2/2022.naacl-main.56.pdf" target="_blank"><b> Talat et al. (2022)</a>, 
-        <a href="https://www.nytimes.com/2021/11/19/technology/can-a-machine-learn-morality.html" target="_blank"><b> Metz (2021)</b></a>
+        <a href=https://arxiv.org/abs/2110.07574 target="_blank"> Jiang et al. (2021)</a>, 
+        <a href="https://www.research-collection.ethz.ch/bitstream/handle/20.500.11850/588588/2/2022.naacl-main.56.pdf" target="_blank"> Talat et al. (2022)</a>, 
+        <a href="https://www.nytimes.com/2021/11/19/technology/can-a-machine-learn-morality.html" target="_blank"> Metz (2021)</a>
       </td>
     </tr>  
     <tr>
@@ -78,10 +78,10 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-       <a href=https://arxiv.org/pdf/2312.00584.pdf target="_blank"><b> Valvoda et al. (2023)</b></a>,
-       <a href=https://link.springer.com/article/10.1007/s10506-019-09255-y target="_blank"><b> Medveva et al. (2020)</b></a>,
-       <a href=https://arxiv.org/pdf/2004.12158.pdf target="_blank"><b> Zhong et al. (2020)</b></a>,
-       <a href=https://www.theguardian.com/technology/2023/jun/23/two-us-lawyers-fined-submitting-fake-court-citations-chatgpt target="_blank"><b> Milmo (2023)</b></a>
+       <a href=https://arxiv.org/pdf/2312.00584.pdf target="_blank"> Valvoda et al. (2023)</a>,
+       <a href=https://link.springer.com/article/10.1007/s10506-019-09255-y target="_blank"> Medveva et al. (2020)</a>,
+       <a href=https://arxiv.org/pdf/2004.12158.pdf target="_blank"> Zhong et al. (2020)</a>,
+       <a href=https://www.theguardian.com/technology/2023/jun/23/two-us-lawyers-fined-submitting-fake-court-citations-chatgpt target="_blank"> Milmo (2023)</a>
       </td>
     </tr>  
         <tr>
@@ -91,10 +91,10 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-      <a href=https://aclanthology.org/2022.emnlp-main.397.pdf target="_blank"><b> Glockner et al. (2022)</b></a>,
-       <a href=https://reutersinstitute.politics.ox.ac.uk/news/ai-and-journalism-whats-next target="_blank"><b> Caswell (2023)</b></a>,
-       <a href=https://www.techpolicy.press/ai-hurts-consumers-and-workers-and-isnt-intelligent/ target="_blank"><b> Hanna and Bender (2023)</b></a>,
-       <a href=https://www.republik.ch/2023/09/28/chronologie-der-schweizer-medienkonzentration target="_blank"><b> Bühler and Moser (2018-2024)</b></a>
+      <a href=https://aclanthology.org/2022.emnlp-main.397.pdf target="_blank"> Glockner et al. (2022)</a>,
+       <a href=https://reutersinstitute.politics.ox.ac.uk/news/ai-and-journalism-whats-next target="_blank"> Caswell (2023)</a>,
+       <a href=https://www.techpolicy.press/ai-hurts-consumers-and-workers-and-isnt-intelligent/ target="_blank"> Hanna and Bender (2023)</a>,
+       <a href=https://www.republik.ch/2023/09/28/chronologie-der-schweizer-medienkonzentration target="_blank"> Bühler and Moser (2018-2024)</a>
       </td>
     </tr>  
      <tr>
@@ -104,9 +104,9 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-      <a href=https://futureoflife.org/open-letter/pause-giant-ai-experiments/ target="_blank"><b> Bengio et al. (2023)</b></a>,
-      <a href=https://openai.com/blog/planning-for-agi-and-beyond target="_blank"><b> Altman (2023)</b></a>,
-      <a href =https://data.consilium.europa.eu/doc/document/ST-5662-2024-INIT/en/pdf target="_blank"><b> The Council of the European Union (2024)</b></a>
+      <a href=https://futureoflife.org/open-letter/pause-giant-ai-experiments/ target="_blank"> Bengio et al. (2023)</a>,
+      <a href=https://openai.com/blog/planning-for-agi-and-beyond target="_blank"> Altman (2023)</a>,
+      <a href =https://data.consilium.europa.eu/doc/document/ST-5662-2024-INIT/en/pdf target="_blank"> The Council of the European Union (2024)</a>
       </td>
     </tr>  
     <tr>
@@ -125,9 +125,9 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-      <a href=https://arxiv.org/abs/2201.11227 target="_blank"><b> Poesia et al. (2022)</b></a>,
-      <a href=https://arxiv.org/abs/2108.07732 target="_blank"><b> Austin et al. (2021)</b></a>,
-      <a href=https://ieeexplore.ieee.org/document/8666786 target="_blank"><b> Meyer et al. (2019)</b></a>
+      <a href=https://arxiv.org/abs/2201.11227 target="_blank"> Poesia et al. (2022)</a>,
+      <a href=https://arxiv.org/abs/2108.07732 target="_blank"> Austin et al. (2021)</a>,
+      <a href=https://ieeexplore.ieee.org/document/8666786 target="_blank"> Meyer et al. (2019)</a>
       </td>
     </tr>  
     <tr>
@@ -137,9 +137,9 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-      <a href=https://arxiv.org/abs/2201.11227 target="_blank"><b> Poesia et al. (2022)</b></a>,
-      <a href=https://arxiv.org/abs/2108.07732 target="_blank"><b> Austin et al. (2021)</b></a>,
-      <a href=https://ieeexplore.ieee.org/document/8666786 target="_blank"><b> Meyer et al. (2019)</b></a>
+      <a href=https://arxiv.org/abs/2201.11227 target="_blank"> Poesia et al. (2022)</a>,
+      <a href=https://arxiv.org/abs/2108.07732 target="_blank"> Austin et al. (2021)</a>,
+      <a href=https://ieeexplore.ieee.org/document/8666786 target="_blank"> Meyer et al. (2019)</a>
       </td>
     </tr>  
     <tr>
@@ -167,9 +167,9 @@ The structure of this seminar is one of open-ended debate. Cum tempore, the semi
       <td>
       </td>
       <td>
-      <a href=https://aclanthology.org/2023.acl-long.204 target="_blank"><b> Opedal et al. (2023)</b></a>,
-      <a href=https://aclanthology.org/J95-2002/ target="_blank"><b> Stolcke (1995)</b></a>,
-      <a href=https://dl.acm.org/doi/10.1145/362007.362035 target="_blank"><b> Earley (1968)</b></a>
+      <a href=https://aclanthology.org/2023.acl-long.204 target="_blank"> Opedal et al. (2023)</a>,
+      <a href=https://aclanthology.org/J95-2002/ target="_blank"> Stolcke (1995)</a>,
+      <a href=https://dl.acm.org/doi/10.1145/362007.362035 target="_blank"> Earley (1968)</a>
       </td>
     </tr> 
     <tr>

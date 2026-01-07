@@ -99,7 +99,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
   <tbody>
     <tr>
       <td>21. 2. 2023</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Introduction</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Introduction</td>
       <td>Course Logistics</td>
       <td></td>
       <td><a href="https://drive.google.com/file/d/1XDotCwzSxNi-fIKIMF08Z9vqPXCGzbhy/view?usp=share_link" target="_blank">Introductory Slides</a></td>
@@ -114,7 +114,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>28. 2. 2023</td>
-      <td rowspan="10" style="vertical-align : middle;text-align:center;" align="center"><b>Regular Languages</b></td>
+      <td rowspan="10" style="vertical-align : middle;text-align:center;" align="center">Regular Languages</td>
       <td>Weighted Formal Languages and Semiring Theory</td>
       <td>
       <a href="https://drive.google.com/file/d/1wXv-e5tL6WxwK7vzBuVSDySYjkuoGW7f/view?usp=share_link" target="_blank">Regular Languages</a>
@@ -288,7 +288,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>3. 4. 2023</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Easter Break</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Easter Break</td>
       <td>No class</td>
       <td></td>
       <td></td>
@@ -303,7 +303,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>10. 4. 2023</td>
-      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center"><b>Context-Free Languages</b></td>
+      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center">Context-Free Languages</td>
       <td>Context-Free Grammars</td>
       <td>
       <a href="https://drive.google.com/file/d/18Umozma8ycrkAErhmNdDxcaqkij3f4Aj/view?usp=share_link" target="_blank">Context-free Languages</a>
@@ -404,7 +404,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>1. 5. 2023</td>
-      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center"><b>Labour Day</b></td>
+      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center">Labour Day</td>
       <td>No class</td>
       <td></td>
       <td></td>
@@ -412,7 +412,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>2. 5. 2023</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Regular Tree Languages</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Regular Tree Languages</td>
       <td>Weighted Tree Automata</td>
       <td>
       <a href="https://drive.google.com/file/d/1KgcJ8T_fqApa3aYJx6lMiBGPGezAf314/view?usp=share_link" target="_blank">Regular Tree Languages</a>
@@ -448,7 +448,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>9. 5. 2023</td>
-      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center"><b>Ascension Day</b></td>
+      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center">Ascension Day</td>
       <td>No class</td>
       <td></td>
       <td></td>
@@ -456,7 +456,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>15. 5. 2023</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Regular Tree Languages</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Regular Tree Languages</td>
       <td>Weight Pushing of Weighted Tree Automata</td>
       <td></td>
       <td></td>
@@ -487,7 +487,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>22. 5. 2023</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Tree-Adjoining Languages</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Tree-Adjoining Languages</td>
       <td>Weighted Tree-adjoining Grammars, Lang Normal Form</td>
       <td>
       </td>

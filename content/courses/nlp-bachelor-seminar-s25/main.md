@@ -51,7 +51,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">2</th>
       <td>26.02.25</td>
-      <td> <a href=https://aclanthology.org/J95-2002/ target="_blank"><b> An Efficient Probabilistic Context-Free Parsing Algorithm [...] </b></a>
+      <td> <a href=https://aclanthology.org/J95-2002/ target="_blank"> An Efficient Probabilistic Context-Free Parsing Algorithm [...] </a>
       </td>
       <td>
       Stolcke et al., 1995
@@ -63,7 +63,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
      <tr>
       <th scope="row">3</th>
       <td>5.03.25</td>
-      <td> <a href=https://dl.acm.org/doi/10.1145/3442188.3445922 target="_blank"><b> Recognition and Parsing of Context Free Parsing Algorithms in Time n^3 </b></a>
+      <td> <a href=https://dl.acm.org/doi/10.1145/3442188.3445922 target="_blank"> Recognition and Parsing of Context Free Parsing Algorithms in Time n^3 </a>
       </td>
       <td>
       Younger, 1965
@@ -75,7 +75,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">4</th>
       <td>12.03.25</td>
-      <td> <a href=https://link.springer.com/article/10.1007/BF00289517 target="_blank"><b> Top-Down Syntax Analysis </b></a>  </td>
+      <td> <a href=https://link.springer.com/article/10.1007/BF00289517 target="_blank"> Top-Down Syntax Analysis </a>  </td>
       <td>
       Knuth, 1971
       </td>
@@ -86,7 +86,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
         <tr>
       <th scope="row">5</th>
       <td>19.03.25</td>
-      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1 ><b> On the Translation of Languages from Left to Right </b></a> </td>
+      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1 > On the Translation of Languages from Left to Right </a> </td>
       <td>
       Knuth, 1965
       </td>
@@ -97,7 +97,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
      <tr>
       <th scope="row">6</th>
       <td>26.03.25</td>
-      <td> <a href=https://link.springer.com/content/pdf/10.1007/BF00134555.pdf><b> Combinatory Grammars and Parasitic Gaps </a></b> </td>
+      <td> <a href=https://link.springer.com/content/pdf/10.1007/BF00134555.pdf> Combinatory Grammars and Parasitic Gaps </a> </td>
       <td>
       Steedman, 1986 
       </td>
@@ -108,7 +108,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">7</th>
       <td>2.04.25</td>
-      <td> <a href=https://www.sciencedirect.com/science/article/pii/S002224961930166X><b> The Probabilistic Chomsky-Shutzenberger Hierarchy </b></a> </td>
+      <td> <a href=https://www.sciencedirect.com/science/article/pii/S002224961930166X> The Probabilistic Chomsky-Shutzenberger Hierarchy </a> </td>
       <td>
       Icard, 2020
       </td>
@@ -119,7 +119,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">8</th>
       <td>9.04.25</td>
-      <td> <a href=https://link.springer.com/chapter/10.1007/978-3-662-46663-6_5><b> Fast, Practical GLL Parsing </b></a> </td>
+      <td> <a href=https://link.springer.com/chapter/10.1007/978-3-662-46663-6_5> Fast, Practical GLL Parsing </a> </td>
       <td>
       Afroozeh and Izmaylova, 2015
       </td>
@@ -148,7 +148,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">11</th>
       <td>30.04.24</td>
-      <td> <a href=https://aclanthology.org/2020.acl-main.463><b> Climbing Towards NLU: On Meaning, Form and Understanding [...] </a></b> </td>
+      <td> <a href=https://aclanthology.org/2020.acl-main.463> Climbing Towards NLU: On Meaning, Form and Understanding [...] </a> </td>
       <td>
       Bender and Koller, 2020 
       </td>
@@ -157,7 +157,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">12</th>
       <td>7.05.24</td>
-      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1 ><b> GPT-3: Its Nature, Scope, Limits, and Consequences </b></a>  </td>
+      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1 > GPT-3: Its Nature, Scope, Limits, and Consequences </a>  </td>
       <td>
       Floridi and Chiriatti, 2020
       </td>
@@ -166,7 +166,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">13</th>
       <td>14.05.24</td>
-      <td> <a href=https://papers.nips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html target="_blank"><b> Language Models are Few Shot Learners </b></a>  </td>
+      <td> <a href=https://papers.nips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html target="_blank"> Language Models are Few Shot Learners </a>  </td>
       <td>
       Brown et al., 2020
       </td>
@@ -175,7 +175,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">15</th>
       <td>21.05.24</td>
-      <td> <a href=https://dl.acm.org/doi/10.1145/3442188.3445922 target="_blank"><b> On the Dangers of Stochastic Parrots</b></a>, <a href=https://arxiv.org/pdf/1604.04695 target="_blank"><b> Parsing with Derivatives </b></a>
+      <td> <a href=https://dl.acm.org/doi/10.1145/3442188.3445922 target="_blank"> On the Dangers of Stochastic Parrots</a>, <a href=https://arxiv.org/pdf/1604.04695 target="_blank"> Parsing with Derivatives </a>
       </td>
       <td>
       Bender et al., 2021, Adams et al., 2016

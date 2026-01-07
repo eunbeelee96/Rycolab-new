@@ -212,7 +212,7 @@ A selection of *related work* is provided for individual lectures.
     <tr>
       <th scope="row">9</th>
       <td>21.04.22</td>
-      <td><b>No class</b> (Week after Easter)</td>
+      <td>No class (Week after Easter)</td>
       <td></td>
       <td></td>
       <td></td>

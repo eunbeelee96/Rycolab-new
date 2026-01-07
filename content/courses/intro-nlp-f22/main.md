@@ -227,7 +227,7 @@ The submission links are:
     </tr>
     <tr>
       <td>11.10.22</td>
-      <td><b>Lecture Cancelled</b></td>
+      <td>Lecture Cancelled</td>
       <td></td>
       <td></td>
       <td></td>
@@ -290,7 +290,7 @@ The submission links are:
         </td>
     </tr>
     <tr>
-      <td>01.11.22 <b>ONLINE ONLY</b></td>
+      <td>01.11.22 ONLINE ONLY</td>
       <td>Part-of-Speech Tagging with CRFs</td>
       <td></td>
       <td></td>
@@ -488,14 +488,14 @@ The submission links are:
     <tr>
       <th scope="row">4</th>
       <td>19.10.22</td>
-      <td><b>No tutorials</b></td>
+      <td>No tutorials</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th scope="row">5</th>
       <td>26.10.22</td>
-      <td><b>No tutorials</b></td>
+      <td>No tutorials</td>
       <td></td>
       <td></td>
     </tr>

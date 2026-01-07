@@ -17,15 +17,13 @@ weight = 20
 This Bachelor’s seminar explores the computational foundations of machine learning. Creating algorithms that learn general rules from data is the backbone of modern artificial intelligence and data-driven discovery; we will explore the theoretical principles that dictate the potential and limitations of learning algorithms. Throughout the seminar, we will investigate several fundamental themes. We'll examine the crucial trade-off between a model's complexity and its ability to generalize to new, unseen data. We'll ask what makes certain learning problems computationally hard while others are easy, and how the quantity, quality, and representation of data impact an algorithm's performance. We'll consider how interactive feedback and different learning protocols can lead to more efficient and powerful models.
 
 **Time:** Friday 14–16h  
-
 **Location:** CHN D 44  
 
 For inquiries, please email **Francesco Re** at [francesco.re@inf.ethz.ch](mailto:francesco.re@inf.ethz.ch).  
-
 When you send an email, please **always include “Bachelor’s Seminar” in the subject line.**
 
 
-### **Course Schedule**
+## Course Schedule
 
 <table class="table">
   <head>
@@ -56,7 +54,7 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
       <td>1937 (Original Paper)</td>
       <td>The Annotated Turing (Chapters 12 & 13)</td>
       <td>Jael Nyffenegger, Noel Ullreich</td>
-      <td><a href="https://delong.typepad.com/files/petzold-turing.pdf"><b>Petzold (2008)</b></a></td>
+      <td><a href="https://delong.typepad.com/files/petzold-turing.pdf">Petzold (2008)</a></td>
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -71,8 +69,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Luka Wedegaertner, Aurel Schmidig
       </td>
       <td>
-        <a href="https://delong.typepad.com/files/petzold-turing.pdf"><b>Petzold (2008)</b></a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Solomonoff (1964)</b></a>
+        <a href="https://delong.typepad.com/files/petzold-turing.pdf">Petzold (2008)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Solomonoff (1964)</a>
       </td>
     </tr>
     <tr>
@@ -88,8 +86,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Ron Jost, Luca Oertig
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Solomonoff (1964)</b></a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Rogers (1965)</b></a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Solomonoff (1964)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Rogers (1965)</a>
       </td>
     </tr>
     <tr>
@@ -105,8 +103,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Jaron Niederer
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Gold (1967)</b></a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Blum & Blum (1975)</b></a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Gold (1967)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Blum & Blum (1975)</a>
       </td>
     </tr>
     <tr>
@@ -122,8 +120,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Mattia Morelli, Timon Fatzer
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Angluin (1980)</b></a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Angluin & Smith (1983)</b></a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Angluin (1980)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Angluin & Smith (1983)</a>
       </td>
     </tr>
     <tr>
@@ -139,8 +137,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Elena Aschmann, Leonard Schmidt
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Valiant (1984)</b></a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing"><b>Angluin (1987)</b></a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Valiant (1984)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Angluin (1987)</a>
       </td>
     </tr>
   </tbody>

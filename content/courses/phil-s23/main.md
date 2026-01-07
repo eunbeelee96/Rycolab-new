@@ -92,7 +92,7 @@ We encourage you to sign up and participate in the discussions there.
     <tr>
       <th scope="row">1</th>
       <td>21.2.23</td>
-      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center"><b>Introduction</b></td>
+      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center">Introduction</td>
       <td>
         <a href="https://drive.google.com/file/d/1Ny6tv2ywDClOdKAhn1Bp1vTmLyBlWXXw/view?usp=share_link" target="_blank">Slides</a>
       </td>
@@ -102,12 +102,12 @@ We encourage you to sign up and participate in the discussions there.
     <tr>
       <th scope="row">2</th>
       <td>28.2.23</td>
-      <td rowspan="5" style="vertical-align : middle;text-align:center;" align="center"><b>Language Games:<br>Meaning from Usage</b></td>
+      <td rowspan="5" style="vertical-align : middle;text-align:center;" align="center">Language Games:<br>Meaning from Usage</td>
       <td>
         <a href="https://drive.google.com/file/d/1EeadPrNLD4eSWOl01wmrVNiz4LaRq_BR/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/14N69sZSJuh-czgphbfwtEqp0578cttA0/view?usp=share_link" target="_blank"><b>Wittgenstein (1922)</b></a>
+        <a href="https://drive.google.com/file/d/14N69sZSJuh-czgphbfwtEqp0578cttA0/view?usp=share_link" target="_blank">Wittgenstein (1922)</a>
       </td>
     </tr>  
     <tr>
@@ -117,7 +117,7 @@ We encourage you to sign up and participate in the discussions there.
         <a href="https://drive.google.com/file/d/11i7RHKfWYBoQC4AormhvHidCCZVlEktq/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1ohsPtpVD_87w3-ztiD5gfSzItXoB545J/view?usp=share_link" target="_blank"><b>Wittgenstein (1953)</b></a>
+        <a href="https://drive.google.com/file/d/1ohsPtpVD_87w3-ztiD5gfSzItXoB545J/view?usp=share_link" target="_blank">Wittgenstein (1953)</a>
       </td>
     </tr>   
     <tr>
@@ -127,8 +127,8 @@ We encourage you to sign up and participate in the discussions there.
         <a href="https://drive.google.com/file/d/1L88Rm5dsF1ry1SQTKd_B0LtSIufvtnph/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="http://blog.jacobandreas.net/meaning-belief.html" target="_blank"><b>Andreas (2018)</b></a>,
-        <a href="https://aclanthology.org/Q18-1037.pdf" target="_blank"><b>Khani et al. (2018)</b></a>
+        <a href="http://blog.jacobandreas.net/meaning-belief.html" target="_blank">Andreas (2018)</a>,
+        <a href="https://aclanthology.org/Q18-1037.pdf" target="_blank">Khani et al. (2018)</a>
       </td>
     </tr>    
     <tr>
@@ -138,8 +138,8 @@ We encourage you to sign up and participate in the discussions there.
         <a href="https://drive.google.com/file/d/15zfSD8GAOd-EjlHTohtuh05xIQr5rlfB/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="https://aclanthology.org/P16-1224.pdf" target="_blank"><b>Wang et al. (2016)</b></a>,
-        <a href="https://arxiv.org/abs/1612.07182" target="_blank"><b>Lazaridou et al. (2017)</b></a>
+        <a href="https://aclanthology.org/P16-1224.pdf" target="_blank">Wang et al. (2016)</a>,
+        <a href="https://arxiv.org/abs/1612.07182" target="_blank">Lazaridou et al. (2017)</a>
       </td>
     </tr>
     <tr>
@@ -155,12 +155,12 @@ We encourage you to sign up and participate in the discussions there.
     <tr>
       <th scope="row">6</th>
       <td>28.3.23</td>
-      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center"><b>Information:<br>Language as a Communicative Tool</b></td>
+      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center">Information:<br>Language as a Communicative Tool</td>
       <td>
           <a href="https://drive.google.com/file/d/1Wuo0b1TsJWs_Jnyx3yCAPdV87LQwa_uk/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1GaDoLtKqwIoS8ApI3mSoW3zp1xf7wJ71/view?usp=share_link" target="_blank"><b>Shannon and Weaver (1968)</b></a>
+        <a href="https://drive.google.com/file/d/1GaDoLtKqwIoS8ApI3mSoW3zp1xf7wJ71/view?usp=share_link" target="_blank">Shannon and Weaver (1968)</a>
       </td>
     </tr>    
     <tr>
@@ -170,7 +170,7 @@ We encourage you to sign up and participate in the discussions there.
           <a href="https://drive.google.com/file/d/1ZeKY7o5p_kZfed6TY2kmktFZzusO5x5m/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1_kDPOsbukT0dF153fr_rShxwr48Tsp1-/view?usp=share_link" target="_blank"><b>Wiener (1950)</b></a> [Ch. IV],
+        <a href="https://drive.google.com/file/d/1_kDPOsbukT0dF153fr_rShxwr48Tsp1-/view?usp=share_link" target="_blank">Wiener (1950)</a> [Ch. IV],
       </td>
     </tr>    
     <tr>
@@ -180,7 +180,7 @@ We encourage you to sign up and participate in the discussions there.
           <a href="https://docs.google.com/presentation/d/1eYTLambd3SBfsk5vZYsalJEVtiO2R0GbsExkHviTChY/edit?usp=sharing" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="http://colala.berkeley.edu/papers/gibson2019how.pdf" target="_blank"><b>Gibson et al. (2019)</b></a>,
+        <a href="http://colala.berkeley.edu/papers/gibson2019how.pdf" target="_blank">Gibson et al. (2019)</a>,
         <a href="https://aclanthology.org/Q19-1021.pdf" target="_blank">Cotterell et al. (2019)</a>
       </td>
     </tr>  
@@ -191,7 +191,7 @@ We encourage you to sign up and participate in the discussions there.
           <a href="https://drive.google.com/file/d/1XAgPiueVJlxAt8g7VVTNp3KkyCjbttYY/view?usp=share_link" target="_blank">Slides</a>
       </td>
       <td>
-        <a href="http://colala.berkeley.edu/papers/PNAS-2011-Piantadosi-1012551108.pdf" target="_blank"><b>Piantadosi et al. (2011)</b></a>,
+        <a href="http://colala.berkeley.edu/papers/PNAS-2011-Piantadosi-1012551108.pdf" target="_blank">Piantadosi et al. (2011)</a>,
         <a href="https://aclanthology.org/2020.emnlp-main.328.pdf" target="_blank">Pimentel et al. (2020)</a>,
         <a href="https://aclanthology.org/2021.naacl-main.350/" target="_blank">Pimentel et al. (2021)</a>
       </td>
@@ -216,11 +216,11 @@ We encourage you to sign up and participate in the discussions there.
     <tr>
       <th scope="row">10</th>
       <td>2.5.23</td>
-      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center"><b>Pragmatics:<br>the Meaning Beyond Semantics</b></td>
+      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center">Pragmatics:<br>the Meaning Beyond Semantics</td>
       <td>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1m-m-00uBvvNDxbcTHaAW939aNDY-z3Bd/view?usp=share_link" target="_blank"><b>Austin (1962)</b></a>
+        <a href="https://drive.google.com/file/d/1m-m-00uBvvNDxbcTHaAW939aNDY-z3Bd/view?usp=share_link" target="_blank">Austin (1962)</a>
       </td>
     </tr>    
     <tr>
@@ -229,9 +229,9 @@ We encourage you to sign up and participate in the discussions there.
       <td>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1f_qnp7iNIQXTUoo---35JvZaDhO8uVTS/view?usp=share_link" target="_blank"><b>Grice (1957)</b></a>,
-        <a href="https://drive.google.com/file/d/1XjC2rlyK0asX3LZVTaZpFIc62X2TIl7W/view?usp=share_link" target="_blank"><b>Grice (1975)</b></a>,
-        <a href="https://drive.google.com/file/d/1Z0m8hWxWfiWjGKvvS9ODXb6ujw1qoCin/view?usp=share_link" target="_blank"><b>Searle (1980)</b></a>
+        <a href="https://drive.google.com/file/d/1f_qnp7iNIQXTUoo---35JvZaDhO8uVTS/view?usp=share_link" target="_blank">Grice (1957)</a>,
+        <a href="https://drive.google.com/file/d/1XjC2rlyK0asX3LZVTaZpFIc62X2TIl7W/view?usp=share_link" target="_blank">Grice (1975)</a>,
+        <a href="https://drive.google.com/file/d/1Z0m8hWxWfiWjGKvvS9ODXb6ujw1qoCin/view?usp=share_link" target="_blank">Searle (1980)</a>
       </td>
     </tr>   
     <tr>
@@ -240,12 +240,12 @@ We encourage you to sign up and participate in the discussions there.
       <td>
       </td>
       <td>
-        <a href="https://arxiv.org/abs/1510.06807" target="_blank"><b>Monroe and Potts (2015)</b></a>,
-        <a href="https://aclanthology.org/D16-1125/" target="_blank"><b>Andreas and Klein (2016)</b></a>,
-        <a href="https://www.annualreviews.org/doi/full/10.1146/annurev-linguistics-031220-010811" target="_blank"><b>Degen (2023)</b></a>,
-        <a href="https://www.nogsky.com/publication/2021-scil/2021-SCiL.pdf" target="_blank"><b>Zaslavsky et al. (2021)</b></a>,
-        <a href="https://aclanthology.org/P13-2014/" target="_blank"><b>Vogel et al. (2013)</b></a>,
-        <a href="https://aclanthology.org/N13-1127.pdf" target="_blank"><b>Vogel et al. (2013)</b></a>
+        <a href="https://arxiv.org/abs/1510.06807" target="_blank">Monroe and Potts (2015)</a>,
+        <a href="https://aclanthology.org/D16-1125/" target="_blank">Andreas and Klein (2016)</a>,
+        <a href="https://www.annualreviews.org/doi/full/10.1146/annurev-linguistics-031220-010811" target="_blank">Degen (2023)</a>,
+        <a href="https://www.nogsky.com/publication/2021-scil/2021-SCiL.pdf" target="_blank">Zaslavsky et al. (2021)</a>,
+        <a href="https://aclanthology.org/P13-2014/" target="_blank">Vogel et al. (2013)</a>,
+        <a href="https://aclanthology.org/N13-1127.pdf" target="_blank">Vogel et al. (2013)</a>
       </td>
     </tr>   
     <tr>
@@ -254,10 +254,10 @@ We encourage you to sign up and participate in the discussions there.
       <td>
       </td>
       <td>
-        <a href="https://aclanthology.org/2020.acl-main.463/" target="_blank"><b>Bender and Koller (2020)</b></a>,
-        <a href="https://aclanthology.org/2021.tacl-1.62/" target="_blank"><b>Merrill and Goldberg (2021)</b></a>,
-        <a href="https://arxiv.org/abs/2208.02957" target="_blank"><b>Piantadosi (2022)</b></a>,
-        <a href="https://arxiv.org/pdf/2212.01681" target="_blank"><b>Andreas (2022)</b></a>
+        <a href="https://aclanthology.org/2020.acl-main.463/" target="_blank">Bender and Koller (2020)</a>,
+        <a href="https://aclanthology.org/2021.tacl-1.62/" target="_blank">Merrill and Goldberg (2021)</a>,
+        <a href="https://arxiv.org/abs/2208.02957" target="_blank">Piantadosi (2022)</a>,
+        <a href="https://arxiv.org/pdf/2212.01681" target="_blank">Andreas (2022)</a>
       </td>
     </tr> 
     <tr>
@@ -275,7 +275,7 @@ We encourage you to sign up and participate in the discussions there.
     <tr>
       <th scope="row">14</th>
       <td>30.5.23</td>
-      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center"><b>Conclusions</b></td>
+      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center">Conclusions</td>
       <td>
       </td>
       <td>

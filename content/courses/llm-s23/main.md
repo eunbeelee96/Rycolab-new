@@ -108,7 +108,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <!-- <td>21. 2. 2023 (1 hour)</td> -->
       <td>21. 2. 2023</td>
       <td>1 hour</td>
-      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center"><b>Probabilistic Foundations</b></td>
+      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center">Probabilistic Foundations</td>
       <td>Basic Measure Theory</td>
       <td>
       Ryan
@@ -177,7 +177,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <!-- <td>3. 3. 2023 (1 hour)</td> -->
       <td>3. 3. 2023</td>
       <td>1 hour</td>
-      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center"><b>Modeling Foundations</b></td>
+      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center">Modeling Foundations</td>
       <td>The Language Modeling Task</td>
       <td>
       Ryan
@@ -241,7 +241,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
     <tr>
       <td>14. 3. 2023</td>
       <td>2 hours</td>
-      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center"><b>Neural Network Modeling</b></td>
+      <td rowspan="6" style="vertical-align : middle;text-align:center;" align="center">Neural Network Modeling</td>
       <td>Recurrent Neural Language Models</td>
       <td>
       Ryan
@@ -283,7 +283,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
     <tr>
       <td>21. 3. 2023</td>
       <td>2 hours</td>
-      <!-- <td rowspan="5" style="vertical-align : middle;text-align:center;" align="center"><b>Neural Network Modeling</b></td> -->
+      <!-- <td rowspan="5" style="vertical-align : middle;text-align:center;" align="center">Neural Network Modeling</td> -->
       <td>Representational Capacity of RNNLMs</td>
       <td>
       Ryan
@@ -370,7 +370,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <!-- <td>4. 4. 2023 (2 hours)</td> -->
       <td>4. 4. 2023</td>
       <td>2 hours</td>
-      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center"><b>Modeling Potpourri</b></td>
+      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center">Modeling Potpourri</td>
       <td>Tokenization</td>
       <td>
       Ryan
@@ -392,7 +392,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <td></td>
       <td>
       </td>
-      <td style="vertical-align : middle;text-align:center;" align="center"><b>Easter Break</b></td>
+      <td style="vertical-align : middle;text-align:center;" align="center">Easter Break</td>
       <td>
       </td>
       <td>
@@ -408,7 +408,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <!-- <td>31. 3. 2023 (1 hour)</td> -->
       <td>18. 4. 2023</td>
       <td>2 hours</td>
-      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center"><b>Modeling Potpourri</b></td>
+      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center">Modeling Potpourri</td>
       <td>Generating Text from a Language Model</td>
       <td>
       Ryan
@@ -429,7 +429,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
     <tr>
       <td>21. 4. 2023</td>
       <td>1 hour</td>
-      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center"><b>Training, Fine Tuning and Inference</b></td>
+      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center">Training, Fine Tuning and Inference</td>
       <td>Transfer Learning</td>
       <td>
       Mrinmaya
@@ -491,7 +491,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <!-- <td>11. 4. 2023 (2 hours)</td> -->
       <td>2. 5. 2023</td>
       <td>2 hours</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Parallelism and Scaling up</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Parallelism and Scaling up</td>
       <td>Scaling up</td>
       <td>
       Ce
@@ -533,7 +533,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
     <tr>
       <td>9. 5. 2023</td>
       <td>2 hours</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Applications and the Benefits of Scale</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Applications and the Benefits of Scale</td>
       <td>Multimodality</td>
       <td>
       Mrinmaya
@@ -574,7 +574,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
     <tr>
       <td>16. 5. 2023</td>
       <td>2 hours</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Analysis</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Analysis</td>
       <td>Analysis and Probing</td>
       <td>
       Tiago/Ryan
@@ -618,7 +618,7 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
     <tr>
       <td>23. 5. 2023</td>
       <td>2 hours</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Security and Misuse</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Security and Misuse</td>
       <td>Security and Misuse</td>
       <td>
       Florian
@@ -843,14 +843,14 @@ Both assignments are due on **Tuesday, August 15th** at 23:59.
     <tr>
       <th scope="row">4</th>
       <td>19. 10. 2023</td>
-      <td><b>No tutorials</b></td>
+      <td>No tutorials</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <th scope="row">5</th>
       <td>26. 10. 2023</td>
-      <td><b>No tutorials</b></td>
+      <td>No tutorials</td>
       <td></td>
       <td></td>
     </tr>

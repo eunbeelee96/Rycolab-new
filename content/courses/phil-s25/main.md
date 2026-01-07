@@ -87,11 +87,11 @@ Moodle will be the main communication hub for the course. You are responsible fo
     <tr>
       <th scope="row">1</th>
       <td>18.02.25</td>
-      <td style="vertical-align : middle;text-align:center;" align="center"><b>Introduction</b></td>
+      <td style="vertical-align : middle;text-align:center;" align="center">Introduction</td>
       <td>Language and Critique</td>
       <td>
-        <a href="https://drive.google.com/file/d/1AciRh_QHiABtQnMqwJNn8v5aJLmU8Pa_/view?usp=sharing" target="_blank"><b>Nietzsche (1873)</b></a>, 
-        <a href="https://drive.google.com/file/d/1OHA4RWI5d2JWZ0IK7H6SoaJoVOZS-6PK/view?usp=share_link" target="_blank"><b>Nietzsche (1873) in German</b></a>
+        <a href="https://drive.google.com/file/d/1AciRh_QHiABtQnMqwJNn8v5aJLmU8Pa_/view?usp=sharing" target="_blank">Nietzsche (1873)</a>, 
+        <a href="https://drive.google.com/file/d/1OHA4RWI5d2JWZ0IK7H6SoaJoVOZS-6PK/view?usp=share_link" target="_blank">Nietzsche (1873) in German</a>
         </br>
         <a href="https://drive.google.com/file/d/1e5EXN7zvN6ZXSO2lWZLaafQxlDUQfceb/view?usp=sharing" target="_blank">Borges (1940a)</a>, 
         <a href="https://drive.google.com/file/d/13044an4v0wCuLGpoYlWrP7SnY4Bwwnh6/view?usp=sharing" target="_blank">Borges (1940a) in Spanish</a>, 
@@ -104,10 +104,10 @@ Moodle will be the main communication hub for the course. You are responsible fo
     <tr>
       <th scope="row">2</th>
       <td>25.02.25</td>
-      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center"><b>Wittgenstein's<br>Use Theory of Meaning</b></td>
+      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center">Wittgenstein's<br>Use Theory of Meaning</td>
       <td>Language Games and Meaning as Use</td>
       <td>
-        <a href="https://drive.google.com/file/d/1ohsPtpVD_87w3-ztiD5gfSzItXoB545J/view?usp=share_link" target="_blank"><b>Wittgenstein (1953)</b></a> [Preface, §§1-48]
+        <a href="https://drive.google.com/file/d/1ohsPtpVD_87w3-ztiD5gfSzItXoB545J/view?usp=share_link" target="_blank">Wittgenstein (1953)</a> [Preface, §§1-48]
         </br>
         <a href="https://drive.google.com/file/d/14N69sZSJuh-czgphbfwtEqp0578cttA0/view?usp=share_link" target="_blank">Wittgenstein (1922)</a>,
         <a href="https://drive.google.com/file/d/1uY0FloRywtUEr6HgzldORM6EYTDnf7cN/view?usp=share_link" target="_blank">Wittgenstein (1956)</a>,
@@ -120,8 +120,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>04.03.25</td>
       <td>Language Games in NLP</td>
       <td>
-        <a href="https://aclanthology.org/P16-1224.pdf" target="_blank"><b>Wang et al. (2016)</b></a>,
-        <a href="https://arxiv.org/pdf/2501.14225" target="_blank"><b>Ye et al. (2024)</b></a>
+        <a href="https://aclanthology.org/P16-1224.pdf" target="_blank">Wang et al. (2016)</a>,
+        <a href="https://arxiv.org/pdf/2501.14225" target="_blank">Ye et al. (2024)</a>
         </br>
         <a href="https://aclanthology.org/Q18-1037.pdf" target="_blank">Khani et al. (2018)</a>
       </td>
@@ -131,9 +131,9 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>11.03.25</td>
       <td>The Use of Use in NLP</td>
       <td>
-        <a href="https://direct.mit.edu/daed/article/151/2/127/110621/Human-Language-Understanding-amp-Reasoning" target="_blank"><b>Manning (2022)</b></a>,
-        <a href="http://blog.jacobandreas.net/meaning-belief.html" target="_blank"><b>Andreas (2018)</b></a>,
-        <a href="https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(24)00027-5" target="_blank"><b>Mahowald et al. (2024)</b></a>
+        <a href="https://direct.mit.edu/daed/article/151/2/127/110621/Human-Language-Understanding-amp-Reasoning" target="_blank">Manning (2022)</a>,
+        <a href="http://blog.jacobandreas.net/meaning-belief.html" target="_blank">Andreas (2018)</a>,
+        <a href="https://www.cell.com/trends/cognitive-sciences/fulltext/S1364-6613(24)00027-5" target="_blank">Mahowald et al. (2024)</a>
         </br>
         <a href="https://www.journals.uchicago.edu/doi/10.1086/713551" target="_blank">Liu (2021)</a>,
         <a href="https://link.springer.com/article/10.1007/s13347-020-00393-9" target="_blank">Gastaldi (2021)</a>
@@ -142,11 +142,11 @@ Moodle will be the main communication hub for the course. You are responsible fo
     <tr>
       <th scope="row">5</th>
       <td>18.03.25</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Information and Language:<br>A Theory in Search of a Philosophy</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Information and Language:<br>A Theory in Search of a Philosophy</td>
       <td>Wiener's Cybernetics</td>
       <td>
-        <a href="https://drive.google.com/file/d/1Nuxf51CS7L3KKs8l8vO0SjoZA8G3LKef/view?usp=share_link" target="_blank"><b>Wiener (1948/1961)</b></a> [Ch. VIII],
-        <a href="https://drive.google.com/file/d/1_kDPOsbukT0dF153fr_rShxwr48Tsp1-/view?usp=share_link" target="_blank"><b>Wiener (1950)</b></a> [Ch. IV]
+        <a href="https://drive.google.com/file/d/1Nuxf51CS7L3KKs8l8vO0SjoZA8G3LKef/view?usp=share_link" target="_blank">Wiener (1948/1961)</a> [Ch. VIII],
+        <a href="https://drive.google.com/file/d/1_kDPOsbukT0dF153fr_rShxwr48Tsp1-/view?usp=share_link" target="_blank">Wiener (1950)</a> [Ch. IV]
         </br>
         <a href="https://drive.google.com/file/d/1sfsd7sL0B_q2c5bxTsFQtVKxNgSnn82q/view?usp=share_link" target="_blank">Jonas (1953)</a>
       </td>
@@ -156,7 +156,7 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>25.03.25</td>
       <td>Shannon's Information Theory</td>
       <td>
-        <a href="https://drive.google.com/file/d/1GaDoLtKqwIoS8ApI3mSoW3zp1xf7wJ71/view?usp=share_link" target="_blank"><b>Shannon and Weaver (1968)</b></a> [pp. 3-64]
+        <a href="https://drive.google.com/file/d/1GaDoLtKqwIoS8ApI3mSoW3zp1xf7wJ71/view?usp=share_link" target="_blank">Shannon and Weaver (1968)</a> [pp. 3-64]
         </br>
         <a href="https://drive.google.com/file/d/1nwJEuZ25oIsPMR_GeU9R38b6pfzxUZb7/view?usp=share_link" target="_blank">Shannon (1951)</a>,
         <a href="https://drive.google.com/file/d/1irh11GYKaofry5ljTKe0_2y9lgrx1bRc/view?usp=share_link" target="_blank">Shannon (1993)</a>,
@@ -169,8 +169,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>01.04.25</td>
       <td>Language as a Communication Tool</td>
       <td>
-        <a href="https://www.nature.com/articles/s41586-024-07522-w" target="_blank"><b>Fedorenko et al. (2024)</b></a>,
-        <a href="https://arxiv.org/abs/1612.07182" target="_blank"><b>Lazaridou et al. (2017)</b></a>
+        <a href="https://www.nature.com/articles/s41586-024-07522-w" target="_blank">Fedorenko et al. (2024)</a>,
+        <a href="https://arxiv.org/abs/1612.07182" target="_blank">Lazaridou et al. (2017)</a>
         </br>
         <a href="https://aclanthology.org/Q19-1021.pdf" target="_blank">Cotterell et al. (2019)</a>,
         <a href="http://socsci.uci.edu/~rfutrell/teaching/itl-davis/" target="_blank">Information-Theoretic Approaches to Linguistics</a>
@@ -181,8 +181,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>08.04.25</td>
       <td>Efficiency in Language</td>
       <td>
-        <a href="http://colala.berkeley.edu/papers/PNAS-2011-Piantadosi-1012551108.pdf" target="_blank"><b>Piantadosi et al. (2011)</b></a>,
-        <a href="http://colala.berkeley.edu/papers/gibson2019how.pdf" target="_blank"><b>Gibson et al. (2019)</b></a>
+        <a href="http://colala.berkeley.edu/papers/PNAS-2011-Piantadosi-1012551108.pdf" target="_blank">Piantadosi et al. (2011)</a>,
+        <a href="http://colala.berkeley.edu/papers/gibson2019how.pdf" target="_blank">Gibson et al. (2019)</a>
         </br>
         <a href="https://aclanthology.org/2021.naacl-main.350/" target="_blank">Pimentel et al. (2021)</a>,
         <a href="http://socsci.uci.edu/~rfutrell/teaching/itl-davis/" target="_blank">Information-Theoretic Approaches to Linguistics</a>
@@ -201,11 +201,11 @@ Moodle will be the main communication hub for the course. You are responsible fo
     <tr>
       <th scope="row">10</th>
       <td>29.04.25</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Critical Approaches to Language and Meaning<br></b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Critical Approaches to Language and Meaning<br></td>
       <td>Stochastic Parrots</td>
       <td>
-        <a href="https://aclanthology.org/2020.acl-main.463/" target="_blank"><b>Bender and Koller (2020)</b></a>,
-        <a href="https://aclanthology.org/2021.tacl-1.62/" target="_blank"><b>Merrill and Goldberg (2021)</b></a>
+        <a href="https://aclanthology.org/2020.acl-main.463/" target="_blank">Bender and Koller (2020)</a>,
+        <a href="https://aclanthology.org/2021.tacl-1.62/" target="_blank">Merrill and Goldberg (2021)</a>
         </br>
         <a href="https://dl.acm.org/doi/10.1145/3442188.3445922" target="_blank">Bender et al. (2021)</a>,
         <a href="https://medium.com/huggingface/learning-meaning-in-natural-language-processing-the-semantics-mega-thread-9c0332dfe28e" target="_blank">Wolf (2018)</a>
@@ -216,9 +216,9 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>06.05.25</td>
       <td>Meaning and Text in NLP</td>
       <td>
-        <a href="https://arxiv.org/abs/2208.02957" target="_blank"><b>Piantadosi et al. (2022)</b></a>,
-        <a href="https://aclanthology.org/2022.findings-emnlp.423/" target="_blank"><b>Andreas (2022)</b></a>,
-        <a href="https://aclanthology.org/2024.cl-3.12/" target="_blank"><b>Mandelkern et al. (2024)</b></a>
+        <a href="https://arxiv.org/abs/2208.02957" target="_blank">Piantadosi et al. (2022)</a>,
+        <a href="https://aclanthology.org/2022.findings-emnlp.423/" target="_blank">Andreas (2022)</a>,
+        <a href="https://aclanthology.org/2024.cl-3.12/" target="_blank">Mandelkern et al. (2024)</a>
         </br>
         <a href="https://crfm.stanford.edu/assets/report.pdf#philosophy" target="_blank">Potts et al. (2024)</a> [§2.6]
       </td>
@@ -228,8 +228,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>13.05.25</td>
       <td>The Words and the Things</td>
       <td>
-        <a href="https://drive.google.com/file/d/1SeYl4lGZ3uMzsk9aEf1JvkyvWZOI9xab/view?usp=share_link" target="_blank"><b>Foucault (1966)</b></a>,
-        <a href="https://drive.google.com/file/d/10c2nREUCnDAqHb6cQbiP0jExWrQRbIwi/view?usp=share_link" target="_blank"><b>Foucault (1969)</b></a>
+        <a href="https://drive.google.com/file/d/1SeYl4lGZ3uMzsk9aEf1JvkyvWZOI9xab/view?usp=share_link" target="_blank">Foucault (1966)</a>,
+        <a href="https://drive.google.com/file/d/10c2nREUCnDAqHb6cQbiP0jExWrQRbIwi/view?usp=share_link" target="_blank">Foucault (1969)</a>
         </br>
         <a href="https://drive.google.com/file/d/1fUiKUVYh59KVxpY-Ilmy52P2AvnWn8DV/view?usp=share_link" target="_blank">Deleuze (1988)</a>,
         <a href="https://critinq.wordpress.com/2023/06/26/again-theory-a-forum-on-language-meaning-and-intent-in-the-time-of-stochastic-parrots/" target="_blank">Kirschenbaum (2023)</a>,
@@ -241,8 +241,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>20.05.25</td>
       <td>The Logic of Sense</br>Signature Event Context</td>
       <td>
-        <a href="https://drive.google.com/file/d/1JyofcB_bZ90M3FRRjWNiIL3YJLOZzEeH/view?usp=share_link" target="_blank"><b>Deleuze (1969)</b></a>,
-        <a href="https://drive.google.com/file/d/1XW_ownersxQ-d18U5U53RgXkzMxSaJLv/view?usp=share_link" target="_blank"><b>Derrida (1988)</b></a>
+        <a href="https://drive.google.com/file/d/1JyofcB_bZ90M3FRRjWNiIL3YJLOZzEeH/view?usp=share_link" target="_blank">Deleuze (1969)</a>,
+        <a href="https://drive.google.com/file/d/1XW_ownersxQ-d18U5U53RgXkzMxSaJLv/view?usp=share_link" target="_blank">Derrida (1988)</a>
         </br>
         <a href="https://drive.google.com/file/d/1eiwbs9h265TNIJWLoiOj22tRZSUFLNY8/view?usp=share_link" target="_blank">Deleuze (1980)</a>,
         <a href="https://drive.google.com/file/d/1pUWV5gRviIkkMvuUOcWQsGZw-ixkYXyf/view?usp=share_link" target="_blank">Derrida (1967)</a> 
@@ -251,7 +251,7 @@ Moodle will be the main communication hub for the course. You are responsible fo
         <tr>
       <th scope="row">14</th>
       <td>27.05.25</td>
-      <td style="vertical-align : middle;text-align:center;" align="center"><b>Conclusion</b></td>
+      <td style="vertical-align : middle;text-align:center;" align="center">Conclusion</td>
       <td></td>
       <td>
       </td>

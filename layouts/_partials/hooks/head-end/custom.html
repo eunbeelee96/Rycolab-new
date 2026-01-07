@@ -205,8 +205,7 @@ section {
 }
 
 /* Remove border from sticky page header */
-.page-header.sticky,
-div[class*="page-header"] {
+.page-header.sticky {
   border-bottom: none !important;
 }
 
@@ -338,25 +337,7 @@ div[class*="page-header"] {
 .update-card[data-type="talks"].visible {
   transition-delay: 0.6s;
 }
-@media (max-width: 900px) {
-  .updates-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    padding: 1.2rem 0 1.5rem 0;
-  }
-}
-@media (max-width: 600px) {
-  .updates-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1rem 0 1rem 0;
-  }
-  .update-card {
-    padding: 1.2rem 1rem 1rem 1rem;
-    min-height: 100px;
-    font-size: 1rem;
-  }
-}
+
 
 /* Footer styles */
 .site-footer {

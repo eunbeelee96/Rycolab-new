@@ -68,7 +68,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       <td> RNNs and FSAs </td>
       <td> Mary, Jakob, Pierre
       </td>
-      <td> <a href=https://aclanthology.org/2024.naacl-long.380/ target="_blank"><b> Svete et al. (2024)</b></a>, <a href=https://aclanthology.org/2024.findings-acl.244/ target="_blank"><b> Svete et al. (2024)</b></a>,
+      <td> <a href=https://aclanthology.org/2024.naacl-long.380/ target="_blank"> Svete et al. (2024)</a>, <a href=https://aclanthology.org/2024.findings-acl.244/ target="_blank"> Svete et al. (2024)</a>,
       </td>
     </tr>  
     <tr>
@@ -78,7 +78,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       <td>
       Tom, Simon, Julius
       </td>
-      <td> <a href=https://aclanthology.org/P18-2117.pdf target="_blank"><b> Weiss et al. (2017)</b></a>,
+      <td> <a href=https://aclanthology.org/P18-2117.pdf target="_blank"> Weiss et al. (2017)</a>,
       </td>
     </tr>  
     <tr>
@@ -89,8 +89,8 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       Sasha, Ben, Torban
       </td>
       <td>
-      <a href=https://aclanthology.org/2023.emnlp-main.434v2.pdf target="_blank"><b> Nowak et al. (2023)</b></a>,
-      <a href=https://www.sciencedirect.com/science/article/pii/S0022000085710136 target="_blank"><b> Siegelmann and Sontag (1992)</b></a>,
+      <a href=https://aclanthology.org/2023.emnlp-main.434v2.pdf target="_blank"> Nowak et al. (2023)</a>,
+      <a href=https://www.sciencedirect.com/science/article/pii/S0022000085710136 target="_blank"> Siegelmann and Sontag (1992)</a>,
       </td>
     </tr>  
     <tr>
@@ -102,8 +102,8 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       Leon
       </td>
       <td>
-      <a href=https://papers.nips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html target="_blank"><b> Vaswani et al. (2017)</b></a>,
-      <a href=https://arxiv.org/pdf/1409.0473 target="_blank"><b> Bahdanu et al. (2014)</b></a>,
+      <a href=https://papers.nips.cc/paper_files/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html target="_blank"> Vaswani et al. (2017)</a>,
+      <a href=https://arxiv.org/pdf/1409.0473 target="_blank"> Bahdanu et al. (2014)</a>,
       </td>
     </tr>  
     <tr>
@@ -113,7 +113,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       <td>
       </td>
       <td>
-      <a href=https://jmlr.org/papers/v22/20-302.html target="_blank"><b> Perez et al. (2017)</b></a>,
+      <a href=https://jmlr.org/papers/v22/20-302.html target="_blank"> Perez et al. (2017)</a>,
       </td>
     </tr>  
     <tr>
@@ -123,7 +123,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       <td>
       </td>
       <td>
-      <a href=https://arxiv.org/html/2411.06228v1 target="_blank"><b> Pasti et al. (20204)</b></a>
+      <a href=https://arxiv.org/html/2411.06228v1 target="_blank"> Pasti et al. (20204)</a>
       </td>
     </tr>  
     <tr>
@@ -143,7 +143,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       Mischa,Renne,Jesse
       </td>
       <td>
-      <a href=https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00306/43545/Theoretical-Limitations-of-Self-Attention-in target="_blank"><b> Hahn (2020)</b></a>
+      <a href=https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00306/43545/Theoretical-Limitations-of-Self-Attention-in target="_blank"> Hahn (2020)</a>
       </td>
     </tr>  
     <tr>
@@ -154,7 +154,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       Simon, Christian
       </td>
       <td>
-      <a href=https://arxiv.org/pdf/2310.07923 target="_blank"><b> Merril and Sabharwal (2024)</b></a>
+      <a href=https://arxiv.org/pdf/2310.07923 target="_blank"> Merril and Sabharwal (2024)</a>
       </td>
     </tr>  
     <tr>
@@ -165,7 +165,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
       Aurelian, Erdem
       </td>
       <td>
-      <a href=https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00663/120983 target="_blank"><b> Strobl et al. (2024) (Survey)</b></a>
+      <a href=https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00663/120983 target="_blank"> Strobl et al. (2024) (Survey)</a>
       </td>
     </tr>  
     <tr>
@@ -176,7 +176,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
        Raphael
       </td>
       <td>
-      <a href=https://arxiv.org/abs/2204.06618 target="_blank"><b> Hao et al. (2022) </b></a>
+      <a href=https://arxiv.org/abs/2204.06618 target="_blank"> Hao et al. (2022) </a>
       </td>
     </tr>  
     <tr>
@@ -187,7 +187,7 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
        Meri
       </td>
       <td>
-      <a href=https://arxiv.org/pdf/2410.10101 target="_blank"><b> Yau et al. (2024) </b></a> 
+      <a href=https://arxiv.org/pdf/2410.10101 target="_blank"> Yau et al. (2024) </a> 
       </td>
     </tr>  
   </tbody>

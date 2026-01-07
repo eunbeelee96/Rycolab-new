@@ -1,0 +1,166 @@
+{{ define "main" }}
+<section class="join-page">
+  <div class="join-container">
+    {{ .Content }}
+    <footer class="join-footer">
+      <div class="footer-content">
+        <div class="footer-group">
+          <a href="https://ml.inf.ethz.ch/">Institute for Machine Learning</a>
+          <a href="https://inf.ethz.ch/">Department of Computer Science, ETH Zürich</a>
+        </div>
+        <a href="mailto:contact-rycolab@lists.inf.ethz.ch">contact-rycolab@lists.inf.ethz.ch</a>
+        <p>Andreasstrasse 5, 8050 Zürich, Switzerland</p>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .join-page {
+    padding: 2rem 3rem 0 3rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 15rem;
+  }
+
+  .join-container {
+    max-width: 100%;
+    padding: 0 50px;
+    width: 100%;
+  }
+
+  /* Cards Grid - 2 columns */
+  .join-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  /* Card Style - like update-card */
+  .join-card {
+    background: transparent;
+    border: 1px solid #CEEDB2;
+    border-radius: 20px;
+    padding: 2rem;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    animation: cardReveal 0.7s ease-out forwards;
+  }
+
+  .join-card:nth-child(1) { animation-delay: 0s; }
+  .join-card:nth-child(2) { animation-delay: 0.15s; }
+
+  @keyframes cardReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Card Title */
+  .card-title {
+    font-family: "Roboto Mono", monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #72d71b;
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Card Content */
+  .join-card p {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #000000;
+    margin-bottom: 0.8rem;
+  }
+
+  .join-card p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .join-card a {
+    color: #999999;
+    transition: color 0.2s ease;
+  }
+
+  .join-card a:hover {
+    color: #999999;
+    text-decoration: underline;
+  }
+
+  /* Footer */
+  .join-footer {
+    padding: 15rem 0 2rem 0;
+    margin-bottom: 0;
+  }
+
+  .footer-content {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: 1px solid #eee;
+    padding: 1.5rem 0 0 0;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .footer-content p {
+    font-family: Roboto, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #000000;
+    text-decoration: none;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .footer-content a {
+    font-family: Roboto, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #999;
+    text-decoration: none;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .footer-content a:hover {
+    color: #72d71b;
+  }
+
+  .footer-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  @media (max-width: 900px) {
+    .join-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .join-page {
+      padding: 0 20px;
+    }
+
+    .join-footer {
+      padding: 5rem 20px 2rem 20px;
+    }
+  }
+</style>
+{{ end }}

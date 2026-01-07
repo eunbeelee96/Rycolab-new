@@ -82,7 +82,7 @@ Moodle will be the main communication hub for the course. You are responsible fo
     <tr>
       <th scope="row">1</th>
       <td>20.02.24</td>
-      <td style="vertical-align : middle;text-align:center;" align="center"><b>Introduction</b></td>
+      <td style="vertical-align : middle;text-align:center;" align="center">Introduction</td>
       <td>Images of Language</td>
       <td>
         <a href="https://drive.google.com/file/d/1czs0zWBTaMhfnC2yncyzXEdYbfJbynNF/view?usp=share_link" target="_blank">Introduction Slides</a>
@@ -99,15 +99,15 @@ Moodle will be the main communication hub for the course. You are responsible fo
     <tr>
       <th scope="row">2</th>
       <td>27.02.24</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Language and Logic:<br>Formal Representations of Meaning</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Language and Logic:<br>Formal Representations of Meaning</td>
       <td>Meaning: Between Sense and Denotation</td>
       <td>
         <a href="https://drive.google.com/file/d/1Fmj0gPdiU64F15q_a7DPfM5mx2l85vAR/view?usp=share_link" target="_blank">Intro to Module 1 Slides</a>
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1BU3dlFUepcXWFf1jNfjiJ0EObN0N6GaB/view?usp=sharing" target="_blank"><b>Frege (1892)</b></a>, 
+        <a href="https://drive.google.com/file/d/1BU3dlFUepcXWFf1jNfjiJ0EObN0N6GaB/view?usp=sharing" target="_blank">Frege (1892)</a>, 
         <a href="https://drive.google.com/file/d/1IacrQkytVlx6VOChN2BeIBnB1uWCvJUh/view?usp=sharing" target="_blank">Frege (1892) in German</a>, 
-        <a href="https://drive.google.com/file/d/1W6dRnFaiot2Y-PJ5x-tUV9-UYSVXeVga/view?usp=sharing" target="_blank"><b>Russell (1905)</b></a>
+        <a href="https://drive.google.com/file/d/1W6dRnFaiot2Y-PJ5x-tUV9-UYSVXeVga/view?usp=sharing" target="_blank">Russell (1905)</a>
       </td>
     </tr>  
     <tr>
@@ -118,12 +118,12 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <a href="https://drive.google.com/file/d/18kxSYzHSPLB8RDF1nxx1arIaCuOcYbeg/view?usp=share_link" target="_blank">Carnap Slides</a>, 
       <a href="https://drive.google.com/file/d/1jRhD8se5bzSBIM2Gmy2XK_GpKu58hocx/view?usp=share_link" target="_blank">Montague Slides</a>
       <td>
-        <!-- <a href="https://drive.google.com/file/d/1Mx5ue6RsajlMual7L3OfSGECbxx0Qzwq/view?usp=sharing" target="_blank"><b>Ajdukiewicz (1936)</b></a>,  -->
-        <a href="https://drive.google.com/file/d/10q6mmr5BWmgK9j83S1QxkWD1oxqI75Dp/view?usp=sharing" target="_blank"><b>Carnap (1955)</b></a>, 
+        <!-- <a href="https://drive.google.com/file/d/1Mx5ue6RsajlMual7L3OfSGECbxx0Qzwq/view?usp=sharing" target="_blank">Ajdukiewicz (1936)</a>,  -->
+        <a href="https://drive.google.com/file/d/10q6mmr5BWmgK9j83S1QxkWD1oxqI75Dp/view?usp=sharing" target="_blank">Carnap (1955)</a>, 
         <!-- <a href="https://drive.google.com/file/d/1JvDkWoJd8gCb53klrOLtcM8WbfQ2xKfa/view?usp=sharing" target="_blank">Lambek (1958)</a>,  -->
         <!-- <a href="https://drive.google.com/file/d/1bn8TNPz5a7gM9IjL9xPQtwnaiM04D1I7/view?usp=sharing" target="_blank">Davidson (1967)</a>,  -->
         <!-- <a href="https://drive.google.com/file/d/13mSSy0YdUVmhPNvy2G0g0HAYGpnJQMKw/view?usp=sharing" target="_blank">Lewis (1970)</a>, -->
-        <a href="https://drive.google.com/file/d/1jBMNJNtxXJTT3mWnG102YYJEX44C_vgW/view?usp=sharing" target="_blank"><b>Montague (1970)</b></a> 
+        <a href="https://drive.google.com/file/d/1jBMNJNtxXJTT3mWnG102YYJEX44C_vgW/view?usp=sharing" target="_blank">Montague (1970)</a> 
       </td>
     </tr>   
     <tr>
@@ -135,10 +135,10 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <a href="https://drive.google.com/file/d/1wAqy007zVst-aeB90xVxZekvtPkwJ3Ky/view?usp=share_link" target="_blank">Baroni et al. Slides 2</a>
       </td>
       <td>
-        <a href="https://aclanthology.org/2014.lilt-9.5.pdf" target="_blank"><b>Baroni et al. (2014)</b></a>
+        <a href="https://aclanthology.org/2014.lilt-9.5.pdf" target="_blank">Baroni et al. (2014)</a>
         <!-- <a href="https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00113/43379/The-Galactic-Dependencies-Treebanks-Getting-More" target="_blank">Wang and Eisner (2016)</a>, 
         <a href="https://aclanthology.org/N19-1356/" target="_blank">Ravfogel et al. (2019)</a>, 
-        <a href="https://aclanthology.org/2021.acl-long.38.pdf" target="_blank"><b>White and Cotterell (2021)</b></a> -->
+        <a href="https://aclanthology.org/2021.acl-long.38.pdf" target="_blank">White and Cotterell (2021)</a> -->
       </td>
     </tr>  
     <tr>
@@ -150,24 +150,24 @@ Moodle will be the main communication hub for the course. You are responsible fo
       </td>
       <td>
         <!-- <a href="https://www.inf.ed.ac.uk/teaching/courses/nlg/readings/ccgintro.pdf" target="_blank">Steedman (1996)</a>,  -->
-        <a href="https://homes.cs.washington.edu/~lsz/papers/zc-uai05.pdf" target="_blank"><b>Zettlemoyer and Collins (2005)</b></a>, 
-        <!-- <a href="https://arxiv.org/abs/1711.00350" target="_blank"><b>Lake and Baroni (2018)</b></a>,  -->
-        <a href="https://arxiv.org/pdf/1902.07181.pdf" target="_blank"><b>Andreas (2019)</b></a> 
+        <a href="https://homes.cs.washington.edu/~lsz/papers/zc-uai05.pdf" target="_blank">Zettlemoyer and Collins (2005)</a>, 
+        <!-- <a href="https://arxiv.org/abs/1711.00350" target="_blank">Lake and Baroni (2018)</a>,  -->
+        <a href="https://arxiv.org/pdf/1902.07181.pdf" target="_blank">Andreas (2019)</a> 
       </td>
     </tr>  
     <tr>
       <th scope="row">6</th>
       <td>26.03.24</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Structuralism:<br>The Search for the Right Units</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Structuralism:<br>The Search for the Right Units</td>
       <td>Structural Dualities</td>
       <td>
       <!-- <a href="https://drive.google.com/file/d/1peLSUTtcPFB9htOaRT-1euZ4S4oNy3Oz/view?usp=sharing" target="_blank">Saussure Presentation Slides</a>,
       <a href="https://drive.google.com/file/d/19qx9A9w3pjBVHHIt785lMEicGqYGaoeF/view?usp=sharing" target="_blank">Origin of Speech Presentation Slides</a> -->
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1adLFTigLCJumeEi7D8gDzPprgP1eA_Uu/view?usp=sharing" target="_blank"><b>Saussure (1916)</b></a>, 
+        <a href="https://drive.google.com/file/d/1adLFTigLCJumeEi7D8gDzPprgP1eA_Uu/view?usp=sharing" target="_blank">Saussure (1916)</a>, 
         <a href="https://drive.google.com/file/d/1Dp-AQVrZ5JBZNQW0sIqp-ANrnhldBpIr/view?usp=sharing" target="_blank">Saussure (1916) in French</a>, 
-        <!-- <a href="https://drive.google.com/file/d/1nlOT3JAqTYRdN0z1yKVI2YcfTdx21Z28/view?usp=sharing" target="_blank"><b>Hocket (1960)</b></a>  -->
+        <!-- <a href="https://drive.google.com/file/d/1nlOT3JAqTYRdN0z1yKVI2YcfTdx21Z28/view?usp=sharing" target="_blank">Hocket (1960)</a>  -->
       </td>
     </tr>  
     <tr>
@@ -178,11 +178,11 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <!-- <a href="https://drive.google.com/file/d/1OXI1GGidvmn7_7sxgpuXhLOh_D_N_zsq/view?usp=share_link" target="_blank">Linguistic Units Presentation Slides</a>, <a href="https://drive.google.com/file/d/1fMVH7Cxroyd_gOA7oIHqoZ2FCtuyox4e/view?usp=share_link" target="_blank">Greimas (1966) Presentation Slides</a>  -->
       </td>
       <td>
-        <!-- <a href="https://drive.google.com/file/d/1ymIuj8WsWFwr9rP-v3dFA-MC8TrrhVfg/view?usp=sharing" target="_blank"><b>Harris</b> (1951)</a>, -->
+        <!-- <a href="https://drive.google.com/file/d/1ymIuj8WsWFwr9rP-v3dFA-MC8TrrhVfg/view?usp=sharing" target="_blank">Harris (1951)</a>, -->
         <!-- <a href="https://drive.google.com/file/d/1HGu3-ttI0TfJyOwW8e47BPqOrd7mir-0/view?usp=sharing" target="_blank">Hjelmslev (1943)</a>,  -->
-        <a href="https://drive.google.com/file/d/1fhWpIoLyEVKxKnXh04EYhgqTZ6vlp1yl/view?usp=sharing" target="_blank"><b>Harris (1954)</b></a>, 
+        <a href="https://drive.google.com/file/d/1fhWpIoLyEVKxKnXh04EYhgqTZ6vlp1yl/view?usp=sharing" target="_blank">Harris (1954)</a>, 
         <!-- <a href="https://drive.google.com/file/d/1Hwlv-KdYOgedGiK1JT5-gaUFxLTE_jJp/view?usp=sharing" target="_blank">Firth (1957)</a>,  -->
-        <a href="https://drive.google.com/file/d/1__98RMeryoF9zrNdcThf98rIC7dk_g9t/view?usp=sharing" target="_blank"><b>Greimas (1966)</b></a>,
+        <a href="https://drive.google.com/file/d/1__98RMeryoF9zrNdcThf98rIC7dk_g9t/view?usp=sharing" target="_blank">Greimas (1966)</a>,
         <a href="https://drive.google.com/file/d/1Dp-AQVrZ5JBZNQW0sIqp-ANrnhldBpIr/view?usp=sharing" target="_blank">Greimas (1966) in French</a> 
       </td>
     </tr>  
@@ -196,10 +196,10 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <td>
         <a href="https://aclanthology.org/J01-2001.pdf" target="_blank">Goldsmith (2001)</a>, 
         <!-- <a href="https://ojs.aaai.org//index.php/AAAI/article/view/4660" target="_blank">Mielke and Eisner (2019)</a>,  -->
-        <a href="https://arxiv.org/pdf/1508.06615.pdf" target="_blank"><b>Kim et al. (2015)</b></a>, 
-        <a href="https://aclanthology.org/P16-1162/" target="_blank"><b>Sennrich et al. (2016)</b></a>, 
-        <a href="https://aclanthology.org/D18-1278.pdf" target="_blank"><b>Vania et al. (2018)</b></a>,
-        <a href="https://arxiv.org/pdf/2211.09761.pdf" target="_blank"><b>Nawrot et al. (2023)</b></a>
+        <a href="https://arxiv.org/pdf/1508.06615.pdf" target="_blank">Kim et al. (2015)</a>, 
+        <a href="https://aclanthology.org/P16-1162/" target="_blank">Sennrich et al. (2016)</a>, 
+        <a href="https://aclanthology.org/D18-1278.pdf" target="_blank">Vania et al. (2018)</a>,
+        <a href="https://arxiv.org/pdf/2211.09761.pdf" target="_blank">Nawrot et al. (2023)</a>
         <!-- <a href="https://arxiv.org/pdf/2112.10508.pdf" target="_blank">Mielke et al. (2021)</a>  -->
       </td>
     </tr>  
@@ -212,24 +212,24 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <a href="https://drive.google.com/file/d/19vfDWyneU82AFRiXGrPRQ9PcC2_eM9cZ/view?usp=share_link" target="_blank">Character-Based Modeling Presentation Slides</a> -->
       </td>
       <td>
-        <a href="https://www.mit.edu/~rplevy/papers/gutierrez-levy-bergen-2016-acl.pdf" target="_blank"><b>Gutiérrez et al. (2016)<b></a>, 
-        <a href="https://aclanthology.org/P19-1171.pdf" target="_blank"><b>Pimentel et al. (2019)</b></a>,
-        <a href="https://aclanthology.org/2021.naacl-main.349/" target="_blank"><b>Pimentel et al. (2021)</b></a>
+        <a href="https://www.mit.edu/~rplevy/papers/gutierrez-levy-bergen-2016-acl.pdf" target="_blank">Gutiérrez et al. (2016)</a>, 
+        <a href="https://aclanthology.org/P19-1171.pdf" target="_blank">Pimentel et al. (2019)</a>,
+        <a href="https://aclanthology.org/2021.naacl-main.349/" target="_blank">Pimentel et al. (2021)</a>
       </td>
     </tr>   
     <tr>
       <th scope="row">10</th>
       <td>30.04.24</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Recursive Structure:<br>The Escherian Nature of Language</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Recursive Structure:<br>The Escherian Nature of Language</td>
       <td>Syntax vs. Distribution, Logic, and Behavior</td>
       <td>
       <!-- <a href="https://drive.google.com/file/d/1LuP3bhivuvJAwgvn80jpe4J8hXoLs263/view?usp=share_link" target="_blank">Chomsky (1953) Presentation Slides</a>, -->
       <!-- <a href="https://drive.google.com/file/d/1uSiXKMfBanbrm57mbMbjTI6vZxpWqryN/view?usp=share_link" target="_blank">Chomsky (1955) Presentation Slides</a>  -->
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1fp4e3d5aZRhjT0Vmc3MTNJmTVJaVatrV/view?usp=sharing" target="_blank"><b>Chomsky (1953)</b></a>, 
-        <a href="https://drive.google.com/file/d/194dcoT3yT-lz6yH1aoN2k43ICIu1XVE7/view?usp=sharing" target="_blank"><b>Chomsky (1955)</b></a>,
-        <a href="https://drive.google.com/file/d/1DOGtoO1dSWD59zEYQ6_RCCw7759sY_8M/view?usp=sharing" target="_blank"><b>Chomsky (1959)</b></a> 
+        <a href="https://drive.google.com/file/d/1fp4e3d5aZRhjT0Vmc3MTNJmTVJaVatrV/view?usp=sharing" target="_blank">Chomsky (1953)</a>, 
+        <a href="https://drive.google.com/file/d/194dcoT3yT-lz6yH1aoN2k43ICIu1XVE7/view?usp=sharing" target="_blank">Chomsky (1955)</a>,
+        <a href="https://drive.google.com/file/d/1DOGtoO1dSWD59zEYQ6_RCCw7759sY_8M/view?usp=sharing" target="_blank">Chomsky (1959)</a> 
       </td>
     </tr>  
     <tr>
@@ -241,7 +241,7 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <a href="https://drive.google.com/file/d/1ObbtbibTBuUuIljnNOHSYmCeQGhHbMA9/view?usp=share_link" target="_blank">Chomsky (1959) Presentation Slides</a> -->
       </td>
       <td>
-        <a href="https://drive.google.com/file/d/1bLC898DAJhYsBl6HsEJQOZBfWOp1y9QC/view?usp=sharing" target="_blank"><b>Chomsky (1957)</b></a>, 
+        <a href="https://drive.google.com/file/d/1bLC898DAJhYsBl6HsEJQOZBfWOp1y9QC/view?usp=sharing" target="_blank">Chomsky (1957)</a>, 
         <a href="https://drive.google.com/file/d/1FOjOv66b_RC1F_oCTR7IDUfbV3aOFfeu/view?usp=sharing" target="_blank">Chomsky (1956)</a>,
       </td>
     </tr>   
@@ -254,11 +254,11 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <a href="https://drive.google.com/file/d/1X1fwg6JfaWZAO_9gZx9k1SXv5kYLP7SD/view?usp=share_link" target="_blank">Charniak (2000, Klein and Manning (2003) Presentation Slides</a> -->
       </td>
       <td>
-        <a href="https://aclanthology.org/A00-2018.pdf" target="_blank"><b>Charniak (2000)</b></a>, 
-        <!-- <a href="https://aclanthology.org/P03-1054/" target="_blank"><b>Klein and Manning (2003)</b></a>,  -->
-        <a href="https://aclanthology.org/P14-1022.pdf" target="_blank"><b>Hall et al. (2014)</b></a>, 
-        <a href="https://arxiv.org/abs/1412.7449" target="_blank"><b>Vinyals et al. (2014)</b></a>, 
-        <a href="https://arxiv.org/abs/1602.07776" target="_blank"><b>Dyer et al. (2016)</b></a>, 
+        <a href="https://aclanthology.org/A00-2018.pdf" target="_blank">Charniak (2000)</a>, 
+        <!-- <a href="https://aclanthology.org/P03-1054/" target="_blank">Klein and Manning (2003)</a>,  -->
+        <a href="https://aclanthology.org/P14-1022.pdf" target="_blank">Hall et al. (2014)</a>, 
+        <a href="https://arxiv.org/abs/1412.7449" target="_blank">Vinyals et al. (2014)</a>, 
+        <a href="https://arxiv.org/abs/1602.07776" target="_blank">Dyer et al. (2016)</a>, 
         <!-- <a href="https://aclanthology.org/2022.acl-long.220.pdf" target="_blank">Kitaev et al. (2022)</a>  -->
       </td>
     </tr>   
@@ -270,17 +270,17 @@ Moodle will be the main communication hub for the course. You are responsible fo
       <!-- <a href="https://drive.google.com/file/d/16CtlHglfKNtmqEM7JtlXh_dcB8iHnU3o/view?usp=share_link" target="_blank">Computational Approaches to Human Syntactic Processing Presentation Slides</a> -->
       </td>
       <td>
-        <a href="https://compass.onlinelibrary.wiley.com/doi/10.1111/lnc3.12196" target="_blank"><b>Hale (2016)</b></a>, 
-        <a href="https://aclanthology.org/N01-1021/" target="_blank"><b>Hale (2001)</b></a>, 
-        <a href="http://www.mit.edu/~rplevy/papers/levy-jaeger-2007.pdf" target="_blank"><b>Levy and Jaeger (2007)</b></a>, 
-        <a href="https://arxiv.org/pdf/2207.02098.pdf" target="_blank"><b>Delétang et al. (2022)</b></a> 
-        <!-- <a href="https://aclanthology.org/2021.emnlp-main.74.pdf" target="_blank"><b>Meister et al. (2021)</b></a>  -->
+        <a href="https://compass.onlinelibrary.wiley.com/doi/10.1111/lnc3.12196" target="_blank">Hale (2016)</a>, 
+        <a href="https://aclanthology.org/N01-1021/" target="_blank">Hale (2001)</a>, 
+        <a href="http://www.mit.edu/~rplevy/papers/levy-jaeger-2007.pdf" target="_blank">Levy and Jaeger (2007)</a>, 
+        <a href="https://arxiv.org/pdf/2207.02098.pdf" target="_blank">Delétang et al. (2022)</a> 
+        <!-- <a href="https://aclanthology.org/2021.emnlp-main.74.pdf" target="_blank">Meister et al. (2021)</a>  -->
       </td>
     </tr> 
         <tr>
       <th scope="row">14</th>
       <td>28.05.24</td>
-      <td style="vertical-align : middle;text-align:center;" align="center"><b>Conclusion</b></td>
+      <td style="vertical-align : middle;text-align:center;" align="center">Conclusion</td>
       <td></td>
       <td>
       </td>
@@ -306,8 +306,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Language and
-                    Logic:<br>Formal Representations of Meaning</b></td>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Language and
+                    Logic:<br>Formal Representations of Meaning</td>
             <td>Philosophy</td>
             <td>
                 <a href="https://drive.google.com/file/d/1Mx5ue6RsajlMual7L3OfSGECbxx0Qzwq/view?usp=sharing" target="_blank">Ajdukiewicz (1936)</a>,
@@ -328,8 +328,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
             </td>
         </tr>
         <tr>
-            <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Structuralism:<br>The
-                    Search for the Right Units</b></td>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Structuralism:<br>The
+                    Search for the Right Units</td>
             <td>Philosophy</td>
             <td>
                 <a href="https://drive.google.com/file/d/1HGu3-ttI0TfJyOwW8e47BPqOrd7mir-0/view?usp=sharing" target="_blank">Hjelmslev (1943)</a>,
@@ -348,8 +348,8 @@ Moodle will be the main communication hub for the course. You are responsible fo
             </td>
         </tr>
         <tr>
-            <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Recursive
-                    Structure:<br>The Escherian Nature of Language</b></td>
+            <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Recursive
+                    Structure:<br>The Escherian Nature of Language</td>
             <td>Philosophy</td>
             <td>
             <a href="https://lingbuzz.net/lingbuzz/007180" target="_blank">Piantadosi (2023)</a>,

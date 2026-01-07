@@ -88,7 +88,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>22. 2. 2023</td>
-      <td rowspan="11" style="vertical-align : middle;text-align:center;" align="center"><b>Regular Languages</b></td>
+      <td rowspan="11" style="vertical-align : middle;text-align:center;" align="center">Regular Languages</td>
       <td>Introduction and Overview, Weighted Formal Languages and Semiring Theory</td>
       <td>
       <a href="https://drive.google.com/file/d/1Hm1Nbjft9IT_yAVyqqLws-rKBbeC61_3/view?usp=share_link" target="_blank">Regular Languages</a>
@@ -273,7 +273,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>30. 3. 2023</td>
-      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center"><b>Context-Free Languages</b></td>
+      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center">Context-Free Languages</td>
       <td>Weighted Context-Free Grammars</td>
       <td>
       <a href="https://drive.google.com/file/d/1A-xSYoLuKWbTdhOVIuS5iYXaUd9m4oOu/view?usp=share_link" target="_blank">Context-free Languages</a>
@@ -332,7 +332,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td></td>
-      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center"><b>Easter Break</b></td>
+      <td rowspan="1" style="vertical-align : middle;text-align:center;" align="center">Easter Break</td>
       <td></td>
       <td></td>
       <td></td>
@@ -340,7 +340,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>19. 4. 2023</td>
-      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center"><b>Context-Free Languages</b></td>
+      <td rowspan="3" style="vertical-align : middle;text-align:center;" align="center">Context-Free Languages</td>
       <td>Earley's Algorithm</td>
       <td>
       </td>
@@ -385,7 +385,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>27. 4. 2023</td>
-      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center"><b>Dependency Languages</b></td>
+      <td rowspan="2" style="vertical-align : middle;text-align:center;" align="center">Dependency Languages</td>
       <td>Chomsky Normal Form for PDAs, Lang's Algorithm</td>
       <td></td>
       <td></td>
@@ -424,7 +424,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>4. 5. 2023</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Regular Tree Languages</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Regular Tree Languages</td>
       <td>Weighted Tree Automata</td>
       <td>
       <a href="https://drive.google.com/file/d/1AY0zNLxz6uBZ6NB1qh642xyCUrQxET-7/view?usp=share_link" target="_blank">Regular Tree Languages</a>
@@ -490,7 +490,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>18. 5. 2023</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Tree-Adjoining Languages</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Tree-Adjoining Languages</td>
       <td>Weighted Tree-adjoining Grammars, Lang Normal Form</td>
       <td>
       </td>
@@ -547,7 +547,7 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
     </tr>
     <tr>
       <td>1. 6. 2023</td>
-      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center"><b>Context-Free Tree Languages</b></td>
+      <td rowspan="4" style="vertical-align : middle;text-align:center;" align="center">Context-Free Tree Languages</td>
       <td>Context-free Tree Languages, Context-free Tree Grammars</td>
       <td></td>
       <td>
