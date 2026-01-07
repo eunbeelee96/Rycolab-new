@@ -6,6 +6,7 @@
 body {
   font-family: "Roboto", sans-serif;
   overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 /* Menu bar: Roboto Mono Regular */
@@ -70,6 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 0.75rem !important;
   padding-left: 1rem !important;
   padding-right: 1rem !important;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* 첫 번째 링크만 왼쪽 여백 추가 */
@@ -444,8 +446,13 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(card);
   });
   
-  window.addEventListener('wheel', function(e) {
+  const wheelHandler = function(e) {
     if (isScrolling || hasSnapped) return;
+    
+    // Don't interfere with clicks on navbar/links
+    if (e.target.closest('.navbar') || e.target.closest('a') || e.target.closest('button')) {
+      return;
+    }
     
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
@@ -458,14 +465,37 @@ document.addEventListener('DOMContentLoaded', function() {
       sections[1].scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(() => { isScrolling = false; }, 600);
     }
-  }, { passive: false });
+  };
   
-  // Reset snap when scrolling back up to top
-  window.addEventListener('scroll', function() {
+  const scrollHandler = function() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     if (scrollTop < 50) {
       hasSnapped = false;
     }
+  };
+  
+  // Detect page navigation and cleanup
+  const originalPushState = window.history.pushState;
+  window.history.pushState = function() {
+    window.removeEventListener('wheel', wheelHandler, { passive: false });
+    window.removeEventListener('scroll', scrollHandler);
+    observer.disconnect();
+    return originalPushState.apply(this, arguments);
+  };
+  
+  // Cleanup on link clicks
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (link && (link.hostname !== window.location.hostname || !link.pathname.startsWith(window.location.pathname))) {
+      window.removeEventListener('wheel', wheelHandler, { passive: false });
+      window.removeEventListener('scroll', scrollHandler);
+      observer.disconnect();
+    }
   });
+  
+  window.addEventListener('wheel', wheelHandler, { passive: false });
+  
+  // Reset snap when scrolling back up to top
+  window.addEventListener('scroll', scrollHandler);
 });
 </script>
