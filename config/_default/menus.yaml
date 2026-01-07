@@ -4,20 +4,20 @@
 
 main:
   - name: PEOPLE
-    url: /people
+    url: people
     weight: 10
     matchRegexp: ^/people|^/authors
   - name: PUBLICATIONS
-    url: /publications
+    url: publications
     weight: 11
   - name: TEACHING
-    url: /teaching
+    url: teaching
     weight: 12
     matchRegexp: ^/teaching|^/courses
   - name: EVENTS
-    url: /events
+    url: events
     weight: 13
     matchRegexp: ^/events|^/talk
   - name: JOIN
-    url: /join
+    url: join
     weight: 20
