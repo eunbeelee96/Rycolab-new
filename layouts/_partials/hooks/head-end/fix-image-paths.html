@@ -1,0 +1,13 @@
+<script>
+// Fix image paths for GitHub Pages subdirectory deployment
+document.addEventListener('DOMContentLoaded', function() {
+  const baseURL = '{{ .Site.BaseURL }}';
+  
+  // Fix all images with /uploads/ paths
+  document.querySelectorAll('img[src^="/uploads/"]').forEach(img => {
+    const originalSrc = img.src;
+    const uploadPath = originalSrc.replace(/^\/uploads\//, '');
+    img.src = baseURL + 'uploads/' + uploadPath;
+  });
+});
+</script>
