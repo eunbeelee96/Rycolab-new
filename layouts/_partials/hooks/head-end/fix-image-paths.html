@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const originalSrc = img.src;
     const uploadPath = originalSrc.replace(/^\/uploads\//, '');
     img.src = baseURL + 'uploads/' + uploadPath;
+    console.log('Fixed image path:', originalSrc, '->', img.src);
+  });
+  
+  // Also fix template variables that weren't parsed
+  document.querySelectorAll('img[src*="{{ .Site.BaseURL }}"]').forEach(img => {
+    const src = img.src.replace(/\{\{.*?\}\}/, baseURL);
+    img.src = src;
+    console.log('Fixed template variable:', src);
   });
 });
 </script>
