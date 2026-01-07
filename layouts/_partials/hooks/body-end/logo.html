@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('.navbar-brand');
   if (navbar && navbar.innerHTML.trim() === '') {
-    const siteBasePath = '/Rycolab-new/';
+    const siteBasePath = '{{ .Site.BaseURL }}';
     
     // First logo (main)
     const img1 = document.createElement('img');
