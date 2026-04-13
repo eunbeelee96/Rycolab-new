@@ -7,6 +7,8 @@
   - venue field is optional; omitted from meta when absent.
   - Author dropdown is auto-generated from publication front matter ($uniqueAuthors).
     No manual list needed — authors appear/disappear automatically.
+  - Year dropdown is auto-generated from publication dates. Years ≥ 2022 get
+    individual items; older years are bundled into one range (e.g. 2013–2021).
   ============================================================================
 */}}
 
@@ -74,13 +76,27 @@
       </button>
       <div class="pub-filter-menu" id="year-menu"
            role="listbox" aria-label="Filter by year">
-        <div class="pub-filter-item" data-year="all"       role="option" tabindex="0" aria-selected="true">ALL</div>
-        <div class="pub-filter-item" data-year="2026"      role="option" tabindex="0" aria-selected="false">2026</div>
-        <div class="pub-filter-item" data-year="2025"      role="option" tabindex="0" aria-selected="false">2025</div>
-        <div class="pub-filter-item" data-year="2024"      role="option" tabindex="0" aria-selected="false">2024</div>
-        <div class="pub-filter-item" data-year="2023"      role="option" tabindex="0" aria-selected="false">2023</div>
-        <div class="pub-filter-item" data-year="2022"      role="option" tabindex="0" aria-selected="false">2022</div>
-        <div class="pub-filter-item" data-year="2013-2021" role="option" tabindex="0" aria-selected="false">2013&#8211;2021</div>
+        <div class="pub-filter-item" data-year="all" role="option" tabindex="0" aria-selected="true">ALL</div>
+        {{/* Auto-generated from publication dates — recent years individually, older years bundled */}}
+        {{- $yearCutoff := 2022 -}}
+        {{- $allYears := slice -}}
+        {{- range where site.RegularPages "Section" "publications" -}}
+          {{- $allYears = $allYears | append (int (.Date.Format "2006")) -}}
+        {{- end -}}
+        {{- $uniqueYears := sort ($allYears | uniq) "value" "desc" -}}
+        {{- $hasOlder := false -}}
+        {{- $minOlder := 9999 -}}
+        {{- range $uniqueYears -}}
+          {{- if ge . $yearCutoff -}}
+        <div class="pub-filter-item" data-year="{{ . }}" role="option" tabindex="0" aria-selected="false">{{ . }}</div>
+          {{- else -}}
+            {{- $hasOlder = true -}}
+            {{- if lt . $minOlder -}}{{- $minOlder = . -}}{{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if $hasOlder }}
+        <div class="pub-filter-item" data-year="{{ $minOlder }}-2021" role="option" tabindex="0" aria-selected="false">{{ $minOlder }}&ndash;2021</div>
+        {{- end }}
       </div>
     </div>
 
@@ -483,9 +499,12 @@
           var text = item.textContent.toLowerCase();
 
           var byYear =
-            activeYear === 'all'       ? true :
-            activeYear === '2013-2021' ? (year >= 2013 && year <= 2021) :
-                                         year === parseInt(activeYear, 10);
+            activeYear === 'all' ? true :
+            activeYear.indexOf('-') !== -1 ? (function() {
+              var parts = activeYear.split('-');
+              return year >= parseInt(parts[0], 10) && year <= parseInt(parts[1], 10);
+            })() :
+            year === parseInt(activeYear, 10);
           var byAuthor = activeAuthor === 'all' ? true : (function() {
             var raw     = (item.dataset.authorText || '').toLowerCase();
             var cleaned = raw.replace(/\$[^$]*\$/g, '').replace(/[\$\^\*]/g, '');
