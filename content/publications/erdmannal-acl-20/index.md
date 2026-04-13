@@ -29,5 +29,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.acl-main.695/
 url_pdf: papers/erdmann+al.acl20.pdf
 url_code: https://github.com/alexerdmann/ParadigmDiscovery
+topics:
+- 'Morphology'
 ---
 

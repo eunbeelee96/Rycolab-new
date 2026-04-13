@@ -46,4 +46,7 @@ abstract: Can advances in NLP help advance cognitive modeling? We examine the ro
   warrants a reexamination of their utility in linguistic and cognitive modeling.
 publication: '*Transactions of the Association for Computational Linguistics*'
 url_pdf: https://www.aclweb.org/anthology/Q18-1045.pdf
+topics:
+- 'Language Modeling'
+- 'Morphology'
 ---

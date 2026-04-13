@@ -23,6 +23,9 @@ bio: PhD student at the University of Cambridge
 interests:
 - Low-resource NLP
 - linguistic Annotation
+research_topics:
+- Multilinguality
+- Linguistics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

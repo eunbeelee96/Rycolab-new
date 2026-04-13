@@ -39,5 +39,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/K17-2001.pdf
 url_pdf: https://www.aclweb.org/anthology/K17-2001.pdf
+topics:
+- 'Morphology'
 ---
 

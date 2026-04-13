@@ -1,0 +1,106 @@
+{{/*
+  ============================================================================
+  latest-news.html  —  shortcode
+  Renders the full LATEST NEWS section on the homepage.
+
+  AUTO-POPULATED cards (from content files, newest-first, limited to 5):
+    PAPERS  → content/publications/
+    TALKS   → content/talk/
+
+  MANUALLY-MAINTAINED cards (from data/ YAML files):
+    CONFERENCES → data/news_conferences.yaml
+    GRANTS      → data/news_grants.yaml
+    PEOPLE      → data/news_people.yaml
+  ============================================================================
+*/}}
+
+{{/* ---- Publications (5 most recent) ---- */}}
+{{/* NOTE: If content/publications/ is ever renamed, update "publications" below and in people/list.html, publications/list.html */}}
+{{ $pubs   := where site.RegularPages "Section" "publications" }}
+{{ $pubs   = $pubs.ByDate.Reverse }}
+{{ $pubs5  := first 5 $pubs }}
+{{ $pubDate := "" }}
+{{ with index $pubs5 0 }}{{ $pubDate = .Date.Format "Jan 2006" }}{{ end }}
+
+{{/* ---- Talks (5 most recent) ---- */}}
+{{ $talks  := where site.RegularPages "Section" "talk" }}
+{{ $talks  = $talks.ByDate.Reverse }}
+{{ $talks5 := first 5 $talks }}
+{{ $talkDate := "" }}
+{{ with index $talks5 0 }}{{ $talkDate = .Date.Format "Jan 2006" }}{{ end }}
+
+{{/* ---- Manual data ---- */}}
+{{ $conferences := site.Data.news_conferences.items | default slice }}
+{{ $grants      := site.Data.news_grants.items      | default slice }}
+{{ $people      := site.Data.news_people.items      | default slice }}
+
+{{/* Sort manual data by date descending, take 5 */}}
+{{ $confSorted   := sort $conferences "date" "desc" }}
+{{ $grantsSorted := sort $grants      "date" "desc" }}
+{{ $peopleSorted := sort $people      "date" "desc" }}
+
+{{ $conf5   := first 5 $confSorted }}
+{{ $grants5 := first 5 $grantsSorted }}
+{{ $people5 := first 5 $peopleSorted }}
+
+{{/* Latest dates for manual cards */}}
+{{ $confDate   := "" }}{{ with index $conf5 0 }}{{ $confDate   = dateFormat "Jan 2006" .date }}{{ end }}
+{{ $grantsDate := "" }}{{ with index $grants5 0 }}{{ $grantsDate = dateFormat "Jan 2006" .date }}{{ end }}
+{{ $peopleDate := "" }}{{ with index $people5 0 }}{{ $peopleDate = dateFormat "Jan 2006" .date }}{{ end }}
+
+<div class="updates-section-header">
+  <div class="updates-label">LATEST NEWS</div>
+  <div class="updates-label-line"></div>
+</div>
+<div class="updates-grid">
+
+  {{/* ---- PAPERS ---- */}}
+  <div class="update-card" data-type="papers">
+    <div class="update-card-inner">
+      <div class="update-card-header">
+        <span class="update-card-title">PAPERS</span>
+        {{ with $pubDate }}<span class="update-card-date">Updated {{ . }}</span>{{ end }}
+      </div>
+      {{ if $pubs5 }}
+      <ul class="update-card-list">
+        {{ range $pubs5 }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title | markdownify | plainify | truncate 70 }}</a>
+          <span class="update-item-meta">{{ .Date.Format "2006" }}</span>
+        </li>
+        {{ end }}
+      </ul>
+      {{ else }}
+      <p class="update-card-empty">No papers yet.</p>
+      {{ end }}
+    </div>
+  </div>
+
+  {{/* ---- CONFERENCES / GRANTS / PEOPLE: rendered via shared partial ---- */}}
+  {{ partial "news-manual-card.html" (dict "type" "conferences" "title" "CONFERENCES" "date" $confDate   "items" $conf5   "empty" "No conferences listed yet." "externalLinks" true) }}
+  {{ partial "news-manual-card.html" (dict "type" "grants"      "title" "GRANTS"      "date" $grantsDate "items" $grants5 "empty" "No grants listed yet."      "externalLinks" true) }}
+  {{ partial "news-manual-card.html" (dict "type" "people"      "title" "PEOPLE"      "date" $peopleDate "items" $people5 "empty" "No people updates yet."    "externalLinks" false) }}
+
+  {{/* ---- TALKS ---- */}}
+  <div class="update-card" data-type="talks">
+    <div class="update-card-inner">
+      <div class="update-card-header">
+        <span class="update-card-title">TALKS</span>
+        {{ with $talkDate }}<span class="update-card-date">Updated {{ . }}</span>{{ end }}
+      </div>
+      {{ if $talks5 }}
+      <ul class="update-card-list">
+        {{ range $talks5 }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title | markdownify | plainify | truncate 70 }}</a>
+          <span class="update-item-meta">{{ .Date.Format "Jan 2006" }}</span>
+        </li>
+        {{ end }}
+      </ul>
+      {{ else }}
+      <p class="update-card-empty">No talks yet.</p>
+      {{ end }}
+    </div>
+  </div>
+
+</div>

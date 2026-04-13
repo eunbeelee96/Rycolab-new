@@ -1,0 +1,28 @@
+# ============================================================
+# PEOPLE NEWS
+# ============================================================
+# How to add a new entry:
+#   1. Copy the item block below and paste at the TOP of the items list.
+#   2. Fill in title, date (YYYY-MM-DD), and optionally url/description.
+#   3. Save. The "PEOPLE" card on the homepage will update automatically.
+#
+# Fields:
+#   title       (required) Person's name or headline (e.g. "Jane joins as PhD student")
+#   date        (required) Date of the announcement in YYYY-MM-DD format
+#   url         (optional) Link to person's profile page (e.g. /authors/jane/)
+#   description (optional) One-line role or note (e.g. "PhD Student", "Postdoc")
+# ============================================================
+
+items:
+  - title: "New PhD Students Joined"
+    date: "2026-03-01"
+    url: "/authors/"
+    description: "Welcome to our 2026 cohort"
+  - title: "Postdoc Arrivals"
+    date: "2026-02-15"
+    url: "/authors/"
+    description: "New researchers from international institutions"
+  - title: "Alumni Updates"
+    date: "2026-01-30"
+    url: ""
+    description: "Congratulations to our graduates!"

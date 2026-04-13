@@ -33,5 +33,8 @@ links:
   url: https://www.aclweb.org/anthology/2020.acl-main.615/
 url_pdf: papers/meister+al.acl20.pdf
 url_code: https://github.com/rycolab/entropyRegularization
+topics:
+- 'Decoding'
+- 'Information Theory'
 ---
 

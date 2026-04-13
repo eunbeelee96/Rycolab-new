@@ -55,4 +55,7 @@ publication: '*Transactions of the Association for Computational Linguistics*'
 links:
 - name: URL
   url: https://arxiv.org/abs/2407.19325
+topics:
+- 'Psycholinguistics'
+- 'Language Modeling'
 ---

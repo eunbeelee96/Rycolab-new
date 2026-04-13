@@ -62,9 +62,6 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
 **Disclaimer:** The syllabus is based on the topics from Spring 2023 and is subject to change. 
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Date</th>
@@ -948,9 +945,6 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
 
 ### Tutorial Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -1032,8 +1026,8 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
       <td>Prompting, Chain-of-Thought Reasoning</td>
       <td>Filippo Ficarra</td>
       <td>
-      <a href="https://drive.google.com/file/d/1PASyag56Dj47GDx5f8700RYvlIu-NdU2/view?usp=sharing">Exercises</a>, 
-      <a href="https://drive.google.com/file/d/1g0rtrcnVD8YJ_Q8oeYpeRAAfCHtB2VTR/view?usp=sharing">Exercises with solutions</a>
+      <a href="https://drive.google.com/file/d/1PASyag56Dj47GDx5f8700RYvlIu-NdU2/view?usp=sharing" target="_blank" rel="noopener">Exercises</a>, 
+      <a href="https://drive.google.com/file/d/1g0rtrcnVD8YJ_Q8oeYpeRAAfCHtB2VTR/view?usp=sharing" target="_blank" rel="noopener">Exercises with solutions</a>
       </td>
     </tr>
     <tr>

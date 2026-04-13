@@ -35,5 +35,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.sigtyp-1.1/
 url_pdf: papers/bjerva+al.sigtyp20.pdf
 url_code: https://github.com/sigtyp/ST2020
+topics:
+- 'Typology'
 ---
 

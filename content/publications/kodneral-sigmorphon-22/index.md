@@ -76,4 +76,6 @@ abstract: 'The 2022 SIGMORPHON–UniMorph shared task on large scale morphologic
   capture the various types of generalization required for the world’s languages.'
 publication: '*Proceedings of the 19th SIGMORPHON Workshop on Computational Research
   in Phonetics, Phonology, and Morphology*'
+topics:
+- 'Morphology'
 ---

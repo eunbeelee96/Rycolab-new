@@ -26,6 +26,11 @@ interests:
 - Biologically inspired machine learning
 - Machine Translation
 - Pragmatics
+research_topics:
+- Formal Language Theory
+- General ML & Surveys
+- Language Modeling
+- Semantics & Representations
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

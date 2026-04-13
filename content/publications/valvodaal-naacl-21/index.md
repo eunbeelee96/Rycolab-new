@@ -36,5 +36,8 @@ links:
   url: https://arxiv.org/abs/2104.12133
 url_pdf: papers/valvoda+al.naacl21.pdf
 url_code: https://github.com/valvoda/Precedent
+topics:
+- 'Legal NLP'
+- 'Information Theory'
 ---
 

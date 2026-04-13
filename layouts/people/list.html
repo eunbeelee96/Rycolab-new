@@ -1,32 +1,98 @@
 {{ define "main" }}
-<section class="people-page" style="padding:2rem 3rem;overflow:visible">
-  
-  <!-- Category filter buttons -->
-  <div class="people-category-buttons">
-    <div class="dropdown-container">
-      <button class="people-category-btn active" id="lab-members-btn">
+
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  - Author data is pulled from site.Pages inline in SECTION 1.
+  - Role normalization is performed in Hugo template (not JS) for SSR accuracy.
+    Same pattern as authors/list.html — avoids a JS pass over rendered text.
+  - hidden_from_people_page: true in an author's front matter excludes them.
+  - $filters (defined below) is the single source of truth for group categories.
+    Dropdown markup (SECTION 1) and JS categoryMap (SECTION 3) are both
+    generated from it — edit only $filters to add/remove/rename groups.
+  ============================================================================
+*/}}
+
+{{/*
+  Single source of truth for group filter categories.
+  key = data-filter value, label = display text, groups = user_groups to match.
+*/}}
+{{- $filters := slice
+  (dict "key" "ALL"            "label" "ALL"            "groups" (slice))
+  (dict "key" "SENIOR"         "label" "SENIOR"         "groups" (slice "Senior" "Senior Members"))
+  (dict "key" "PhD STUDENTS"   "label" "PhD STUDENTS"   "groups" (slice "PhD Students"))
+  (dict "key" "FORMER MEMBERS" "label" "FORMER MEMBERS" "groups" (slice "Alumna" "Alumni"))
+-}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - Naming: people-* prefix throughout.
+  - No inline styles — all visual state managed via CSS classes.
+  - Filter items carry data-filter for JS binding (not textContent matching).
+  - Cards carry data-groups (comma-separated user_groups) for filter matching.
+  - Alumna/Alumni modifier class applied at template level, not via JS.
+  ============================================================================
+*/}}
+<section class="people-page">
+
+  <div class="people-filter">
+    <div class="people-filter-dropdown">
+      <button
+        class="people-filter-btn"
+        id="lab-members-btn"
+        aria-expanded="false"
+        aria-controls="lab-members-menu">
         LAB MEMBERS
       </button>
-      <div class="dropdown-menu" id="lab-members-dropdown">
-        <div class="dropdown-item">ALL</div>
-        <div class="dropdown-item">SENIOR</div>
-        <div class="dropdown-item">PhD STUDENTS</div>
-        <div class="dropdown-item">UNDERGRAD</div>
-        <div class="dropdown-item">VISITING</div>
-        <div class="dropdown-item">FORMER MEMBERS</div>
+      <div class="people-filter-menu" id="lab-members-menu" role="listbox" aria-label="Filter by group">
+        {{- range $filters }}
+        <div class="people-filter-item" data-filter="{{ .key }}"
+             role="option" tabindex="0" aria-selected="{{ if eq .key "ALL" }}true{{ else }}false{{ end }}">{{ .label }}</div>
+        {{- end }}
       </div>
     </div>
-    <button class="people-category-btn">RESEARCH INTEREST</button>
-    
-    <!-- Search bar -->
-    <div class="search-container">
-      <input type="text" id="people-search" placeholder="SEARCH" class="people-search-input">
-      <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <div class="people-filter-dropdown">
+      <button
+        class="people-filter-btn"
+        id="topics-btn"
+        aria-expanded="false"
+        aria-controls="topics-menu">
+        RESEARCH INTEREST
+      </button>
+      <div class="people-filter-menu" id="topics-menu" role="listbox" aria-label="Filter by research interest">
+        <div class="people-topic-item" data-topic="ALL"                       role="option" tabindex="0" aria-selected="true">ALL</div>
+        <div class="people-topic-item" data-topic="Linguistics"               role="option" tabindex="0" aria-selected="false">Linguistics</div>
+        <div class="people-topic-item" data-topic="Formal Language Theory"    role="option" tabindex="0" aria-selected="false">Formal Language Theory</div>
+        <div class="people-topic-item" data-topic="Language Modeling"         role="option" tabindex="0" aria-selected="false">Language Modeling</div>
+        <div class="people-topic-item" data-topic="LM Inference"              role="option" tabindex="0" aria-selected="false">LM Inference</div>
+        <div class="people-topic-item" data-topic="Psycholinguistics"         role="option" tabindex="0" aria-selected="false">Psycholinguistics</div>
+        <div class="people-topic-item" data-topic="Semantics &amp; Representations" role="option" tabindex="0" aria-selected="false">Semantics &amp; Representations</div>
+        <div class="people-topic-item" data-topic="General ML &amp; Surveys"  role="option" tabindex="0" aria-selected="false">General ML &amp; Surveys</div>
+        <div class="people-topic-item" data-topic="Tokenization"              role="option" tabindex="0" aria-selected="false">Tokenization</div>
+        <div class="people-topic-item" data-topic="Interpretability"          role="option" tabindex="0" aria-selected="false">Interpretability</div>
+        <div class="people-topic-item" data-topic="Multilinguality"           role="option" tabindex="0" aria-selected="false">Multilinguality</div>
+        <div class="people-topic-item" data-topic="Fairness &amp; Ethics"     role="option" tabindex="0" aria-selected="false">Fairness &amp; Ethics</div>
+      </div>
+    </div>
+
+    <div class="people-search">
+      <input
+        type="text"
+        id="people-search-input"
+        class="people-search-input"
+        placeholder="SEARCH"
+        autocomplete="off"
+        aria-label="Search people"
+      >
+      <svg class="people-search-icon" width="24" height="24" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="10" cy="10" r="6"></circle>
         <line x1="19" y1="19" x2="14.5" y2="14.5"></line>
       </svg>
-      <button class="clear-search" id="clear-search" style="display:none;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <button class="people-search-clear" id="people-search-clear" hidden aria-label="Clear search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
@@ -34,321 +100,511 @@
     </div>
   </div>
 
-  <style>
-    .people-page { height: auto !important; overflow: visible !important; }
-    .people-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:5rem; }
-    .people-grid > a {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 0px;
-      overflow: hidden;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-      transform: translateY(0);
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .people-grid > a:hover {
-      transform: scale(1.01) !important;
-    }
-    .person-card { background:#fff; border:1px solid #f5f5f5; border-radius:0px; overflow:hidden; }
-    .card-top { background:#f5f5f5; padding:0.8rem; height:5.5rem; display:flex; flex-direction:column; justify-content:flex-start; }
-    .card-top h3 { margin:0; font-size:1.2rem; font-family:Roboto, sans-serif; }
-    .card-top .role { color:#72d71b; margin-top:0.3rem; font-size:0.9rem; font-family:"Roboto Mono", monospace; }
-    .interest-section { padding:0.8rem; background:#f5f5f5; font-size:0.9rem; color:#72d71b; height:2.5rem; overflow:hidden; }
-    
-    /* Former members styling */
-    a[data-groups*="Alumna"] .card-top .role,
-    a[data-groups*="Alumni"] .card-top .role,
-    a[data-groups*="Alumna"] .interest-section,
-    a[data-groups*="Alumni"] .interest-section {
-      color: #999999;
-    }
-    
-    .card-photo img { 
-      width: 100%; 
-      height: 100%;
-      display: block;
-      filter: grayscale(100%); 
-      transition: filter 0.3s ease;
-      object-fit: cover;
-    }
-    .card-photo { aspect-ratio: 1 / 1; }
-    .card-photo img:hover { filter: grayscale(0%); }
-    
-    /* Category filter buttons */
-    .people-category-buttons { display: flex; gap: 2rem; margin-bottom: 4rem; justify-content: flex-start; align-items: center; }
-    .dropdown-container { position: relative; }
-    .people-category-btn { padding: 0.5rem 2.2rem; background: transparent; border: 1px solid #000; border-radius: 25px; font-family: "Roboto Mono", monospace; font-size: 1rem; font-weight: 400; cursor: pointer; transition: all 0.3s ease; position: relative; }
-    .people-category-btn.active { background: transparent; border-color: #000; }
-    .people-category-btn.selected { color: #72d71b; }
-    .people-category-btn::after { content: ""; display: inline-block; width: 10px; height: 10px; margin-left: 0.8rem; vertical-align: 3px; border-right: 1.5px solid #000; border-bottom: 1.5px solid #000; transform: rotate(45deg); transition: transform 0.3s ease; }
-    .people-category-btn.open::after { vertical-align: -2px; transform: rotate(225deg); }
-    
-    /* Search bar */
-    .search-container { margin-left: auto; position: relative; }
-    .people-search-input { 
-      width: 300px; 
-      padding: 0.5rem 2.5rem 0.5rem 1rem; 
-      border: 1px solid #000; 
-      border-radius: 25px; 
-      font-family: "Roboto", sans-serif; 
-      font-size: 0.9rem; 
-      outline: none;
-    }
-    .people-search-input::placeholder { 
-      color: #999; 
-      font-family: "Roboto Mono", monospace; 
-    }
-    .search-icon { 
-      position: absolute; 
-      right: 1rem; 
-      top: 50%; 
-      transform: translateY(-50%); 
-      pointer-events: none;
-      opacity: 0.3;
-      transition: opacity 0.3s ease;
-    }
-    .search-container:has(.people-search-input:not(:placeholder-shown)) .search-icon {
-      display: none;
-    }
-    .clear-search {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.5;
-      transition: opacity 0.3s ease;
-    }
-    .clear-search:hover {
-      opacity: 1;
-    }
-    
-    /* Dropdown menu */
-    .dropdown-menu { 
-      display: none;
-      position: absolute; 
-      top: calc(100% + 0.5rem); 
-      left: 0; 
-      background: #fff; 
-      border: 1px solid #000; 
-      border-radius: 20px; 
-      padding: 1rem; 
-      width: 100%;
-      z-index: 100;
-    }
-    .dropdown-menu.show { display: block; }
-    .dropdown-item { 
-      padding: 0.75rem 1rem; 
-      font-family: "Roboto Mono", monospace; 
-      font-size: 0.9rem; 
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-    .dropdown-item:hover { background: #CEEDB2; }
-    
-    @media (max-width:1200px) { .people-grid { grid-template-columns:repeat(4,1fr); } }
-    @media (max-width:768px) { .people-grid { grid-template-columns:repeat(3,1fr); } }
-    @media (max-width:600px) { .people-grid { grid-template-columns:repeat(2,1fr); } }
-  </style>
-
   <div class="people-grid">
+    {{/* Authors use _index.md (branch bundles, Kind="section"), so site.Pages
+         is required. site.RegularPages only returns Kind="page" (leaf bundles)
+         and would yield an empty set here. */}}
     {{ $authors := where site.Pages "Section" "authors" }}
-    {{ $sorted := sort $authors "Title" "asc" }}
+    {{ $authors  = where $authors "Params.hidden_from_people_page" "!=" true }}
+    {{ $sorted  := sort $authors "Title" "asc" }}
 
     {{ range $sorted }}
       {{ if .File }}
         {{ $img := .Resources.GetMatch "avatar*" }}
-        {{/* compute a safe link for this author page */}}
-        {{ $link := "" }}
-        {{ if .File }}
-          {{ $dir := trim .File.Dir "/" }}
-          {{ $parts := split $dir "/" }}
-          {{ $username := index $parts (sub (len $parts) 1) }}
-          {{ with site.GetPage (printf "/authors/%s" $username) }}
-            {{ $link = .RelPermalink }}
-          {{ end }}
-        {{ end }}
         {{ if $img }}
-        {{ if $link }}
-        <a href="{{ $link }}" style="text-decoration:none;color:inherit" data-groups="{{ delimit .Params.user_groups "," }}">
-        {{ else }}
-        <a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit" data-groups="{{ delimit .Params.user_groups "," }}">
-        {{ end }}
-          <div class="card-top">
-            <h3>{{ .Title }}</h3>
-            {{ with .Params.role }}<div class="role">{{ . }}</div>{{ end }}
-          </div>
-          <div class="interest-section">{{ with index .Params.interests 0 }}{{ . }}{{ end }}</div>
-          <div class="card-photo">
-            <img src="{{ $img.Permalink }}" alt="{{ .Title }}">
-          </div>
-        </a>
+          {{ $isAlumna := or (in .Params.user_groups "Alumna") (in .Params.user_groups "Alumni") }}
+          {{ $role := "" }}
+          {{ with .Params.role }}
+            {{ if strings.Contains (lower .) "phd" }}{{ $role = "PhD STUDENT" }}{{ else }}{{ $role = upper . }}{{ end }}
+          {{ end }}
+          <a href="{{ .RelPermalink }}"
+             class="people-card{{ if $isAlumna }} people-card--alumna{{ end }}"
+             {{ with .Params.user_groups }}data-groups="{{ delimit . "," }}"{{ end }}
+             {{ with .Params.research_topics }}data-topics="{{ delimit . "," }}"{{ end }}>
+            <div class="people-card-header">
+              <h3 class="people-card-name">{{ .Title }}</h3>
+              {{ if $role }}<div class="people-card-role">{{ $role }}</div>{{ end }}
+            </div>
+            <div class="people-card-photo">
+              <img src="{{ $img.Permalink }}" alt="{{ .Title }}" loading="lazy">
+            </div>
+          </a>
         {{ end }}
       {{ end }}
     {{ end }}
   </div>
-  
+
+</section>
+
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  - All colors and fonts reference design tokens defined in main.html :root.
+  - To change card layout           → .people-grid
+  - To change card appearance       → .people-card-*
+  - To change filter/search bar     → .people-filter-*
+  - Alumna/Alumni muting            → .people-card--alumna modifier
+  - !important on .people-page height: HugoBlox sets section height inline.
+  ============================================================================
+*/}}
+  <style>
+    .people-page {
+      padding: 2rem 3rem;
+      overflow: visible;
+      height: auto !important; /* overrides HugoBlox section min-height inline style */
+    }
+
+    /* ---- Filter bar ---- */
+    .people-filter {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      align-items: center;
+    }
+    .people-filter-dropdown { position: relative; }
+
+    .people-filter-btn {
+      padding: 0.5rem 2.2rem;
+      background: transparent;
+      border: 1px solid var(--color-text-strong);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    /* Chevron — only on the dropdown button (inside .people-filter-dropdown) */
+    .people-filter-dropdown .people-filter-btn::after {
+      content: "";
+      display: inline-block;
+      width: 10px; height: 10px;
+      margin-left: 0.8rem;
+      vertical-align: 3px;
+      border-right: 1.5px solid var(--color-text-strong);
+      border-bottom: 1.5px solid var(--color-text-strong);
+      transform: rotate(45deg);
+      transition: transform 0.3s ease, vertical-align 0.3s ease;
+    }
+    .people-filter-dropdown .people-filter-btn[aria-expanded="true"]::after {
+      vertical-align: -2px;
+      transform: rotate(225deg);
+    }
+    .people-filter-btn--selected { color: var(--color-accent); }
+    .people-topic-item {
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: var(--radius-pill-sm);
+      transition: background 0.2s ease;
+      text-transform: uppercase;
+    }
+    .people-topic-item:hover { background: var(--color-primary-light); }
+
+    .people-filter-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      background: white;
+      border: 1px solid var(--color-text-strong);
+      border-radius: var(--radius-pill-sm);
+      padding: 1rem;
+      min-width: 100%;
+      z-index: 100;
+    }
+    .people-filter-menu.show { display: block; }
+
+    .people-filter-item {
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: var(--radius-pill-sm);
+      transition: background 0.2s ease;
+    }
+    .people-filter-item:hover { background: var(--color-primary-light); }
+
+    /* ---- Search ---- */
+    .people-search {
+      margin-left: auto;
+      position: relative;
+      flex: 0 1 300px;
+      width: min(100%, 300px);
+    }
+    .people-search-input {
+      width: 100%;
+      padding: 0.5rem 2.5rem 0.5rem 1rem;
+      border: 1px solid var(--color-text-strong);
+      border-radius: var(--radius-pill);
+      box-sizing: border-box;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .people-search-input::placeholder {
+      color: var(--color-text-light);
+      font-family: var(--font-mono);
+    }
+    .people-search-icon {
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+    /* Toggled by JS when input has a value — avoids :has() for broader compat */
+    .people-search--has-value .people-search-icon {
+      display: none;
+    }
+    .people-search-clear {
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      cursor: pointer; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+    .people-search-clear:hover { opacity: 1; }
+
+    /* ---- People grid ---- */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: auto;
+      gap: 5rem;
+    }
+
+    /* ---- Card (the <a> is the card root) ---- */
+    .people-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    /* Progressive enhancement: hidden → animated only when JS runs */
+    .js .people-card { opacity: 0; }
+    /* JS sets --card-delay per-card before adding this class */
+    .people-card--visible {
+      animation: people-fade-in 0.6s var(--card-delay, 0s) ease forwards;
+    }
+    .people-card:hover { transform: scale(1.01); }
+
+    @keyframes people-fade-in {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    .people-card-header {
+      background: var(--color-bg-gray);
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .people-card-name {
+      margin: 0;
+      font-size: 1.2rem;
+      font-family: var(--font-sans);
+      font-weight: var(--font-weight-normal);
+    }
+    .people-card-role {
+      color: var(--color-accent);
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+      font-family: var(--font-mono);
+    }
+    .people-card-photo             { aspect-ratio: 1 / 1; }
+    .people-card-photo img {
+      width: 100%; height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+    .people-card-photo img:hover   { filter: grayscale(0%); }
+
+    /* Alumna / Alumni: accent color → muted gray */
+    .people-card--alumna .people-card-role     { color: var(--color-text-light); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1200px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 900px)  {
+      .people-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+      .people-filter { flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+      .people-search {
+        margin-left: 0;
+        flex: 1 0 100%;
+        width: 100%;
+        order: 10;
+      }
+    }
+    @media (max-width: 600px)  {
+      .people-grid   { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .people-search { flex-basis: 100%; }
+    }
+  </style>
+
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - Filter items are read via dataset.filter, not textContent, so relabelling
+    the dropdown display text never breaks the logic.
+  - categoryMap is generated from $filters (SECTION 0) via JSON injection —
+    edit only $filters to add/remove/rename groups.
+  - Role normalization is absent here — done in Hugo template (Section 1).
+  - triggerStaggerAnimation resets and replays the entrance animation for all
+    currently visible cards after every filter or search operation.
+  ============================================================================
+*/}}
   <script>
+    /* Run synchronously — before <body> is parsed — so .js is on <html> before
+       any card is rendered. This prevents the visible→hidden flash. */
+    document.documentElement.classList.add('js');
+
     document.addEventListener('DOMContentLoaded', function() {
-      const labMembersBtn = document.getElementById('lab-members-btn');
-      const dropdown = document.getElementById('lab-members-dropdown');
-      const dropdownItems = document.querySelectorAll('.dropdown-item');
-      const allCards = document.querySelectorAll('.people-grid > a');
-      
-      // Stagger animation for cards
-      allCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.05}s`;
-      });
-      
-      // 모든 role을 대문자로 변환 (PhD Student는 PhD STUDENT)
-      document.querySelectorAll('.card-top .role').forEach(el => {
-        let text = el.textContent.trim();
-        if (text.toLowerCase().includes('phd')) {
-          el.textContent = 'PhD STUDENT';
-        } else {
-          el.textContent = text.toUpperCase();
-        }
-      });
-      
-      // Category mapping
-      const categoryMap = {
-        'SENIOR': ['Senior', 'Senior Members'],
-        'PhD STUDENTS': ['PhD Students'],
-        'UNDERGRAD': ['Undergrad'],
-        'VISITING': ['Visiting'],
-        'FORMER MEMBERS': ['Alumna', 'Alumni']
-      };
-      
-      labMembersBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        dropdown.classList.toggle('show');
-        labMembersBtn.classList.toggle('open');
-      });
-      
-      // Function to trigger stagger animation for visible cards
-      function triggerStaggerAnimation() {
-        const visibleCards = Array.from(allCards).filter(card => card.style.display !== 'none');
-        
-        // Reset and retrigger animation
-        visibleCards.forEach((card, index) => {
-          // Remove animation temporarily
-          card.style.animation = 'none';
-          card.style.opacity = '0';
-          
-          // Force reflow
-          void card.offsetWidth;
-          
-          // Re-apply animation with stagger
-          setTimeout(() => {
-            card.style.animation = '';
-            card.style.animationDelay = `${index * 0.05}s`;
-          }, 10);
+      const filterBtn   = document.getElementById('lab-members-btn');
+      const filterMenu  = document.getElementById('lab-members-menu');
+      const filterItems = document.querySelectorAll('.people-filter-item');
+      const topicsBtn   = document.getElementById('topics-btn');
+      const topicsMenu  = document.getElementById('topics-menu');
+      const topicItems  = document.querySelectorAll('.people-topic-item');
+      const allCards    = document.querySelectorAll('.people-card');
+      const searchInput = document.getElementById('people-search-input');
+      const clearBtn    = document.getElementById('people-search-clear');
+      const searchWrap  = document.querySelector('.people-search');
+
+      /*
+        Maps each data-filter value → user_groups strings in author front matter.
+        Update here and in markup when new group types are added.
+      */
+      /* Generated from $filters (SECTION 0) — single source of truth */
+      const filterConfig = {{ $filters | jsonify | safeJS }};
+      const categoryMap = {};
+      filterConfig.forEach(function(f) { if (f.key !== 'ALL') categoryMap[f.key] = f.groups; });
+
+      /*
+        Composed filter state — both evaluated together in applyFilters().
+        Changing either state calls applyFilters(); neither overwrites the other.
+      */
+      var activeFilter = 'ALL';
+      var activeTopic  = 'ALL';
+      var activeSearch = '';
+
+      /*
+        Re-runs entrance animation on visible cards using CSS custom property
+        --card-delay (set per-card) and the .people-card--visible class.
+        Avoids direct inline style manipulation of animation/opacity.
+      */
+      function animateVisible() {
+        var visible = Array.from(allCards).filter(function(c) { return !c.hidden; });
+        allCards.forEach(function(card) { card.classList.remove('people-card--visible'); });
+        void document.querySelector('.people-grid').offsetWidth; /* force reflow */
+        visible.forEach(function(card, i) {
+          card.style.setProperty('--card-delay', (i * 0.05) + 's');
+          card.classList.add('people-card--visible');
         });
       }
-      
-      // Filter by category
-      dropdownItems.forEach(item => {
-        item.addEventListener('click', function() {
-          const category = this.textContent.trim();
-          labMembersBtn.textContent = category === 'ALL' ? 'LAB MEMBERS' : category;
-          
-          // Add/remove selected class for green color
-          if (category === 'ALL') {
-            labMembersBtn.classList.remove('selected');
-          } else {
-            labMembersBtn.classList.add('selected');
+
+      /* Applies activeFilter, activeTopic AND activeSearch simultaneously */
+      function applyFilters() {
+        var matchGroups = categoryMap[activeFilter] || [];
+
+        allCards.forEach(function(card) {
+          var passesFilter = true;
+          if (activeFilter !== 'ALL') {
+            var groups = (card.dataset.groups || '').split(',').map(function(g) { return g.trim().toLowerCase(); });
+            passesFilter = matchGroups.some(function(g) { return groups.includes(g.toLowerCase()); });
           }
-          
-          // Show all cards if ALL is selected
-          if (category === 'ALL') {
-            allCards.forEach(card => {
-              card.style.display = 'block';
-            });
-          } else {
-            const matchGroups = categoryMap[category] || [];
-            
-            allCards.forEach(card => {
-              const groups = card.dataset.groups || '';
-              const groupsArray = groups.split(',');
-              
-              // Show if any user_group matches category
-              const shouldShow = matchGroups.some(group => 
-                groupsArray.some(userGroup => 
-                  userGroup.trim().toLowerCase() === group.toLowerCase()
-                )
-              );
-              card.style.display = shouldShow ? 'block' : 'none';
-            });
+
+          var passesTopic = true;
+          if (activeTopic !== 'ALL') {
+            var topics = (card.dataset.topics || '').split(',').map(function(t) { return t.trim(); });
+            passesTopic = topics.includes(activeTopic);
           }
-          
-          // Trigger stagger animation after filtering
-          triggerStaggerAnimation();
-          
-          dropdown.classList.remove('show');
-          labMembersBtn.classList.remove('open');
+
+          var passesSearch = true;
+          if (activeSearch) {
+            var name     = (card.querySelector('.people-card-name')?.textContent || '').toLowerCase();
+            var role     = (card.querySelector('.people-card-role')?.textContent || '').toLowerCase();
+            passesSearch = name.includes(activeSearch) || role.includes(activeSearch);
+          }
+
+          card.hidden = !(passesFilter && passesTopic && passesSearch);
         });
-      });
-      
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown-container')) {
-          dropdown.classList.remove('show');
-          labMembersBtn.classList.remove('open');
+
+        animateVisible();
+        equalizeCardHeaders();
+      }
+
+      /* ---- Header height equalization (aligns headers per row) ---- */
+      function equalizeCardHeaders() {  /* called from animateVisible + resize */
+        var visibleCards = Array.from(allCards).filter(function(c) { return !c.hidden; });
+        /* Reset so natural heights can be measured */
+        visibleCards.forEach(function(c) {
+          var h = c.querySelector('.people-card-header');
+          if (h) h.style.height = '';
+        });
+        /* Group cards into rows by their top offset */
+        var rows = {};
+        visibleCards.forEach(function(c) {
+          var top = Math.round(c.getBoundingClientRect().top);
+          if (!rows[top]) rows[top] = [];
+          rows[top].push(c);
+        });
+        /* Set every header in a row to the tallest in that row */
+        Object.keys(rows).forEach(function(top) {
+          var row = rows[top];
+          var maxH = Math.max.apply(null, row.map(function(c) {
+            var h = c.querySelector('.people-card-header');
+            return h ? h.offsetHeight : 0;
+          }));
+          row.forEach(function(c) {
+            var h = c.querySelector('.people-card-header');
+            if (h) h.style.height = maxH + 'px';
+          });
+        });
+      }
+
+      window.addEventListener('resize', equalizeCardHeaders);
+
+      /* Initial entrance animation */
+      animateVisible();
+      equalizeCardHeaders();
+
+      /* --- Dropdown open / close --- */
+      filterBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = filterMenu.classList.toggle('show');
+        filterBtn.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) {
+          var first = filterMenu.querySelector('.people-filter-item');
+          if (first) first.focus();
         }
       });
-      
-      // Search functionality
-      const searchInput = document.getElementById('people-search');
-      const clearBtn = document.getElementById('clear-search');
-      
-      searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        
-        // Show/hide clear button
-        clearBtn.style.display = searchTerm ? 'flex' : 'none';
-        
-        allCards.forEach(card => {
-          const name = card.querySelector('h3')?.textContent.toLowerCase() || '';
-          const role = card.querySelector('.role')?.textContent.toLowerCase() || '';
-          const interest = card.querySelector('.interest-section')?.textContent.toLowerCase() || '';
-          
-          const matches = name.includes(searchTerm) || role.includes(searchTerm) || interest.includes(searchTerm);
-          card.style.display = matches ? 'block' : 'none';
-        });
-        
-        // Trigger stagger animation after search
-        triggerStaggerAnimation();
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.people-filter-dropdown')) {
+          filterMenu.classList.remove('show');
+          filterBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (!e.target.closest('#topics-btn') && !e.target.closest('#topics-menu')) {
+          topicsMenu.classList.remove('show');
+          topicsBtn.setAttribute('aria-expanded', 'false');
+        }
       });
-      
-      // Clear search
+
+      /* Keyboard navigation within open dropdown */
+      filterMenu.addEventListener('keydown', function(e) {
+        var items = Array.from(filterItems);
+        var idx   = items.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (idx < items.length - 1) items[idx + 1].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (idx > 0) { items[idx - 1].focus(); }
+          else { filterMenu.classList.remove('show'); filterBtn.setAttribute('aria-expanded', 'false'); filterBtn.focus(); }
+        } else if (e.key === 'Escape') {
+          filterMenu.classList.remove('show');
+          filterBtn.setAttribute('aria-expanded', 'false');
+          filterBtn.focus();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (document.activeElement.classList.contains('people-filter-item')) document.activeElement.click();
+        }
+      });
+
+      /* --- Category filter --- */
+      filterItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          activeFilter = this.dataset.filter;
+
+          filterBtn.textContent = activeFilter === 'ALL' ? 'LAB MEMBERS' : activeFilter;
+          filterBtn.setAttribute('aria-expanded', 'false');
+          filterBtn.classList.toggle('people-filter-btn--selected', activeFilter !== 'ALL');
+
+          /* Update aria-selected state on all items */
+          filterItems.forEach(function(i) { i.setAttribute('aria-selected', 'false'); });
+          this.setAttribute('aria-selected', 'true');
+
+          filterMenu.classList.remove('show');
+          filterBtn.focus();
+          applyFilters(); /* respects activeSearch */
+        });
+      });
+
+      /* --- Topics dropdown open / close --- */
+      topicsBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        /* Close the other dropdown */
+        filterMenu.classList.remove('show');
+        filterBtn.setAttribute('aria-expanded', 'false');
+        var isOpen = topicsMenu.classList.toggle('show');
+        topicsBtn.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) {
+          var first = topicsMenu.querySelector('.people-topic-item');
+          if (first) first.focus();
+        }
+      });
+
+      topicsMenu.addEventListener('keydown', function(e) {
+        var items = Array.from(topicItems);
+        var idx   = items.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (idx < items.length - 1) items[idx + 1].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (idx > 0) { items[idx - 1].focus(); }
+          else { topicsMenu.classList.remove('show'); topicsBtn.setAttribute('aria-expanded', 'false'); topicsBtn.focus(); }
+        } else if (e.key === 'Escape') {
+          topicsMenu.classList.remove('show');
+          topicsBtn.setAttribute('aria-expanded', 'false');
+          topicsBtn.focus();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (document.activeElement.classList.contains('people-topic-item')) document.activeElement.click();
+        }
+      });
+
+      /* --- Topics filter --- */
+      topicItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          activeTopic = this.dataset.topic;
+
+          topicsBtn.textContent = activeTopic === 'ALL' ? 'RESEARCH INTEREST' : activeTopic.toUpperCase();
+          topicsBtn.setAttribute('aria-expanded', 'false');
+          topicsBtn.classList.toggle('people-filter-btn--selected', activeTopic !== 'ALL');
+
+          topicItems.forEach(function(i) { i.setAttribute('aria-selected', 'false'); });
+          this.setAttribute('aria-selected', 'true');
+
+          topicsMenu.classList.remove('show');
+          topicsBtn.focus();
+          applyFilters();
+        });
+      });
+
+      /* --- Search --- */
+      searchInput.addEventListener('input', function() {
+        activeSearch = this.value.toLowerCase();
+        clearBtn.hidden = !activeSearch;
+        searchWrap.classList.toggle('people-search--has-value', !!activeSearch);
+        applyFilters(); /* respects activeFilter */
+      });
+
       clearBtn.addEventListener('click', function() {
         searchInput.value = '';
-        clearBtn.style.display = 'none';
-        
-        // Trigger stagger animation after clearing search
-        triggerStaggerAnimation();
-        
-        allCards.forEach(card => {
-          card.style.display = 'block';
-        });
+        activeSearch = '';
+        clearBtn.hidden = true;
+        searchWrap.classList.remove('people-search--has-value');
+        applyFilters(); /* keeps activeFilter intact */
         searchInput.focus();
       });
     });

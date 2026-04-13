@@ -25,6 +25,11 @@ interests:
 - Formal Language Theory
 - Interpretability
 - Reasoning
+research_topics:
+- Psycholinguistics
+- Formal Language Theory
+- Interpretability
+- General ML & Surveys
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

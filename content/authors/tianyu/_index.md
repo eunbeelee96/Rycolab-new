@@ -25,6 +25,10 @@ interests:
 - Structured Prediction
 - Parsing
 - Natural Language Generation
+research_topics:
+- Semantics & Representations
+- Linguistics
+- Language Modeling
 
 
 # Social/Academic Networking

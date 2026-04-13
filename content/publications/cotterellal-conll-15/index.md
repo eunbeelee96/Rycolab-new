@@ -24,5 +24,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/K15-1017.pdf
 url_pdf: https://www.aclweb.org/anthology/K15-1017.pdf
+topics:
+- 'Morphology'
 ---
 

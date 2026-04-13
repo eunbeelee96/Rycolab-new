@@ -81,6 +81,8 @@ projects: []
 links:
 - name: URL
   url: https://arxiv.org/pdf/2403.16852
+topics:
+- 'Legal NLP'
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

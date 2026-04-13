@@ -50,4 +50,6 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2208.08195
 url_pdf: papers/valvoda+al.coling22.pdf
+topics:
+- 'Formal Languages'
 ---

@@ -50,4 +50,7 @@ publication: '*Findings of the Association for Computational Linguistics: ACL-IJ
 links:
 - name: URL
   url: https://aclanthology.org/2021.findings-acl.326/
+topics:
+- 'Language Modeling'
+- 'Information Theory'
 ---

@@ -1,63 +1,92 @@
 {{ define "main" }}
-<section class="talk-single-page" style="padding: 2rem 3rem;">
-  
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  - Renders a single entry from content/talk/<slug>/index.md.
+  - .Title and .Date are required.
+  - .Params.authors, .Params.time, .Params.location, .Params.abstract
+    are optional — each renders only when present.
+  - .Content renders the main body (Details section) below the abstract.
+  ============================================================================
+*/}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - Naming: talk-* prefix throughout.
+  - Back button links to /events/.
+  - .talk-main holds title + .talk-meta header block.
+  - Content sections use .talk-section / .talk-section-title / .talk-section-body.
+  - To add a new section block: copy the {{ with }} pattern used for Abstract.
+  ============================================================================
+*/}}
+<section class="talk-single-page">
   <div class="talk-container">
-    <!-- Back button -->
+
+    <!-- Back button → /events/ -->
     <div class="back-button-container">
-      <a href="{{ "/events/" | relURL }}" class="back-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="{{ "events/" | relURL }}" class="back-button" aria-label="Back to events">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
       </a>
     </div>
 
-    <div class="talk-content-wrapper">
-      <!-- Main Content -->
-      <div class="talk-main">
-        <h1 class="talk-title">{{ .Title }}</h1>
-        
-        <!-- Talk Meta Information -->
-        <div class="talk-meta">
-          {{ if .Params.authors }}
-            <div class="talk-speakers">
-              {{ delimit .Params.authors ", " }}
-            </div>
-          {{ end }}
-          
-          <div class="talk-date-time">
-            {{ .Date.Format "January 2, 2006" }}
-            {{ if .Params.time }}
-              · {{ .Params.time }}
-            {{ end }}
-          </div>
-          
-          {{ if .Params.location }}
-            <div class="talk-location">
-              {{ .Params.location }}
-            </div>
-          {{ end }}
-        </div>
+    <div class="talk-main">
 
-        {{ with .Params.abstract }}
-        <div class="talk-abstract">
-          <h2>Abstract</h2>
-          <p>{{ . | markdownify }}</p>
-        </div>
+      <!-- Header: title + meta -->
+      <h1 class="talk-title">{{ .Title }}</h1>
+      <div class="talk-meta">
+        {{ with .Params.authors }}
+          <div class="talk-speakers">{{ delimit . ", " }}</div>
         {{ end }}
-
-        {{ with .Content }}
-        <div class="talk-content">
-          {{ . }}
+        <div class="talk-date-time">
+          {{ .Date.Format "January 2, 2006" }}
+          {{ with .Params.time }} · {{ . }}{{ end }}
         </div>
+        {{ with .Params.location }}
+          <div class="talk-location">{{ . }}</div>
         {{ end }}
       </div>
+
+      <!-- Abstract -->
+      {{ with .Params.abstract }}
+      <div class="talk-section">
+        <h2 class="talk-section-title">Abstract</h2>
+        <div class="talk-section-body">
+          {{ . | markdownify }}
+        </div>
+      </div>
+      {{ end }}
+
+      <!-- Main body (markdown content) -->
+      {{ with .Content }}
+      <div class="talk-section">
+        <h2 class="talk-section-title">Details</h2>
+        <div class="talk-section-body">
+          {{ . }}
+        </div>
+      </div>
+      {{ end }}
+
     </div>
   </div>
 </section>
 
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  - All colors and fonts reference global design tokens from main.html :root.
+  - To change page width / padding    → .talk-single-page, .talk-container
+  - To change title / meta styling    → .talk-title, .talk-meta
+  - To change content section style   → .talk-section, .talk-section-title,
+                                         .talk-section-body
+  ============================================================================
+*/}}
 <style>
+  /* ─── Page Layout ───────────────────────────────────────── */
   .talk-single-page {
-    background-color: #ffffff;
+    padding: 2rem 3rem;
     min-height: 100vh;
   }
 
@@ -66,6 +95,7 @@
     margin: 0 auto;
   }
 
+  /* ─── Back Button ───────────────────────────────────────── */
   .back-button-container {
     margin-bottom: 2rem;
   }
@@ -77,74 +107,116 @@
     width: 40px;
     height: 40px;
     background: transparent;
-    border: 1px solid #999999;
-    border-radius: 50%;
-    color: #999999;
+    border: 1px solid var(--color-text-light);
+    border-radius: var(--radius-round);
+    color: var(--color-text-light);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: background 0.2s;
   }
 
   .back-button:hover {
-    background: #CEEDB2;
+    background: var(--color-primary-light);
   }
 
-  .talk-content-wrapper {
-    display: block;
-  }
-
-  .talk-main {
-    max-width: 900px;
-  }
-
+  /* ─── Header: Title + Meta ──────────────────────────────── */
   .talk-title {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-sans);
     font-size: 2rem;
-    font-weight: 400;
-    color: #000000;
-    text-transform: uppercase;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-strong);
     margin-bottom: 1rem;
     line-height: 1.3;
   }
 
   .talk-meta {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .talk-meta > div {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-sans);
     font-size: 1rem;
-    color: #666666;
+    color: var(--color-text-muted);
     margin-bottom: 0.1rem;
     line-height: 1.6;
   }
 
-  .talk-abstract {
-    margin-bottom: 2rem;
+  /* ─── Content Sections ──────────────────────────────────── */
+  .talk-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
   }
 
-  .talk-abstract h2,
-  .talk-content h2,
-  .talk-content h3 {
-    font-family: "Roboto Mono", monospace;
+  .talk-section + .talk-section {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .talk-section-title {
+    font-family: var(--font-sans);
     font-size: 1.2rem;
-    font-weight: 400;
-    color: #000000;
-    text-transform: uppercase;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-strong);
     margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .talk-section-body h2,
+  .talk-section-body h3,
+  .talk-section-body h4,
+  .talk-section-body h5 {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-strong);
+    margin-bottom: 0.8rem;
     margin-top: 1.5rem;
   }
 
-  .talk-abstract p,
-  .talk-content p {
-    font-family: "Roboto", sans-serif;
+  .talk-section-body p {
+    font-family: var(--font-sans);
     font-size: 0.9rem;
-    color: #000000;
+    color: var(--color-text-strong);
     line-height: 1.8;
     margin-bottom: 1rem;
   }
 
+  .talk-section-body ul,
+  .talk-section-body ol {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-strong);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
 
+  .talk-section-body li { margin-bottom: 0.3rem; }
+
+  .talk-section-body a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .talk-section-body a:hover { color: var(--color-text-strong); }
+
+  /* ─── Responsive ────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .talk-single-page { padding: 2rem 1rem; }    .talk-title       { font-size: 1.6rem; }
+  }
+
+  @media (max-width: 480px) {
+    .talk-single-page { padding: 1.5rem 1rem; }
+    .talk-title       { font-size: 1.4rem; }  }
 </style>
+
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - No page-specific scripts currently.
+  - Add interactive behavior here if this page later needs toggles, embeds,
+    or client-side enhancements.
+  ============================================================================
+*/}}
 {{ end }}

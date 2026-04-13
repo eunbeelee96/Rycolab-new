@@ -34,5 +34,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1909.02855
 url_pdf: https://www.aclweb.org/anthology/D19-1090.pdf
+topics:
+- 'Morphology'
+- 'Translation'
 ---
 

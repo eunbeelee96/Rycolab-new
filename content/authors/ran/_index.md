@@ -29,6 +29,11 @@ interests:
 - Information Theory
 - Parsing
 - Bias and Fairness in NLP
+research_topics:
+- Formal Language Theory
+- General ML & Surveys
+- Linguistics
+- Fairness & Ethics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

@@ -16,5 +16,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/L14-1510/
 url_pdf: papers/cotterell+callison-burch.lrec14.pdf
+topics:
+- 'Translation'
 ---
 

@@ -26,9 +26,6 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
 ## Course Schedule
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -54,7 +51,7 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
       <td>1937 (Original Paper)</td>
       <td>The Annotated Turing (Chapters 12 & 13)</td>
       <td>Jael Nyffenegger, Noel Ullreich</td>
-      <td><a href="https://delong.typepad.com/files/petzold-turing.pdf">Petzold (2008)</a></td>
+      <td><a href="https://delong.typepad.com/files/petzold-turing.pdf" target="_blank" rel="noopener">Petzold (2008)</a></td>
     </tr>
     <tr>
       <th scope="row">3</th>
@@ -69,8 +66,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Luka Wedegaertner, Aurel Schmidig
       </td>
       <td>
-        <a href="https://delong.typepad.com/files/petzold-turing.pdf">Petzold (2008)</a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Solomonoff (1964)</a>
+        <a href="https://delong.typepad.com/files/petzold-turing.pdf" target="_blank" rel="noopener">Petzold (2008)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Solomonoff (1964)</a>
       </td>
     </tr>
     <tr>
@@ -86,8 +83,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Ron Jost, Luca Oertig
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Solomonoff (1964)</a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Rogers (1965)</a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Solomonoff (1964)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Rogers (1965)</a>
       </td>
     </tr>
     <tr>
@@ -103,8 +100,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Jaron Niederer
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Gold (1967)</a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Blum & Blum (1975)</a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Gold (1967)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Blum & Blum (1975)</a>
       </td>
     </tr>
     <tr>
@@ -120,8 +117,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Mattia Morelli, Timon Fatzer
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Angluin (1980)</a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Angluin & Smith (1983)</a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Angluin (1980)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Angluin & Smith (1983)</a>
       </td>
     </tr>
     <tr>
@@ -137,8 +134,8 @@ When you send an email, please **always include “Bachelor’s Seminar” in th
         Elena Aschmann, Leonard Schmidt
       </td>
       <td>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Valiant (1984)</a><br>
-        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing">Angluin (1987)</a>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Valiant (1984)</a><br>
+        <a href="https://drive.google.com/drive/folders/1L_6RrW08x2IY4tof7jhnKCI1RIp5pJ5x?usp=sharing" target="_blank" rel="noopener">Angluin (1987)</a>
       </td>
     </tr>
   </tbody>

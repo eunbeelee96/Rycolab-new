@@ -30,5 +30,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.emnlp-main.15/
 url_pdf: papers/torroba-hennigen+al.emnlp20.pdf
 url_code: https://github.com/rycolab/intrinsic-probing
+topics:
+- 'Probing'
 ---
 

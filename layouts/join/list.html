@@ -1,166 +1,161 @@
 {{ define "main" }}
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  Template:  layouts/join/list.html
+  Content:   content/join/_index.md
+
+  CONTENT DEPENDENCY:
+  This template wraps .Content in .join-hero (animation + flex growth).
+  The Markdown file is still expected to supply:
+    · .join-heading  — the page <h1> title
+    · .join-body     — the text block with the left accent bar
+  Without those classes the heading color and accent bar will not render.
+
+  FOOTER NOTE:
+  Footer is rendered via rycolab-footer.html partial injected directly here,
+  because this page overrides the full viewport height (calc(100vh - navbar)).
+  If the base layout ever adds a global footer, remove the partial below.
+
+  OVERFLOW NOTE:
+  .join-page uses height (not min-height) + overflow: hidden to lock the layout
+  to exactly one viewport height and prevent page scroll. This is intentional:
+  the join page is a short, fixed introduction — not a scrolling content page.
+  If longer content is ever added, switch to min-height and flex: 1 on
+  .join-container, and remove overflow: hidden.
+  ============================================================================
+*/}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - .join-page     — full-page shell; sets viewport height and flex column.
+  - .join-container — constrains max-width and holds hero + footer.
+  - .join-hero     — wraps .Content; owns the entrance animation and
+                     flex-grows to push the footer to the bottom.
+  - .Content       — rendered from content/join/_index.md; must supply
+                     .join-heading and .join-body (see SECTION 0).
+  - Footer partial — injected directly below the hero block.
+  ============================================================================
+*/}}
 <section class="join-page">
   <div class="join-container">
-    {{ .Content }}
-    <footer class="join-footer">
-      <div class="footer-content">
-        <div class="footer-group">
-          <a href="https://ml.inf.ethz.ch/">Institute for Machine Learning</a>
-          <a href="https://inf.ethz.ch/">Department of Computer Science, ETH Zürich</a>
-        </div>
-        <a href="mailto:contact-rycolab@lists.inf.ethz.ch">contact-rycolab@lists.inf.ethz.ch</a>
-        <p>Andreasstrasse 5, 8050 Zürich, Switzerland</p>
-      </div>
-    </footer>
+    <div class="join-hero">
+      {{ .Content }}
+    </div>
+    {{ partial "rycolab-footer.html" . }}
   </div>
 </section>
 
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  CSS sub-sections: Layout · Hero · Heading · Body · Links · Footer · Mobile
+  ============================================================================
+*/}}
 <style>
+  /* ─── Layout ─────────────────────────────────────────── */
   .join-page {
-    padding: 2rem 3rem 0 3rem;
-    min-height: 100vh;
+    height: calc(100vh - var(--navbar-height));
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 15rem;
+    overflow: hidden; /* intentional: join page is a short fixed layout; prevents page scroll */
   }
 
   .join-container {
-    max-width: 100%;
-    padding: 0 50px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--edge-padding);
     width: 100%;
-  }
-
-  /* Cards Grid - 2 columns */
-  .join-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 5rem;
-  }
-
-  /* Card Style - like update-card */
-  .join-card {
-    background: transparent;
-    border: 1.5px solid #CEEDB2;
-    border-radius: 20px;
-    padding: 2rem;
-    min-height: 280px;
+    flex: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  /* ─── Hero ──────────────────────────────────────────── */
+  .join-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     opacity: 0;
-    transform: translateY(40px) scale(0.95);
-    animation: cardReveal 0.7s ease-out forwards;
+    transform: translateY(30px);
+    animation: joinReveal 0.7s ease-out forwards;
   }
 
-  .join-card:nth-child(1) { animation-delay: 0s; }
-  .join-card:nth-child(2) { animation-delay: 0.15s; }
-
-  @keyframes cardReveal {
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+  @keyframes joinReveal {
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Card Title */
-  .card-title {
-    font-family: "Roboto Mono", monospace;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #72d71b;
-    margin: 0 0 1.5rem 0;
+  /* ─── Heading ─────────────────────────────────────────── */
+  .join-heading {
+    font-family: var(--font-mono);
+    font-size: 2.2rem;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-accent);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    margin: 0 0 1.5rem 0;
   }
 
-  /* Card Content */
-  .join-card p {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: #000000;
-    margin-bottom: 0.8rem;
+  /* ─── Body ────────────────────────────────────────────── */
+  .join-body {
+    border-left: 3px solid var(--color-primary-light);
+    padding-left: 1.5rem;
   }
 
-  .join-card p:last-of-type {
+  .join-body p {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--color-text-dark);
+    margin-bottom: 1rem;
+  }
+
+  .join-body p:last-child {
     margin-bottom: 0;
   }
 
-  .join-card a {
-    color: #999999;
-    transition: color 0.2s ease;
-  }
-
-  .join-card a:hover {
-    color: #999999;
-    text-decoration: underline;
-  }
-
-  /* Footer */
-  .join-footer {
-    padding: 15rem 0 2rem 0;
-    margin-bottom: 0;
-  }
-
-  .footer-content {
-    display: flex;
-    gap: 5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-top: 1px solid #eee;
-    padding: 1.5rem 0 0 0;
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
-    animation-delay: 0.3s;
-  }
-
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-
-  .footer-content p {
-    font-family: Roboto, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #000000;
+  /* ─── Links ───────────────────────────────────────────── */
+  .join-body a {
+    color: var(--color-accent);
     text-decoration: none;
-    margin: 0;
-    line-height: 1.6;
+    transition: color 0.2s;
   }
 
-  .footer-content a {
-    font-family: Roboto, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #999;
-    text-decoration: none;
-    margin: 0;
-    line-height: 1.6;
+  .join-body a:hover {
+    color: var(--color-text-strong);
   }
 
-  .footer-content a:hover {
-    color: #72d71b;
+  /* ─── Footer ──────────────────────────────────────────── */
+  .join-page .site-footer {
+    padding: 1.5rem 0 2rem 0;
   }
 
-  .footer-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  @media (max-width: 900px) {
-    .join-cards {
-      grid-template-columns: 1fr;
+  /* ─── Mobile ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .join-container {
+      padding: 3rem var(--edge-padding) 0;
     }
 
-    .join-page {
-      padding: 0 20px;
+    .join-heading {
+      font-size: 1.6rem;
     }
 
-    .join-footer {
-      padding: 5rem 20px 2rem 20px;
+    .join-page .site-footer {
+      padding: 3rem 0 2rem 0;
     }
   }
-</style>
+  @media (max-width: 480px) {
+    .join-heading { font-size: 1.3rem; }
+    .join-body p  { font-size: 0.9rem; }
+  }</style>
+
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - No page-specific scripts currently.
+  - Add page-level interactivity here if needed later.
+  ============================================================================
+*/}}
 {{ end }}

@@ -1,0 +1,19 @@
+{{/*
+  NOTE: The footer markup below is duplicated in content/_index.md (inside the
+  second markdown block). HugoBlox's RenderString context does not support
+  shortcodes, so this partial cannot be called from _index.md directly.
+  When editing footer content, update BOTH files:
+    1. layouts/partials/rycolab-footer.html  ← this file
+    2. content/_index.md                     ← the <footer class="site-footer"> block
+  Footer styles live in layouts/_partials/hooks/head-end/main.html (SECTION 7).
+*/}}
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-group">
+      <a href="https://ml.inf.ethz.ch/">Institute for Machine Learning</a>
+      <a href="https://inf.ethz.ch/">Department of Computer Science, ETH Zürich</a>
+    </div>
+    <a href="mailto:contact-rycolab@lists.inf.ethz.ch">contact-rycolab@lists.inf.ethz.ch</a>
+    <p class="footer-address">Andreasstrasse 5, 8050 Zürich, Switzerland</p>
+  </div>
+</footer>

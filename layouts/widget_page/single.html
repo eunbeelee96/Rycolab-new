@@ -1,21 +1,251 @@
-{{- define "main" -}}
-{{ partial "widget_page.html" . }}
+{{ define "main" }}
 
-<script>
-// 내부 링크는 같은 탭에서, 외부 링크는 새 탭에서 열기
-document.addEventListener('DOMContentLoaded', function() {
-  const links = document.querySelectorAll('a');
-  const currentDomain = window.location.hostname;
-  
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    
-    // 내부 링크 체크 (/, #로 시작하거나 같은 도메인)
-    if (href && (href.startsWith('/') || href.startsWith('#') || 
-        (link.hostname && link.hostname === currentDomain))) {
-      link.setAttribute('target', '_self');
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  - This template renders individual course pages (type = 'widget_page').
+  - All 27 courses under content/courses/ use this template.
+  - Each course bundle contains:
+      index.md   → title, semester, subtitle (front matter)
+      main.md    → body content (widgets, schedule table, etc.)
+      people.md  → sidebar people list (Lecturer / Teaching Assistant groups)
+  - people.md is routed to the sidebar; all other .md files go to main content.
+  ============================================================================
+*/}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - Back button: history.back() (preserves referrer context).
+  - Header: title + semester + optional COURSE CATALOG link (parsed from subtitle).
+  - Two-column layout: main content (left) | people sidebar (right).
+  - Main content: widget partials from bundle resources (excl. index.md, people.md).
+  - Sidebar: people.md → widgets/people.html partial.
+  ============================================================================
+*/}}
+
+{{/* Pre-compute bundle resources once — reused by both main content and sidebar ranges. */}}
+{{- $bundle    := .Site.GetPage .File.Dir -}}
+{{- $resources := slice -}}
+{{- if $bundle -}}{{- $resources = where ($bundle.Resources.ByType "page") ".Params.active" "!=" false -}}{{- end -}}
+{{/* $hasPeople controls conditional sidebar rendering and grid layout. */}}
+{{- $hasPeople := false -}}
+{{- range $resources -}}{{- if eq .File.LogicalName "people.md" -}}{{- $hasPeople = true -}}{{- end -}}{{- end -}}
+
+<section class="course-page">
+
+  <div class="course-page-container">
+
+    <!-- Back to Teaching list -->
+    <div class="course-page-back">
+      <a href="{{ site.Home.RelPermalink }}teaching/" class="course-page-back-btn" aria-label="Back to Teaching">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="course-page-layout{{ if not $hasPeople }} course-page-layout--full{{ end }}">
+
+      {{/* ---- Main content ---- */}}
+      <div class="course-page-main">
+        <h1 class="course-page-title">{{ .Title }}</h1>
+
+        <div class="course-page-meta">
+          {{ with .Params.semester }}<span>{{ . }}</span>{{ end }}
+
+          {{ with .Params.subtitle }}
+            {{ if findRE `\[.*?\]\(.*?\)` . }}
+              <span class="course-page-meta-sep">|</span>
+              {{ $linkURL := replaceRE `.*\((.*?)\).*` "$1" . }}
+              <a href="{{ $linkURL }}" class="course-catalog-btn" target="_blank" rel="noopener">COURSE CATALOG</a>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        <!-- Widget content from bundle (main.md, etc.) -->
+        <div class="course-page-content">
+          {{ range $resources }}
+            {{ if and (ne .File.LogicalName "index.md") (ne .File.LogicalName "people.md") }}
+              {{ $widget_path := printf "widgets/%s" (or .Params.widget "blank") }}
+              {{ partial $widget_path (dict "context" $ "page" .) }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      {{/* ---- Sidebar (only rendered when people.md exists and is active) ---- */}}
+      {{ if $hasPeople }}
+      <aside class="course-page-sidebar">
+        {{ range $resources }}
+          {{ if eq .File.LogicalName "people.md" }}
+            {{ $widget_path := printf "widgets/%s" (or .Params.widget "blank") }}
+            {{ partial $widget_path (dict "context" $ "page" .) }}
+          {{ end }}
+        {{ end }}
+      </aside>
+      {{ end }}
+
+    </div>
+  </div>
+
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  - To change page padding         → .course-page
+  - To change back button style    → .course-page-back-btn
+  - To change layout columns       → .course-page-layout
+  - To change sidebar border       → .course-page-sidebar
+  - To change catalog button       → .course-catalog-btn
+  - !important on padding: HugoBlox sets section padding inline.
+  ============================================================================
+*/}}
+  <style>
+    /* ---- Page shell ---- */
+    .course-page {
+      padding: 2rem 3rem !important; /* overrides HugoBlox inline padding */
     }
-  });
-});
-</script>
-{{- end -}}
+
+    .course-page-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* ---- Back button ---- */
+    .course-page-back { margin-bottom: 2rem; }
+
+    .course-page-back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-round);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .course-page-back-btn:hover { background: var(--color-primary-light); }
+
+    /* ---- Two-column layout ---- */
+    .course-page-layout {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 4rem;
+    }
+
+    .course-page-main { min-width: 0; }
+
+    /* ---- Title & meta ---- */
+    .course-page-title {
+      font-family: var(--font-sans);
+      font-size: 2rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .course-page-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: var(--color-text-strong);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--color-border);
+      flex-wrap: wrap;
+    }
+
+    .course-page-meta-sep { color: inherit; }
+
+    .course-catalog-btn {
+      padding: 0.3rem 1rem;
+      background: transparent;
+      border: 1px solid var(--color-accent);
+      border-radius: var(--radius-pill-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .course-catalog-btn:hover { background: var(--color-primary-light); }
+
+    /* ---- Widget content area ---- */
+    .course-page-content { margin-top: 2rem; }
+
+    /* ---- Sidebar ---- */
+    .course-page-sidebar {
+      border-left: 1px solid var(--color-border);
+      padding-left: 3rem;
+    }
+
+    /* Full-width layout when no sidebar */
+    .course-page-layout--full { grid-template-columns: 1fr; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .course-page-layout   { grid-template-columns: 1fr; gap: 3rem; }
+      .course-page-sidebar  { border-left: none; border-top: 1px solid var(--color-border); padding-left: 0; padding-top: 3rem; }
+    }
+    @media (max-width: 768px) { .course-page { padding: 1.5rem !important; } }
+  </style>
+
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - Nav active fix: course pages live under /courses/* which differs from the
+    /teaching nav href. Match by href attribute (stable across locales).
+  - Internal/external link fix: internal links stay in same tab.
+  ============================================================================
+*/}}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // Back button: history.back() when a same-site referrer exists,
+      // otherwise the <a href> naturally falls back to /teaching/.
+      var backBtn = document.querySelector('.course-page-back-btn');
+      if (backBtn) {
+        backBtn.addEventListener('click', function(e) {
+          if (history.length > 1 && document.referrer &&
+              document.referrer.includes(window.location.hostname)) {
+            e.preventDefault();
+            history.back();
+          }
+          // else: follow href → /teaching/
+        });
+      }
+
+      // Scope internal-link fix to widget content only — avoids unintentionally
+      // changing navbar, catalog button, people sidebar, or future overlay links.
+      var domain = window.location.hostname;
+      document.querySelectorAll('.course-page-content a').forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && (href.startsWith('/') || href.startsWith('#') ||
+            (link.hostname && link.hostname === domain))) {
+          link.setAttribute('target', '_self');
+        }
+      });
+
+    });
+
+    // Nav active runs on 'load' — after HugoBlox and all other scripts have
+    // finished, so this override is guaranteed to be applied last.
+    window.addEventListener('load', function() {
+      document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
+        if (link.getAttribute('href') && link.getAttribute('href').includes('/teaching')) {
+          link.classList.add('active');
+          if (link.parentElement) { link.parentElement.classList.add('active'); }
+        }
+      });
+    });
+  </script>
+
+</section>
+{{ end }}

@@ -26,6 +26,10 @@ interests:
 - Machine Translation
 - Low-resource Settings
 - Information Extraction
+research_topics:
+- Multilinguality
+- Linguistics
+- Language Modeling
 
 
 # Social/Academic Networking

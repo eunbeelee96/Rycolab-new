@@ -12,5 +12,7 @@ abstract: ''
 featured: false
 publication: '*Proceedings of the 60th Annual Meeting of the Association for Computational
   Linguistics (Volume 1: Long Papers)*'
+topics:
+- 'Typology'
 ---
 

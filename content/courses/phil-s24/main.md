@@ -65,9 +65,6 @@ Moodle will be the main communication hub for the course. You are responsible fo
 ## Syllabus and Schedule
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -293,10 +290,6 @@ Moodle will be the main communication hub for the course. You are responsible fo
 ## Secondary Literature
 
 <table class="table">
-
-    <head>
-        <base target="_blank">
-    </head>
     <thead>
         <tr>
             <th scope="col" style='white-space:nowrap'>Module</th>

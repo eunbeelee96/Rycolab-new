@@ -39,5 +39,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1910.11493
 url_pdf: https://www.aclweb.org/anthology/W19-4226v2.pdf
+topics:
+- 'Morphology'
 ---
 

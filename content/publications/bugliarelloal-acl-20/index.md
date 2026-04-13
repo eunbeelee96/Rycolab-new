@@ -31,5 +31,8 @@ links:
   url: https://www.aclweb.org/anthology/2020.acl-main.149/
 url_pdf: papers/bugliarello+al.acl20.pdf
 url_code: https://github.com/e-bug/nmt-difficulty
+topics:
+- 'Translation'
+- 'Information Theory'
 ---
 

@@ -69,9 +69,6 @@ We encourage you to sign up and participate in the discussions there.
 
 ## Syllabus and Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

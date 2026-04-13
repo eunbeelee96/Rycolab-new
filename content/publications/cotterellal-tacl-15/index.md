@@ -27,5 +27,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/Q15-1031.pdf
 url_pdf: https://www.aclweb.org/anthology/Q15-1031.pdf
+topics:
+- 'Morphology'
 ---
 

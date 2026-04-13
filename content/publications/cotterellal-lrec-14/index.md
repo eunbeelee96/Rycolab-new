@@ -19,5 +19,7 @@ links:
 - name: Anthology
   url: https://ryancotterell.github.io/papers/cotterell+al.osact14.pdf
 url_pdf: https://ryancotterell.github.io/papers/cotterell+al.osact14.pdf
+topics:
+- 'Translation'
 ---
 

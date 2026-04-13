@@ -1,0 +1,25 @@
+# Research topic tags — single source of truth.
+# Used by:
+#   - layouts/shortcodes/research-topics.html  (homepage pill links)
+#   - layouts/publications/list.html           (TOPIC filter dropdown)
+#
+# To add a topic: append a new entry here.
+# To rename a topic: change the name here AND update data/topic_keywords.json
+#   so publications are still tagged correctly.
+
+- Parsing
+- Morphology
+- Formal Languages
+- Information Theory
+- Language Modeling
+- Typology
+- Alignment
+- Bias & Fairness
+- Psycholinguistics
+- Decoding
+- Tokenization
+- Legal NLP
+- Probing
+- Translation
+- Ethics
+- Syntax

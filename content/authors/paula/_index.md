@@ -27,6 +27,10 @@ interests:
 - Computational Typology
 - Multilingual NLP
 - Argument Structure
+research_topics:
+- Linguistics
+- Multilinguality
+- Semantics & Representations
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

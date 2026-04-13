@@ -28,5 +28,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/D15-1272.pdf
 url_pdf: https://www.aclweb.org/anthology/D15-1272.pdf
+topics:
+- 'Formal Languages'
 ---
 

@@ -14,5 +14,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/2105.10185
 url_pdf: papers/white+al.naacl2021.pdf
+topics:
+- 'Probing'
+- 'Syntax'
 ---
 

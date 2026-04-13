@@ -31,9 +31,6 @@ When you send an e-mail, please ALWAYS put "Bachelor's Seminar" in the object!
 **Course Schedule (Work in Progress)**
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

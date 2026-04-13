@@ -51,4 +51,7 @@ abstract: "Analysing whether neural language models encode linguistic informatio
 publication: '*Proceedings of the 2021 Conference of the North American Chapter of
   the Association for Computational Linguistics: Human Language Technologies*'
 url_pdf: https://aclanthology.org/2021.naacl-main.11.pdf
+topics:
+- 'Probing'
+- 'Syntax'
 ---

@@ -1,4 +1,33 @@
 {{ define "main" }}
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  - Renders the Events list page (/events/).
+  - CALENDAR & UPCOMING EVENTS: populated by JavaScript at runtime.
+      • Lab Meetings: auto-generated recurring entries. Recurrence rule is
+        read from data-weekday and data-title on .lab-meeting-info — no
+        content files needed.
+      • Talks: read from data-date / data-title on rendered .event-card
+        elements. Source: content/talk/<slug>/index.md, sorted date desc.
+  - LAB MEETINGS LIST (lower column): renders Type = "lab-meetings" content
+    pages as archived / specific meeting posts — separate from the
+    auto-generated calendar entries above.
+  - TALKS LIST (lower column): first 10 talks visible on load; the rest are
+    hidden and revealed by the Load More button.
+  ============================================================================
+*/}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - Layout: top section (calendar + upcoming) then two-column section
+    (lab meetings | talks).
+  - LAB MEETING CONFIG: edit data-weekday, data-title, and label text on
+    .lab-meeting-info together — JS reads them as single source of truth.
+  - To add a talk: create content/talk/<slug>/index.md — no code change needed.
+  - To change recurring meeting schedule: edit .lab-meeting-info attributes.
+  ============================================================================
+*/}}
 <section class="events-page">
   <div class="events-container">
     
@@ -31,47 +60,45 @@
       </div>
     </div>
 
-    <!-- Three Column Section -->
-    <div class="events-three-columns">
-      
+    <div class="events-two-columns">
+
       <!-- Lab Meetings Column -->
       <div class="events-column lab-meetings-column">
         <h2 class="column-title">Lab Meetings</h2>
+        <p class="lab-meeting-desc">Weekly lab meetings where members share research progress, receive feedback, and discuss ongoing work. Sessions are led on a rotating basis, with additional paper clinics organized before major deadlines.</p>
+
+        <!--
+          LAB MEETING CONFIG — if the schedule changes, update ALL THREE together:
+            1. data-weekday  (0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat)
+            2. data-title    (meeting name shown in calendar and Upcoming panel)
+            3. the label text in the rows below
+          JS reads data-weekday + data-title from here — no code change needed.
+        -->
+        <div class="lab-meeting-info" data-weekday="4" data-title="Lab Meeting">
+          <div class="lab-meeting-row">
+            <span class="lab-meeting-label">DATE</span>
+            <span class="lab-meeting-detail">Every Thursday, 10:30 AM – 12:00 PM</span>
+          </div>
+          <div class="lab-meeting-row">
+            <span class="lab-meeting-label">LOCATION</span>
+            <span class="lab-meeting-detail">OAT S17 (or S13)</span>
+          </div>
+        </div>
+
         <div class="events-list">
-          {{ range (sort (where .Site.RegularPages "Type" "lab-meetings") ".Date" "desc") | first 10 }}
-            <div class="event-card">
+          {{ $labMeetings := (sort (where .Site.RegularPages "Type" "lab-meetings") ".Date" "desc") | first 10 }}
+          {{ range $i, $card := $labMeetings }}
+            <div class="event-card is-visible" style="animation-delay: {{ mul $i 0.05 }}s">
               <div class="event-date">
                 <div class="date-block">
-                  <div class="month">{{ .Date.Format "Jan" }}</div>
-                  <div class="day">{{ .Date.Format "02" }}</div>
+                  <div class="month">{{ $card.Date.Format "Jan" }}</div>
+                  <div class="day">{{ $card.Date.Format "02" }}</div>
                 </div>
               </div>
               <div class="event-content">
-                <h3 class="event-title">{{ .Title }}</h3>
-                {{ if .Params.event }}
-                  <div class="event-venue">{{ .Params.event }}</div>
-                {{ end }}
-                {{ if .Summary }}
-                  <p class="event-summary">{{ .Summary }}</p>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      </div>
-
-      <!-- Reading Group Column -->
-      <div class="events-column reading-group-column">
-        <h2 class="column-title">Reading Group</h2>
-        <div class="events-list">
-          {{ $readingGroupPage := .Site.GetPage "/readinggroup" }}
-          {{ if $readingGroupPage }}
-            <div class="event-card reading-group-content">
-              <div class="event-content">
-                <h3 class="event-title">{{ $readingGroupPage.Title }}</h3>
-                <div class="reading-group-page-content">
-                  {{ $readingGroupPage.Content }}
-                </div>
+                <h3 class="event-title">{{ $card.Title }}</h3>
+                {{ with $card.Params.event }}<div class="event-venue">{{ . }}</div>{{ end }}
+                {{ with $card.Summary }}<p class="event-summary">{{ . }}</p>{{ end }}
               </div>
             </div>
           {{ end }}
@@ -82,96 +109,64 @@
       <div class="events-column talks-column">
         <h2 class="column-title">Talks</h2>
         <div class="events-list">
-          {{ $talks := slice }}
-          {{ range .Site.Pages }}
-            {{ if and .File (in .File.Path "talk/") (ne .File.BaseFileName "_index") }}
-              {{ $talks = $talks | append . }}
-            {{ end }}
-          {{ end }}
-          {{ $sortedTalks := sort $talks ".Date" "desc" }}
-          {{ range $sortedTalks | first 10 }}
-            <a href="{{ .RelPermalink }}" class="event-card" data-talk-index="{{ .Date }}" style="text-decoration: none; color: inherit;">
+          {{ $sortedTalks := sort (where site.RegularPages "Section" "talk") ".Date" "desc" }}
+          {{ range $i, $talk := $sortedTalks }}
+            <a href="{{ $talk.RelPermalink }}"
+               class="event-card event-card--link{{ if lt $i 10 }} is-visible{{ end }}"
+               {{ if ge $i 10 }}hidden{{ end }}
+               style="{{ if lt $i 10 }}animation-delay: {{ mul $i 0.05 }}s{{ end }}"
+               data-date="{{ $talk.Date.Format "2006-01-02" }}"
+               data-title="{{ $talk.Title }}"
+               data-url="{{ $talk.RelPermalink }}">
               <div class="event-date">
                 <div class="date-block">
-                  <div class="month">{{ .Date.Format "Jan" }}</div>
-                  <div class="day">{{ .Date.Format "02" }}</div>
-                  <div class="year">{{ .Date.Format "2006" }}</div>
+                  <div class="month">{{ $talk.Date.Format "Jan" }}</div>
+                  <div class="day">{{ $talk.Date.Format "02" }}</div>
+                  <div class="year">{{ $talk.Date.Format "2006" }}</div>
                 </div>
               </div>
               <div class="event-content">
-                <h3 class="event-title">{{ .Title }}</h3>
-                {{ if .Params.authors }}
-                  <div class="event-speaker">{{ delimit .Params.authors ", " }}</div>
+                <h3 class="event-title">{{ $talk.Title }}</h3>
+                {{ with $talk.Params.authors }}<div class="event-speaker">{{ delimit . ", " }}</div>{{ end }}
+                {{ if and $talk.Params.time $talk.Params.location }}
+                  <div class="event-meta">{{ $talk.Params.time }} · {{ $talk.Params.location }}</div>
+                {{ else if $talk.Params.time }}
+                  <div class="event-meta">{{ $talk.Params.time }}</div>
+                {{ else if $talk.Params.location }}
+                  <div class="event-meta">{{ $talk.Params.location }}</div>
                 {{ end }}
-                {{ if and .Params.time .Params.location }}
-                  <div class="event-time-location">{{ .Params.time }} · {{ .Params.location }}</div>
-                {{ else if .Params.time }}
-                  <div class="event-time">{{ .Params.time }}</div>
-                {{ else if .Params.location }}
-                  <div class="event-location">{{ .Params.location }}</div>
-                {{ end }}
-                {{ if .Params.abstract }}
-                  <p class="event-abstract">{{ .Params.abstract }}</p>
-                {{ end }}
+                {{ with $talk.Params.abstract }}<p class="event-abstract">{{ . }}</p>{{ end }}
               </div>
             </a>
           {{ end }}
-          {{ if gt (len $sortedTalks) 10 }}
-            <div class="talks-hidden-items" style="display: none;">
-              {{ range $sortedTalks | after 10 }}
-                <a href="{{ .RelPermalink }}" class="event-card" data-talk-index="{{ .Date }}" style="text-decoration: none; color: inherit;">
-                  <div class="event-date">
-                    <div class="date-block">
-                      <div class="month">{{ .Date.Format "Jan" }}</div>
-                      <div class="day">{{ .Date.Format "02" }}</div>
-                      <div class="year">{{ .Date.Format "2006" }}</div>
-                    </div>
-                  </div>
-                  <div class="event-content">
-                    <h3 class="event-title">{{ .Title }}</h3>
-                    {{ if .Params.authors }}
-                      <div class="event-speaker">{{ delimit .Params.authors ", " }}</div>
-                    {{ end }}
-                    {{ if and .Params.time .Params.location }}
-                      <div class="event-time-location">{{ .Params.time }} · {{ .Params.location }}</div>
-                    {{ else if .Params.time }}
-                      <div class="event-time">{{ .Params.time }}</div>
-                    {{ else if .Params.location }}
-                      <div class="event-location">{{ .Params.location }}</div>
-                    {{ end }}
-                    {{ if .Params.abstract }}
-                      <p class="event-abstract">{{ .Params.abstract }}</p>
-                    {{ end }}
-                  </div>
-                </a>
-              {{ end }}
-            </div>
-            <button id="load-more-talks" class="load-more-btn">Load More</button>
-          {{ end }}
         </div>
+        {{ if gt (len $sortedTalks) 10 }}
+          <button id="load-more-talks" class="load-more-btn">Load More</button>
+        {{ end }}
       </div>
 
     </div>
   </div>
 </section>
 
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  - All colors and fonts reference global design tokens from main.html :root.
+  - To change page padding / width        → .events-page, .events-container
+  - To change top section layout          → .events-top-section
+  - To change calendar appearance         → .calendar-*, .calendar-date.*
+  - To change upcoming events panel       → .upcoming-*
+  - To change two-column layout           → .events-two-columns, .events-column
+  - To change card entrance animation     → .event-card.is-visible, @keyframes cardReveal
+  ============================================================================
+*/}}
 <style>
-  .events-page {
-    padding: 2rem 2rem 0 2rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 3rem;
-  }
+  /* ─── Layout ────────────────────────────────────────────── */
+  .events-page      { padding: 3rem 2rem 0; min-height: 100vh; }
+  .events-container { max-width: 100%; padding: 0 var(--edge-padding); }
 
-  .events-container {
-    max-width: 100%;
-    padding: 0 50px;
-    width: 100%;
-  }
-
-  /* Top Section: Calendar + Upcoming Events */
+  /* ─── Top Section: Calendar + Upcoming Events ───────────── */
   .events-top-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -179,33 +174,25 @@
     margin-bottom: 3rem;
   }
 
-  /* Calendar Section */
-  .events-calendar {
-    padding: 1rem;
-    border: 1.5px solid #CEEDB2;
-    border-radius: 20px;
-    background: transparent;
-  }
-
-  /* Upcoming Events Section */
+  .events-calendar,
   .upcoming-events {
     padding: 1rem;
-    border: 1.5px solid #CEEDB2;
-    border-radius: 20px;
+    border: 1.5px solid var(--color-primary-light);
+    border-radius: var(--radius-pill-sm);
     background: transparent;
-    display: flex;
-    flex-direction: column;
   }
 
+  .upcoming-events { display: flex; flex-direction: column; }
+
+  /* ─── Upcoming Events ───────────────────────────────────── */
   .upcoming-title {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
-    margin: 0 0 1rem 0;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-strong);
+    margin: 0 0 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    flex-shrink: 0;
   }
 
   .upcoming-list {
@@ -219,41 +206,46 @@
 
   .upcoming-event-item {
     padding: 0.8rem;
-    background: #f5f5f5;
-    border-left: 3px solid #CEEDB2;
-    border-radius: 0px;
-    transition: all 0.2s ease;
+    background: var(--color-bg-gray);
+    border-left: 3px solid var(--color-primary-light);
+    transition: background 0.2s, border-color 0.2s;
   }
 
   .upcoming-event-item:hover {
-    background: #f0f9e8;
-    border-left-color: #72d71b;
+    background: var(--color-primary-light);
+    border-left-color: var(--color-accent);
   }
 
   .upcoming-event-date {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: #72d71b;
-    font-weight: 400;
+    color: var(--color-accent);
     text-transform: uppercase;
     margin-bottom: 0.2rem;
   }
 
   .upcoming-event-title {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.9rem;
-    font-weight: 400;
-    color: #000000;
-    margin: 0;
+    color: var(--color-text-strong);
   }
 
   .upcoming-event-type {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.8rem;
-    color: #666666;
+    color: var(--color-text-muted);
     margin-top: 0.2rem;
   }
 
+  .upcoming-empty {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 2rem;
+  }
+
+  /* ─── Calendar ──────────────────────────────────────────── */
   .calendar-nav {
     display: flex;
     justify-content: space-between;
@@ -263,29 +255,26 @@
 
   .calendar-nav-btn {
     background: transparent;
-    border: 1px solid #CEEDB2;
+    border: 1px solid var(--color-primary-light);
     border-radius: 8px;
     width: 32px;
     height: 32px;
     font-size: 1.2rem;
-    color: #72d71b;
+    color: var(--color-accent);
     cursor: pointer;
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.2s;
   }
 
-  .calendar-nav-btn:hover {
-    background-color: #CEEDB2;
-    color: #72d71b;
-  }
+  .calendar-nav-btn:hover { background: var(--color-primary-light); }
 
   .calendar-month-year {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-strong);
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -294,75 +283,64 @@
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0;
-    border: 0.5px solid #eee;
+    border: 1px solid var(--color-border);
   }
 
   .calendar-header {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
-    font-weight: 400;
-    color: #666666;
+    color: var(--color-text-muted);
     text-align: center;
     padding: 0.5rem;
     text-transform: uppercase;
-    background-color: #f5f5f5;
-    border: 1px solid #eee;
+    background: var(--color-bg-gray);
+    border: 1px solid var(--color-border);
   }
 
   .calendar-date {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-sans);
     min-height: 50px;
     padding: 0.3rem;
-    border: 1px solid #eeeeee;
-    position: relative;
+    border: 1px solid var(--color-border);
     cursor: pointer;
-    transition: background-color 0.2s ease;
     display: flex;
     flex-direction: column;
+    transition: background 0.2s;
+    position: relative;
   }
 
-  .calendar-date-number {
-    font-size: 0.8rem;
-    font-weight: 400;
-    margin-bottom: 0.2rem;
+  .calendar-date:hover                       { background: var(--color-bg-gray); }
+  .calendar-date-number                      { font-size: 0.8rem; margin-bottom: 0.2rem; }
+  .calendar-date-events                      { font-size: 0.7rem; color: var(--color-text-muted); line-height: 1.2; }
+
+  /* Today: green background */
+  .calendar-date.today                       { background: var(--color-primary-light); }
+  .calendar-date.today .calendar-date-number { font-weight: 600; }
+
+  /* Has-event (not today): small green dot */
+  .calendar-date.has-event::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    margin: auto 0 4px 4px;
   }
 
-  .calendar-date-events {
-    font-size: 0.7rem;
-    color: #666666;
-    line-height: 1.2;
+  /* Today + has-event: green background + accent ring */
+  .calendar-date.today.has-event {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
   }
 
-  .calendar-date:hover {
-    background-color: #f5f5f5;
-  }
+  .calendar-date.other-month                       { background: var(--color-bg-subtle); }
+  .calendar-date.other-month .calendar-date-number { color: var(--color-text-light); }
 
-  .calendar-date.today {
-    background-color: #CEEDB2;
-  }
-
-  .calendar-date.today .calendar-date-number {
-    font-weight: 600;
-  }
-
-  .calendar-date.has-event {
-    background-color: #CEEDB2;
-  }
-
-  .calendar-date.other-month {
-    background-color: #fafafa;
-    color: #999999;
-  }
-
-  .calendar-date.other-month .calendar-date-number {
-    color: #999999;
-  }
-
-  /* Three Column Layout */
-  .events-three-columns {
+  /* ─── Two-Column Layout ─────────────────────────────────── */
+  .events-two-columns {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-bottom: 5rem;
   }
@@ -371,133 +349,104 @@
     display: flex;
     flex-direction: column;
     padding-right: 2rem;
-    border-right: 1px solid #eeeeee;
+    border-right: 1px solid var(--color-border);
   }
 
-  .events-column:last-child {
-    border-right: none;
-    padding-right: 0;
-  }
+  .events-column:last-child { border-right: none; padding-right: 0; }
 
   .column-title {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 1.2rem;
-    font-weight: 400;
-    color: #72d71b;
-    margin: 0 0 1.5rem 0;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-accent);
+    margin: 0 0 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
-  /* Events List in Columns */
-  .events-column .events-list {
+  .events-column .events-list { display: flex; flex-direction: column; }
+
+  /* ─── Lab Meeting Info Block ────────────────────────────── */
+  .lab-meeting-desc {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0 0 1.2rem;
+  }
+
+  .lab-meeting-info {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    position: relative;
+    gap: 0.6rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
   }
 
-  /* Load More Button */
-  .load-more-btn {
-    align-self: center;
-    margin-top: 2rem;
-    padding: 0.8rem 2rem;
-    background: transparent;
-    border: 1px solid #000000;
-    border-radius: 30px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #000000;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  .lab-meeting-row   { display: flex; align-items: baseline; gap: 0.8rem; }
+
+  .lab-meeting-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-accent);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    min-width: 5rem;
   }
 
-  .load-more-btn:hover {
-    background-color: #f5f5f5;
-  }
+  .lab-meeting-detail { font-family: var(--font-sans); font-size: 0.9rem; color: var(--color-text-strong); }
 
-  .load-more-btn:active {
-    transform: scale(0.98);
-  }
-
-  /* Event Card in Columns */
+  /* ─── Event Cards ───────────────────────────────────────── */
   .events-column .event-card {
     display: flex;
     flex-direction: row;
     padding: 0.8rem 0;
-    border: none;
-    border-bottom: 1px solid #f5f5f5;
-    border-radius: 0;
+    border-bottom: 1px solid var(--color-border);
     background: transparent;
     opacity: 0;
     transform: translateY(20px);
+    transition: background 0.2s;
+  }
+
+  /* Entrance animation — triggered by .is-visible.
+     Added server-side (Hugo) for the initial visible cards;
+     added by JS for load-more revealed cards. */
+  .events-column .event-card.is-visible {
     animation: cardReveal 0.5s ease-out forwards;
-    transition: background-color 0.2s ease;
   }
 
-  .talks-column .event-card:hover {
-    background-color: #f5f5f5;
-  }
+  .events-column .event-card:last-of-type { border-bottom: none; }
 
-  .events-column .event-card:last-child {
-    border-bottom: none;
-  }
+  /* Link cards: reset anchor defaults */
+  a.event-card--link { text-decoration: none; color: inherit; }
 
-  .events-column .event-card:nth-child(1) { animation-delay: 0s; }
-  .events-column .event-card:nth-child(2) { animation-delay: 0.1s; }
-  .events-column .event-card:nth-child(3) { animation-delay: 0.2s; }
-  .events-column .event-card:nth-child(4) { animation-delay: 0.3s; }
-  .events-column .event-card:nth-child(5) { animation-delay: 0.4s; }
+  .talks-column .event-card:hover { background: var(--color-bg-gray); }
 
-  @keyframes cardReveal {
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
+  /* Staggered entrance: delay set inline by Hugo (initial cards) or by JS (load-more). */
 
-  /* Date Block */
-  .events-column .event-date {
-    margin-bottom: 0;
-    margin-right: 1rem;
-    flex-shrink: 0;
-  }
+  @keyframes cardReveal { to { opacity: 1; transform: translateY(0); } }
 
-  /* Event Content */
-  .events-column .event-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
-  }
+  .events-column .event-date    { margin-right: 1rem; flex-shrink: 0; }
+  .events-column .event-content { display: flex; flex-direction: column; flex: 1; justify-content: center; }
 
-  /* Lab Meetings Column Styles */
+  /* ─── Lab Meetings Card ─────────────────────────────────── */
   .lab-meetings-column .event-title {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.8rem;
-    font-weight: 400;
-    color: #000000;
-    margin: 0 0 0.3rem 0;
+    color: var(--color-text-strong);
+    margin: 0 0 0.3rem;
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
 
-  .lab-meetings-column .event-venue {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: #72d71b;
-    margin-bottom: 0.2rem;
-  }
-
+  .lab-meetings-column .event-venue   { font-family: var(--font-sans); font-size: 0.75rem; color: var(--color-accent); margin-bottom: 0.2rem; }
   .lab-meetings-column .event-summary {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.75rem;
     line-height: 1.4;
-    color: #999999;
+    color: var(--color-text-light);
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -505,120 +454,7 @@
     overflow: hidden;
   }
 
-  /* Reading Group Column Styles */
-  .reading-group-column .event-title {
-    font-family: "Roboto Mono", monospace;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
-    margin: 0 0 0.3rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-
-  /* Reading Group Page Styles */
-  .reading-group-page-content p {
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
-    margin-bottom: 2rem;
-  }
-
-  .reading-group-page-content p strong {
-    color: #000000;
-    font-weight: 500;
-  }
-
-  .reading-group-page-content h2 {
-    font-family: "Roboto Mono", monospace;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .reading-group-page-content table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: "Roboto", sans-serif;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .reading-group-page-content thead th {
-    font-family: "Roboto Mono", monospace;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #000000;
-    text-align: left;
-    padding: 0.75rem;
-    border-bottom: 2px solid #eeeeee;
-    background-color: #f5f5f5;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-
-  .reading-group-page-content tbody td {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #000000;
-    padding: 0.75rem;
-    border-bottom: 1px solid #f5f5f5;
-  }
-
-  .reading-group-page-content tbody td a {
-    color: #999999;
-    text-decoration: none;
-  }
-
-  .reading-group-page-content tbody td a:hover {
-    text-decoration: underline;
-  }
-
-  .reading-group-page-content details {
-    margin-top: 2rem;
-  }
-
-  .reading-group-page-content details summary {
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .reading-group-page-content details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .reading-group-page-content details summary h2 {
-    display: inline-block;
-    color: #666666;
-    margin: 0;
-    margin-top: 0rem;
-    transition: color 0.2s ease;
-  }
-
-  .reading-group-page-content details summary:hover h2 {
-    color: #666666;
-    text-decoration: underline;
-  }
-
-  .reading-group-page-content details[open] summary h2 {
-    color: #666666;
-  }
-
-  .reading-group-page-content nobr {
-    font-family: "Roboto Mono", monospace;
-    font-size: 0.85rem;
-    color: #000000;
-    text-transform: uppercase;
-    
-  }
-
-  /* Talks Column Styles */
+  /* ─── Talks Card ────────────────────────────────────────── */
   .talks-column .date-block {
     display: flex;
     flex-direction: column;
@@ -626,81 +462,32 @@
     justify-content: center;
     width: 50px;
     height: 50px;
-    background-color: #c5c5c5;
+    background: var(--color-border);
     border-radius: 6px;
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
   }
 
-  .talks-column .date-block .month {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #000000;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-
-  .talks-column .date-block .day {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
-    line-height: 1;
-  }
-
-  .talks-column .date-block .year {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #000000;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
+  .talks-column .date-block .month,
+  .talks-column .date-block .year  { font-size: 0.8rem; color: var(--color-text-strong); text-transform: uppercase; letter-spacing: 0.3px; }
+  .talks-column .date-block .day   { font-size: 1rem;   color: var(--color-text-strong); line-height: 1; }
 
   .talks-column .event-title {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 1rem;
-    font-weight: 400;
-    color: #000000;
-    margin: 0 0 0.3rem 0;
+    color: var(--color-text-strong);
+    margin: 0 0 0.3rem;
     text-transform: uppercase;
     letter-spacing: 0.3px;
   }
 
-  .talks-column .event-speaker {
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #666666;
-    margin-bottom: 0.2rem;
-  }
-
-  .talks-column .event-time {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #999999;
-    margin-bottom: 0.2rem;
-  }
-
-  .talks-column .event-time-location {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #999999;
-    margin-bottom: 0.2rem;
-  }
-
-  .talks-column .event-location {
-    font-family: "Roboto", sans-serif;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #999999;
-    margin-bottom: 0.2rem;
-  }
+  .talks-column .event-speaker { font-family: var(--font-sans); font-size: 1rem;   color: var(--color-text-muted); margin-bottom: 0.2rem; }
+  .talks-column .event-meta    { font-family: var(--font-sans); font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.2rem; }
 
   .talks-column .event-abstract {
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-sans);
     font-size: 0.8rem;
     line-height: 1.4;
-    color: #999999;
+    color: var(--color-text-light);
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -708,215 +495,267 @@
     overflow: hidden;
   }
 
-  .event-link {
-    font-family: "Roboto Mono", monospace;
-    font-size: 0.8rem;
-    color: #999999;
+  /* Upcoming event items: div (default) or <a> for talk links */
+  a.upcoming-event-item {
+    display: block;
     text-decoration: none;
-    transition: color 0.2s ease;
-    margin-top: 1rem;
-    display: inline-block;
+    cursor: pointer;
   }
 
-  .event-link:hover {
-    color: #72d71b;
+  /* ─── Load More / Hidden Talks ──────────────────────────── */
+  /* Extra talks use the HTML `hidden` attribute — no CSS needed (browser default). */
+
+  .load-more-btn {
+    align-self: center;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background: transparent;
+    border: 1px solid var(--color-text-strong);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-strong);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: background 0.2s;
   }
 
-  /* Responsive */
+  .load-more-btn:hover  { background: var(--color-bg-gray); }
+  .load-more-btn:active { transform: scale(0.98); }
+
+  /* ─── Responsive ────────────────────────────────────────── */
   @media (max-width: 1024px) {
-    .events-three-columns {
-      grid-template-columns: 1fr 1fr;
-    }
+    .events-container   { padding: 0 var(--edge-padding); }
+    .calendar-date      { min-height: 44px; }
+    .upcoming-list      { max-height: 240px; }
   }
 
   @media (max-width: 768px) {
-    .events-three-columns {
-      grid-template-columns: 1fr;
+    .events-page      { padding: 2rem 1rem 0; }
+    .events-container { padding: 0; }              /* side padding comes from .events-page only */
+
+    .events-top-section,
+    .events-two-columns { grid-template-columns: 1fr; }
+
+    .events-column {
+      padding-right: 0;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
     }
+
+    .events-column:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .calendar-date                 { min-height: 40px; }
+    .talks-column .event-title     { overflow-wrap: break-word; }
+    .upcoming-list                 { max-height: none; }
+  }
+
+  @media (max-width: 480px) {
+    .events-page             { padding: 1.5rem 0.75rem 0; }
+    .column-title            { font-size: 1rem; }
+    .calendar-month-year     { font-size: 0.85rem; }
+    .calendar-date-number    { font-size: 0.75rem; }
+    .lab-meeting-detail      { font-size: 0.85rem; }
+    .load-more-btn           { padding: 0.7rem 1.5rem; font-size: 0.75rem; }
   }
 </style>
 
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - renderCalendar(): builds the monthly grid; marks today and event dots.
+      Uses a fresh new Date() each call so midnight-crossings update correctly.
+  - renderUpcomingEvents(): filters allEvents to the current Sun–Sat week.
+  - LAB_MEETING config: read from .lab-meeting-info DOM attributes (single
+    source of truth). `today` (outer scope) is reused for the date range.
+  - Talks data: read from data-date / data-title on each .event-card element.
+  - Load More: removes [hidden] from extra talk cards and adds .is-visible to
+    trigger the stagger entrance animation.
+  ============================================================================
+*/}}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const calendarGrid = document.getElementById('calendar-grid');
+document.addEventListener('DOMContentLoaded', function () {
+  const calendarGrid     = document.getElementById('calendar-grid');
   const monthYearDisplay = document.getElementById('current-month-year');
-  const prevBtn = document.getElementById('prev-month');
-  const nextBtn = document.getElementById('next-month');
-  const upcomingList = document.getElementById('upcoming-list');
-  
+  const prevBtn          = document.getElementById('prev-month');
+  const nextBtn          = document.getElementById('next-month');
+  const upcomingList     = document.getElementById('upcoming-list');
+
   if (!calendarGrid || !monthYearDisplay) return;
 
-  let currentMonth = new Date().getMonth();
-  let currentYear = new Date().getFullYear();
-  
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-                      'July', 'August', 'September', 'October', 'November', 'December'];
-  
-  // Collect all events
+  const today = new Date();
+  let currentMonth = today.getMonth();
+  let currentYear  = today.getFullYear();
+
+  const MONTH_NAMES = ['January','February','March','April','May','June',
+                       'July','August','September','October','November','December'];
+
+  // ── Event Data ────────────────────────────────────────────────────────────
   const allEvents = [];
-  document.querySelectorAll('.event-card').forEach(card => {
-    const dateBlock = card.querySelector('.date-block');
-    if (!dateBlock) return;
-    
-    const monthText = dateBlock.querySelector('.month')?.textContent;
-    const dayText = dateBlock.querySelector('.day')?.textContent;
-    const title = card.querySelector('.event-title')?.textContent;
-    
-    if (monthText && dayText && title) {
-      const monthNum = new Date(Date.parse(monthText + " 1, 2000")).getMonth();
-      const day = parseInt(dayText);
-      const year = currentYear; // Assuming current year for simplicity
-      
-      // Determine event type based on which column it's in
-      let type = 'Event';
-      if (card.closest('.lab-meetings-column')) type = 'Lab Meeting';
-      else if (card.closest('.reading-group-column')) type = 'Reading Group';
-      else if (card.closest('.talks-column')) type = 'Talk';
-      
+
+  // Lab meeting config — HTML (.lab-meeting-info) is the single source of truth.
+  // Change data-weekday, data-title, and the label text there; JS reads them here.
+  const _lm = document.querySelector('.lab-meeting-info');
+  const LAB_MEETING = {
+    title:   _lm?.dataset.title                         ?? 'Lab Meeting',
+    weekday: parseInt(_lm?.dataset.weekday ?? '4', 10), // 0=Sun … 6=Sat
+  };
+
+  (function generateLabMeetings() {
+    const start = new Date(today.getFullYear(), today.getMonth() - 6, 1);
+    const end   = new Date(today.getFullYear(), today.getMonth() + 7, 0);
+    const d = new Date(start);
+    while (d.getDay() !== LAB_MEETING.weekday) d.setDate(d.getDate() + 1);
+    while (d <= end) {
       allEvents.push({
-        date: new Date(year, monthNum, day),
-        title: title,
-        type: type,
-        monthNum: monthNum,
-        day: day
+        date:     new Date(d),
+        title:    LAB_MEETING.title,
+        type:     'Lab Meeting',
+        monthNum: d.getMonth(),
+        day:      d.getDate(),
+        year:     d.getFullYear()
       });
+      d.setDate(d.getDate() + 7);
     }
+  })();
+
+  // Talks: read from data-date / data-title / data-url attributes set by Hugo template.
+  // No manual updates needed — adding content/talk/<slug>/index.md is enough.
+  document.querySelectorAll('.talks-column .event-card[data-date]').forEach(card => {
+    const iso   = card.dataset.date;
+    const title = card.dataset.title;
+    if (!iso || !title) return;
+    const d = new Date(iso + 'T00:00:00');
+    allEvents.push({
+      date:     d,
+      title:    title,
+      type:     'Talk',
+      url:      card.dataset.url || null,
+      monthNum: d.getMonth(),
+      day:      d.getDate(),
+      year:     d.getFullYear()
+    });
   });
-  
-  // Sort events by date
+
   allEvents.sort((a, b) => a.date - b.date);
-  
+
+  // ── Upcoming Events (current week: Sun–Sat) ───────────────────────────────
+  // NOTE: week boundaries are Sunday–Saturday (Sun=0 per JS Date.getDay()).
+  //       To switch to Monday-start: change weekStart offset to (now.getDay() + 6) % 7.
   function renderUpcomingEvents() {
     if (!upcomingList) return;
-    
-    const today = new Date();
-    const upcoming = allEvents.filter(event => event.date >= today).slice(0, 10);
-    
+
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    const weekStart = new Date(now);
+    weekStart.setDate(now.getDate() - now.getDay());
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate() + 6);
+    weekEnd.setHours(23, 59, 59, 999);
+
+    const upcoming = allEvents.filter(e => e.date >= weekStart && e.date <= weekEnd);
     upcomingList.innerHTML = '';
-    if (upcoming.length === 0) {
-      upcomingList.innerHTML = '<div style="color: #999; font-size: 0.8rem; text-align: center; padding: 2rem;">No upcoming events</div>';
+    if (!upcoming.length) {
+      upcomingList.innerHTML = '<div class="upcoming-empty">No upcoming events</div>';
       return;
     }
-    
+
     upcoming.forEach(event => {
-      const item = document.createElement('div');
+      // Talk events have a url; lab meetings do not — render accordingly.
+      const item = document.createElement(event.url ? 'a' : 'div');
+      if (event.url) item.href = event.url;
       item.className = 'upcoming-event-item';
-      
-      const dateStr = `${monthNames[event.monthNum]} ${event.day}, ${event.date.getFullYear()}`;
-      
       item.innerHTML = `
-        <div class="upcoming-event-date">${dateStr}</div>
+        <div class="upcoming-event-date">${MONTH_NAMES[event.monthNum]} ${event.day}, ${event.year}</div>
         <div class="upcoming-event-title">${event.title}</div>
         <div class="upcoming-event-type">${event.type}</div>
       `;
-      
       upcomingList.appendChild(item);
     });
   }
-  
+
+  // ── Calendar ──────────────────────────────────────────────────────────────
   function renderCalendar() {
-    const today = new Date();
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const lastDay = new Date(currentYear, currentMonth + 1, 0);
-    const firstDayOfWeek = firstDay.getDay();
-    const totalDays = lastDay.getDate();
-    
-    // Update month/year display
-    monthYearDisplay.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-    
-    // Collect events by date for current month
+    const firstDay     = new Date(currentYear, currentMonth, 1);
+    const lastDay      = new Date(currentYear, currentMonth + 1, 0);
+    const startWeekday = firstDay.getDay();
+    const totalDays    = lastDay.getDate();
+
+    monthYearDisplay.textContent = `${MONTH_NAMES[currentMonth]} ${currentYear}`;
+
     const eventsByDate = {};
-    allEvents.forEach(event => {
-      if (event.monthNum === currentMonth) {
-        if (!eventsByDate[event.day]) eventsByDate[event.day] = [];
-        eventsByDate[event.day].push(event.title);
+    allEvents.forEach(e => {
+      if (e.monthNum === currentMonth && e.year === currentYear) {
+        (eventsByDate[e.day] = eventsByDate[e.day] || []).push(e.title);
       }
     });
-    
-    // Remove existing date cells (keep headers)
-    const headers = calendarGrid.querySelectorAll('.calendar-header');
+
+    const headers = [...calendarGrid.querySelectorAll('.calendar-header')];
     calendarGrid.innerHTML = '';
-    headers.forEach(header => calendarGrid.appendChild(header));
-    
-    // Add empty cells for days before month starts
-    for (let i = 0; i < firstDayOfWeek; i++) {
-      const prevMonthDay = new Date(currentYear, currentMonth, -firstDayOfWeek + i + 1).getDate();
-      const cell = document.createElement('div');
-      cell.className = 'calendar-date other-month';
-      cell.innerHTML = `<div class="calendar-date-number">${prevMonthDay}</div>`;
-      calendarGrid.appendChild(cell);
+    headers.forEach(h => calendarGrid.appendChild(h));
+
+    for (let i = 0; i < startWeekday; i++) {
+      const prev = new Date(currentYear, currentMonth, -startWeekday + i + 1).getDate();
+      calendarGrid.appendChild(makeCell('other-month', prev));
     }
-    
-    // Add days of current month
+
+    const currentDate = new Date();
     for (let day = 1; day <= totalDays; day++) {
-      const cell = document.createElement('div');
-      let classes = 'calendar-date';
-      const isToday = day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
-      const hasEvents = eventsByDate[day] && eventsByDate[day].length > 0;
-      
-      if (isToday) classes += ' today';
-      if (hasEvents) classes += ' has-event';
-      
-      cell.className = classes;
-      
-      let eventsHtml = '';
+      const isToday   = day === currentDate.getDate() && currentMonth === currentDate.getMonth() && currentYear === currentDate.getFullYear();
+      const hasEvents = !!(eventsByDate[day]?.length);
+      const classes   = ['calendar-date', isToday && 'today', hasEvents && 'has-event'].filter(Boolean).join(' ');
+      const cell      = document.createElement('div');
+      cell.className  = classes;
+
+      let html = `<div class="calendar-date-number">${day}</div>`;
       if (hasEvents) {
-        eventsHtml = '<div class="calendar-date-events">';
-        eventsByDate[day].slice(0, 2).forEach(event => {
-          const truncated = event.length > 20 ? event.substring(0, 20) + '...' : event;
-          eventsHtml += `<div>${truncated}</div>`;
-        });
-        if (eventsByDate[day].length > 2) {
-          eventsHtml += `<div>+${eventsByDate[day].length - 2} more</div>`;
-        }
-        eventsHtml += '</div>';
+        const labels = eventsByDate[day].slice(0, 2)
+          .map(t => `<div>${t.length > 20 ? t.slice(0, 20) + '…' : t}</div>`).join('');
+        const more = eventsByDate[day].length > 2
+          ? `<div>+${eventsByDate[day].length - 2} more</div>` : '';
+        html += `<div class="calendar-date-events">${labels}${more}</div>`;
       }
-      
-      cell.innerHTML = `<div class="calendar-date-number">${day}</div>${eventsHtml}`;
+      cell.innerHTML = html;
       calendarGrid.appendChild(cell);
     }
-    
-    // Add empty cells for days after month ends
-    const totalCells = firstDayOfWeek + totalDays;
-    const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-    for (let i = 1; i <= remainingCells; i++) {
-      const cell = document.createElement('div');
-      cell.className = 'calendar-date other-month';
-      cell.innerHTML = `<div class="calendar-date-number">${i}</div>`;
-      calendarGrid.appendChild(cell);
-    }
+
+    const filled    = startWeekday + totalDays;
+    const remainder = filled % 7 === 0 ? 0 : 7 - (filled % 7);
+    for (let i = 1; i <= remainder; i++) calendarGrid.appendChild(makeCell('other-month', i));
   }
-  
+
+  function makeCell(extraClass, dayNum) {
+    const cell = document.createElement('div');
+    cell.className = `calendar-date ${extraClass}`;
+    cell.innerHTML = `<div class="calendar-date-number">${dayNum}</div>`;
+    return cell;
+  }
+
+  // ── Navigation ────────────────────────────────────────────────────────────
   prevBtn?.addEventListener('click', () => {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
-    }
+    if (--currentMonth < 0) { currentMonth = 11; currentYear--; }
     renderCalendar();
   });
-  
+
   nextBtn?.addEventListener('click', () => {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
-    }
+    if (++currentMonth > 11) { currentMonth = 0; currentYear++; }
     renderCalendar();
   });
-  
-  // Load More Talks functionality
-  const loadMoreBtn = document.getElementById('load-more-talks');
-  if (loadMoreBtn) {
-    loadMoreBtn.addEventListener('click', () => {
-      const hiddenItems = document.querySelector('.talks-hidden-items');
-      if (hiddenItems && hiddenItems.style.display === 'none') {
-        hiddenItems.style.display = 'contents';
-        loadMoreBtn.style.display = 'none';
-      }
+
+  // ── Load More Talks ───────────────────────────────────────────────────────
+  document.getElementById('load-more-talks')?.addEventListener('click', function () {
+    const hidden = document.querySelectorAll('.talks-column .event-card[hidden]');
+    hidden.forEach((el, i) => {
+      el.style.animationDelay = `${i * 0.05}s`;
+      el.removeAttribute('hidden');
+      el.classList.add('is-visible');
     });
-  }
-  
+    this.hidden = true;
+  });
+
+  // ── Init ──────────────────────────────────────────────────────────────────
   renderCalendar();
   renderUpcomingEvents();
 });

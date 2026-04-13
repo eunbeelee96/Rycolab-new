@@ -34,5 +34,8 @@ links:
   url: https://arxiv.org/abs/2106.01044
 url_pdf: papers/white+cotterell.acl21.pdf
 url_code: https://github.com/rycolab/artificial-languages
+topics:
+- 'Language Modeling'
+- 'Formal Languages'
 ---
 

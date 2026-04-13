@@ -24,5 +24,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/N15-1094.pdf
 url_pdf: https://www.aclweb.org/anthology/N15-1094.pdf
+topics:
+- 'Formal Languages'
 ---
 

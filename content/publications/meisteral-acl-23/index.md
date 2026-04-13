@@ -83,6 +83,9 @@ projects: []
 links:
 - name: URL
   url: https://arxiv.org/abs/2307.03749
+topics:
+- 'Decoding'
+- 'Language Modeling'
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

@@ -36,5 +36,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1906.04726
 url_pdf: https://www.aclweb.org/anthology/P19-1491.pdf
+topics:
+- 'Language Modeling'
+- 'Typology'
 ---
 

@@ -27,5 +27,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1612.06027
 url_pdf: https://www.aclweb.org/anthology/E17-1049.pdf
+topics:
+- 'Morphology'
 ---
 

@@ -26,9 +26,6 @@ weight = 20
 The structure of this seminar is one of open-ended debate. Each week a group of students will present a paper in the list below (which is still being updated), followed by a class discussion. Grading is purely based on participation. 
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -86,7 +83,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
         <tr>
       <th scope="row">5</th>
       <td>19.03.25</td>
-      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1 > On the Translation of Languages from Left to Right </a> </td>
+      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1  target="_blank" rel="noopener"> On the Translation of Languages from Left to Right </a> </td>
       <td>
       Knuth, 1965
       </td>
@@ -97,7 +94,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
      <tr>
       <th scope="row">6</th>
       <td>26.03.25</td>
-      <td> <a href=https://link.springer.com/content/pdf/10.1007/BF00134555.pdf> Combinatory Grammars and Parasitic Gaps </a> </td>
+      <td> <a href=https://link.springer.com/content/pdf/10.1007/BF00134555.pdf target="_blank" rel="noopener"> Combinatory Grammars and Parasitic Gaps </a> </td>
       <td>
       Steedman, 1986 
       </td>
@@ -108,7 +105,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">7</th>
       <td>2.04.25</td>
-      <td> <a href=https://www.sciencedirect.com/science/article/pii/S002224961930166X> The Probabilistic Chomsky-Shutzenberger Hierarchy </a> </td>
+      <td> <a href=https://www.sciencedirect.com/science/article/pii/S002224961930166X target="_blank" rel="noopener"> The Probabilistic Chomsky-Shutzenberger Hierarchy </a> </td>
       <td>
       Icard, 2020
       </td>
@@ -119,7 +116,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">8</th>
       <td>9.04.25</td>
-      <td> <a href=https://link.springer.com/chapter/10.1007/978-3-662-46663-6_5> Fast, Practical GLL Parsing </a> </td>
+      <td> <a href=https://link.springer.com/chapter/10.1007/978-3-662-46663-6_5 target="_blank" rel="noopener"> Fast, Practical GLL Parsing </a> </td>
       <td>
       Afroozeh and Izmaylova, 2015
       </td>
@@ -148,7 +145,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">11</th>
       <td>30.04.24</td>
-      <td> <a href=https://aclanthology.org/2020.acl-main.463> Climbing Towards NLU: On Meaning, Form and Understanding [...] </a> </td>
+      <td> <a href=https://aclanthology.org/2020.acl-main.463 target="_blank" rel="noopener"> Climbing Towards NLU: On Meaning, Form and Understanding [...] </a> </td>
       <td>
       Bender and Koller, 2020 
       </td>
@@ -157,7 +154,7 @@ The structure of this seminar is one of open-ended debate. Each week a group of 
     <tr>
       <th scope="row">12</th>
       <td>7.05.24</td>
-      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1 > GPT-3: Its Nature, Scope, Limits, and Consequences </a>  </td>
+      <td> <a href=https://link.springer.com/article/10.1007/s11023-020-09548-1  target="_blank" rel="noopener"> GPT-3: Its Nature, Scope, Limits, and Consequences </a>  </td>
       <td>
       Floridi and Chiriatti, 2020
       </td>

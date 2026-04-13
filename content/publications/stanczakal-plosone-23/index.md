@@ -79,6 +79,8 @@ projects: []
 links:
 - name: URL
   url: https://arxiv.org/abs/2104.07505
+topics:
+- 'Bias & Fairness'
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

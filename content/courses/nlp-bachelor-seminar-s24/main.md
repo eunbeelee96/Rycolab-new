@@ -28,9 +28,6 @@ In recent years, NLP has become a part of our daily lives. Many of us use tools 
 The structure of this seminar is one of open-ended debate. Cum tempore, the seminar starts at 12:15. However, the teaching staff kindly requests the participants to arrive at 12:05 so we can arrange the desks in a circle. The purpose of this seminar is not to be lectured at by the instructor, but rather for the participants to learn about the views of their peers and discover hitherto unnoticed agreements and disagreements with them on the proper use of NLP in society. Each week, there will be a topic under discussion. The week before, the lecturer will select a series of texts that represent different viewpoints pertaining to that topic. One or two students will take the lead in arguing the “pro” side and one or two students will take the lead in arguing the “con” side. Grading is purely based on participation. Note we must return the classroom to its normal state after we leave, so we may wrap up 5 to 10 minutes early to re-arrange the room.
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

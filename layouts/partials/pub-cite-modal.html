@@ -1,0 +1,199 @@
+{{/*
+  pub-cite-modal.html — partial
+  Shared cite modal used by publications/list.html and publications/single.html.
+
+  Includes:
+    - KaTeX CSS + JS (scoped to .pub-page or .pub-single-page)
+    - .pub-action-btn component CSS (used in modal footer and pub page actions)
+    - Modal HTML markup
+    - Modal CSS
+    - Self-contained script using event delegation (.js-cite-modal)
+
+  Usage: {{ partial "pub-cite-modal.html" . }}
+  Place at the bottom of the page template, outside <section>.
+*/}}
+
+{{/* ---- KaTeX ---- */}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+{{/* ---- Modal HTML ---- */}}
+<div id="pub-cite-modal" class="pub-modal"
+     role="dialog" aria-modal="true" aria-labelledby="pub-modal-title">
+  <div class="pub-modal-content">
+    <div class="pub-modal-header">
+      <h3 id="pub-modal-title">CITE</h3>
+      <button class="pub-modal-close" id="pub-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="pub-modal-body">
+      <pre><code id="pub-cite-content"></code></pre>
+    </div>
+    <div class="pub-modal-footer">
+      <button class="pub-action-btn" id="pub-cite-copy">COPY</button>
+      <a class="pub-action-btn" id="pub-cite-download" download>DOWNLOAD</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ---- Shared action button (pub list + single + modal footer) ---- */
+  .pub-action-btn {
+    padding: 0.3rem 1rem;
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-pill-sm);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .pub-action-btn:hover { background: var(--color-primary-light); }
+
+  /* ---- Cite modal ---- */
+  .pub-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  .pub-modal-content {
+    background: white;
+    margin: 10% auto;
+    border: 1px solid var(--color-text-strong);
+    border-radius: var(--radius-pill-sm);
+    width: 80%;
+    max-width: 600px;
+  }
+  .pub-modal-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pub-modal-header h3 {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-normal);
+  }
+  .pub-modal-close {
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    color: var(--color-text-light);
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .pub-modal-close:hover { color: var(--color-text-strong); }
+  .pub-modal-body {
+    padding: 2rem;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .pub-modal-body pre {
+    margin: 0;
+    background: var(--color-bg-gray);
+    padding: 1rem;
+    border-radius: var(--radius-pill-sm);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .pub-modal-body code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .pub-modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var modal      = document.getElementById('pub-cite-modal');
+    var modalClose = document.getElementById('pub-modal-close');
+    var content    = document.getElementById('pub-cite-content');
+    var copyBtn    = document.getElementById('pub-cite-copy');
+    var dlBtn      = document.getElementById('pub-cite-download');
+
+    if (!modal) return;
+
+    var lastFocus = null;
+    var bibText   = '';
+
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText(bibText);
+    });
+
+    function openCiteModal(btn, filename) {
+      lastFocus = btn;
+      fetch(filename)
+        .then(function(r)    { return r.text(); })
+        .then(function(text) {
+          bibText             = text;
+          content.textContent = text;
+          dlBtn.href          = filename;
+          modal.style.display = 'block';
+          modalClose.focus();
+        })
+        .catch(function(err) { console.error('Cite fetch error:', err); });
+    }
+
+    function closeCiteModal() {
+      modal.style.display = 'none';
+      if (lastFocus) { lastFocus.focus(); lastFocus = null; }
+    }
+
+    /* Event delegation — works for original and re-sorted DOM nodes */
+    document.addEventListener('click', function(e) {
+      if (e.target === modal) { closeCiteModal(); return; }
+      var btn = e.target.closest('.js-cite-modal');
+      if (btn) { openCiteModal(btn, btn.dataset.filename); }
+    });
+
+    modalClose.addEventListener('click', closeCiteModal);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'block') { closeCiteModal(); }
+    });
+
+    /* Focus trap */
+    modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      var focusable = Array.from(
+        modal.querySelectorAll('button, [href], [tabindex="0"]')
+      ).filter(function(el) { return !el.disabled; });
+      var first = focusable[0];
+      var last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    /* KaTeX — use load event to ensure auto-render script is available.
+       Scoped to .pub-page or .pub-single-page; falls back to document.body. */
+    window.addEventListener('load', function() {
+      if (typeof renderMathInElement === 'undefined') return;
+      var container = document.querySelector('.pub-page, .pub-single-page') || document.body;
+      renderMathInElement(container, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true  },
+          { left: '$',  right: '$',  display: false }
+        ],
+        throwOnError: false
+      });
+    });
+  });
+</script>

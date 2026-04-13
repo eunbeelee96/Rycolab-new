@@ -26,6 +26,9 @@ interests:
 - Langauge Models
 - Pretraining
 - Acceleration
+research_topics:
+- Language Modeling
+- LM Inference
 
 
 # Social/Academic Networking

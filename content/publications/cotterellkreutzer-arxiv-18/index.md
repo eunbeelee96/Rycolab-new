@@ -15,5 +15,7 @@ links:
 - name: URL
   url: https://arxiv.org/abs/1806.04402
 url_pdf: papers/cotterell+kreutzer.arxiv18.pdf
+topics:
+- 'Translation'
 ---
 

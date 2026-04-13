@@ -32,5 +32,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1902.10193
 url_pdf: https://www.aclweb.org/anthology/N19-1415.pdf
+topics:
+- 'Morphology'
+- 'Typology'
 ---
 

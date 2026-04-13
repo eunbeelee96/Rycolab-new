@@ -14,21 +14,33 @@ sections:
       subtitle: ''
       text: |-
         <div class="hero-section">
-          <img src="uploads/teamphoto.png" alt="Team Photo" class="hero-image">
+          <img src="uploads/teamphoto.jpeg" alt="Team Photo" class="hero-image">
           <div class="hero-content">
             <p class="lab-intro">
-            We are a collocation of collaborators working on a <br>diverse range of topics in computational linguistics, natural language processing and machine learning.
+              We are a collocation of collaborators working on a diverse range of topics in <em class="hero-highlight">computational linguistics</em>, <em class="hero-highlight">natural language processing</em> and <em class="hero-highlight">machine learning</em>.
             </p>
             <div class="research-topics-section">
+              <div class="research-topics-header">
+                <span class="research-topics-label-text">RESEARCH AREAS</span>
+                <div class="research-topics-line"></div>
+              </div>
               <div class="research-topics">
-                <span class="research-topic">Information Theory</span>
-                <span class="research-topic">Computational Typology and Morphology</span>
-                <span class="research-topic">Algorithms for Parsing</span>
-                <span class="research-topic">Formal Aspects of Language Modeling</span>
-                <span class="research-topic">Cognitive and (Psycho-) Linguistics</span>
-                <span class="research-topic">Bias and Fairness in NLP Systems</span>
-                <span class="research-topic">Interpreting Neural Representations of Language</span>
-                <span class="research-topic">Computational Social Science</span>
+                <a class="research-topic" href="/publications/?topic=Parsing">Parsing</a>
+                <a class="research-topic" href="/publications/?topic=Morphology">Morphology</a>
+                <a class="research-topic" href="/publications/?topic=Formal Languages">Formal Languages</a>
+                <a class="research-topic" href="/publications/?topic=Information Theory">Information Theory</a>
+                <a class="research-topic" href="/publications/?topic=Language Modeling">Language Modeling</a>
+                <a class="research-topic" href="/publications/?topic=Typology">Typology</a>
+                <a class="research-topic" href="/publications/?topic=Alignment">Alignment</a>
+                <a class="research-topic" href="/publications/?topic=Bias %26 Fairness">Bias &amp; Fairness</a>
+                <a class="research-topic" href="/publications/?topic=Psycholinguistics">Psycholinguistics</a>
+                <a class="research-topic" href="/publications/?topic=Decoding">Decoding</a>
+                <a class="research-topic" href="/publications/?topic=Tokenization">Tokenization</a>
+                <a class="research-topic" href="/publications/?topic=Legal NLP">Legal NLP</a>
+                <a class="research-topic" href="/publications/?topic=Probing">Probing</a>
+                <a class="research-topic" href="/publications/?topic=Translation">Translation</a>
+                <a class="research-topic" href="/publications/?topic=Ethics">Ethics</a>
+                <a class="research-topic" href="/publications/?topic=Syntax">Syntax</a>
               </div>
             </div>
           </div>
@@ -38,16 +50,11 @@ sections:
       title: ''
       subtitle: ''
       text: |-
-        <div style="width: fit-content;">
-          <div class="updates-label">LATEST NEWS</div>
-        </div>
-        <div class="updates-grid">
-          <div class="update-card" data-type="papers">PAPERS</div>
-          <div class="update-card" data-type="conferences">CONFERENCES</div>
-          <div class="update-card" data-type="grants">GRANTS</div>
-          <div class="update-card" data-type="people">PEOPLE</div>
-          <div class="update-card" data-type="talks">TALKS</div>
-        </div>
+        {{< latest-news >}}
+        <!-- NOTE: This footer is duplicated in layouts/partials/rycolab-footer.html.
+             HugoBlox RenderString does not support shortcodes so the partial
+             cannot be called here. Edit both files when changing footer content.
+             Footer styles: layouts/_partials/hooks/head-end/main.html SECTION 7. -->
         <footer class="site-footer">
           <div class="footer-content">
             <div class="footer-group">
@@ -58,4 +65,6 @@ sections:
             <p>Andreasstrasse 5, 8050 Zürich, Switzerland</p>
           </div>
         </footer>
+    design:
+      css_class: updates-section
 ---

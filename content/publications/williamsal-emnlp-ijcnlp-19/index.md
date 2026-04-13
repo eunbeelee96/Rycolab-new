@@ -30,5 +30,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1910.13497
 url_pdf: https://www.aclweb.org/anthology/D19-1577.pdf
+topics:
+- 'Typology'
+- 'Bias & Fairness'
 ---
 

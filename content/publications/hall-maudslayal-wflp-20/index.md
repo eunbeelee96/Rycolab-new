@@ -23,5 +23,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.figlang-1.30/
 url_pdf: papers/hall-maudslay+al.wflp20.pdf
+topics:
+- 'Language Modeling'
 ---
 

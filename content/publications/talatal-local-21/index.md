@@ -16,5 +16,7 @@ featured: false
 publication: ''
 links:
 url_pdf: https://drive.google.com/file/d/1uk8lYABNhnbDOczlZVN7j_OGn4ENoBv1/view?usp=sharing
+topics:
+- 'Ethics'
 ---
 

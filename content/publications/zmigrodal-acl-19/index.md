@@ -30,5 +30,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1906.04571
 url_pdf: https://www.aclweb.org/anthology/P19-1161.pdf
+topics:
+- 'Bias & Fairness'
+- 'Morphology'
 ---
 

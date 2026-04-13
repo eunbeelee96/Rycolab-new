@@ -28,5 +28,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2109.06966
 url_pdf: papers/vieira+al.emnlp21.pdf
+topics:
+- 'Formal Languages'
+- 'Parsing'
 ---
 

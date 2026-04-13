@@ -27,6 +27,9 @@ interests:
 - Semiology
 - Mathematical Language Processing
 - Logic and Language
+research_topics:
+- Linguistics
+- General ML & Surveys
 
 social:
 - icon: envelope

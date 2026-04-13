@@ -31,5 +31,7 @@ links:
   url: https://arxiv.org/abs/2005.10213
 url_pdf: papers/wu+al.eacl21.pdf
 url_code: https://github.com/shijie-wu/neural-transducer
+topics:
+- 'Morphology'
 ---
 

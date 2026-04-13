@@ -26,5 +26,7 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2204.01469
 url_pdf: papers/arora+al.acl22.pdf
+topics:
+- 'Information Theory'
 ---
 

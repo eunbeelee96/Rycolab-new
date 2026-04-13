@@ -82,6 +82,8 @@ projects: []
 links:
 - name: URL
   url: https://arxiv.org/abs/2310.15276
+topics:
+- 'Formal Languages'
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

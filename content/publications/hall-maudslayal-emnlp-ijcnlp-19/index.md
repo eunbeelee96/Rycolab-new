@@ -37,5 +37,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1909.00871
 url_pdf: https://www.aclweb.org/anthology/D19-1530.pdf
+topics:
+- 'Probing'
 ---
 

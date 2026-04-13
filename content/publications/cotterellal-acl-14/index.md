@@ -24,5 +24,8 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/P14-2102.pdf
 url_pdf: https://www.aclweb.org/anthology/P14-2102.pdf
+topics:
+- 'Formal Languages'
+- 'Morphology'
 ---
 

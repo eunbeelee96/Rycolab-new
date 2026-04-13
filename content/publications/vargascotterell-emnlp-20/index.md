@@ -29,5 +29,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.emnlp-main.232/
 url_pdf: papers/vargas+cotterell.emnlp20.pdf
 url_code: https://github.com/franciscovargas/Bias_space_study
+topics:
+- 'Bias & Fairness'
 ---
 

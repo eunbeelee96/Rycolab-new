@@ -36,4 +36,7 @@ publication_types:
 - '1'
 abstract: ''
 publication: '*Findings of the Association for Computational Linguistics: EMNLP 2021*'
+topics:
+- 'Decoding'
+- 'Language Modeling'
 ---

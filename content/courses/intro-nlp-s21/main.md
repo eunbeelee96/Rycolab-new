@@ -46,9 +46,6 @@ Marks for the course will be determined by the following formula:
 
 ## Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -100,7 +97,7 @@ Marks for the course will be determined by the following formula:
       <td><a href="https://drive.google.com/file/d/14gnMqCplpjoVVT0Q5Pt3YI5rOQqL6FMl/view?usp=sharing" target="_blank">Lecture 3</a></td>
       <td>Eisenstein Ch. 2</td>
       <td><a href="https://www.cs.jhu.edu/~jason/papers/ferraro+eisner.tnlp13.pdf" target="_blank">Ferraro and Eisner (2013)</a></br>
-        <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html">Jason Eisner’s list of further resources on log-linear modeling</a></td>
+        <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html" target="_blank" rel="noopener">Jason Eisner’s list of further resources on log-linear modeling</a></td>
         <td><a href="https://drive.google.com/file/d/1c0ukuClgztpR3rMA8cFQs2-tj4ClBlmr/view?usp=sharing" target="_blank">Week 3</a></br>
           <a href="https://drive.google.com/file/d/1Dai8uwluiJZJt-ZHreG5XkX0IQIHQ60A/view?usp=sharing" target="_blank">Solutions</a></td>
     </tr>
@@ -156,7 +153,7 @@ Marks for the course will be determined by the following formula:
       <td>Eisenstein Ch. 10</td>
       <td><a href="http://www.cs.columbia.edu/~mcollins/io.pdf" target="_blank">The Inside-Outside Algorithm</a></br>
         <a href="https://www.cs.jhu.edu/~jason/465/PowerPoint/lect08-parse.ppt" target="_blank">Jason Eisner’s Slides</a></br>
-        <a href="https://www.ideals.illinois.edu/handle/2142/74304">Kasami (1966)</a></br>
+        <a href="https://www.ideals.illinois.edu/handle/2142/74304" target="_blank" rel="noopener">Kasami (1966)</a></br>
         <a href="https://www.sciencedirect.com/science/article/pii/S001999586780007X?via%3Dihub" target="_blank">Younger (1967)</a></br>
         <a href="http://www.softwarepreservation.org/projects/FORTRAN/CockeSchwartz_ProgLangCompilers.pdf" target="_blank">Cocke and Schwartz (1970)</a></td>
         <td><a href="https://drive.google.com/file/d/1nKp10BoJY5AdsXa3AmufSUTG-HMIeSoX/view?usp=sharing" target="_blank">Week 7</a></br>
@@ -217,7 +214,7 @@ Marks for the course will be determined by the following formula:
       <td>Eisenstein Ch. 18</td>
       <td><a href="https://www.amazon.com/gp/product/1108497322/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1108497322&linkCode=as2&tag=statismachint-20&linkId=ca7b8315b48f309c992019761c3ac4e4" target="_blank">Neural Machine Translation</a></br>
         <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank">Vaswani et al. (2017)</a></br>
-        <a href="https://www.aclweb.org/anthology/W18-2509/">Rush (2018)</a></td>
+        <a href="https://www.aclweb.org/anthology/W18-2509/" target="_blank" rel="noopener">Rush (2018)</a></td>
       <td><a href="https://drive.google.com/file/d/1EKXzkmbjXyxvn0i3PMzRKh96vZQ7iv7x/view?usp=sharing" target="_blank">Week 11</a></br>
         <a href="https://drive.google.com/file/d/1le3KDU1J5juI7d1v_4hqXr_n2TocrMIY/view?usp=sharing" target="_blank">Solutions</a></td>
     </tr>
@@ -288,12 +285,12 @@ You can ask questions on [piazza](https://www.piazza.com/ethz.ch/spring2021/2523
   <tbody>
     <tr>
       <td>Lecturer</td>
-      <td><a href="mailto:ryan.cotterell@inf.ethz.ch">Ryan Cotterell</a></td>
+      <td><a href="mailto:ryan.cotterell@inf.ethz.ch" target="_blank" rel="noopener">Ryan Cotterell</a></td>
     </tr>
     <tr>
       <td>Teaching Assistants</td>
-      <td><a href="mailto:meistecl@inf.ethz.ch">Clara Meister</a>, <a href="mailto:niklas.stoehr@inf.ethz.ch">Niklas Stoehr</a>, <a href="mailto:selena.pepic@inf.ethz.ch">Selena Pepic</a>, <a href="mailto:mkuznetsova@inf.ethz.ch">Rita Kuznetsova</a>, <a href="mailto:asvete@student.ethz.ch">Anej Svete</a>, <a href="mailto:abutoi@student.ethz.ch">Alexandra Butoi</a>, <a href="mailto:anrael@ethz.ch">Anton Rael</a>, <a href="mailto:dwissel@student.ethz.ch">David Wissel</a>, <a href="mailto:rajai.nasser@inf.ethz.ch">Rajai Nasser</a>, <a href="mailto:aamini@student.ethz.ch">Afra Amini</a>, <a href="mailto:alberto.pennino@inf.ethz.ch">Alberto Pennino</a>, <a href="mailto:alexander.immer@inf.ethz.ch
-">Alexander Immer</a></td>
+      <td><a href="mailto:meistecl@inf.ethz.ch" target="_blank" rel="noopener">Clara Meister</a>, <a href="mailto:niklas.stoehr@inf.ethz.ch" target="_blank" rel="noopener">Niklas Stoehr</a>, <a href="mailto:selena.pepic@inf.ethz.ch" target="_blank" rel="noopener">Selena Pepic</a>, <a href="mailto:mkuznetsova@inf.ethz.ch" target="_blank" rel="noopener">Rita Kuznetsova</a>, <a href="mailto:asvete@student.ethz.ch" target="_blank" rel="noopener">Anej Svete</a>, <a href="mailto:abutoi@student.ethz.ch" target="_blank" rel="noopener">Alexandra Butoi</a>, <a href="mailto:anrael@ethz.ch" target="_blank" rel="noopener">Anton Rael</a>, <a href="mailto:dwissel@student.ethz.ch" target="_blank" rel="noopener">David Wissel</a>, <a href="mailto:rajai.nasser@inf.ethz.ch" target="_blank" rel="noopener">Rajai Nasser</a>, <a href="mailto:aamini@student.ethz.ch" target="_blank" rel="noopener">Afra Amini</a>, <a href="mailto:alberto.pennino@inf.ethz.ch" target="_blank" rel="noopener">Alberto Pennino</a>, <a href="mailto:alexander.immer@inf.ethz.ch
+" target="_blank" rel="noopener">Alexander Immer</a></td>
     </tr>
 
     

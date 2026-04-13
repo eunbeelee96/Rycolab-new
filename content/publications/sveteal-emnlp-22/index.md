@@ -55,4 +55,6 @@ publication: '*Proceedings of the 2022 Conference on Empirical Methods in Natura
 links:
 - name: URL
   url: https://arxiv.org/abs/2301.06862
+topics:
+- 'Formal Languages'
 ---

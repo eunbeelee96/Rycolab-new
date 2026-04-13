@@ -31,5 +31,8 @@ links:
   url: https://arxiv.org/abs/2102.02183
 url_pdf: papers/pimentel+al.eacl21.pdf
 url_code: https://github.com/tpimentelms/frontload-disambiguation
+topics:
+- 'Information Theory'
+- 'Psycholinguistics'
 ---
 

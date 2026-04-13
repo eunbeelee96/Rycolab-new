@@ -7,7 +7,7 @@ main:
     url: /people
     weight: 10
     matchRegexp: ^/people|^/authors
-  - name: PUBLICATIONS
+  - name: RESEARCH
     url: /publications
     weight: 11
   - name: TEACHING
@@ -16,7 +16,7 @@ main:
     matchRegexp: ^/teaching|^/courses
   - name: EVENTS
     url: /events
-    weight: 13
+    weight: 14
     matchRegexp: ^/events|^/talk
   - name: JOIN
     url: /join

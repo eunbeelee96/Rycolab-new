@@ -40,4 +40,7 @@ publication: ''
 links:
 - name: URL
   url: https://arxiv.org/abs/2411.07107
+topics:
+- 'Formal Languages'
+- 'Language Modeling'
 ---

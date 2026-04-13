@@ -26,6 +26,11 @@ interests:
 - Unsupervised Representation Learning
 - Interpretability via Graphical Models
 - Computational Social Science
+research_topics:
+- Semantics & Representations
+- General ML & Surveys
+- Interpretability
+- Fairness & Ethics
 
 
 # Social/Academic Networking

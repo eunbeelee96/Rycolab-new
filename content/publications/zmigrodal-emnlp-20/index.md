@@ -29,5 +29,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.emnlp-main.232/
 url_pdf: papers/zmigrod+al.emnlp20.pdf
 url_code: https://github.com/rycolab/spanningtrees
+topics:
+- 'Parsing'
 ---
 

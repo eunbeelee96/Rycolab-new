@@ -32,5 +32,8 @@ links:
   url: https://arxiv.org/abs/2109.13766
 url_pdf: papers/pimentel+al.emnlp21b.pdf
 url_code: https://github.com/rycolab/homophony-as-renyi-entropy
+topics:
+- 'Information Theory'
+- 'Morphology'
 ---
 

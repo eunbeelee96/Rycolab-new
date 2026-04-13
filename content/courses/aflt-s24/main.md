@@ -83,9 +83,6 @@ There will be no organized tutorial sessions for AFLT. However, the teaching sta
 </script>
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Date&emsp;&emsp;</th>
@@ -664,9 +661,6 @@ See the [course Moodle page](https://moodle-app2.let.ethz.ch/course/view.php?id=
 The teaching staff has compiled a list of recent papers, listed below, whose replication would make for a great project, and some additional [project ideas](https://docs.google.com/document/d/1UR11TA2DUmyhYmKxzA2m8KFKyr2YYdP1AeAubnLqmfc/edit?usp=sharing).
 However, students should feel free to come up with other ideas as well!
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Paper ID</th>

@@ -46,4 +46,7 @@ publication: '*Proceedings of the 16th Conference of the European Chapter of the
 links:
 - name: URL
   url: https://aclanthology.org/2021.eacl-main.118/
+topics:
+- 'Morphology'
+- 'Decoding'
 ---

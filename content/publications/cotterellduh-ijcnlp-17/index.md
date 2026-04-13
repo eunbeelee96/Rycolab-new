@@ -24,5 +24,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/I17-2016.pdf
 url_pdf: https://www.aclweb.org/anthology/I17-2016.pdf
+topics:
+- 'Translation'
 ---
 

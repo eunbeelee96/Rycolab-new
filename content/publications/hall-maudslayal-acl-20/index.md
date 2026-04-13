@@ -31,5 +31,8 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.acl-main.659/
 url_pdf: papers/hall-maudslay+al.acl20.pdf
+topics:
+- 'Probing'
+- 'Parsing'
 ---
 

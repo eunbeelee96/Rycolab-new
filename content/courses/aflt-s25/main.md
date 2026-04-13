@@ -81,9 +81,6 @@ You can use the tutorial session to ask questions about previously taught concep
 </script>
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Date&emsp;&emsp;</th>

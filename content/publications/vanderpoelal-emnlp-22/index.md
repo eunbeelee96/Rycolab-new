@@ -53,4 +53,7 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2210.13210
 url_pdf: https://arxiv.org/pdf/2210.13210.pdf
+topics:
+- 'Information Theory'
+- 'Language Modeling'
 ---

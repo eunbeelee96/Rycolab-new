@@ -26,5 +26,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/D16-1206.pdf
 url_pdf: https://www.aclweb.org/anthology/D16-1206.pdf
+topics:
+- 'Parsing'
 ---
 

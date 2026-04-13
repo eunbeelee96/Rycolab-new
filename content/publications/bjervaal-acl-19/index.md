@@ -28,5 +28,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1906.07389
 url_pdf: https://www.aclweb.org/anthology/P19-1382.pdf
+topics:
+- 'Typology'
 ---
 

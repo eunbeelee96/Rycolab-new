@@ -32,5 +32,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.emnlp-main.170/
 url_pdf: papers/meister+al.emnlp20.pdf
 url_code: https://github.com/rycolab/uid-decoding
+topics:
+- 'Decoding'
 ---
 

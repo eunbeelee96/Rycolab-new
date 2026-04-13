@@ -29,5 +29,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1807.04783
 url_pdf: https://www.aclweb.org/anthology/Q18-1045.pdf
+topics:
+- 'Language Modeling'
+- 'Morphology'
 ---
 

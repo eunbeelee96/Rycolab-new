@@ -27,6 +27,9 @@ interests:
 - Feature Attribution
 - Interpretable NLP
 - Healthcare
+research_topics:
+- Interpretability
+- Linguistics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

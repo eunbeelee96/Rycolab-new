@@ -49,4 +49,6 @@ publication: '*Conference on Foundations of Software Technology and Theoretical 
 links:
 - name: URL
   url: https://arxiv.org/abs/2407.09891
+topics:
+- 'Formal Languages'
 ---

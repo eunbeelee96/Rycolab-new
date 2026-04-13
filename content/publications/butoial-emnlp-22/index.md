@@ -51,4 +51,6 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2210.06884
 url_pdf: papers/butoi+al.emnlp22.pdf
+topics:
+- 'Formal Languages'
 ---

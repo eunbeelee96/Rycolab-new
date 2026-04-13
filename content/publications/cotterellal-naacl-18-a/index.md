@@ -27,5 +27,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1806.03743
 url_pdf: https://www.aclweb.org/anthology/papers/N18-2085.pdf
+topics:
+- 'Language Modeling'
+- 'Typology'
 ---
 

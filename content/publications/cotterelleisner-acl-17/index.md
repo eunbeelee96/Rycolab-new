@@ -25,5 +25,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1705.01684
 url_pdf: https://www.aclweb.org/anthology/P17-1109.pdf
+topics:
+- 'Typology'
 ---
 

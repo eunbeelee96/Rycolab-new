@@ -27,6 +27,8 @@ interests:
 - Bayesian Probabilistic Models
 - Spatio-temporal Event Modeling
 - Applications of Machine Learning to global peace and security area
+research_topics:
+- General ML & Surveys
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

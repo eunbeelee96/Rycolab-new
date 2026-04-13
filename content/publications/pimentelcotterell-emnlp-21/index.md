@@ -30,5 +30,8 @@ links:
   url: https://arxiv.org/abs/2109.03853
 url_pdf: papers/pimentel+cotterell.emnlp21.pdf
 url_code: https://github.com/rycolab/bayesian-mi
+topics:
+- 'Probing'
+- 'Information Theory'
 ---
 

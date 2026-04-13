@@ -107,4 +107,6 @@ abstract: "This year's iteration of the SIGMORPHON Shared Task on morphological 
   \ previously unseen lemmas."
 publication: '*Proceedings of the 18th SIGMORPHON Workshop on Computational Research
   in Phonetics, Phonology, and Morphology*'
+topics:
+- 'Morphology'
 ---

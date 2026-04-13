@@ -25,9 +25,6 @@ An increasingly large percentage of natural language processing (NLP) tasks cent
 
 ## Syllabus 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <tbody>
     <tr>
       <th scope="row">Module 1</th>

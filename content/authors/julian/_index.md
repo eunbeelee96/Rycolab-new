@@ -25,6 +25,9 @@ interests:
 - Interpretability
 - Representations
 - Safety
+research_topics:
+- Interpretability
+- Fairness & Ethics
   
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

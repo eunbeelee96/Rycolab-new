@@ -1,47 +1,52 @@
+{{/* Section 0: Params */}}
 {{ $page := .page }}
 {{ $context := .context }}
 
+{{/* Section 1: Markup */}}
 <aside class="widget-people">
   <div class="people-container">
-    {{- if $page.Params.content -}}
-      {{- if $page.Params.content.user_groups -}}
-        {{- range $page.Params.content.user_groups -}}
-          {{- $group := . -}}
-          <div class="people-group">
-            <h3>{{ $group }}</h3>
-            <div class="people-list">
-              {{- $query := where (where $context.Site.Pages "Section" "authors") ".Params.user_groups" "intersect" (slice $group) -}}
-              {{- range $query -}}
-                <div class="author-card">
-                  <a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit;">
-                    <div class="author-card-horizontal">
-                      {{ $img := .Resources.GetMatch "avatar*" }}
-                      {{ if $img }}
-                        <img src="{{ $img.Permalink }}" alt="{{ .Title }}" class="author-avatar-small">
-                      {{ else }}
-                        <div class="author-avatar-small-placeholder"></div>
+    {{- with $page.Params.content.user_groups -}}
+      {{- $authors := where $context.Site.Pages "Section" "authors" -}}
+      {{- range . -}}
+        {{- $group := . -}}
+        {{- $query := where $authors ".Params.user_groups" "intersect" (slice $group) -}}
+        {{- if $query -}}
+        <div class="people-group">
+          <h3>{{ $group }}</h3>
+          <div class="people-list">
+            {{- range $query -}}
+              <div class="author-card">
+                <a href="{{ .RelPermalink }}">
+                  <div class="author-card-horizontal">
+                    {{ $img := .Resources.GetMatch "avatar*" }}
+                    {{ if $img }}
+                      <img src="{{ $img.Permalink }}" alt="{{ .Title }}" class="author-avatar-small">
+                    {{ else }}
+                      <div class="author-avatar-small-placeholder"></div>
+                    {{ end }}
+                    <div class="author-info">
+                      <div class="author-name">{{ .Title }}</div>
+                      {{ with .Params.role }}
+                        {{ $r := upper . }}
+                        {{ if strings.Contains (lower .) "phd" }}{{ $r = replace $r "PHD" "PhD" }}{{ end }}
+                        <div class="author-role">{{ $r }}</div>
                       {{ end }}
-                      <div class="author-info">
-                        <div class="author-name">{{ .Title }}</div>
-                        {{ with .Params.role }}
-                          <div class="author-role">{{ . }}</div>
-                        {{ end }}
-                      </div>
                     </div>
-                  </a>
-                </div>
-              {{- end -}}
-            </div>
+                  </div>
+                </a>
+              </div>
+            {{- end -}}
           </div>
+        </div>
         {{- end -}}
       {{- end -}}
     {{- end -}}
   </div>
 </aside>
 
+{{/* Section 2: Styles */}}
 <style>
   .widget-people {
-    grid-column: 2;
     position: sticky;
     top: 2rem;
     height: fit-content;
@@ -59,7 +64,7 @@
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 1rem;
-    color: #000;
+    color: var(--color-text-strong);
     text-transform: uppercase;
   }
 
@@ -76,18 +81,20 @@
 
   .author-card a {
     display: block;
+    text-decoration: none;
+    color: inherit;
     padding: 0.8rem;
     margin: -0.8rem;
     transition: all 0.25s cubic-bezier(0.2, 0, 0.1, 1);
   }
 
   .author-card a:hover {
-    background: #f5f5f5;
+    background: var(--color-bg-gray);
     transform: translateX(5px);
   }
 
   .author-card a:hover .author-name {
-    color: #000000;
+    color: var(--color-text-strong);
   }
 
   .author-card a:hover .author-avatar-small {
@@ -112,7 +119,7 @@
   .author-avatar-small-placeholder {
     width: 80px;
     height: 80px;
-    background: #d3d3d3;
+    background: var(--color-bg-gray);
     flex-shrink: 0;
   }
 
@@ -126,20 +133,18 @@
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
     font-weight: 400;
-    color: #000;
+    color: var(--color-text-strong);
   }
 
   .author-role {
     font-family: "Roboto Mono", monospace;
     font-size: 0.8rem;
-    color: #72d71b;
-    text-transform: uppercase;
+    color: var(--color-accent);
     line-height: 1.4;
   }
 
   @media (max-width: 1024px) {
     .widget-people {
-      grid-column: 1;
       position: relative;
       top: auto;
     }

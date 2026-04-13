@@ -1,11 +1,34 @@
 {{ define "main" }}
-<section class="course-single-page" style="padding:2rem 3rem;">
-  
+
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  - This template renders individual course pages.
+  - Front matter fields used here:
+      title       → page heading
+      semester    → shown below title (e.g. "Fall 2024")
+      instructors → list of instructor name strings
+  - Course content (body) is rendered via .Content.
+  ============================================================================
+*/}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - Back button links to /teaching/ list page.
+  - Header: title + semester + instructors.
+  - Body: .Content rendered as-is from markdown.
+  ============================================================================
+*/}}
+<section class="course-single-page">
+
   <div class="course-container">
-    <!-- Back button -->
-    <div class="back-button-container">
-      <a href="{{ "/teaching/" | relURL }}" class="back-button">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+    <!-- Back to Teaching list -->
+    <div class="course-back">
+      <a href="{{ "teaching/" | relURL }}" class="course-back-btn" aria-label="Back to Teaching">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
       </a>
@@ -13,141 +36,142 @@
 
     <div class="course-header">
       <h1 class="course-title">{{ .Title }}</h1>
-      
+
       {{ with .Params.semester }}
       <div class="course-meta">{{ . }}</div>
       {{ end }}
-      
+
       {{ with .Params.instructors }}
       <div class="course-instructors">
-        <h3>Instructors</h3>
+        <h2>Instructors</h2>
         <ul>
           {{ range . }}
-          <li>{{ . }}</li>
+            <li>{{ . }}</li>
           {{ end }}
         </ul>
       </div>
       {{ end }}
     </div>
 
-    <!-- Content -->
     {{ with .Content }}
-    <div class="course-content">
-      {{ . }}
-    </div>
+    <div class="course-content">{{ . }}</div>
     {{ end }}
+
   </div>
 
-  <style>
-    .course-single-page { 
-      min-height: 100vh; 
-      padding: 2rem 3rem !important; 
+</section>
+
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  - To change page padding         → .course-single-page
+  - To change back button style    → .course-back-btn
+  - To change header spacing       → .course-header
+  - To change content typography   → .course-content and its children
+  - !important on padding: HugoBlox sets section padding inline.
+  ============================================================================
+*/}}
+<style>
+    /* ---- Page shell ---- */
+    .course-single-page {
+      padding: 2rem 3rem !important; /* overrides HugoBlox inline padding */
     }
-    
+
     .course-container {
-      max-width: 1400px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    .back-button-container {
-      margin-bottom: 2rem;
-    }
+    /* ---- Back button ---- */
+    .course-back { margin-bottom: 2rem; }
 
-    .back-button {
+    .course-back-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 40px;
       height: 40px;
       background: transparent;
-      border: 1px solid #dd0000;
-      border-radius: 50%;
-      color: #999999;
+      border: 1px solid var(--color-text-light);
+      border-radius: var(--radius-round);
+      color: var(--color-text-light);
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease;
     }
 
-    .back-button:hover {
-      background: #CEEDB2;
-    }
+    .course-back-btn:hover { background: var(--color-primary-light); }
 
+    /* ---- Course header ---- */
     .course-header {
       margin-bottom: 3rem;
       padding-bottom: 2rem;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--color-border);
     }
 
     .course-title {
-      font-family: "Roboto", sans-serif;
+      font-family: var(--font-sans);
       font-size: 2.2rem;
-      font-weight: 400;
+      font-weight: var(--font-weight-normal);
       margin: 0 0 0.5rem 0;
-      color: #000;
+      color: var(--color-text-strong);
     }
 
     .course-meta {
-      font-family: "Roboto Mono", monospace;
+      font-family: var(--font-mono);
       font-size: 0.9rem;
-      color: #666;
+      color: var(--color-text-muted);
       text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
 
-    .course-instructors {
-      margin-top: 1.5rem;
-    }
+    /* ---- Instructors ---- */
+    .course-instructors { margin-top: 1.5rem; }
 
-    .course-instructors h3 {
-      font-family: "Roboto Mono", monospace;
+    .course-instructors h2 {
+      font-family: var(--font-mono);
       font-size: 1.1rem;
+      font-weight: var(--font-weight-normal);
       text-transform: uppercase;
-      font-weight: 400;
-      color: #000;
+      color: var(--color-text-strong);
       margin: 0 0 0.5rem 0;
     }
 
-    .course-instructors ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    .course-instructors ul { list-style: none; padding: 0; margin: 0; }
 
     .course-instructors li {
-      font-family: "Roboto", sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
-      color: #333;
+      color: var(--color-text-dark);
       padding: 0.25rem 0;
     }
 
+    /* ---- Course body content ---- */
+    /* Typography for markdown-rendered content */
     .course-content {
-      font-family: "Roboto", sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.95rem;
       line-height: 1.7;
-      color: #333;
+      color: var(--color-text-dark);
     }
 
     .course-content h2,
     .course-content h3 {
-      font-family: "Roboto", sans-serif;
-      font-weight: 400;
+      font-family: var(--font-sans);
+      font-weight: var(--font-weight-normal);
       margin-top: 2rem;
       margin-bottom: 1rem;
-      color: #000;
+      color: var(--color-text-strong);
     }
 
     .course-content h2 {
       font-size: 1.4rem;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid var(--color-border);
       padding-bottom: 0.5rem;
     }
 
-    .course-content h3 {
-      font-size: 1.1rem;
-    }
+    .course-content h3 { font-size: 1.1rem; }
 
-    .course-content p {
-      margin-bottom: 1rem;
-    }
+    .course-content p { margin-bottom: 1rem; }
 
     .course-content ul,
     .course-content ol {
@@ -155,20 +179,39 @@
       padding-left: 2rem;
     }
 
-    .course-content li {
-      margin-bottom: 0.5rem;
-    }
+    .course-content li { margin-bottom: 0.5rem; }
 
     .course-content a {
-      color: #000;
-      border-bottom: 1px solid #CEEDB2;
+      color: var(--color-text-strong);
+      border-bottom: 1px solid var(--color-primary-light);
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: border-bottom-color 0.3s ease;
     }
 
-    .course-content a:hover {
-      border-bottom-color: #000;
+    .course-content a:hover { border-bottom-color: var(--color-text-strong); }
+
+    /* ──── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .course-single-page { padding: 2rem !important; }
+    }
+
+    @media (max-width: 768px) {
+      .course-single-page { padding: 1.5rem !important; }
+      .course-title       { font-size: 1.7rem; }
+    }
+
+    @media (max-width: 480px) {
+      .course-single-page { padding: 1rem 1.25rem !important; }
+      .course-title       { font-size: 1.4rem; }
     }
   </style>
-</section>
+
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - Nav active for /courses/* pages is handled globally by main.html
+    applyNavActive() which maps '/teaching': ['/teaching', '/courses'].
+  - No page-specific scripts currently needed.
+  ============================================================================
+*/}}
 {{ end }}

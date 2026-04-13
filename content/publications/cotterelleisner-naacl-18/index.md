@@ -26,5 +26,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1807.02745
 url_pdf: https://www.aclweb.org/anthology/papers/N18-1004.pdf
+topics:
+- 'Typology'
 ---
 

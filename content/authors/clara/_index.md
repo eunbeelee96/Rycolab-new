@@ -24,6 +24,10 @@ interests:
 - Language Generation
 - Information Theory
 - Bringin' Statistics Back to NLP
+research_topics:
+- Language Modeling
+- General ML & Surveys
+- Linguistics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

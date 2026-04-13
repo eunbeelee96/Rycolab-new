@@ -31,5 +31,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2104.14279
 url_pdf: papers/pimentel+al.naacl21b.pdf
+topics:
+- 'Information Theory'
+- 'Psycholinguistics'
 ---
 

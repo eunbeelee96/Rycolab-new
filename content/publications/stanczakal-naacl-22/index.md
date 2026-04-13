@@ -52,4 +52,7 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2205.02023
 url_pdf: https://arxiv.org/pdf/2205.02023.pdf
+topics:
+- 'Probing'
+- 'Morphology'
 ---

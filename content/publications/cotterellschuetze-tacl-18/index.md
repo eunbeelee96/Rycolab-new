@@ -32,5 +32,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1701.00946
 url_pdf: https://www.aclweb.org/anthology/papers/Q18-1003.pdf
+topics:
+- 'Morphology'
 ---
 

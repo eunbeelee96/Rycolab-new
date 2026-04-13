@@ -1,0 +1,28 @@
+# ============================================================
+# CONFERENCES NEWS
+# ============================================================
+# How to add a new entry:
+#   1. Copy the item block below and paste at the TOP of the items list.
+#   2. Fill in title, date (YYYY-MM-DD), and optionally url/description.
+#   3. Save. The "CONFERENCES" card on the homepage will update automatically.
+#
+# Fields:
+#   title       (required) Name of the conference or news item
+#   date        (required) Date in YYYY-MM-DD format
+#   url         (optional) Link to conference page
+#   description (optional) One-line note shown as subtitle
+# ============================================================
+
+items:
+  - title: "ACL 2026"
+    date: "2026-06-10"
+    url: "https://2026.aclweb.org/"
+    description: "Annual Meeting of the Association for Computational Linguistics"
+  - title: "EMNLP 2026"
+    date: "2026-11-01"
+    url: "https://2026.emnlp.org/"
+    description: "Conference on Empirical Methods in Natural Language Processing"
+  - title: "ICLR 2026"
+    date: "2026-05-05"
+    url: "https://iclr.cc/"
+    description: "International Conference on Learning Representations"

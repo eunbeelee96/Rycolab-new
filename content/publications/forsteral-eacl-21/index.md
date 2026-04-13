@@ -26,5 +26,8 @@ links:
   url: https://arxiv.org/abs/2102.08424
 url_pdf: papers/forster+al.eacl21.pdf
 url_code: https://github.com/martinaforster/morph_sgnmt
+topics:
+- 'Morphology'
+- 'Decoding'
 ---
 

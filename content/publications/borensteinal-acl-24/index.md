@@ -90,6 +90,9 @@ projects: []
 links:
 - name: URL
   url: https://arxiv.org/abs/2406.04289
+topics:
+- 'Language Modeling'
+- 'Formal Languages'
 ---
 
 Add the **full text** or **supplementary notes** for the publication here using Markdown formatting.

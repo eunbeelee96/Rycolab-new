@@ -22,5 +22,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.sigmorphon-1.10/
 url_pdf: papers/forster+meister.sigm20.pdf
+topics:
+- 'Morphology'
 ---
 

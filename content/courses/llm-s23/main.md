@@ -65,9 +65,6 @@ Discussion sections (tutorials) will take place Thursdays 16-18 in [NO C 60](htt
 
 ### Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Date</th>
@@ -806,9 +803,6 @@ Both assignments are due on **Tuesday, August 15th** at 23:59.
 <!-- 
 ## Tutorial Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

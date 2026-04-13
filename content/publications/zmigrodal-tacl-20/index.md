@@ -37,4 +37,6 @@ publication: '*Transactions of the Association for Computational Linguistics*'
 links:
 - name: URL
   url: https://arxiv.org/abs/2008.12988
+topics:
+- 'Parsing'
 ---

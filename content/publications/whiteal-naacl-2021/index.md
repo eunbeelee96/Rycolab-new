@@ -52,4 +52,7 @@ publication: '*Proceedings of the 2021 Conference of the North American Chapter 
 links:
 - name: URL
   url: https://arxiv.org/abs/2105.10185
+topics:
+- 'Probing'
+- 'Syntax'
 ---

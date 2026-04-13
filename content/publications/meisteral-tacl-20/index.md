@@ -32,5 +32,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.tacl-1.51/
 url_pdf: papers/meister+al.tacl20.pdf
 url_code: https://github.com/rycolab/bfbs.git
+topics:
+- 'Decoding'
 ---
 

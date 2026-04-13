@@ -38,5 +38,8 @@ links:
   url: https://www.aclweb.org/anthology/2020.acl-main.597/
 url_pdf: papers/williams+al.acl20.pdf
 url_code: https://github.com/rycolab/declension-mi
+topics:
+- 'Morphology'
+- 'Typology'
 ---
 

@@ -23,6 +23,10 @@ bio: PhD student at the University of Copenhagen
 interests:
 - Bias and Fairness in NLP 
 - Statistical Methods in NLP
+research_topics:
+- Fairness & Ethics
+- Linguistics
+- General ML & Surveys
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

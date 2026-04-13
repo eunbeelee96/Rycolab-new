@@ -26,5 +26,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1807.02747
 url_pdf: https://www.aclweb.org/anthology/Q19-1021.pdf
+topics:
+- 'Morphology'
+- 'Typology'
 ---
 

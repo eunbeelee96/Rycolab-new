@@ -151,9 +151,6 @@ The submission links are:
 
 ## Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -220,7 +217,7 @@ The submission links are:
       <td><a href="https://drive.google.com/file/d/1DIqoF7ig49KMltpERCx0siw_NTQttfXv/view?usp=sharing" target="_blank">Lecture 3</a></td>
       <td>Eisenstein Ch. 2</td>
       <td><a href="https://www.cs.jhu.edu/~jason/papers/ferraro+eisner.tnlp13.pdf" target="_blank">Ferraro and Eisner (2013)</a></br>
-      <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html">Jason Eisner’s list of further resources on log-linear modeling</a></td>
+      <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html" target="_blank" rel="noopener">Jason Eisner’s list of further resources on log-linear modeling</a></td>
       <td>
       <a href="https://drive.google.com/file/d/1J0_ZcQbCkGI7Xhbfl2iWax5i0gd-2725/view?usp=sharing" target="_blank">Exercises</a>
       </td>
@@ -256,7 +253,7 @@ The submission links are:
       <th rowspan=2 scope="row">5</th>
       <td>24.10.22</td>
       <td>Language Modeling with <em>n</em>-grams and LSTMs</td>
-      <td><a href="https://drive.google.com/file/d/1Moq7Av5EoGxmZzryEixWBZNYh2-Cy826/view?usp=sharing">Lecture 5</a></td>
+      <td><a href="https://drive.google.com/file/d/1Moq7Av5EoGxmZzryEixWBZNYh2-Cy826/view?usp=sharing" target="_blank" rel="noopener">Lecture 5</a></td>
       <td>Eisenstein Ch. 6</br>Goodfellow, Bengio and Courville Ch. 10</td>
       <td><a href="https://nlp.stanford.edu/~wcmac/papers/20050421-smoothing-tutorial.pdf" target="_blank">Good Tutorial on n-gram smoothing</a></br>
         <a href="https://en.wikipedia.org/wiki/Good%E2%80%93Turing_frequency_estimation" target="_blank">Good–Turing Smoothing</a></br>
@@ -322,11 +319,11 @@ The submission links are:
       <th rowspan=2 scope="row">8</th>
       <td>14.11.22</td>
       <td>Context-Free Parsing with CKY</td>
-      <td><a href="https://drive.google.com/file/d/1qhLuWMK6nEWO7Xubajx8WTpUZzZv2uQo/view?usp=share_link">Lecture 8</a></td>
+      <td><a href="https://drive.google.com/file/d/1qhLuWMK6nEWO7Xubajx8WTpUZzZv2uQo/view?usp=share_link" target="_blank" rel="noopener">Lecture 8</a></td>
       <td>Eisenstein Ch. 10</td>
       <td><a href="http://www.cs.columbia.edu/~mcollins/io.pdf" target="_blank">The Inside-Outside Algorithm</a></br>
         <a href="https://www.cs.jhu.edu/~jason/465/PowerPoint/lect08-parse.ppt" target="_blank">Jason Eisner’s Slides</a></br>
-        <a href="https://www.ideals.illinois.edu/handle/2142/74304">Kasami (1966)</a></br>
+        <a href="https://www.ideals.illinois.edu/handle/2142/74304" target="_blank" rel="noopener">Kasami (1966)</a></br>
         <a href="https://www.sciencedirect.com/science/article/pii/S001999586780007X?via%3Dihub" target="_blank">Younger (1967)</a></br>
         <a href="http://www.softwarepreservation.org/projects/FORTRAN/CockeSchwartz_ProgLangCompilers.pdf" target="_blank">Cocke and Schwartz (1970)</a></td>
       <td>
@@ -391,7 +388,7 @@ The submission links are:
       <td>Eisenstein Ch. 18</td>
       <td><a href="https://www.amazon.com/gp/product/1108497322/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1108497322&linkCode=as2&tag=statismachint-20&linkId=ca7b8315b48f309c992019761c3ac4e4" target="_blank">Neural Machine Translation</a></br>
         <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank">Vaswani et al. (2017)</a></br>
-        <a href="https://www.aclweb.org/anthology/W18-2509/">Rush (2018)</a></td>
+        <a href="https://www.aclweb.org/anthology/W18-2509/" target="_blank" rel="noopener">Rush (2018)</a></td>
       <td>
       <a href="https://drive.google.com/file/d/1Lk6W6zaOSkVd4-tDl0r75x3PU1frmoU1/view?usp=sharing" target="_blank">Exercises</a>
       </td>
@@ -408,11 +405,11 @@ The submission links are:
       <th rowspan=2 scope="row">12</th>
       <td>12.12.22</td>
       <td>Axes of Modeling</td>
-      <td><a href="https://drive.google.com/file/d/1TgpjZgz_bgnD6zy2rgnJgmGxFrnSxTTu/view?usp=share_link">Lecture 12</a></td>
+      <td><a href="https://drive.google.com/file/d/1TgpjZgz_bgnD6zy2rgnJgmGxFrnSxTTu/view?usp=share_link" target="_blank" rel="noopener">Lecture 12</a></td>
       <td>Review: Eisenstein Ch. 2</br>Goodfellow, Bengio and Courville Ch. 5 and 11</td>
       <td></td>
       <td>
-      <a href="https://drive.google.com/file/d/1ra2iP0f9HFCd2s9m0vouVuz39J-i42bZ/view?usp=sharing">Exercises</a>
+      <a href="https://drive.google.com/file/d/1ra2iP0f9HFCd2s9m0vouVuz39J-i42bZ/view?usp=sharing" target="_blank" rel="noopener">Exercises</a>
       </td>
     </tr>
     <tr>
@@ -451,9 +448,6 @@ The submission links are:
 
 ## Tutorial Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

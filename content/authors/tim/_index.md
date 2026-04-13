@@ -26,6 +26,8 @@ interests:
 - Beautiful Algorithms
 - Unit-tested Code
 - Handstands
+research_topics:
+- General ML & Surveys
 
 
 # Social/Academic Networking

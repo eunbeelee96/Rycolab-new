@@ -46,4 +46,6 @@ abstract: This study describes the structure and the results of the SIGTYP 2022 
   by a system based on convolutional networks originally designed for image restoration.
 publication: '*Proceedings of the 4th Workshop on Research in Computational Linguistic
   Typology and Multilingual NLP*'
+topics:
+- 'Typology'
 ---

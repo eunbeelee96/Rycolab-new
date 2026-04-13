@@ -31,5 +31,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2204.08831
 url_pdf: papers/lasri+al.acl22.pdf
+topics:
+- 'Probing'
+- 'Morphology'
 ---
 

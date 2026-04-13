@@ -25,6 +25,9 @@ interests:
 - Surprisal and Discourse Structure
 - Computational Narratology
 - Formal Language Theory
+research_topics:
+- Psycholinguistics
+- Formal Language Theory
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

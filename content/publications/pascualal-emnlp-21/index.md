@@ -35,5 +35,8 @@ links:
   url: https://arxiv.org/abs/2109.09707
 url_pdf: papers/pascual+al.emnlp21.pdf
 url_code: https://github.com/dapascual/K2T
+topics:
+- 'Decoding'
+- 'Language Modeling'
 ---
 

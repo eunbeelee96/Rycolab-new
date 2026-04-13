@@ -49,4 +49,6 @@ abstract: 'The transformer has been shown to outperform recurrent neural network
 publication: '*Proceedings of the 16th Conference of the European Chapter of the Association
   for Computational Linguistics*'
 url_pdf: https://aclanthology.org/2021.eacl-main.163.pdf
+topics:
+- 'Morphology'
 ---

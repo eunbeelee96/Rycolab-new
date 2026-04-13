@@ -51,4 +51,7 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2209.10926
 url_df: https://arxiv.org/pdf/2209.10926.pdf
+topics:
+- 'Translation'
+- 'Morphology'
 ---

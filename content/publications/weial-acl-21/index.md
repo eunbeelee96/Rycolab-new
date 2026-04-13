@@ -30,5 +30,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2105.07144
 url_pdf: papers/wei+al.acl21.pdf
+topics:
+- 'Language Modeling'
+- 'Psycholinguistics'
 ---
 

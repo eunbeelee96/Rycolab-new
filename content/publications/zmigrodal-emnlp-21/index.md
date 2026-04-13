@@ -30,5 +30,7 @@ links:
   url: https://arxiv.org/abs/2109.06521
 url_pdf: papers/zmigrod+al.emnlp21.pdf
 url_code: https://github.com/rycolab/treesample
+topics:
+- 'Parsing'
 ---
 

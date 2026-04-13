@@ -56,4 +56,6 @@ publication: ''
 links:
 - name: URL
   url: https://arxiv.org/pdf/2407.06057
+topics:
+- 'Alignment'
 ---

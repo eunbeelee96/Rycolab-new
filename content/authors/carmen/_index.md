@@ -28,6 +28,10 @@ interests:
 - Explanability
 - Cognitive Modeling
 - AI with Language Interfaces
+research_topics:
+- Fairness & Ethics
+- Psycholinguistics
+- Linguistics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

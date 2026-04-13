@@ -29,5 +29,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/E17-2018.pdf
 url_pdf: https://www.aclweb.org/anthology/E17-2018.pdf
+topics:
+- 'Morphology'
 ---
 

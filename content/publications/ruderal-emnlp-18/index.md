@@ -27,5 +27,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1808.09334
 url_pdf: https://www.aclweb.org/anthology/papers/D18-1473.pdf
+topics:
+- 'Translation'
 ---
 

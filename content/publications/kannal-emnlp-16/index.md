@@ -22,5 +22,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/D16-1097/
 url_pdf: papers/kann+al.emnlp16.pdf
+topics:
+- 'Morphology'
 ---
 

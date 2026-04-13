@@ -33,5 +33,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.emnlp-main.254/
 url_pdf: papers/pimentel+al.emnlp20.pdf
 url_code: https://github.com/rycolab/pareto-probing/
+topics:
+- 'Probing'
 ---
 

@@ -25,5 +25,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1907.02423
 url_pdf: https://www.aclweb.org/anthology/N15-1140.pdf
+topics:
+- 'Morphology'
 ---
 

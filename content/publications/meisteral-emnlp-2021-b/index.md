@@ -36,4 +36,7 @@ publication_types:
 abstract: ''
 publication: '*Proceedings of the 2021 Conference on Empirical Methods in Natural
   Language Processing*'
+topics:
+- 'Information Theory'
+- 'Language Modeling'
 ---

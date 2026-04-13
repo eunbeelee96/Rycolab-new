@@ -30,5 +30,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1904.03310
 url_pdf: https://www.aclweb.org/anthology/N19-1064.pdf
+topics:
+- 'Bias & Fairness'
 ---
 

@@ -38,5 +38,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1810.11101
 url_pdf: http://www.lrec-conf.org/proceedings/lrec2018/pdf/789.pdf
+topics:
+- 'Morphology'
 ---
 

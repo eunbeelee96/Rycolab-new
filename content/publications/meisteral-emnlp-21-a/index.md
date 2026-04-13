@@ -39,5 +39,8 @@ links:
   url: https://arxiv.org/abs/2109.11635
 url_pdf: papers/meister+al.emnlp21a.pdf
 url_code: https://github.com/rycolab/revisiting-uid
+topics:
+- 'Information Theory'
+- 'Psycholinguistics'
 ---
 

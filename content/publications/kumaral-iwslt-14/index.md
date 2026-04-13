@@ -21,5 +21,7 @@ links:
 - name: Anthology
   url: http://cs.jhu.edu/~gkumar/papers/kumar2014translations.pdf
 url_pdf: http://cs.jhu.edu/~gkumar/papers/kumar2014translations.pdf
+topics:
+- 'Translation'
 ---
 

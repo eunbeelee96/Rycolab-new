@@ -27,6 +27,9 @@ interests:
 - Mathematical Theory of Machine Learning
 - Word Embeddings
 - Knowledge Graph Representation
+research_topics:
+- Semantics & Representations
+- General ML & Surveys
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

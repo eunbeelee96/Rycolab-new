@@ -184,9 +184,6 @@ The submission links are:
 
 ## Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -242,7 +239,7 @@ The submission links are:
     <tr>
       <td>3.10.2023</td>
       <td>Backpropagation</td>
-      <td><a href="https://drive.google.com/file/d/1n2PVI0d6J7VouBEbEyMPetRyIlKARiqV/view?usp=sharing">Backpropagation Tutorial</a></td>
+      <td><a href="https://drive.google.com/file/d/1n2PVI0d6J7VouBEbEyMPetRyIlKARiqV/view?usp=sharing" target="_blank" rel="noopener">Backpropagation Tutorial</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -254,7 +251,7 @@ The submission links are:
       <td><a href="https://drive.google.com/file/d/17gNX-H_BiLygYtNwe5c5b0HyDk3rvw-3/view?usp=sharing" target="_blank">Lecture 3</a></td>
       <td>Eisenstein Ch. 2</td>
       <td><a href="https://www.cs.jhu.edu/~jason/papers/ferraro+eisner.tnlp13.pdf" target="_blank">Ferraro and Eisner (2013)</a></br>
-      <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html">Jason Eisner’s list of further resources on log-linear modeling</a></td>
+      <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html" target="_blank" rel="noopener">Jason Eisner’s list of further resources on log-linear modeling</a></td>
       <td>
         <a href="https://drive.google.com/file/d/1fvKapJr7itr6XBzaI2SZ677dbMxXMvMW/view?usp=sharing" target="_blank">Week 3 Exercises</a></br>
         <a href="https://drive.google.com/file/d/12pqppB059cIIIPb_97d_wjMGHP9jJdv7/view?usp=sharing" target="_blank">Week 3 Solutions</a>
@@ -366,7 +363,7 @@ The submission links are:
       <td>Eisenstein Ch. 10</td>
       <td><a href="http://www.cs.columbia.edu/~mcollins/io.pdf" target="_blank">The Inside-Outside Algorithm</a></br>
         <a href="https://www.cs.jhu.edu/~jason/465/PowerPoint/lect08-parse.ppt" target="_blank">Jason Eisner’s Slides</a></br>
-        <a href="https://www.ideals.illinois.edu/handle/2142/74304">Kasami (1966)</a></br>
+        <a href="https://www.ideals.illinois.edu/handle/2142/74304" target="_blank" rel="noopener">Kasami (1966)</a></br>
         <a href="https://www.sciencedirect.com/science/article/pii/S001999586780007X?via%3Dihub" target="_blank">Younger (1967)</a></br>
         <a href="http://www.softwarepreservation.org/projects/FORTRAN/CockeSchwartz_ProgLangCompilers.pdf" target="_blank">Cocke and Schwartz (1970)</a></td>
       <td>
@@ -436,9 +433,9 @@ The submission links are:
       <td>Eisenstein Ch. 18</td>
       <td>
         <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank">Vaswani et al. (2017)</a></br>
-        <a href="http://nlp.seas.harvard.edu/annotated-transformer/">The Annotated Transformer</a></br>
-        <a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></br>
-        <a href="https://lilianweng.github.io/posts/2020-04-07-the-transformer-family/">The Transformer Family</a></td>
+        <a href="http://nlp.seas.harvard.edu/annotated-transformer/" target="_blank" rel="noopener">The Annotated Transformer</a></br>
+        <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a></br>
+        <a href="https://lilianweng.github.io/posts/2020-04-07-the-transformer-family/" target="_blank" rel="noopener">The Transformer Family</a></td>
       <td>
       <a href="https://drive.google.com/file/d/13MPH4LAvLNy2utqUBrwDd1hOM7jckUXF/view?usp=sharing" target="_blank">Week 11 Exercises</a></br>
       <a href="https://drive.google.com/file/d/1xTmmkui3hCOQammD2xCyy-09WiOQj1ar/view?usp=sharing" target="_blank">Week 11 Solutions</a></br>
@@ -500,9 +497,6 @@ The submission links are:
 
 ## Tutorial Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

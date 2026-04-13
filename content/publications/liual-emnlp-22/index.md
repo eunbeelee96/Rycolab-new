@@ -51,4 +51,7 @@ links:
 - name: URL
   url: https://arxiv.org/pdf/2210.14698
 url_pdf: https://arxiv.org/pdf/2210.14698.pdf
+topics:
+- 'Parsing'
+- 'Language Modeling'
 ---

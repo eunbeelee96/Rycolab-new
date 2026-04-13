@@ -30,5 +30,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/P19-1148/
 url_pdf: papers/wu+al.emnlp18.pdf
+topics:
+- 'Morphology'
 ---
 

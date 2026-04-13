@@ -23,6 +23,9 @@ bio:
 
 interests:
 - Interpretable NLP
+research_topics:
+- Interpretability
+- Linguistics
 
 
 # Social/Academic Networking

@@ -54,4 +54,7 @@ publication: '*Proceedings of the 61th Annual Meeting of the Association for Com
 links:
 - name: URL
   url: https://arxiv.org/abs/2307.02982
+topics:
+- 'Parsing'
+- 'Formal Languages'
 ---

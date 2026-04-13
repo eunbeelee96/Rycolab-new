@@ -49,4 +49,6 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2209.06809
 url_pdf: https://arxiv.org/pdf/2209.06809.pdf
+topics:
+- 'Formal Languages'
 ---

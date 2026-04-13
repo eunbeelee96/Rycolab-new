@@ -37,4 +37,6 @@ publication_types:
 abstract: ''
 publication: '*Proceedings of the 2020 Conference on Empirical Methods in Natural
   Language Processing*'
+topics:
+- 'Information Theory'
 ---

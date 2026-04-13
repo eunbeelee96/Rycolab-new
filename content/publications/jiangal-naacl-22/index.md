@@ -57,4 +57,6 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2103.11878
 url_pdf: papers/jiang+al.naacl22.pdf
+topics:
+- 'Translation'
 ---

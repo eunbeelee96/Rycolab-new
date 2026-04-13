@@ -33,5 +33,8 @@ links:
   url: https://arxiv.org/abs/2106.02559
 url_pdf: papers/hall-mauslay+al.naacl21.pdf
 url_code: https://github.com/rowanhm/jabberwocky-probing
+topics:
+- 'Probing'
+- 'Syntax'
 ---
 

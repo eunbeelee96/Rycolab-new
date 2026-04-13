@@ -37,4 +37,7 @@ publication_types:
 - '2'
 abstract: ''
 publication: '*Transactions of the Association for Computational Linguistics*'
+topics:
+- 'Language Modeling'
+- 'Typology'
 ---

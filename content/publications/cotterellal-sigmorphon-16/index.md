@@ -33,5 +33,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/W16-2002/
 url_pdf: papers/cotterell+al.sigmorphon16.pdf
+topics:
+- 'Morphology'
 ---
 

@@ -54,9 +54,6 @@ A selection of *related work* is provided for individual lectures.
 
 ## Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -295,7 +292,7 @@ A selection of *related work* is provided for individual lectures.
         <a href="https://aclanthology.org/P99-1070/" target="_blank">Abney et al. (1999)</a></br>
         <a href="https://link.springer.com/chapter/10.1007/978-3-662-21545-6_18" target="_blank">Lang (1974)</a></br>
       </td>
-      <td><a href="https://drive.google.com/file/d/162n-T-u5nsVbvE-3rUSxZXc57uYVaPp_/view?usp=sharing">Assignment 8</a></td>
+      <td><a href="https://drive.google.com/file/d/162n-T-u5nsVbvE-3rUSxZXc57uYVaPp_/view?usp=sharing" target="_blank" rel="noopener">Assignment 8</a></td>
       <td>Assignments 3-5 (15% of course grade) [19.05] Course Project Proposal [21.05]</td>
       <td></td>
       <td></td>
@@ -313,7 +310,7 @@ A selection of *related work* is provided for individual lectures.
         <a href="https://aclanthology.org/A00-2033.pdf" target="_blank">Moore (2000)</a></br>
         <a href="https://aclanthology.org/P04-1069.pdf" target="_blank">Nederhof and Satta (2004)</a></br>
       </td>
-      <td><a href="https://drive.google.com/file/d/1tbynLDFAPh8CSWQyzfNtn_XU_NflY3QG/view?usp=sharing">Assignment 9</a></td>
+      <td><a href="https://drive.google.com/file/d/1tbynLDFAPh8CSWQyzfNtn_XU_NflY3QG/view?usp=sharing" target="_blank" rel="noopener">Assignment 9</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -322,7 +319,7 @@ A selection of *related work* is provided for individual lectures.
       <th scope="row">15</th>
       <td>02.06.22</td>
       <td>Weighted Tree Automata</td>
-      <td><a href="https://drive.google.com/file/d/1SK601-attiVorK04WUgx5KjfYZP-5eZq/view?usp=sharing">Chapter 12</a></td>
+      <td><a href="https://drive.google.com/file/d/1SK601-attiVorK04WUgx5KjfYZP-5eZq/view?usp=sharing" target="_blank" rel="noopener">Chapter 12</a></td>
       <td></td>
       <td>
         <a href="https://www.amazon.co.uk/Automata-Computability-Dexter-C-Kozen/dp/0387949070" target="_blank">Kozen (1997)</a></br>
@@ -337,7 +334,7 @@ A selection of *related work* is provided for individual lectures.
         <a href="https://link.springer.com/book/10.1007/978-3-642-14846-0" target="_blank">Kallmeyer (2010)</a></br>
         <a href="https://aclanthology.org/Q14-1032/" target="_blank">Kuhlmann, Satta (2014)</a></br>
       </td>
-      <td><a href="https://drive.google.com/file/d/1YsYFXMZhv_o0LD6JF36MaheA29MSbxH6/view?usp=sharing">Assignment 10</a></td>
+      <td><a href="https://drive.google.com/file/d/1YsYFXMZhv_o0LD6JF36MaheA29MSbxH6/view?usp=sharing" target="_blank" rel="noopener">Assignment 10</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -366,9 +363,6 @@ The teaching staff has compiled a list of recent papers, whose replication would
 
 Here is the list we have compiled:
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Paper ID</th>
@@ -508,12 +502,12 @@ You can ask questions on Moodle or on the course [chat server](https://chat.ryco
   <tbody>
     <tr>
       <td>Lecturer</td>
-      <td><a href="mailto:ryan.cotterell@inf.ethz.ch">Ryan Cotterell</a></td>
+      <td><a href="mailto:ryan.cotterell@inf.ethz.ch" target="_blank" rel="noopener">Ryan Cotterell</a></td>
     </tr>
     <tr>
       <td>Teaching Assistants</td>
-      <td><a href="mailto:meistecl@inf.ethz.ch">Clara Meister</a>, <a href="mailto:niklas.stoehr@inf.ethz.ch">Niklas Stoehr</a>, <a href="mailto:selena.pepic@inf.ethz.ch">Selena Pepic</a>, <a href="mailto:mkuznetsova@inf.ethz.ch">Rita Kuznetsova</a>, <a href="mailto:asvete@student.ethz.ch">Anej Svete</a>, <a href="mailto:abutoi@student.ethz.ch">Alexandra Butoi</a>, <a href="mailto:anrael@ethz.ch">Anton Rael</a>, <a href="mailto:dwissel@student.ethz.ch">David Wissel</a>, <a href="mailto:rajai.nasser@inf.ethz.ch">Rajai Nasser</a>, <a href="mailto:aamini@student.ethz.ch">Afra Amini</a>, <a href="mailto:alberto.pennino@inf.ethz.ch">Alberto Pennino</a>, <a href="mailto:alexander.immer@inf.ethz.ch
-">Alexander Immer</a></td>
+      <td><a href="mailto:meistecl@inf.ethz.ch" target="_blank" rel="noopener">Clara Meister</a>, <a href="mailto:niklas.stoehr@inf.ethz.ch" target="_blank" rel="noopener">Niklas Stoehr</a>, <a href="mailto:selena.pepic@inf.ethz.ch" target="_blank" rel="noopener">Selena Pepic</a>, <a href="mailto:mkuznetsova@inf.ethz.ch" target="_blank" rel="noopener">Rita Kuznetsova</a>, <a href="mailto:asvete@student.ethz.ch" target="_blank" rel="noopener">Anej Svete</a>, <a href="mailto:abutoi@student.ethz.ch" target="_blank" rel="noopener">Alexandra Butoi</a>, <a href="mailto:anrael@ethz.ch" target="_blank" rel="noopener">Anton Rael</a>, <a href="mailto:dwissel@student.ethz.ch" target="_blank" rel="noopener">David Wissel</a>, <a href="mailto:rajai.nasser@inf.ethz.ch" target="_blank" rel="noopener">Rajai Nasser</a>, <a href="mailto:aamini@student.ethz.ch" target="_blank" rel="noopener">Afra Amini</a>, <a href="mailto:alberto.pennino@inf.ethz.ch" target="_blank" rel="noopener">Alberto Pennino</a>, <a href="mailto:alexander.immer@inf.ethz.ch
+" target="_blank" rel="noopener">Alexander Immer</a></td>
     </tr>
 
     

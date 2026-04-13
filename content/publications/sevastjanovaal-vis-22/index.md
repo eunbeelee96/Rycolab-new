@@ -58,4 +58,6 @@ abstract: Neural language models are widely used; however, their model parameter
   these are artifacts of context-0 embeddings, and the adapter effectively eliminates
   the gender information from the contextualized word representations.
 publication: '*IEEE Visualization*'
+topics:
+- 'Language Modeling'
 ---

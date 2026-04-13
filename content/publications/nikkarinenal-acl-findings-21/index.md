@@ -30,5 +30,8 @@ links:
   url: https://arxiv.org/abs/2106.02289
 url_pdf: papers/nikkarinen+al.acl-findings21.pdf
 url_code: https://github.com/irenenikk/modelling-unigram
+topics:
+- 'Language Modeling'
+- 'Information Theory'
 ---
 

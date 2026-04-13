@@ -1,0 +1,770 @@
+{{/*
+  ============================================================================
+  GLOBAL STYLES & HOMEPAGE SCRIPTS
+  Injected into <head> on every page via _partials/hooks/head-end/.
+
+  MAINTENANCE GUIDE:
+  - To change site colors, spacing, or type scale → SECTION 1 (design tokens)
+  - To change body/heading/prose font defaults   → SECTION 2
+  - To change nav/header appearance              → SECTION 3
+  - To change homepage scroll snap behavior      → SECTION 4
+  - To change hero layout or typography          → SECTION 5
+  - To change updates grid layout or animation   → SECTION 6
+  - To change footer                             → SECTION 7
+  - To change nav active logic or homepage JS    → SECTION 8
+
+  NOTE ON !important:
+  HugoBlox applies Tailwind utility classes and inline styles at high
+  specificity. !important is used only where framework styles cannot be
+  overridden with selectors alone. Each use is annotated inline.
+  Do not add new !important without documenting the reason.
+  ============================================================================
+*/}}
+
+<style>
+/*
+  ============================================================================
+  SECTION 1. DESIGN TOKENS
+  - Edit all colors, spacing, type, and layout constants here.
+  - These variables are referenced in all page-level CSS files (authors, people, etc.).
+  - Adding a new token here makes it available site-wide.
+  ============================================================================
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* Colors */
+  --color-primary-light:  #CEEDB2;
+  --color-primary-bright: #91ed40;
+  --color-accent:         #72d71b;
+  --color-bg-gray:        #f5f5f5;
+  --color-bg-subtle:      #fafafa;
+  --color-border:         #e0e0e0;
+  --color-text-dark:      #222;
+  --color-text-light:     #999;
+  --color-text-strong:    #000;
+  --color-text-muted:     #666;
+
+  /* Spacing */
+  --spacing-xs:  0.3rem;
+  --spacing-sm:  0.5rem;
+  --spacing-md:  1rem;
+  --spacing-lg:  1.5rem;
+  --spacing-xl:  2rem;
+  --spacing-2xl: 2.5rem;
+  --spacing-3xl: 3rem;
+
+  /* Typography */
+  --font-mono:          "Roboto Mono", monospace;
+  --font-sans:          "Roboto", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  /* Borders */
+  --radius-pill:    50px;
+  --radius-pill-sm: 20px;
+  --radius-card:    8px;
+  --radius-round:   50%;
+
+  /* Layout — reduces at smaller viewports */
+  --nav-padding-horizontal: 1.5rem;
+  --edge-padding: 80px;
+  --navbar-height: 80px; /* update here if navbar height changes; used by join + thesis fixed layouts */
+}
+
+@media (max-width: 1024px) { :root { --edge-padding: 40px; } }
+@media (max-width: 640px)  { :root { --edge-padding: 1.25rem; } }
+
+/*
+  ============================================================================
+  SECTION 2. GLOBAL TYPOGRAPHY
+  - Overrides HugoBlox/Tailwind default font stack for body and headings.
+  - !important on font-weight: Tailwind's font-bold utility class outspecifies
+    element selectors on some framework-generated markup.
+  - !important on prose: @tailwindcss/typography sets its own font stack
+    at component level; class selectors alone do not override it.
+
+  SCOPE WARNING: selectors here (h1–h6, .navbar, .prose, .container, etc.)
+  are intentionally site-wide. Fixing a specific-page style here will affect
+  ALL pages. Prefer page-level <style> blocks for page-scoped overrides.
+  ============================================================================
+*/
+body {
+  font-family: var(--font-sans);
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+.navbar, .navbar-nav, .nav-link, .navbar-brand,
+h1, h2, h3, h4, h5, h6, .section-title {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-normal) !important; /* overrides Tailwind font-bold */
+  font-size: 1rem;
+}
+
+.prose p, .prose li, .prose span {
+  font-family: var(--font-sans) !important;          /* overrides @tailwindcss/typography */
+  font-weight: var(--font-weight-normal) !important;
+}
+
+.prose, .section-paragraph,
+.container, .container-fluid, .home .markdown,
+.flex.flex-col.items-center.max-w-prose,
+.hbb-section-blox-markdown .flex.flex-col.items-center,
+.max-w-prose {
+  max-width: none !important; /* overrides Tailwind max-w-prose utility */
+  width: 100% !important;
+}
+
+/*
+  ============================================================================
+  SECTION 3. HEADER & NAVIGATION
+  - !important throughout: HugoBlox injects header and nav styles via
+    inline styles and high-specificity component classes.
+  - To change nav pill color → .navbar-nav background-color
+  - To change active state appearance → .nav-link.active
+  - To change search button size/color → button[data-search-toggle]
+  ============================================================================
+*/
+#site-header.header {
+  box-shadow: none !important;
+  background-color: transparent !important;
+  padding: 1rem 0 !important;
+}
+
+.navbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--spacing-md) !important;
+  flex-wrap: wrap !important;
+  position: relative !important;
+}
+
+.navbar-brand {
+  padding-left: var(--spacing-lg) !important;
+}
+
+.navbar > div:has(> button[data-search-toggle]) {
+  flex-shrink: 0 !important;
+  gap: var(--spacing-xs) !important;
+}
+
+/* ---- Hamburger toggle (mobile only) ---- */
+#nav-toggle { display: none !important; }
+
+label[for="nav-toggle"] {
+  display: none !important;
+  cursor: pointer;
+  padding: 0.4rem;
+  margin-left: auto;
+  margin-right: var(--spacing-md);
+  color: var(--color-text-dark);
+}
+label[for="nav-toggle"] svg { width: 1.5rem; height: 1.5rem; }
+label[for="nav-toggle"] #hide-button { display: none !important; }
+#nav-toggle:checked ~ label[for="nav-toggle"] #hide-button { display: block !important; }
+#nav-toggle:checked ~ label[for="nav-toggle"] #show-button { display: none !important; }
+
+/* ---- Desktop nav pill ---- */
+.navbar-nav {
+  --nav-pill-bleed: 6px;
+  --nav-edge-bleed: 30px;
+  --nav-link-px: 2rem;
+
+  display: inline-flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  background-color: var(--color-primary-light) !important;
+  border-radius: var(--radius-pill) !important;
+  margin-left: auto !important;
+  overflow: hidden !important;
+}
+
+.navbar-nav .nav-item {
+  display: flex !important;
+  align-items: stretch !important;
+  position: relative !important;
+}
+
+.navbar-nav .nav-link {
+  position: relative !important;
+  z-index: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.75rem var(--nav-link-px) !important;
+  color: var(--color-text-strong) !important;
+  transition: color 0.3s ease !important;
+  white-space: nowrap !important;
+}
+
+/* active pill */
+.navbar-nav .nav-link::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important; bottom: 0 !important;
+  left: calc(-1 * var(--nav-pill-bleed)) !important;
+  right: calc(-1 * var(--nav-pill-bleed)) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  z-index: -1 !important;
+  transition: background-color 0.3s ease !important;
+}
+.navbar-nav .nav-item.active .nav-link::before,
+.navbar-nav .nav-link.active::before {
+  background-color: var(--color-primary-bright) !important;
+}
+.navbar-nav .nav-item:first-child .nav-link::before { left: calc(-1 * var(--nav-edge-bleed)) !important; }
+.navbar-nav .nav-item:last-child .nav-link::before  { right: calc(-1 * var(--nav-edge-bleed)) !important; }
+.navbar-nav .nav-link:hover { color: var(--color-accent) !important; }
+
+button[data-search-toggle] {
+  margin-right: var(--spacing-xl) !important;
+  background-color: var(--color-primary-light) !important;
+  border-radius: var(--radius-round) !important;
+  padding: var(--spacing-sm) !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ---- Mobile nav (< 1024px = lg breakpoint) ---- */
+@media (max-width: 1023px) {
+  .navbar > div:has(> button[data-search-toggle]) {
+    order: 2 !important;
+    margin-left: auto !important;
+    gap: 0.25rem !important;
+  }
+
+  label[for="nav-toggle"] {
+    display: flex !important;
+    align-items: center;
+    order: 3;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  button[data-search-toggle] {
+    margin-right: 0 !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0.5rem !important;
+  }
+
+  button[data-search-toggle] svg {
+    width: 0.95rem !important;
+    height: 0.95rem !important;
+  }
+
+  /* Reset desktop pill style; become vertical dropdown */
+  .navbar-nav {
+    display: none !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    background-color: var(--color-primary-light) !important;
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  /* Show when checkbox checked */
+  #nav-toggle:checked ~ ul.navbar-nav,
+  #nav-toggle:checked ~ #nav-menu {
+    display: flex !important;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100% !important;
+    display: block !important;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1.5rem !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
+  }
+  /* Remove active pill pseudo-element on mobile */
+  .navbar-nav .nav-link::before { display: none !important; }
+  .navbar-nav .nav-link.active {
+    background-color: var(--color-primary-bright) !important;
+  }
+}
+
+/*
+  ============================================================================
+  SECTION 4. HOMEPAGE LAYOUT (scroll snap)
+  - Applied only under .home so inner pages are unaffected.
+  - !important required: HugoBlox sets section dimensions via inline styles.
+  - To disable scroll snap, remove the .home .section block.
+  - The updates section is exempt from min-height/overflow. It is targeted
+    by JS via document.querySelector('.updates-grid').closest('.section'),
+    which is stable against section reordering.
+  ============================================================================
+*/
+.home .section {
+  max-width: none !important;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: always !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.home .updates-section {
+  min-height: auto !important;
+  overflow: visible !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+.home .section > *     { width: 100% !important; }
+.home section          { border-top: none !important; border-bottom: none !important; }
+.page-header.sticky    { border-bottom: none !important; }
+
+/*
+  ============================================================================
+  SECTION 5. HERO
+  - Edit hero image/text proportions and spacing here.
+  - Responsive: stacks vertically below 768px.
+  ============================================================================
+*/
+.hero-section {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--spacing-3xl);
+  align-items: center;
+  padding: var(--spacing-3xl) 0;
+}
+.hero-image {
+  width: 80%;
+  height: auto;
+  margin-left: var(--edge-padding);
+  display: block;
+}
+.hero-content { margin: 0 var(--spacing-3xl) 0 calc(-1 * var(--edge-padding)); }
+
+.hero-eyebrow {
+  font: var(--font-weight-normal) 0.75rem var(--font-mono);
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.lab-intro {
+  font: var(--font-weight-medium) 1.9rem var(--font-sans);
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  margin: 0;
+}
+em.hero-highlight {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.research-topics-section { margin-top: var(--spacing-2xl); }
+.research-topics-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: var(--spacing-md);
+}
+.research-topics-label-text {
+  font: var(--font-weight-normal) 0.7rem var(--font-mono);
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.research-topics-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+.research-topics { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); }
+.research-topic {
+  display: inline-block;
+  background-color: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill-sm);
+  padding: 0.4rem 1rem;
+  font: var(--font-weight-normal) 1rem var(--font-mono);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+}
+a.research-topic:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-text-dark);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(114, 215, 27, 0.22);
+}
+a.research-topic:focus { outline: none; }
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-xl) var(--edge-padding);
+    gap: var(--spacing-xl);
+  }
+  .hero-image {
+    width: 100%;
+    margin-left: 0;
+  }
+  .hero-content { margin: 0; }
+  .lab-intro    { font-size: 1.3rem; }
+  .research-topic { font-size: 0.9rem; padding: 0.35rem 0.8rem; }
+}
+@media (max-width: 480px) {
+  .lab-intro { font-size: 1.1rem; }
+  .research-topic { font-size: 0.82rem; }
+}
+
+/*
+  ============================================================================
+  SECTION 6. UPDATES GRID
+  - Edit card layout, min-height, and entry animation here.
+  - Responsive: 4-col on tablet, 2-col on mobile, 1-col on small mobile.
+  - data-type on each .update-card controls grid-area placement.
+  - To add a new card type: add grid-area to the template areas and
+    add a .update-card[data-type="new"] { grid-area: new; } rule.
+  ============================================================================
+*/
+.updates-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 var(--edge-padding);
+  margin-bottom: var(--spacing-xl);
+}
+.updates-label {
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1.4rem;
+  font: var(--font-weight-normal) 1.15rem var(--font-mono);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.updates-label-line {
+  flex: 1;
+  height: 1.5px;
+  background: var(--color-primary-light);
+  border-radius: 1px;
+}
+
+.updates-grid {
+  display: grid;
+  grid-template-areas:
+    "papers papers papers conferences conferences conferences"
+    "grants grants people  people  talks  talks";
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-xl);
+  padding: 0 var(--edge-padding) 15rem;
+}
+.update-card[data-type="papers"]      { grid-area: papers; }
+.update-card[data-type="conferences"] { grid-area: conferences; }
+.update-card[data-type="grants"]      { grid-area: grants; }
+.update-card[data-type="people"]      { grid-area: people; }
+.update-card[data-type="talks"]       { grid-area: talks; }
+
+.update-card {
+  background: transparent;
+  border: 1.5px solid var(--color-primary-light);
+  border-radius: var(--spacing-xl);
+  padding: 0;
+  overflow: hidden;
+  min-height: 180px;
+  font: var(--font-weight-normal) 1rem var(--font-mono);
+  color: var(--color-accent);
+  display: flex;
+  align-items: flex-start;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.04);
+  /* Progressive enhancement: visible by default; .js class (added synchronously)
+     hides cards so JS-driven IntersectionObserver can animate them in.
+     Without JS, cards remain fully visible. */
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.js .update-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.85);
+}
+.update-card.visible { opacity: 1; transform: translateY(0) scale(1); }
+.update-card.visible:hover {
+  transform: translateY(-6px) scale(1);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.10);
+  border-color: var(--color-accent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* ---- Card inner layout ---- */
+.update-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+.update-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  background-color: var(--color-primary-light);
+  padding: 0.75rem var(--spacing-md);
+  width: 100%;
+}
+.update-card-title {
+  font: var(--font-weight-normal) 1rem var(--font-mono);
+  color: var(--color-text-dark);
+}
+.update-card-date {
+  font: var(--font-weight-normal) 0.68rem var(--font-mono);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+.update-card-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: card-item;
+}
+.update-card-list li {
+  counter-increment: card-item;
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  padding: 0.5rem 0 0.55rem 1.9rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0;
+  position: relative;
+}
+.update-card-list li::before {
+  content: counter(card-item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.58rem;
+  font: var(--font-weight-normal) 0.62rem var(--font-mono);
+  color: var(--color-primary-bright);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+.update-card-list li:last-child { border-bottom: none; }
+.update-card-list a,
+.update-card-list span:not(.update-item-meta) {
+  font: var(--font-weight-normal) 0.8rem var(--font-sans);
+  color: var(--color-text-dark);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.update-card-list a:hover { color: var(--color-accent); }
+.update-item-meta {
+  font: var(--font-weight-normal) 0.68rem var(--font-mono);
+  color: var(--color-text-light);
+  line-height: 1.3;
+}
+.update-card-empty {
+  font: var(--font-weight-normal) 0.8rem var(--font-sans);
+  color: var(--color-text-light);
+  margin: 0;
+}
+.update-card[data-type="papers"].visible      { transition-delay: 0s; }
+.update-card[data-type="conferences"].visible { transition-delay: 0.15s; }
+.update-card[data-type="grants"].visible      { transition-delay: 0.3s; }
+.update-card[data-type="people"].visible      { transition-delay: 0.45s; }
+.update-card[data-type="talks"].visible       { transition-delay: 0.6s; }
+
+@media (max-width: 1024px) {
+  .updates-grid {
+    grid-template-areas:
+      "papers papers conferences conferences"
+      "grants grants people  people"
+      "talks  talks  .       .";
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 6rem;
+  }
+}
+@media (max-width: 640px) {
+  .updates-grid {
+    grid-template-areas: none;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 4rem;
+  }
+  .update-card[data-type] { grid-area: auto; }
+}
+@media (max-width: 480px) {
+  /* Single column on small phones: card content may be too long for 2-col */
+  .updates-grid { grid-template-columns: 1fr; padding-bottom: 3rem; }
+}
+
+/*
+  ============================================================================
+  SECTION 7. FOOTER
+  - Edit footer layout and link/text styles here.
+  - The HugoBlox default footer is hidden; a custom footer is rendered
+    via _index.md. To restore the default HugoBlox footer, remove the
+    display:none rule below.
+  ============================================================================
+*/
+.site-footer {
+  padding: 0 var(--edge-padding) var(--spacing-xl);
+}
+.footer-content {
+  display: flex;
+  column-gap: 5rem;
+  row-gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-lg);
+}
+.footer-content p, .footer-content a {
+  font: var(--font-weight-normal) 0.85rem var(--font-sans);
+  color: var(--color-text-light);
+  text-decoration: none;
+  margin: 0;
+  line-height: 1.6;
+}
+.footer-content .footer-address { color: var(--color-text-light); }
+.footer-content a  { color: var(--color-text-light); }
+.footer-group { display: flex; flex-direction: column; gap: 0.2rem; }
+
+/* HugoBlox built-in footer — hidden in favour of custom footer in _index.md */
+footer.site-footer-default, .page-footer { display: none !important; }
+</style>
+
+<script>
+/* Synchronous: add .js to <html> before any element renders so .js .update-card
+   hides cards before they paint — prevents a visible→hidden flash on load. */
+document.documentElement.classList.add('js');
+
+document.addEventListener('DOMContentLoaded', function() {
+  /*
+    ============================================================================
+    SECTION 8. SCRIPTS
+
+    Part A — Nav active state (runs on every page)
+    - Active matching is href-based, not text-based, so menu label changes
+      don't break it.
+    - sectionAliases maps each nav href to the URL prefixes it should activate
+      for (e.g. /people also activates for /authors). Update this map if new
+      alias routes are added in menus.yaml.
+
+    Part B — Homepage interactions (scroll snap + card animation)
+    - Homepage guard: checks for .updates-grid, not pathname.
+    - Scroll target: .updates-grid.closest('.section') — stable regardless
+      of section order in _index.md.
+    ============================================================================
+  */
+
+  /* --- Part A: Nav active state ----------------------------------------- */
+  const currentPath = window.location.pathname;
+
+  /*
+    Hugo may serve the site under a subdirectory (e.g. /Rycolab-new/ in dev,
+    / in production). sitePath strips that prefix so alias lookups work with
+    the bare section paths defined below, regardless of deployment base URL.
+  */
+  const sitePath = '{{ "/" | relURL }}'.replace(/\/$/, ''); /* e.g. '' or '/Rycolab-new' */
+
+  /*
+    Maps each nav link href path (relative, no base prefix) to the URL
+    prefixes it should activate for.
+    Mirrors matchRegexp in config/_default/menus.yaml.
+    Update here when menus.yaml matchRegexp changes.
+  */
+  const sectionAliases = {
+    '/people':   ['/people', '/authors'],
+    '/teaching': ['/teaching', '/courses'],
+    '/events':   ['/events', '/talk'],
+  };
+
+  function applyNavActive() {
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
+      const rawPath = new URL(link.href).pathname;
+      const linkPath = rawPath.replace(/\/$/, ''); /* normalise trailing slash */
+      /* Strip site base to get the bare section path for alias lookup */
+      const relPath  = sitePath ? linkPath.replace(sitePath, '') : linkPath;
+      const aliases  = sectionAliases[relPath];
+      /* Build absolute prefixes by re-adding the site base */
+      const prefixes = aliases
+        ? aliases.map(function(p) { return sitePath + p; })
+        : [linkPath];
+      const isActive = prefixes.some(function(prefix) {
+        return prefix === '' ? currentPath === '/' : currentPath.startsWith(prefix);
+      });
+      if (isActive) {
+        link.classList.add('active');
+        link.parentElement.classList.add('active');
+      }
+    });
+  }
+  applyNavActive(); /* run on DOMContentLoaded */
+  /* Re-run on load: HugoBlox scripts may reset active state after DOMContentLoaded.
+     This replaces the per-page window.load nav fix in authors/list.html. */
+  window.addEventListener('load', applyNavActive);
+
+  /* --- Part B: Homepage only -------------------------------------------- */
+  /* Gate on .updates-grid presence — not on pathname or section index */
+  const updatesGrid = document.querySelector('.updates-grid');
+  if (!updatesGrid) return;
+
+  /* Update cards: animate in when scrolled into view.
+     Set up immediately — independent of updatesSection guard below. */
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { e.target.classList.toggle('visible', e.isIntersecting); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.update-card').forEach(function(card) { observer.observe(card); });
+
+  const updatesSection = updatesGrid.closest('.section') || updatesGrid.closest('section') || updatesGrid.parentElement;
+  if (!updatesSection) return;
+
+  const desktopSnapQuery = window.matchMedia('(min-width: 769px) and (hover: hover) and (pointer: fine)');
+  if (!desktopSnapQuery.matches) return;
+
+  let isScrolling = false, hasSnapped = false;
+
+  /* wheel event options as a constant — same object used for add and remove */
+  const WHEEL_OPTS = { passive: false };
+
+  /* Scroll snap: wheel down from hero snaps to updates section */
+  function wheelHandler(e) {
+    if (isScrolling || hasSnapped) return;
+    if (e.target.closest('.navbar, a, button')) return;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (e.deltaY > 0 && scrollTop < window.innerHeight * 0.9) {
+      e.preventDefault();
+      isScrolling = true;
+      hasSnapped   = true;
+      updatesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function() { isScrolling = false; }, 800);
+    }
+  }
+
+  function scrollHandler() {
+    if ((window.pageYOffset || document.documentElement.scrollTop) < 50) hasSnapped = false;
+  }
+
+  window.addEventListener('wheel',       wheelHandler,      WHEEL_OPTS);
+  window.addEventListener('scroll',      scrollHandler);
+
+  /* Cleanup on page unload — Hugo is static so navigation triggers a full reload */
+  window.addEventListener('pagehide', function() {
+    window.removeEventListener('wheel',      wheelHandler,      WHEEL_OPTS);
+    window.removeEventListener('scroll',     scrollHandler);
+    observer.disconnect();
+  });
+});
+</script>

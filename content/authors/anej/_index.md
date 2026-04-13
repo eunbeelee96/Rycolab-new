@@ -28,6 +28,13 @@ interests:
 - Interpretability
 - Representation Learning
 - Bioinformatics
+research_topics:
+- Formal Language Theory
+- Language Modeling
+- Linguistics
+- Interpretability
+- Semantics & Representations
+- General ML & Surveys
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

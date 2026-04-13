@@ -1,5 +1,55 @@
 # [The Academic CV That Gets You Hired](https://github.com/HugoBlox/theme-academic-cv)
 
+---
+
+## Rycolab Site — Maintenance Guide
+
+### Latest News Cards (Homepage)
+
+The homepage shows 5 cards: **PAPERS**, **CONFERENCES**, **GRANTS**, **PEOPLE**, **TALKS**.
+
+#### PAPERS & TALKS — fully automatic
+These are populated automatically from Hugo content files.
+- New paper → add a folder under `content/publications/` with an `index.md`
+- New talk → add a folder under `content/talk/` with an `index.md`
+- The 5 most recent entries (by `date:` field) appear automatically on the homepage.
+
+#### CONFERENCES, GRANTS, PEOPLE — manual YAML files
+
+Edit the relevant file in `data/`:
+
+| Card | File |
+|------|------|
+| CONFERENCES | `data/news_conferences.yaml` |
+| GRANTS | `data/news_grants.yaml` |
+| PEOPLE | `data/news_people.yaml` |
+
+**To add a new entry**, open the file and add a block at the **top** of `items:`:
+
+```yaml
+items:
+  - title: "New entry title"
+    date: "2026-04-01"          # YYYY-MM-DD
+    url: "https://example.com"  # optional link
+    description: "One-line note" # optional subtitle
+  - ...existing entries...
+```
+
+The 5 most recent entries (sorted by `date`) will appear on the homepage. The "Updated [Month Year]" label reflects the most recent date in the list.
+
+#### Topic Keywords (Publications Filter)
+
+The topic → publication mapping lives in `data/topic_keywords.json`.  
+After editing it, run the update script to re-inject topics into all publication frontmatters:
+
+```bash
+python3 scripts/add_topics_to_publications.py
+```
+
+See `scripts/readme_topic_keywords.md` for the full list of valid topic names.
+
+---
+
 [![Screenshot](.github/preview.webp)](https://hugoblox.com/templates/academic-cv/start/?utm_source=github&utm_medium=readme)
 
 <h1 align="center">Build an Academic CV and Resumé That Stands Out</h1>

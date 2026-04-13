@@ -52,4 +52,7 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2203.17213
 url_pdf: https://arxiv.org/pdf/2203.17213.pdf
+topics:
+- 'Information Theory'
+- 'Psycholinguistics'
 ---

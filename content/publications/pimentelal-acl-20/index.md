@@ -40,5 +40,8 @@ links:
   url: https://www.aclweb.org/anthology/2020.acl-main.420/
 url_pdf: papers/pimentel+al.acl20.pdf
 url_code: https://github.com/rycolab/info-theoretic-probing
+topics:
+- 'Probing'
+- 'Information Theory'
 ---
 

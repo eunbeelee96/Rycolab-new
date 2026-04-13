@@ -26,5 +26,8 @@ links:
   url: https://www.aclweb.org/anthology/2020.tacl-1.1/
 url_pdf: papers/pimentel+al.tacl20.pdf
 url_code: https://github.com/tpimentelms/phonotactic-complexity
+topics:
+- 'Morphology'
+- 'Information Theory'
 ---
 

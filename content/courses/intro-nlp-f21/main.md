@@ -52,9 +52,6 @@ Marks for the course will be determined by the following formula:
 
 ## Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -108,7 +105,7 @@ Marks for the course will be determined by the following formula:
       <td><a href="https://drive.google.com/file/d/1-zDjQ36vWuNpYMd-S_xIi3YSncLaVImp/view?usp=sharing" target="_blank">Lecture 3</a></td>
       <td>Eisenstein Ch. 2</td>
       <td><a href="https://www.cs.jhu.edu/~jason/papers/ferraro+eisner.tnlp13.pdf" target="_blank">Ferraro and Eisner (2013)</a></br>
-        <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html">Jason Eisner’s list of further resources on log-linear modeling</a></td>
+        <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html" target="_blank" rel="noopener">Jason Eisner’s list of further resources on log-linear modeling</a></td>
         <td><a href="https://drive.google.com/file/d/1c0ukuClgztpR3rMA8cFQs2-tj4ClBlmr/view?usp=sharing" target="_blank">Exercises</a></br><a href="https://drive.google.com/file/d/1J0_ZcQbCkGI7Xhbfl2iWax5i0gd-2725/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
         <td>20.10.21 (in person)</br><a href="https://drive.google.com/file/d/1SkyIuFbxmjHJ2mDod0j77mYTRd5GyVWA/view?usp=sharing" target="_blank">Notes</a></td>
     </tr>
@@ -132,7 +129,7 @@ Marks for the course will be determined by the following formula:
       <th scope="row">5</th>
       <td>25.10.21</td>
       <td>Language Modeling with <em>n</em>-grams and LSTMs</td>
-      <td><a href="https://drive.google.com/file/d/1XX72vGgUX2-50tKu4K13AdGOSV6cDEv0/view?usp=sharing">Lecture 5</a></td>
+      <td><a href="https://drive.google.com/file/d/1XX72vGgUX2-50tKu4K13AdGOSV6cDEv0/view?usp=sharing" target="_blank" rel="noopener">Lecture 5</a></td>
       <td>Eisenstein Ch. 6</br>Goodfellow, Bengio and Courville Ch. 10</td>
       <td><a href="https://nlp.stanford.edu/~wcmac/papers/20050421-smoothing-tutorial.pdf" target="_blank">Good Tutorial on n-gram smoothing</a></br>
         <a href="https://en.wikipedia.org/wiki/Good%E2%80%93Turing_frequency_estimation" target="_blank">Good–Turing Smoothing</a></br>
@@ -153,21 +150,21 @@ Marks for the course will be determined by the following formula:
         <a href="https://repository.upenn.edu/cgi/viewcontent.cgi?article=1162&context=cis_papers" target="_blank">Lafferty et al. (2001)</a></br>
         <a href="https://homepages.inf.ed.ac.uk/csutton/publications/crftut-fnt.pdf" target="_blank">Sutton and McCallum (2011)</a></br>
         <a href="https://mitpress.mit.edu/books/probabilistic-graphical-models" target="_blank">Koller and Friedman (2009)</a></td>
-        <td><a href="https://drive.google.com/file/d/1IXVYz_PvbjOpyKX_1dGnTZtEd2KTGqqU/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1-q7bz1kx89j2a8_8Yq--qXSVDzsy4YJb/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
+        <td><a href="https://drive.google.com/file/d/1IXVYz_PvbjOpyKX_1dGnTZtEd2KTGqqU/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1-q7bz1kx89j2a8_8Yq--qXSVDzsy4YJb/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
         <td>10.11.21 (online)</td>
     </tr>
     <tr>
       <th scope="row">7</th>
       <td>08.11.21</td>
       <td>Context-Free Parsing with CKY</td>
-      <td><a href="https://drive.google.com/file/d/1w-yfftBJPzNDAK8zdaX9aRa2n6ZdmYvP/view?usp=sharing">Lecture 7</a></td>
+      <td><a href="https://drive.google.com/file/d/1w-yfftBJPzNDAK8zdaX9aRa2n6ZdmYvP/view?usp=sharing" target="_blank" rel="noopener">Lecture 7</a></td>
       <td>Eisenstein Ch. 10</td>
       <td><a href="http://www.cs.columbia.edu/~mcollins/io.pdf" target="_blank">The Inside-Outside Algorithm</a></br>
         <a href="https://www.cs.jhu.edu/~jason/465/PowerPoint/lect08-parse.ppt" target="_blank">Jason Eisner’s Slides</a></br>
-        <a href="https://www.ideals.illinois.edu/handle/2142/74304">Kasami (1966)</a></br>
+        <a href="https://www.ideals.illinois.edu/handle/2142/74304" target="_blank" rel="noopener">Kasami (1966)</a></br>
         <a href="https://www.sciencedirect.com/science/article/pii/S001999586780007X?via%3Dihub" target="_blank">Younger (1967)</a></br>
         <a href="http://www.softwarepreservation.org/projects/FORTRAN/CockeSchwartz_ProgLangCompilers.pdf" target="_blank">Cocke and Schwartz (1970)</a></td>
-        <td><a href="https://drive.google.com/file/d/1nKp10BoJY5AdsXa3AmufSUTG-HMIeSoX/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1dHfSe9_JchHs-4LD4gUgDVrCwf1G4t4L/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></br><a href="https://drive.google.com/file/d/1zJXpRrYIZpbQEgPv765NGHVw3G4mvHLA/view?usp=sharing">Coding Exercises</a></br><a href="https://drive.google.com/file/d/16q07tVT-HvOA4260dYoSR-VKvIBS9hD8/view?usp=sharing" target="_blank">(<em>Coding Solutions</em>)</a></td>
+        <td><a href="https://drive.google.com/file/d/1nKp10BoJY5AdsXa3AmufSUTG-HMIeSoX/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1dHfSe9_JchHs-4LD4gUgDVrCwf1G4t4L/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></br><a href="https://drive.google.com/file/d/1zJXpRrYIZpbQEgPv765NGHVw3G4mvHLA/view?usp=sharing" target="_blank" rel="noopener">Coding Exercises</a></br><a href="https://drive.google.com/file/d/16q07tVT-HvOA4260dYoSR-VKvIBS9hD8/view?usp=sharing" target="_blank">(<em>Coding Solutions</em>)</a></td>
         <td>17.11.21 (online)</td>
     </tr>
     <tr>
@@ -180,7 +177,7 @@ Marks for the course will be determined by the following formula:
         <a href="https://www.aclweb.org/anthology/D07-1014/" target="_blank">Smith and Smith (2007)</a></br>
         <a href="https://www.aclweb.org/anthology/W07-2216/" target="_blank">McDonald and Satta (2007)</a></br>
         <a href="https://www.morganclaypool.com/doi/abs/10.2200/S00169ED1V01Y200901HLT002" target="_blank">McDonald, Kübler and Nivre (2009)</a></td>
-        <td><a href="https://drive.google.com/file/d/1-AKW_NzSMXXUVgBD1FBN2xOOTUGkpxq5/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1jd3FNdPrDkLQ7TB75svham8WDPqNmpxo/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
+        <td><a href="https://drive.google.com/file/d/1-AKW_NzSMXXUVgBD1FBN2xOOTUGkpxq5/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1jd3FNdPrDkLQ7TB75svham8WDPqNmpxo/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
         <td>24.11.21 (in person)</td>
     </tr>
     <tr>
@@ -192,7 +189,7 @@ Marks for the course will be determined by the following formula:
       <td><a href="https://www.aclweb.org/anthology/P88-1034/" target="_blank">Weir and Joshi (1988)</a></br>
         <a href="https://www.aclweb.org/anthology/Q14-1032/" target="_blank">Kuhlmann and Satta (2014)</a></br>
         <a href="https://homepages.inf.ed.ac.uk/steedman/papers/ccg/ikdoz17.2.pdf" target="_blank">Mark Steedman's CCG slides</a></td>
-      <td><a href="https://drive.google.com/file/d/1oRojvYSeG80Ght-YtYDoY5TIgZOPhBhv/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1mK98TyTLHJD-SJJBkUMUH2_2dLcF1QkA/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
+      <td><a href="https://drive.google.com/file/d/1oRojvYSeG80Ght-YtYDoY5TIgZOPhBhv/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1mK98TyTLHJD-SJJBkUMUH2_2dLcF1QkA/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
       <td>1.12.21 (in person)</br><a href="https://drive.google.com/file/d/1SQyjRs5CxYcexsPAQ2JqiSq03oEKAAwt/view?usp=sharing" target="_blank">Notes</a></td>
     </tr>
     <tr>
@@ -203,7 +200,7 @@ Marks for the course will be determined by the following formula:
       <td>Eisenstein Ch. 9</td>
       <td><a href="https://www.aclweb.org/anthology/J98-4003.pdf" target="_blank">Knight and Graehl (1998)</a></br>
         <a href="https://cs.nyu.edu/~mohri/pub/hbka.pdf" target="_blank">Mohri, Pereira and Riley (2008)</a></td>
-      <td><a href="https://drive.google.com/file/d/1s4X8ojXAFLtIaFlcLEI6dHur13p8CG6A/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1zsJwrGte2375agRpa7TgV-Me-FaWhSvX/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
+      <td><a href="https://drive.google.com/file/d/1s4X8ojXAFLtIaFlcLEI6dHur13p8CG6A/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1zsJwrGte2375agRpa7TgV-Me-FaWhSvX/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
       <td>8.12.21 (online)</td>
     </tr>
     <tr>
@@ -214,18 +211,18 @@ Marks for the course will be determined by the following formula:
       <td>Eisenstein Ch. 18</td>
       <td><a href="https://www.amazon.com/gp/product/1108497322/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1108497322&linkCode=as2&tag=statismachint-20&linkId=ca7b8315b48f309c992019761c3ac4e4" target="_blank">Neural Machine Translation</a></br>
         <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank">Vaswani et al. (2017)</a></br>
-        <a href="https://www.aclweb.org/anthology/W18-2509/">Rush (2018)</a></td>
-      <td><a href="https://drive.google.com/file/d/1EKXzkmbjXyxvn0i3PMzRKh96vZQ7iv7x/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1Lk6W6zaOSkVd4-tDl0r75x3PU1frmoU1/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
+        <a href="https://www.aclweb.org/anthology/W18-2509/" target="_blank" rel="noopener">Rush (2018)</a></td>
+      <td><a href="https://drive.google.com/file/d/1EKXzkmbjXyxvn0i3PMzRKh96vZQ7iv7x/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1Lk6W6zaOSkVd4-tDl0r75x3PU1frmoU1/view?usp=sharing" target="_blank">(<em>Solutions</em>)</a></td>
       <td>15.12.21 (online)</br><a href="https://drive.google.com/file/d/1UgxV3DE56F9_WCYD1aPNeXaZUgmcOm6n/view?usp=sharing" target="_blank">Notes</a></br><a href="https://drive.google.com/file/d/1MPEJTaObQVFo54ueCfsgM-XD3L8sdfEQ/view?usp=sharing" target="_blank">Code</a></td>
     </tr>
     <tr>
       <th scope="row">12</th>
       <td>13.12.21</td>
       <td>Axes of Modeling</td>
-      <td><a href="https://drive.google.com/file/d/1rS8ntv8N0phphXeSCY6ly4X965twXxbE/view?usp=sharing">Lecture 12</a></td>
+      <td><a href="https://drive.google.com/file/d/1rS8ntv8N0phphXeSCY6ly4X965twXxbE/view?usp=sharing" target="_blank" rel="noopener">Lecture 12</a></td>
       <td>Review: Eisenstein Ch. 2</br>Goodfellow, Bengio and Courville Ch. 5 and 11</td>
       <td></td>
-      <td><a href="https://drive.google.com/file/d/1vCttVzDm4rM_s4oJ85byk2BvIgFfjEgJ/view?usp=sharing">Exercises</a></br><a href="https://drive.google.com/file/d/1ra2iP0f9HFCd2s9m0vouVuz39J-i42bZ/view?usp=sharing">(<em>Solutions</em>)</a></td>
+      <td><a href="https://drive.google.com/file/d/1vCttVzDm4rM_s4oJ85byk2BvIgFfjEgJ/view?usp=sharing" target="_blank" rel="noopener">Exercises</a></br><a href="https://drive.google.com/file/d/1ra2iP0f9HFCd2s9m0vouVuz39J-i42bZ/view?usp=sharing" target="_blank" rel="noopener">(<em>Solutions</em>)</a></td>
       <td>22.12.21 (in person)</br><a href="https://drive.google.com/file/d/16rku4FSctXERGXUf0DXTkgidK3yp7EDr/view?usp=sharing" target="_blank">Notes</a></td>
     </tr>
     <tr>
@@ -284,12 +281,12 @@ You can ask questions on Moodle through the Moodle Overflow forum. Please post q
   <tbody>
     <tr>
       <td>Lecturer</td>
-      <td><a href="mailto:ryan.cotterell@inf.ethz.ch">Ryan Cotterell</a></td>
+      <td><a href="mailto:ryan.cotterell@inf.ethz.ch" target="_blank" rel="noopener">Ryan Cotterell</a></td>
     </tr>
     <tr>
       <td>Teaching Assistants</td>
-      <td><a href="mailto:meistecl@inf.ethz.ch">Clara Meister</a>, <a href="mailto:niklas.stoehr@inf.ethz.ch">Niklas Stoehr</a>, <a href="mailto:selena.pepic@inf.ethz.ch">Selena Pepic</a>, <a href="mailto:mkuznetsova@inf.ethz.ch">Rita Kuznetsova</a>, <a href="mailto:asvete@student.ethz.ch">Anej Svete</a>, <a href="mailto:abutoi@student.ethz.ch">Alexandra Butoi</a>, <a href="mailto:anrael@ethz.ch">Anton Rael</a>, <a href="mailto:dwissel@student.ethz.ch">David Wissel</a>, <a href="mailto:rajai.nasser@inf.ethz.ch">Rajai Nasser</a>, <a href="mailto:aamini@student.ethz.ch">Afra Amini</a>, <a href="mailto:alberto.pennino@inf.ethz.ch">Alberto Pennino</a>, <a href="mailto:alexander.immer@inf.ethz.ch
-">Alexander Immer</a></td>
+      <td><a href="mailto:meistecl@inf.ethz.ch" target="_blank" rel="noopener">Clara Meister</a>, <a href="mailto:niklas.stoehr@inf.ethz.ch" target="_blank" rel="noopener">Niklas Stoehr</a>, <a href="mailto:selena.pepic@inf.ethz.ch" target="_blank" rel="noopener">Selena Pepic</a>, <a href="mailto:mkuznetsova@inf.ethz.ch" target="_blank" rel="noopener">Rita Kuznetsova</a>, <a href="mailto:asvete@student.ethz.ch" target="_blank" rel="noopener">Anej Svete</a>, <a href="mailto:abutoi@student.ethz.ch" target="_blank" rel="noopener">Alexandra Butoi</a>, <a href="mailto:anrael@ethz.ch" target="_blank" rel="noopener">Anton Rael</a>, <a href="mailto:dwissel@student.ethz.ch" target="_blank" rel="noopener">David Wissel</a>, <a href="mailto:rajai.nasser@inf.ethz.ch" target="_blank" rel="noopener">Rajai Nasser</a>, <a href="mailto:aamini@student.ethz.ch" target="_blank" rel="noopener">Afra Amini</a>, <a href="mailto:alberto.pennino@inf.ethz.ch" target="_blank" rel="noopener">Alberto Pennino</a>, <a href="mailto:alexander.immer@inf.ethz.ch
+" target="_blank" rel="noopener">Alexander Immer</a></td>
     </tr>
 
     

@@ -59,5 +59,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.sigmorphon-1.1/
 url_pdf: papers/vylomova+al.sigm20.pdf
 url_code: https://github.com/sigmorphon2020/task0-data
+topics:
+- 'Morphology'
 ---
 

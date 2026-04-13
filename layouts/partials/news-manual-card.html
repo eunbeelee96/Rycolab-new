@@ -1,0 +1,40 @@
+{{/*
+  news-manual-card.html — partial
+  Renders one manually-maintained LATEST NEWS card (data/ YAML source).
+
+  Args (dict):
+    .type          — data-type attribute string (e.g. "conferences")
+    .title         — card header label (e.g. "CONFERENCES")
+    .date          — "Updated ..." date string; pass "" to omit
+    .items         — slice of data items (each: .url, .title, .description)
+    .empty         — fallback text shown when items is empty
+    .externalLinks — true → adds target="_blank" rel="noopener" to links
+*/}}
+<div class="update-card" data-type="{{ .type }}">
+  <div class="update-card-inner">
+    <div class="update-card-header">
+      <span class="update-card-title">{{ .title }}</span>
+      {{ with .date }}<span class="update-card-date">Updated {{ . }}</span>{{ end }}
+    </div>
+    {{ if .items }}
+    <ul class="update-card-list">
+      {{ range .items }}
+      <li>
+        {{ if .url }}
+          {{ if $.externalLinks }}
+            <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title | truncate 60 }}</a>
+          {{ else }}
+            <a href="{{ .url }}">{{ .title | truncate 60 }}</a>
+          {{ end }}
+        {{ else }}
+          <span>{{ .title | truncate 60 }}</span>
+        {{ end }}
+        {{ with .description }}<span class="update-item-meta">{{ . }}</span>{{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    {{ else }}
+    <p class="update-card-empty">{{ .empty }}</p>
+    {{ end }}
+  </div>
+</div>

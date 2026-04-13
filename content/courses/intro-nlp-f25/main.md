@@ -70,7 +70,7 @@ The full list is:
 If you feel like you would benefit from any other channel, feel free to suggest it to the teaching team!
 
 #### Reporting Errata
-Please report any errata in this <a href="https://docs.google.com/document/d/1WmS0JT8VB1UxTiKrg8A3dpsXaHDElgR-WQTV3Obz9mA/edit?usp=sharing">document</a>. Such errata can be, e.g., typos, conceptual mistakes, unclear points, found in the lecture slides, assignments, tutorials or course notes. Every contribution is very welcome and will help us improve the teaching materials!
+Please report any errata in this <a href="https://docs.google.com/document/d/1WmS0JT8VB1UxTiKrg8A3dpsXaHDElgR-WQTV3Obz9mA/edit?usp=sharing" target="_blank" rel="noopener">document</a>. Such errata can be, e.g., typos, conceptual mistakes, unclear points, found in the lecture slides, assignments, tutorials or course notes. Every contribution is very welcome and will help us improve the teaching materials!
 
 ### Course Notes
 We are currently working on turning out class content into a book! The current draft of the book, i.e., the course notes, can be found [here](https://drive.google.com/file/d/1JX7NpwVyh4IJYjpbUTZ_EuK0iv_HyXSj/view?usp=sharing). 
@@ -148,9 +148,6 @@ We will send out 10 minute slots for you to sign up for closer to the time on th
 
 ## Syllabus
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -229,7 +226,7 @@ We will send out 10 minute slots for you to sign up for closer to the time on th
       <td><a href="https://drive.google.com/file/d/1Vytig69NhN17qM1KCv4qwALolYftD5Js/view?usp=sharing" target="_blank"> Lecture 3</a></td>
       <td>Eisenstein Ch. 2</td>
       <td><a href="https://www.cs.jhu.edu/~jason/papers/ferraro+eisner.tnlp13.pdf" target="_blank">Ferraro and Eisner (2013)</a></br>
-      <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html">Jason Eisner’s list of further resources on log-linear modeling</a></td>
+      <a href="http://cs.jhu.edu/~jason/tutorials/loglin/further.html" target="_blank" rel="noopener">Jason Eisner’s list of further resources on log-linear modeling</a></td>
       <td>
         <a href="https://drive.google.com/file/d/11kPaqQgi0rlrlEAhSqvU-7ZCnrujH-Vu/view?usp=sharing" target="_blank">Week 3 Exercises</a></br>
         <a href="https://drive.google.com/file/d/1XF-zEeO65vtAyYgX-_VfKBprDc0gwNfJ/view?usp=drive_link" target="_blank">Week 3 Solutions</a></br>
@@ -347,7 +344,7 @@ We will send out 10 minute slots for you to sign up for closer to the time on th
       <td>Eisenstein Ch. 10</td>
       <td><a href="http://www.cs.columbia.edu/~mcollins/io.pdf" target="_blank">The Inside-Outside Algorithm</a></br>
         <a href="https://www.cs.jhu.edu/~jason/465/PowerPoint/lect08-parse.ppt" target="_blank">Jason Eisner’s Slides</a></br>
-        <a href="https://www.ideals.illinois.edu/handle/2142/74304">Kasami (1966)</a></br>
+        <a href="https://www.ideals.illinois.edu/handle/2142/74304" target="_blank" rel="noopener">Kasami (1966)</a></br>
         <a href="https://www.sciencedirect.com/science/article/pii/S001999586780007X?via%3Dihub" target="_blank">Younger (1967)</a></br>
         <a href="http://www.softwarepreservation.org/projects/FORTRAN/CockeSchwartz_ProgLangCompilers.pdf" target="_blank">Cocke and Schwartz (1970)</a></td>
       <td>
@@ -420,9 +417,9 @@ We will send out 10 minute slots for you to sign up for closer to the time on th
       <td>Eisenstein Ch. 18</td>
       <td>
         <a href="https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf" target="_blank">Vaswani et al. (2017)</a></br>
-        <a href="http://nlp.seas.harvard.edu/annotated-transformer/">The Annotated Transformer</a></br>
-        <a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></br>
-        <a href="https://lilianweng.github.io/posts/2020-04-07-the-transformer-family/">The Transformer Family</a></td>
+        <a href="http://nlp.seas.harvard.edu/annotated-transformer/" target="_blank" rel="noopener">The Annotated Transformer</a></br>
+        <a href="https://jalammar.github.io/illustrated-transformer/" target="_blank" rel="noopener">The Illustrated Transformer</a></br>
+        <a href="https://lilianweng.github.io/posts/2020-04-07-the-transformer-family/" target="_blank" rel="noopener">The Transformer Family</a></td>
       <td>
         <a href="https://drive.google.com/file/d/1r36JqPSisoMDRok0DkgaghqIx57KI8xU/view?usp=sharing" target="_blank">Week 11 Exercises</a></br>
         <a href="https://drive.google.com/file/d/1X31nT3mhc1AwPqSxsOnEKmiPMf8s5rHy/view?usp=sharing" target="_blank">Week 11 Solutions</a>
@@ -484,9 +481,6 @@ We will send out 10 minute slots for you to sign up for closer to the time on th
 
 ## Tutorial Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>

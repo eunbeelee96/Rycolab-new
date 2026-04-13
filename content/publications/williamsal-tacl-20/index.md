@@ -47,4 +47,7 @@ publication: '*Transactions of the Association for Computational Linguistics*'
 links:
 - name: URL
   url: https://arxiv.org/abs/2005.01204
+topics:
+- 'Typology'
+- 'Morphology'
 ---

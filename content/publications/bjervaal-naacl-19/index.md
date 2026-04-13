@@ -32,5 +32,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1903.10950
 url_pdf: https://www.aclweb.org/anthology/N19-1156.pdf
+topics:
+- 'Typology'
 ---
 

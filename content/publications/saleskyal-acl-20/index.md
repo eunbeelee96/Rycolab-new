@@ -33,5 +33,7 @@ links:
   url: https://www.aclweb.org/anthology/2020.acl-main.415/
 url_pdf: papers/salesky+al.acl20.pdf
 url_code: https://voxclamantisproject.github.io/
+topics:
+- 'Typology'
 ---
 

@@ -1,36 +1,103 @@
-<script>
-// Add logo images to navbar brand with home link
-document.addEventListener('DOMContentLoaded', function() {
-  const navbar = document.querySelector('.navbar-brand');
-  const baseURL = '{{ site.BaseURL }}';
-  if (navbar && navbar.innerHTML.trim() === '') {
-    // First logo (main)
-    const img1 = document.createElement('img');
-    img1.src = baseURL + 'uploads/logo3.png';
-    img1.alt = 'Rycolab Logo';
-    img1.style.maxHeight = '50px';
-    img1.style.width = 'auto';
-    img1.style.cursor = 'pointer';
-    img1.addEventListener('click', function() {
-      window.location.href = baseURL;
-    });
-    
-    // Second logo (50% smaller)
-    const img2 = document.createElement('img');
-    img2.src = baseURL + 'uploads/logo2.png';
-    img2.alt = 'Rycolab Logo 2';
-    img2.style.maxHeight = '30px';  // 50% of 50px
-    img2.style.width = 'auto';
-    img2.style.marginLeft = '0px';  // spacing between logos
-    img2.style.position = 'relative';
-    img2.style.top = '9px';  // 아래로 이동 (값을 높이면 더 아래로)
-    img2.style.cursor = 'pointer';
-    img2.addEventListener('click', function() {
-      window.location.href = baseURL;
-    });
-    
-    navbar.appendChild(img1);
-    navbar.appendChild(img2);
+<style>
+  /*
+    ============================================================================
+    LOGO STYLES
+    Injected via body-end hook. Targets .navbar-brand after JS injects the
+    logo markup. All sizing and layout lives here; JS only builds the DOM.
+
+    To change logo sizes   → edit --logo-primary-h / --logo-secondary-h
+    To change alignment    → edit .navbar-brand flex properties
+    To change click cursor → .navbar-logo cursor
+    ============================================================================
+  */
+  .navbar-brand.site-logo-ready {
+    display: inline-flex !important;
+    align-items: flex-end !important;
+    gap: 0 !important;
+    overflow: visible !important;
+
+    /* Desktop */
+    --logo-primary-h:   50px;
+    --logo-secondary-h: 30px;
+    --logo-secondary-top: 9px;
+    padding-bottom: var(--logo-secondary-top) !important;
+    max-width: none !important;
   }
+
+  @media (max-width: 1023px) {
+    .navbar-brand.site-logo-ready {
+      --logo-primary-h:     40px;
+      --logo-secondary-h:   24px;
+      --logo-secondary-top: 7px;
+      max-width: calc(100vw - 7.25rem) !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .navbar-brand.site-logo-ready {
+      --logo-primary-h:     28px;
+      --logo-secondary-h:   17px;
+      --logo-secondary-top: 4px;
+      max-width: calc(100vw - 6.25rem) !important;
+    }
+  }
+
+  .navbar-logo {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    flex-shrink: 1;
+    cursor: pointer;
+  }
+
+  .navbar-logo--primary   { height: var(--logo-primary-h); }
+  .navbar-logo--secondary {
+    height: var(--logo-secondary-h);
+    position: relative;
+    top: var(--logo-secondary-top);
+  }
+</style>
+
+<script>
+/*
+  ============================================================================
+  LOGO INJECTION
+  Injected via body-end hook on every page.
+
+  - Targets .navbar-brand only when empty (HugoBlox leaves it blank when no
+    logo is configured in params.yaml).
+  - Adds .site-logo-ready to .navbar-brand so CSS can activate logo styles
+    without touching inline style properties.
+  - resize listener is cleaned up on pagehide to avoid leaks.
+  - To change logo image sources → update primaryLogoURL / secondaryLogoURL.
+  - To change logo sizes/layout  → edit the <style> block above (no JS needed).
+  ============================================================================
+*/
+document.addEventListener('DOMContentLoaded', function() {
+  const navbar          = document.querySelector('.navbar-brand');
+  const homeURL         = '{{ site.Home.RelPermalink }}';
+  const primaryLogoURL  = '{{ "uploads/logo3.png" | relURL }}';
+  const secondaryLogoURL= '{{ "uploads/logo2.png" | relURL }}';
+
+  if (!navbar || navbar.innerHTML.trim() !== '') return;
+
+  function makeLogoImg(src, alt, modifierClass) {
+    const img = document.createElement('img');
+    img.src      = src;
+    img.alt      = alt;
+    img.decoding = 'async';
+    img.className = 'navbar-logo ' + modifierClass;
+    img.addEventListener('click', function() { window.location.href = homeURL; });
+    return img;
+  }
+
+  navbar.appendChild(makeLogoImg(primaryLogoURL,   'Rycolab Logo',   'navbar-logo--primary'));
+  navbar.appendChild(makeLogoImg(secondaryLogoURL, 'Rycolab Logo 2', 'navbar-logo--secondary'));
+  navbar.classList.add('site-logo-ready');
+
+  /* Cleanup on navigation/unload — static site reloads fully, but good practice */
+  window.addEventListener('pagehide', function() {
+    navbar.classList.remove('site-logo-ready');
+  });
 });
 </script>

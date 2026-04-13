@@ -32,5 +32,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1810.06743
 url_pdf: https://aclweb.org/anthology/papers/W18-6011.pdf
+topics:
+- 'Morphology'
+- 'Syntax'
 ---
 

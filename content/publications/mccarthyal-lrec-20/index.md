@@ -49,5 +49,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.lrec-1.483/
 url_pdf: papers/mccarthy+al.lrec20.pdf
+topics:
+- 'Morphology'
 ---
 

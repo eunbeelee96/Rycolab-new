@@ -26,5 +26,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2005.01204
 url_pdf: papers/williams+al.tacl21.pdf
+topics:
+- 'Typology'
+- 'Morphology'
 ---
 

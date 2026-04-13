@@ -1,0 +1,226 @@
+{{ define "main" }}
+{{/*
+  ============================================================================
+  SECTION 0. DATA NOTE
+  Template:  layouts/thesis-projects/list.html
+  Content:   content/thesis-projects/_index.md
+
+  CONTENT DEPENDENCY:
+  This template wraps .Content in .thesis-hero (animation + flex growth).
+  The Markdown file is still expected to supply:
+    · .thesis-heading  — the page <h1> title
+    · .thesis-steps    — the numbered steps list
+  Without those classes the heading color and step block styling will not apply.
+
+  FOOTER NOTE:
+  Footer is rendered via rycolab-footer.html partial injected directly here,
+  because this page overrides the full viewport height (calc(100vh - navbar)).
+  If the base layout ever adds a global footer, remove the partial below.
+
+  OVERFLOW NOTE:
+  .thesis-page uses height (not min-height) + overflow: hidden to lock the
+  layout to exactly one viewport height and prevent page scroll. This is
+  intentional: the thesis-projects page is a compact reference layout.
+  If longer content is ever added, switch to min-height and flex: 1 on
+  .thesis-container, and remove overflow: hidden.
+  ============================================================================
+*/}}
+
+{{/*
+  ============================================================================
+  SECTION 1. PAGE MARKUP
+  - .thesis-page      — full-page shell; sets viewport height and flex column.
+  - .thesis-container — constrains max-width and holds hero + footer.
+  - .thesis-hero      — wraps .Content; owns the entrance animation and
+                        flex-grows to push the footer to the bottom.
+  - .Content          — rendered from content/thesis-projects/_index.md; must
+                        supply .thesis-heading and .thesis-steps (see SECTION 0).
+  - Footer partial    — injected directly below the hero block.
+  ============================================================================
+*/}}
+<section class="thesis-page">
+  <div class="thesis-container">
+    <div class="thesis-hero">
+      {{ .Content }}
+    </div>
+    {{ partial "rycolab-footer.html" . }}
+  </div>
+</section>
+
+{{/*
+  ============================================================================
+  SECTION 2. PAGE STYLES
+  CSS sub-sections: Layout · Hero · Heading · Steps · CTA Button · Footer · Mobile
+  ============================================================================
+*/}}
+<style>
+  /* ─── Layout ─────────────────────────────────────────── */
+  .thesis-page {
+    height: calc(100vh - var(--navbar-height));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* intentional: thesis-projects is a compact fixed layout; prevents page scroll */
+  }
+
+  .thesis-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--edge-padding);
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── Hero ───────────────────────────────────────────── */
+  .thesis-hero {
+    /* flex: 1 causes .thesis-hero to grow and push footer to the bottom */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: thesisReveal 0.6s ease-out forwards;
+  }
+
+  @keyframes thesisReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── Heading ─────────────────────────────────────────── */
+  .thesis-heading {
+    font-family: var(--font-mono);
+    font-size: 2.2rem;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 2.5rem 0;
+  }
+
+  /* ─── Steps ──────────────────────────────────────────── */
+  .thesis-steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thesis-step {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: start;
+    padding: 1.4rem 1rem;
+    border-top: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    transition: background 0.2s;
+    opacity: 0;
+    transform: translateX(-16px);
+    animation: stepReveal 0.5s ease-out forwards;
+  }
+
+  .thesis-step:nth-child(1) { animation-delay: 0.15s; }
+  .thesis-step:nth-child(2) { animation-delay: 0.28s; }
+  .thesis-step:nth-child(3) { animation-delay: 0.41s; }
+
+  .thesis-step:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @keyframes stepReveal {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    padding-top: 0.2rem;
+    opacity: 0.7;
+  }
+
+  .step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .step-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 !important;
+  }
+
+  .step-content p {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+    margin: 0;
+  }
+
+  /* ─── CTA Button ─────────────────────────────────────── */
+  .thesis-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+    padding: 0.45rem 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.5px;
+    color: var(--color-accent) !important;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-pill);
+    text-decoration: none !important;
+    transition: background 0.2s, color 0.2s;
+    width: fit-content;
+  }
+
+  .thesis-cta:hover {
+    background: var(--color-accent);
+    color: #fff !important;
+  }
+
+  /* ─── Footer ─────────────────────────────────────────── */
+  .thesis-page .site-footer {
+    padding: 1.5rem 0 2rem 0;
+  }
+
+  /* ─── Mobile ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .thesis-container {
+      padding: 3rem var(--edge-padding) 0;
+    }
+
+    .thesis-heading {
+      font-size: 1.6rem;
+    }
+
+    .thesis-step {
+      grid-template-columns: 3.5rem 1fr;
+      padding: 1.2rem 0.5rem;
+    }
+
+    .thesis-page .site-footer {
+      padding: 3rem 0 2rem 0;
+    }
+  }
+  @media (max-width: 480px) {
+    .thesis-heading        { font-size: 1.3rem; }
+    .thesis-step           { grid-template-columns: 3rem 1fr; padding: 1rem 0; }
+    .thesis-cta            { font-size: 0.72rem; }
+  }</style>
+
+{{/*
+  ============================================================================
+  SECTION 3. PAGE SCRIPTS
+  - No page-specific scripts currently.
+  - Add page-level interactivity here if needed later.
+  ============================================================================
+*/}}
+{{ end }}

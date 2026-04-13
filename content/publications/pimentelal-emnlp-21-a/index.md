@@ -33,5 +33,8 @@ links:
   url: https://arxiv.org/abs/2109.15000
 url_pdf: papers/pimentel+al.emnlp21a.pdf
 url_code: https://github.com/rycolab/surprisal-duration-tradeoff
+topics:
+- 'Information Theory'
+- 'Psycholinguistics'
 ---
 

@@ -1,0 +1,28 @@
+# ============================================================
+# GRANTS NEWS
+# ============================================================
+# How to add a new entry:
+#   1. Copy the item block below and paste at the TOP of the items list.
+#   2. Fill in title, date (YYYY-MM-DD), and optionally url/description.
+#   3. Save. The "GRANTS" card on the homepage will update automatically.
+#
+# Fields:
+#   title       (required) Name of the grant or funding news
+#   date        (required) Date awarded/announced in YYYY-MM-DD format
+#   url         (optional) Link to grant page or announcement
+#   description (optional) One-line note (e.g. funder, amount)
+# ============================================================
+
+items:
+  - title: "SNSF Funding Round 2026"
+    date: "2026-03-15"
+    url: "https://www.snsf.ch/"
+    description: "Advanced computational linguistics research"
+  - title: "ETH Research Grant"
+    date: "2026-02-28"
+    url: "https://ml.inf.ethz.ch/"
+    description: "NLP and machine learning initiatives"
+  - title: "EU Horizon Europe Project"
+    date: "2026-01-20"
+    url: ""
+    description: "Language technology innovation"

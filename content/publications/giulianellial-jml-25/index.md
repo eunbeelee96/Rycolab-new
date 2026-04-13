@@ -61,4 +61,6 @@ publication: '*PsyArXiv*'
 links:
 - name: URL
   url: https://osf.io/preprints/psyarxiv/fhp84
+topics:
+- 'Psycholinguistics'
 ---

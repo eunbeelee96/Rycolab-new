@@ -20,9 +20,6 @@ Since Shannon originally proposed his mathematical theory of communication in th
 
 ## Syllabus 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <tbody>
     <tr>
       <th scope="row">Lecture 1</th>

@@ -32,5 +32,7 @@ links:
   url: https://arxiv.org/abs/2106.00780
 url_pdf: papers/zmigrod+al.acl21a.pdf
 url_code: https://github.com/rycolab/spanningtrees
+topics:
+- 'Parsing'
 ---
 

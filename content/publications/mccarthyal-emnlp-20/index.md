@@ -32,5 +32,8 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.emnlp-main.456/
 url_pdf: papers/mccarthy+al.emnlp20.pdf
+topics:
+- 'Typology'
+- 'Morphology'
 ---
 

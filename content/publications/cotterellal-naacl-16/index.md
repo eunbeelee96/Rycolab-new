@@ -22,5 +22,7 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/N16-1080.pdf
 url_pdf: https://www.aclweb.org/anthology/N16-1080.pdf
+topics:
+- 'Morphology'
 ---
 

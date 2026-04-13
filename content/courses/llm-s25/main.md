@@ -60,9 +60,6 @@ Tutorials will take place Thursdays 16-18 in [NO C 60](https://www.rauminfo.ethz
 ## Syllabus
 
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Date</th>
@@ -749,9 +746,6 @@ Tutorials will take place Thursdays 16-18 in [NO C 60](https://www.rauminfo.ethz
 
 ### Tutorial Schedule
 <table class="table">
-  <head>
-    <base target="_blank">
-  </head>
   <thead>
     <tr>
       <th scope="col" style='white-space:nowrap'>Week</th>
@@ -841,8 +835,8 @@ Tutorials will take place Thursdays 16-18 in [NO C 60](https://www.rauminfo.ethz
       <td>Prompting, Chain-of-Thought Reasoning</td>
       <td>Manuel</td>
       <td>
-      <a href="https://drive.google.com/file/d/1Uga7ZS3xU7ietkgsuZmh_cnP1hklfUs7/view?usp=sharing">Exercises</a>, 
-      <a href="https://drive.google.com/file/d/1WqPmzArUQLYkSJXaa4hNzrFYsFt1jnOv/view?usp=sharing">Exercises with solutions</a>
+      <a href="https://drive.google.com/file/d/1Uga7ZS3xU7ietkgsuZmh_cnP1hklfUs7/view?usp=sharing" target="_blank" rel="noopener">Exercises</a>, 
+      <a href="https://drive.google.com/file/d/1WqPmzArUQLYkSJXaa4hNzrFYsFt1jnOv/view?usp=sharing" target="_blank" rel="noopener">Exercises with solutions</a>
       </td>
     </tr>
     <tr>

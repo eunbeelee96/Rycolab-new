@@ -32,5 +32,7 @@ links:
   url: https://arxiv.org/abs/2104.06325
 url_pdf: papers/pimentel+al.naacl21a.pdf
 url_code: https://github.com/rycolab/form-meaning-associations
+topics:
+- 'Information Theory'
 ---
 

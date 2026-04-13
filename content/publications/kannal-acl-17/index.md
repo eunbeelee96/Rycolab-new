@@ -26,5 +26,8 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1704.00052
 url_pdf: https://www.aclweb.org/anthology/P17-1182.pdf
+topics:
+- 'Morphology'
+- 'Translation'
 ---
 

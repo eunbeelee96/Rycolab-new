@@ -51,4 +51,6 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2207.01736
 url_pdf: papers/li+al.naacl22.pdf
+topics:
+- 'Probing'
 ---

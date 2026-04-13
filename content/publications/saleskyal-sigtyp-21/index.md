@@ -54,4 +54,6 @@ abstract: 'While language identification is a fundamental speech and language pr
   scenarios.'
 publication: '*Proceedings of the Third Workshop on Computational Typology and Multilingual
   NLP*'
+topics:
+- 'Typology'
 ---

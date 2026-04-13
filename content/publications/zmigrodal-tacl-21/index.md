@@ -33,5 +33,7 @@ links:
   url: https://arxiv.org/abs/2008.12988
 url_pdf: papers/zmigrod+al.tacl21.pdf
 url_code: https://github.com/rycolab/tree_expectations
+topics:
+- 'Parsing'
 ---
 

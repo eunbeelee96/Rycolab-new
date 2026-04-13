@@ -28,5 +28,7 @@ links:
 - name: arXiv
   url: https://arxiv.org/abs/1806.03746
 url_pdf: https://www.aclweb.org/anthology/papers/P18-1245.pdf
+topics:
+- 'Morphology'
 ---
 

@@ -39,4 +39,7 @@ publication: ''
 links:
 - name: URL
   url: https://www.arxiv.org/pdf/2502.12317
+topics:
+- 'Language Modeling'
+- 'Typology'
 ---

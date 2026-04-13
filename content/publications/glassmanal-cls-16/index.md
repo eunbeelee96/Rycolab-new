@@ -13,5 +13,8 @@ publication: '*Proceedings of the 52nd Annual Meeting of the Chicago Linguistic 
 publication_short: Chicago Linguistic Society
 links:
 url_pdf: papers/glassman+al.cls16.pdf
+topics:
+- 'Morphology'
+- 'Typology'
 ---
 

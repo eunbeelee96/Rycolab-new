@@ -26,5 +26,7 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.emnlp-main.329/
 url_pdf: papers/leung+al.emnlp20.pdf
+topics:
+- 'Typology'
 ---
 

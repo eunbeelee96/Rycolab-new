@@ -17,5 +17,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/1804.08262
 url_pdf: papers/cotterell+al.arxiv18.pdf
+topics:
+- 'Morphology'
+- 'Typology'
 ---
 

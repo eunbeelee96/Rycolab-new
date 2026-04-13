@@ -26,5 +26,8 @@ links:
 - name: URL
   url: https://www.aclweb.org/anthology/2020.coling-main.256/
 url_pdf: papers/czarnowska+al.coling20.pdf
+topics:
+- 'Morphology'
+- 'Translation'
 ---
 

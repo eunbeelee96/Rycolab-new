@@ -52,4 +52,7 @@ publication: '*Proceedings of the 2021 Conference of the North American Chapter 
 links:
 - name: URL
   url: https://aclanthology.org/2021.naacl-main.350/
+topics:
+- 'Information Theory'
+- 'Psycholinguistics'
 ---

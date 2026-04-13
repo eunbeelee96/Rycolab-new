@@ -35,5 +35,8 @@ links:
 - name: Anthology
   url: https://www.aclweb.org/anthology/P19-1384.pdf
 url_pdf: https://www.aclweb.org/anthology/P19-1384.pdf
+topics:
+- 'Typology'
+- 'Syntax'
 ---
 

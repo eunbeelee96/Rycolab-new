@@ -27,6 +27,11 @@ interests:
 - Language Model Interpretability
 - Latent (ordinal) variables and scales
 - Computational Social Science
+research_topics:
+- Language Modeling
+- Interpretability
+- Semantics & Representations
+- Fairness & Ethics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

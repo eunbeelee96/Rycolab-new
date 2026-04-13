@@ -27,5 +27,8 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2203.17217
 url_pdf: https://arxiv.org/pdf/2203.17217.pdf
+topics:
+- 'Decoding'
+- 'Language Modeling'
 ---
 

@@ -48,4 +48,6 @@ links:
 - name: URL
   url: https://arxiv.org/abs/2201.12191
 url_pdf: https://arxiv.org/pdf/2201.12191.pdf
+topics:
+- 'Bias & Fairness'
 ---

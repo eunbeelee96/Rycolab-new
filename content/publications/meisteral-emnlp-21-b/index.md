@@ -32,5 +32,8 @@ links:
   url: https://arxiv.org/abs/2109.11034
 url_pdf: papers/meister+al.emnlp21b.pdf
 url_code: https://github.com/rycolab/cpsbs
+topics:
+- 'Information Theory'
+- 'Language Modeling'
 ---
 

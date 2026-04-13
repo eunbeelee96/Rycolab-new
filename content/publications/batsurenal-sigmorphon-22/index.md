@@ -56,4 +56,6 @@ abstract: 'The SIGMORPHON 2022 shared task on morpheme segmentation challenged s
   the evaluation script, and all gold standard datasets.'
 publication: '*Proceedings of the 19th SIGMORPHON Workshop on Computational Research
   in Phonetics, Phonology, and Morphology*'
+topics:
+- 'Morphology'
 ---

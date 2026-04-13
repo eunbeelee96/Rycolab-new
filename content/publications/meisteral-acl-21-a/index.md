@@ -33,5 +33,7 @@ links:
   url: https://arxiv.org/abs/2106.07400
 url_pdf: papers/meister+al.acl21a.pdf
 url_code: https://github.com/rycolab/swor/tree/diverse_decoding
+topics:
+- 'Decoding'
 ---
 

@@ -26,6 +26,8 @@ bio:
 
 interests:
 - Argumentation in Law
+research_topics:
+- Linguistics
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons

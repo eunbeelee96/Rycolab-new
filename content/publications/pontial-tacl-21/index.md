@@ -33,5 +33,8 @@ links:
   url: https://arxiv.org/abs/2001.11453
 url_pdf: papers/ponti+al.tacl21.pdf
 url_code: https://github.com/cambridgeltl/parameter-factorization
+topics:
+- 'Language Modeling'
+- 'Typology'
 ---
 

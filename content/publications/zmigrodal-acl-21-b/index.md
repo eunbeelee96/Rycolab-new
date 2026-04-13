@@ -27,5 +27,7 @@ links:
   url: https://arxiv.org/abs/2106.00749
 url_pdf: papers/zmigrod+al.acl21b.pdf
 url_code: https://github.com/rycolab/wfsm
+topics:
+- 'Formal Languages'
 ---
 
