@@ -49,7 +49,8 @@
 
 {{ $role := "" }}
 {{ with .Params.role }}
-  {{ if strings.Contains (lower .) "phd" }}{{ $role = "PhD STUDENT" }}{{ else }}{{ $role = upper . }}{{ end }}
+  {{ $role = upper . }}
+  {{ if strings.Contains (lower .) "phd" }}{{ $role = replace $role "PHD" "PhD" }}{{ end }}
 {{ end }}
 
 {{/*
@@ -66,8 +67,8 @@
 <section class="author-page">
   <div class="author-container">
 
-    <div class="author-back">
-      <a href="{{ "people/" | relURL }}" class="author-back-btn" aria-label="Back to People">
+    <div class="back-btn-wrap">
+      <a href="{{ "people/" | relURL }}" class="back-btn" aria-label="Back to People">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
@@ -240,18 +241,7 @@
     .author-page { min-height: 100vh; padding: 2rem 3rem; }
     .author-container { max-width: 1200px; margin: 0 auto; }
 
-    .author-back { margin-bottom: 2rem; }
-    .author-back-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px;
-      background: transparent;
-      border: 1px solid var(--color-text-light);
-      border-radius: 50%;
-      color: var(--color-text-light);
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-    .author-back-btn:hover { background: var(--color-primary-light); }
+
 
     .author-layout {
       display: grid;

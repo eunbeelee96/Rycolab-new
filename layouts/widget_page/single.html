@@ -37,8 +37,8 @@
   <div class="course-page-container">
 
     <!-- Back to Teaching list -->
-    <div class="course-page-back">
-      <a href="{{ site.Home.RelPermalink }}teaching/" class="course-page-back-btn" aria-label="Back to Teaching">
+    <div class="back-btn-wrap">
+      <a href="{{ "teaching/" | relURL }}" class="back-btn" aria-label="Back to Teaching">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -94,7 +94,7 @@
   ============================================================================
   SECTION 2. PAGE STYLES
   - To change page padding         → .course-page
-  - To change back button style    → .course-page-back-btn
+  - Back button uses shared .back-btn from main.html
   - To change layout columns       → .course-page-layout
   - To change sidebar border       → .course-page-sidebar
   - To change catalog button       → .course-catalog-btn
@@ -111,25 +111,6 @@
       max-width: 1300px;
       margin: 0 auto;
     }
-
-    /* ---- Back button ---- */
-    .course-page-back { margin-bottom: 2rem; }
-
-    .course-page-back-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: transparent;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-round);
-      color: var(--color-text-muted);
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .course-page-back-btn:hover { background: var(--color-primary-light); }
 
     /* ---- Two-column layout ---- */
     .course-page-layout {
@@ -195,14 +176,16 @@
       .course-page-sidebar  { border-left: none; border-top: 1px solid var(--color-border); padding-left: 0; padding-top: 3rem; }
     }
     @media (max-width: 768px) { .course-page { padding: 1.5rem !important; } }
+    @media (max-width: 480px) { .course-page { padding: 1rem 1.25rem !important; } }
   </style>
 
 {{/*
   ============================================================================
   SECTION 3. PAGE SCRIPTS
-  - Nav active fix: course pages live under /courses/* which differs from the
-    /teaching nav href. Match by href attribute (stable across locales).
-  - Internal/external link fix: internal links stay in same tab.
+  - Nav active: handled globally by main.html applyNavActive()
+    which maps '/teaching' → ['/teaching', '/courses'].
+  - Back button: history.back() when referrer is from same site.
+  - Internal-link fix: widget content links stay in same tab.
   ============================================================================
 */}}
   <script>
@@ -210,7 +193,7 @@
 
       // Back button: history.back() when a same-site referrer exists,
       // otherwise the <a href> naturally falls back to /teaching/.
-      var backBtn = document.querySelector('.course-page-back-btn');
+      var backBtn = document.querySelector('.back-btn');
       if (backBtn) {
         backBtn.addEventListener('click', function(e) {
           if (history.length > 1 && document.referrer &&
@@ -218,7 +201,6 @@
             e.preventDefault();
             history.back();
           }
-          // else: follow href → /teaching/
         });
       }
 
@@ -233,17 +215,6 @@
         }
       });
 
-    });
-
-    // Nav active runs on 'load' — after HugoBlox and all other scripts have
-    // finished, so this override is guaranteed to be applied last.
-    window.addEventListener('load', function() {
-      document.querySelectorAll('.navbar-nav .nav-link').forEach(function(link) {
-        if (link.getAttribute('href') && link.getAttribute('href').includes('/teaching')) {
-          link.classList.add('active');
-          if (link.parentElement) { link.parentElement.classList.add('active'); }
-        }
-      });
     });
   </script>
 

@@ -78,8 +78,8 @@
 
   {{/* ---- CONFERENCES / GRANTS / PEOPLE: rendered via shared partial ---- */}}
   {{ partial "news-manual-card.html" (dict "type" "conferences" "title" "CONFERENCES" "date" $confDate   "items" $conf5   "empty" "No conferences listed yet." "externalLinks" true) }}
-  {{ partial "news-manual-card.html" (dict "type" "grants"      "title" "GRANTS"      "date" $grantsDate "items" $grants5 "empty" "No grants listed yet."      "externalLinks" true) }}
-  {{ partial "news-manual-card.html" (dict "type" "people"      "title" "PEOPLE"      "date" $peopleDate "items" $people5 "empty" "No people updates yet."    "externalLinks" false) }}
+  {{ partial "news-manual-card.html" (dict "type" "grants"      "title" "GRANTS"      "date" $grantsDate "items" $grants5 "empty" "No grants listed yet."      "externalLinks" true "noLinks" true) }}
+  {{ partial "news-manual-card.html" (dict "type" "people"      "title" "PEOPLE"      "date" $peopleDate "items" $people5 "empty" "No people updates yet."    "externalLinks" false "noLinks" true) }}
 
   {{/* ---- TALKS ---- */}}
   <div class="update-card" data-type="talks">

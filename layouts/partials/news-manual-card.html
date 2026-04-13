@@ -20,7 +20,7 @@
     <ul class="update-card-list">
       {{ range .items }}
       <li>
-        {{ if .url }}
+        {{ if and .url (not $.noLinks) }}
           {{ if $.externalLinks }}
             <a href="{{ .url }}" target="_blank" rel="noopener">{{ .title | truncate 60 }}</a>
           {{ else }}

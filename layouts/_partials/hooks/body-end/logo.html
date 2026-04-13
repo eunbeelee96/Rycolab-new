@@ -95,9 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
   navbar.appendChild(makeLogoImg(secondaryLogoURL, 'Rycolab Logo 2', 'navbar-logo--secondary'));
   navbar.classList.add('site-logo-ready');
 
-  /* Cleanup on navigation/unload — static site reloads fully, but good practice */
-  window.addEventListener('pagehide', function() {
-    navbar.classList.remove('site-logo-ready');
+  /* bfcache: browser may restore the page with DOM intact but skip
+     DOMContentLoaded. Ensure the class is still present on restore. */
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) navbar.classList.add('site-logo-ready');
   });
 });
 </script>

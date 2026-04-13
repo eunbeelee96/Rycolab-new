@@ -25,8 +25,8 @@
   <div class="course-container">
 
     <!-- Back to Teaching list -->
-    <div class="course-back">
-      <a href="{{ "teaching/" | relURL }}" class="course-back-btn" aria-label="Back to Teaching">
+    <div class="back-btn-wrap">
+      <a href="{{ "teaching/" | relURL }}" class="back-btn" aria-label="Back to Teaching">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -65,7 +65,7 @@
   ============================================================================
   SECTION 2. PAGE STYLES
   - To change page padding         → .course-single-page
-  - To change back button style    → .course-back-btn
+  - Back button uses shared .back-btn from main.html
   - To change header spacing       → .course-header
   - To change content typography   → .course-content and its children
   - !important on padding: HugoBlox sets section padding inline.
@@ -81,25 +81,6 @@
       max-width: 1100px;
       margin: 0 auto;
     }
-
-    /* ---- Back button ---- */
-    .course-back { margin-bottom: 2rem; }
-
-    .course-back-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: transparent;
-      border: 1px solid var(--color-text-light);
-      border-radius: var(--radius-round);
-      color: var(--color-text-light);
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .course-back-btn:hover { background: var(--color-primary-light); }
 
     /* ---- Course header ---- */
     .course-header {

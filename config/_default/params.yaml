@@ -11,11 +11,11 @@ appearance:
 # SEO
 marketing:
   seo:
-    site_type: Person
+    site_type: Organization
     local_business_type: ''
-    org_name: ''
-    description: 'The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website.'
-    twitter: 'GetResearchDev'
+    org_name: 'Rycolab'
+    description: 'Rycolab is a research group at ETH Zürich led by Ryan Cotterell, working on computational linguistics and natural language processing.'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -41,7 +41,7 @@ header:
 # Site footer
 footer:
   copyright:
-    notice: '© {year} Me. This work is licensed under {license}'
+    notice: '© {year} Rycolab. This work is licensed under {license}'
     license:
       enable: true
       allow_derivatives: false

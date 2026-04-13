@@ -296,6 +296,31 @@ button[data-search-toggle] {
 
 /*
   ============================================================================
+  SECTION 3b. SHARED BACK BUTTON
+  - Used by teaching/single, talk/single, widget_page/single,
+    publications/single, and authors/list.
+  - Wrap the <a> in a <div class="back-btn-wrap">.
+  - All files share the same 40 × 40 circle arrow button.
+  ============================================================================
+*/
+.back-btn-wrap { margin-bottom: 2rem; }
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--color-text-light);
+  border-radius: var(--radius-round);
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.back-btn:hover { background: var(--color-primary-light); }
+
+/*
+  ============================================================================
   SECTION 4. HOMEPAGE LAYOUT (scroll snap)
   - Applied only under .home so inner pages are unaffected.
   - !important required: HugoBlox sets section dimensions via inline styles.
@@ -499,12 +524,6 @@ a.research-topic:focus { outline: none; }
   transform: translateY(40px) scale(0.85);
 }
 .update-card.visible { opacity: 1; transform: translateY(0) scale(1); }
-.update-card.visible:hover {
-  transform: translateY(-6px) scale(1);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.10);
-  border-color: var(--color-accent);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
 
 /* ---- Card inner layout ---- */
 .update-card-inner {
@@ -677,7 +696,7 @@ document.addEventListener('DOMContentLoaded', function() {
     / in production). sitePath strips that prefix so alias lookups work with
     the bare section paths defined below, regardless of deployment base URL.
   */
-  const sitePath = '{{ "/" | relURL }}'.replace(/\/$/, ''); /* e.g. '' or '/Rycolab-new' */
+  const sitePath = '{{ site.Home.RelPermalink }}'.replace(/\/$/, ''); /* e.g. '' or '/Rycolab-new' */
 
   /*
     Maps each nav link href path (relative, no base prefix) to the URL
@@ -715,6 +734,14 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Re-run on load: HugoBlox scripts may reset active state after DOMContentLoaded.
      This replaces the per-page window.load nav fix in authors/list.html. */
   window.addEventListener('load', applyNavActive);
+
+  /* --- Fix research topic links (raw HTML in _index.md can't use relURL) --- */
+  document.querySelectorAll('a.research-topic').forEach(function(a) {
+    var href = a.getAttribute('href');
+    if (href && href.startsWith('/') && !href.startsWith(sitePath)) {
+      a.setAttribute('href', sitePath + href);
+    }
+  });
 
   /* --- Part B: Homepage only -------------------------------------------- */
   /* Gate on .updates-grid presence — not on pathname or section index */

@@ -115,7 +115,8 @@
           {{ $isAlumna := or (in .Params.user_groups "Alumna") (in .Params.user_groups "Alumni") }}
           {{ $role := "" }}
           {{ with .Params.role }}
-            {{ if strings.Contains (lower .) "phd" }}{{ $role = "PhD STUDENT" }}{{ else }}{{ $role = upper . }}{{ end }}
+            {{ $role = upper . }}
+            {{ if strings.Contains (lower .) "phd" }}{{ $role = replace $role "PHD" "PhD" }}{{ end }}
           {{ end }}
           <a href="{{ .RelPermalink }}"
              class="people-card{{ if $isAlumna }} people-card--alumna{{ end }}"
@@ -333,8 +334,8 @@
     .people-card--alumna .people-card-role     { color: var(--color-text-light); }
 
     /* ---- Responsive ---- */
-    @media (max-width: 1200px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
-    @media (max-width: 900px)  {
+    @media (max-width: 1024px) { .people-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 768px)  {
       .people-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
       .people-filter { flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
       .people-search {
@@ -344,7 +345,7 @@
         order: 10;
       }
     }
-    @media (max-width: 600px)  {
+    @media (max-width: 480px)  {
       .people-grid   { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
       .people-search { flex-basis: 100%; }
     }
